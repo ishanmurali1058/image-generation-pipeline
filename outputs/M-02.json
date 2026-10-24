@@ -1,0 +1,24 @@
+{
+  "id": "M-02",
+  "route": "placeholder 1",
+  "route_reason": "placeholder 2",
+  "spec": {
+    "question_text": "In triangle ABC, angle A = 50° and angle B = 65°. Find angle C."
+  },
+  "attempts": 1,
+  "attempt_log": [
+    {
+      "attempt": 1,
+      "verification": {
+        "passed": true,
+        "checks": [
+          "fake check for now"
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.0
+    }
+  ],
+  "status": "accepted",
+  "cost_usd": 0.0
+}

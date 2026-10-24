@@ -1,0 +1,60 @@
+[
+  {
+    "id": "M-01",
+    "subject": "Math",
+    "grade": 5,
+    "question": "The bar graph shows the number of trees planted by four classes. How many trees were planted in total?",
+    "options": ["38", "42", "45", "48"],
+    "answer": "42",
+    "image_notes": "Class 6: 8, Class 7: 12, Class 8: 10, Class 9: 12. Vertical bars, y-axis from 0 to 14 in steps of 2.",
+    "source": "Original, written for this project"
+  },
+  {
+    "id": "M-02",
+    "subject": "Math",
+    "grade": 7,
+    "question": "In triangle ABC, angle A = 50° and angle B = 65°. Find angle C.",
+    "options": ["55°", "60°", "65°", "75°"],
+    "answer": "65°",
+    "image_notes": "Triangle ABC with angle A = 50° and angle B = 65° marked. Angle C marked with a question mark.",
+    "source": "Original, written for this project"
+  },
+  {
+    "id": "S-01",
+    "subject": "Science",
+    "grade": 6,
+    "question": "In the circuit shown, if bulb B1 fuses, what happens to bulb B2?",
+    "options": ["It glows brighter", "It glows dimmer", "It stops glowing", "No change"],
+    "answer": "It stops glowing",
+    "image_notes": "One cell, a closed switch and two bulbs B1 and B2 connected in series.",
+    "source": "Original, written for this project"
+  },
+  {
+    "id": "SS-01",
+    "subject": "Social Studies",
+    "grade": 4,
+    "question": "The picture shows a person at work in a village. Which occupation is shown?",
+    "options": ["Weaver", "Potter", "Blacksmith", "Carpenter"],
+    "answer": "Potter",
+    "image_notes": "A person shaping clay on a potter's wheel outside a village house. No text in the image.",
+    "source": "Original, written for this project"
+  },
+  {
+    "id": "M-03",
+    "subject": "Math",
+    "grade": 10,
+    "question": "A ladder 10 m long leans against a vertical wall and makes an angle of 60° with the ground. How high up the wall does the ladder reach?",
+    "options": ["5 m", "5√3 m", "10√3 m", "10 m"],
+    "answer": "5√3 m",
+    "image_notes": "Illustrated brick wall and ground. Ladder from the ground to the wall with its length (10 m) and the 60° angle with the ground marked. Height on the wall not labelled.",
+    "source": "Original, written for this project"
+  },
+  {
+    "id": "SS-02",
+    "subject": "Social Studies",
+    "grade": 8,
+    "question": "On the outline map of India, one state is shaded. This state is the largest producer of tea in India. Name the state.",
+    "options": ["Assam", "Kerala", "West Bengal", "Karnataka"],
+    "source": "Original, written for this project"
+  }
+]

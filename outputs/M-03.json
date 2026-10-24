@@ -1,0 +1,24 @@
+{
+  "id": "M-03",
+  "route": "placeholder 1",
+  "route_reason": "placeholder 2",
+  "spec": {
+    "question_text": "A ladder 10 m long leans against a vertical wall and makes an angle of 60° with the ground. How high up the wall does the ladder reach?"
+  },
+  "attempts": 1,
+  "attempt_log": [
+    {
+      "attempt": 1,
+      "verification": {
+        "passed": true,
+        "checks": [
+          "fake check for now"
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.0
+    }
+  ],
+  "status": "accepted",
+  "cost_usd": 0.0
+}
