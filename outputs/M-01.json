@@ -1,7 +1,7 @@
 {
   "id": "M-01",
   "route": "chart",
-  "route_reason": "The question asks students to read exact bar heights from a bar graph, so the chart must be generated with precise values and gridlines.",
+  "route_reason": "The question asks students to read values from a bar graph, so the image is a data chart that must be exact.",
   "spec": {
     "chart_type": "bar",
     "title": "Trees planted by each class",
@@ -23,11 +23,11 @@
     "y_max": 14,
     "y_step": 2
   },
-  "must_show": "A vertical bar graph titled 'Trees planted by each class' with four bars labelled Class 6, Class 7, Class 8 and Class 9. The bars show 8, 12, 10 and 12 trees. The y-axis runs from 0 to 14 in steps of 2 and is labelled 'Number of trees', and the x-axis is labelled 'Class'.",
+  "must_show": "A vertical bar graph titled 'Trees planted by each class' with four bars labelled Class 6, Class 7, Class 8 and Class 9, with bar heights of 8, 12, 10 and 12. The y-axis runs from 0 to 14 in steps of 2 and is labelled 'Number of trees', and the x-axis is labelled 'Class'.",
   "must_not_show": [
     "the total number of trees (42)",
     "the answer options",
-    "any calculation or sum of the values"
+    "any sum or working written on the graph"
   ],
   "attempts": 1,
   "attempt_log": [
@@ -36,13 +36,13 @@
       "verification": {
         "passed": true,
         "checks": [
-          "fake check for now"
+          "no real checks yet"
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.000324
+      "cost_usd": 0.000318
     }
   ],
   "status": "accepted",
-  "cost_usd": 0.000324
+  "cost_usd": 0.000318
 }

@@ -1,39 +1,63 @@
 {
   "id": "M-02",
   "route": "geometry",
-  "route_reason": "The figure is a plain triangle made only of lines and labelled points, with angle measures that the student must read exactly.",
+  "route_reason": "The image is a plain triangle with labelled angles and no realistic scene, so a clean geometry diagram gives exact angle markings.",
   "spec": {
     "shape": "triangle",
     "vertex_labels": {
-      "A": "bottom left",
-      "B": "bottom right",
+      "A": "bottom-left",
+      "B": "bottom-right",
       "C": "top"
     },
     "angle_A": "50°",
     "angle_B": "65°",
     "angle_C": "?",
-    "style": "black outline, white background, labels placed outside the triangle, angle arcs drawn at each vertex",
-    "orientation": "roughly proportional to the stated angles, with C at the apex"
+    "angle_marks": "arc marks at each vertex, with the angle value written inside or near the arc",
+    "style": "clean black lines on white background, no shading, no extra elements",
+    "orientation": "triangle sits with base AB horizontal"
   },
-  "must_show": "Triangle ABC with vertices labelled A, B and C. Angle A marked as 50° and angle B marked as 65°. Angle C marked with a question mark (?). Clean, unshaded, labelled geometry figure.",
+  "must_show": "Triangle ABC with vertices labelled A, B and C. Angle A is marked as 50° and angle B as 65°. Angle C is marked with a question mark. Angle measures are clearly readable.",
   "must_not_show": [
     "the value of angle C (65°)",
-    "any calculation or working for angle C"
+    "the correct option answer",
+    "any extra angle measures or side lengths beyond A and B"
   ],
-  "attempts": 1,
+  "attempts": 3,
   "attempt_log": [
     {
       "attempt": 1,
       "verification": {
-        "passed": true,
+        "passed": false,
         "checks": [
-          "fake check for now"
+          "route 'geometry' is not built yet"
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.00028710000000000004
+      "cost_usd": 0.0003066
+    },
+    {
+      "attempt": 2,
+      "verification": {
+        "passed": false,
+        "checks": [
+          "route 'geometry' is not built yet"
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.00031810000000000003
+    },
+    {
+      "attempt": 3,
+      "verification": {
+        "passed": false,
+        "checks": [
+          "route 'geometry' is not built yet"
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.0002841
     }
   ],
-  "status": "accepted",
-  "cost_usd": 0.000287
+  "status": "flagged",
+  "cost_usd": 0.000909
 }

@@ -1,35 +1,58 @@
 {
   "id": "SS-02",
   "route": "map",
-  "route_reason": "The question asks the student to identify a shaded region on an outline map of India, which is exactly what the map route is for.",
+  "route_reason": "The question depends on identifying a shaded region on a map, so the map route fits and the state names must stay hidden.",
   "spec": {
     "map_type": "outline map of India",
-    "region_to_shade": "Assam (northeastern state)",
-    "shading_style": "one solid fill colour on the Assam region only; all other states left white with outlines only",
-    "labels": "none; no state names, capital markers or place names anywhere on the map",
-    "orientation": "north pointing up, with a simple compass arrow optional",
-    "extras": "no legend, no title naming the state, no caption describing tea production"
+    "projection": "simple political outline, north at top",
+    "shaded_region": "one state, filled with a solid colour, which is the state that produces the most tea in India (Assam, in the north-east)",
+    "other_regions": "all other states drawn with thin boundary lines and plain white fill",
+    "labels": "none; no state names, capitals or legend text appear on the map",
+    "frame": "plain rectangular border around the map with no title text",
+    "style": "clean, simple, black outlines, suitable for a Grade 8 exam paper"
   },
-  "must_show": "An outline map of India with exactly one state shaded in a solid colour. The shaded state is Assam, in the northeast of India. The other states are unshaded and have no names, so the student must identify the shaded state from its shape and location.",
+  "must_show": "An outline map of India with state boundaries drawn, with exactly one state shaded in a solid colour. The state names are not labelled, and no other text or answer marking appears on the map.",
   "must_not_show": [
-    "The name of any state, including Assam, Kerala, West Bengal and Karnataka",
-    "Any text or label that identifies the shaded state",
-    "Any indication that the shaded state is the tea-producing one"
+    "The name of the shaded state",
+    "Any text labels for any state, including the four answer options",
+    "Any marking that indicates which state is the answer"
   ],
-  "attempts": 1,
+  "attempts": 3,
   "attempt_log": [
     {
       "attempt": 1,
       "verification": {
-        "passed": true,
+        "passed": false,
         "checks": [
-          "fake check for now"
+          "route 'map' is not built yet"
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.0003505
+      "cost_usd": 0.0003135
+    },
+    {
+      "attempt": 2,
+      "verification": {
+        "passed": false,
+        "checks": [
+          "route 'map' is not built yet"
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.000329
+    },
+    {
+      "attempt": 3,
+      "verification": {
+        "passed": false,
+        "checks": [
+          "route 'map' is not built yet"
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.0003365
     }
   ],
-  "status": "accepted",
-  "cost_usd": 0.000351
+  "status": "flagged",
+  "cost_usd": 0.000979
 }

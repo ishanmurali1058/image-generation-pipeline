@@ -1,35 +1,55 @@
 {
   "id": "SS-01",
   "route": "illustration",
-  "route_reason": "This is a scene with characters and objects, and the student only needs to recognise the occupation, with no exact measurements or readable text.",
+  "route_reason": "This is a village scene with people and objects where nothing the student reads needs to be exact, so a plain illustration fits.",
   "spec": {
-    "scene": "Village outdoor scene, daytime, simple countryside setting",
-    "main_subject": "One adult person seated at a potter's wheel, hands shaping a lump of wet clay into a pot",
-    "objects": "Potter's wheel with spinning clay, a few finished clay pots on a wooden shelf or ground, a simple village house with a wooden door in the background",
-    "style": "Friendly, flat child-friendly illustration with clear outlines and bright earthy colours",
-    "text_in_image": "None",
-    "answer_visibility": "Shows the potter's work only, with no labels or names"
+    "scene": "Village house exterior, daytime, simple rural setting",
+    "figure": "One adult person seated at a potter's wheel, hands shaping a lump of wet clay into a bowl shape",
+    "objects": "Potter's wheel with visible clay, a few finished clay pots nearby on a wooden shelf or ground",
+    "text": "None",
+    "style": "Clear flat illustration suitable for a Grade 4 social studies question, uncluttered background"
   },
-  "must_show": "A village scene with a person at a potter's wheel shaping wet clay on a pot, placed outside a simple village house. Clay, the wheel and the pot-making action should be clearly visible. No text or labels anywhere in the image.",
+  "must_show": "A person shaping clay on a potter's wheel outside a village house, with no text or labels in the image.",
   "must_not_show": [
-    "The word 'Potter' or any other occupation name",
-    "Text, signs or captions",
-    "Tools or objects that belong to weaving, blacksmithing or carpentry, which would make the answer ambiguous"
+    "any text naming the occupation, such as the word 'Potter'",
+    "other occupation tools that could be mistaken for the answer, such as a loom, an anvil or a carpentry bench"
   ],
-  "attempts": 1,
+  "attempts": 3,
   "attempt_log": [
     {
       "attempt": 1,
       "verification": {
-        "passed": true,
+        "passed": false,
         "checks": [
-          "fake check for now"
+          "route 'illustration' is not built yet"
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.0003862
+      "cost_usd": 0.00038669999999999997
+    },
+    {
+      "attempt": 2,
+      "verification": {
+        "passed": false,
+        "checks": [
+          "route 'illustration' is not built yet"
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.0003632
+    },
+    {
+      "attempt": 3,
+      "verification": {
+        "passed": false,
+        "checks": [
+          "route 'illustration' is not built yet"
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.0003212
     }
   ],
-  "status": "accepted",
-  "cost_usd": 0.000386
+  "status": "flagged",
+  "cost_usd": 0.001071
 }

@@ -1,35 +1,64 @@
 {
   "id": "S-01",
   "route": "circuit",
-  "route_reason": "The question depends on the layout of an electric circuit diagram with series components, which is exactly what the circuit route draws.",
+  "route_reason": "The image is an electric circuit diagram with standard cell, switch and bulb symbols, which is exactly what the circuit route is built to draw.",
   "spec": {
-    "circuit_type": "series",
-    "components": "one cell, one closed switch, bulb B1, bulb B2",
-    "connections": "all components in a single closed loop with wires",
-    "labels": "B1 and B2 labelled on the bulbs, cell and switch labelled",
-    "switch_state": "closed",
-    "fault_shown": "none"
+    "components": [
+      "1 cell",
+      "1 closed switch",
+      "bulb B1",
+      "bulb B2"
+    ],
+    "connection": "series, single loop",
+    "labels": [
+      "B1",
+      "B2"
+    ],
+    "state": "all components intact, switch closed",
+    "style": "standard textbook circuit symbols, clean lines, no annotations beyond B1 and B2 labels"
   },
-  "must_show": "A single closed series circuit: one cell, a closed switch, and two bulbs labelled B1 and B2 connected in series in one loop, with wires joining all components.",
+  "must_show": "A single closed series circuit: one cell, a closed switch, and two bulbs labelled B1 and B2 connected in series in one loop, with wires joining all components. B1 should be clearly labelled and drawn intact (the question describes it fusing, but the diagram shows the circuit before the fault).",
   "must_not_show": [
-    "The answer (what happens to B2 when B1 fuses)",
-    "Any indication that B1 is broken or open",
-    "Any note explaining the effect on B2"
+    "The answer 'It stops glowing' or any statement about what happens to B2",
+    "Any indication of which bulb is broken or fused, or a break in the wire",
+    "Options text or explanatory labels about brightness or fusing"
   ],
-  "attempts": 1,
+  "attempts": 3,
   "attempt_log": [
     {
       "attempt": 1,
       "verification": {
-        "passed": true,
+        "passed": false,
         "checks": [
-          "fake check for now"
+          "route 'circuit' is not built yet"
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.00022810000000000001
+      "cost_usd": 0.00024010000000000004
+    },
+    {
+      "attempt": 2,
+      "verification": {
+        "passed": false,
+        "checks": [
+          "route 'circuit' is not built yet"
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.0002821
+    },
+    {
+      "attempt": 3,
+      "verification": {
+        "passed": false,
+        "checks": [
+          "route 'circuit' is not built yet"
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.00026660000000000003
     }
   ],
-  "status": "accepted",
-  "cost_usd": 0.000228
+  "status": "flagged",
+  "cost_usd": 0.000789
 }
