@@ -2,13 +2,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-def understand(question):
-    return {
-        "route" : "placeholder 1",
-        "route_reason" : "placeholder 2",
-        "spec" : {"question_text": question["question"]},
-        "cost" : 0.0,
-    }
+from pipeline.understand import understand
 
 def generate(plan, question, out_dir):
     png_path = out_dir / f"{question["id"]}.png"
@@ -21,4 +15,7 @@ def generate(plan, question, out_dir):
     return {"png" : str(png_path), "svg" : None, "cost" : 0.0}
 
 def verify(plan, question, files):
+    if "error" in plan:
+        return {"passed" : False, "checks" : [f"plan error: {plan["error"]}"], "cost" : 0.0}
+
     return {"passed" : True, "checks" : ["fake check for now"], "cost" : 0.0}

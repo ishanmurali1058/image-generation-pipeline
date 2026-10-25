@@ -34,6 +34,8 @@ def process_question(question, out_dir):
         "route": plan["route"],
         "route_reason": plan["route_reason"],
         "spec": plan["spec"],
+        "must_show": plan.get("must_show", ""),
+        "must_not_show": plan.get("must_not_show", []),
         "attempts": len(attempts),
         "attempt_log": attempts,
         "status": status,

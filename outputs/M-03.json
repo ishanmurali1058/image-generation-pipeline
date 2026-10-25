@@ -1,10 +1,21 @@
 {
   "id": "M-03",
-  "route": "placeholder 1",
-  "route_reason": "placeholder 2",
+  "route": "layered",
+  "route_reason": "The image is an illustrated scene (brick wall, ground, ladder) but the student must read the exact 10 m length and 60° angle, so it needs a layered exact-measurement overlay rather than a plain illustration.",
   "spec": {
-    "question_text": "A ladder 10 m long leans against a vertical wall and makes an angle of 60° with the ground. How high up the wall does the ladder reach?"
+    "scene": "Brick wall and flat ground, drawn in a simple illustrated style",
+    "wall": "Vertical brick wall standing on the ground, right angle at the base of the wall",
+    "ladder": "Straight ladder from the ground touching the wall near the top, leaning at 60° to the ground",
+    "labels": "Ladder length labelled '10 m' along the ladder. Angle labelled '60°' at the ground between the ladder and the ground. No label on the wall height.",
+    "overlay": "Exact angle arc at the foot of the ladder and a clear right-angle marker where the wall meets the ground",
+    "background": "Plain light sky and ground, no extra objects that could be confused with measurements"
   },
+  "must_show": "An illustrated brick wall standing vertically on flat ground, with a ladder leaning against the wall so its foot is on the ground and its top touches the wall. The ladder length is labelled 10 m and the angle between the ladder and the ground is labelled 60°. The height up the wall is not labelled. The wall, ground and ladder are drawn to a clear right-angle corner where the wall meets the ground.",
+  "must_not_show": [
+    "the height of the ladder on the wall (5√3 m or any value for it)",
+    "the answer options",
+    "any calculation or trigonometric ratio"
+  ],
   "attempts": 1,
   "attempt_log": [
     {
@@ -16,9 +27,9 @@
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.0
+      "cost_usd": 0.00047139999999999997
     }
   ],
   "status": "accepted",
-  "cost_usd": 0.0
+  "cost_usd": 0.000471
 }

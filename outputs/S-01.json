@@ -1,10 +1,21 @@
 {
   "id": "S-01",
-  "route": "placeholder 1",
-  "route_reason": "placeholder 2",
+  "route": "circuit",
+  "route_reason": "The question depends on the layout of an electric circuit diagram with series components, which is exactly what the circuit route draws.",
   "spec": {
-    "question_text": "In the circuit shown, if bulb B1 fuses, what happens to bulb B2?"
+    "circuit_type": "series",
+    "components": "one cell, one closed switch, bulb B1, bulb B2",
+    "connections": "all components in a single closed loop with wires",
+    "labels": "B1 and B2 labelled on the bulbs, cell and switch labelled",
+    "switch_state": "closed",
+    "fault_shown": "none"
   },
+  "must_show": "A single closed series circuit: one cell, a closed switch, and two bulbs labelled B1 and B2 connected in series in one loop, with wires joining all components.",
+  "must_not_show": [
+    "The answer (what happens to B2 when B1 fuses)",
+    "Any indication that B1 is broken or open",
+    "Any note explaining the effect on B2"
+  ],
   "attempts": 1,
   "attempt_log": [
     {
@@ -16,9 +27,9 @@
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.0
+      "cost_usd": 0.00022810000000000001
     }
   ],
   "status": "accepted",
-  "cost_usd": 0.0
+  "cost_usd": 0.000228
 }

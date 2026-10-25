@@ -1,10 +1,21 @@
 {
   "id": "SS-02",
-  "route": "placeholder 1",
-  "route_reason": "placeholder 2",
+  "route": "map",
+  "route_reason": "The question asks the student to identify a shaded region on an outline map of India, which is exactly what the map route is for.",
   "spec": {
-    "question_text": "On the outline map of India, one state is shaded. This state is the largest producer of tea in India. Name the state."
+    "map_type": "outline map of India",
+    "region_to_shade": "Assam (northeastern state)",
+    "shading_style": "one solid fill colour on the Assam region only; all other states left white with outlines only",
+    "labels": "none; no state names, capital markers or place names anywhere on the map",
+    "orientation": "north pointing up, with a simple compass arrow optional",
+    "extras": "no legend, no title naming the state, no caption describing tea production"
   },
+  "must_show": "An outline map of India with exactly one state shaded in a solid colour. The shaded state is Assam, in the northeast of India. The other states are unshaded and have no names, so the student must identify the shaded state from its shape and location.",
+  "must_not_show": [
+    "The name of any state, including Assam, Kerala, West Bengal and Karnataka",
+    "Any text or label that identifies the shaded state",
+    "Any indication that the shaded state is the tea-producing one"
+  ],
   "attempts": 1,
   "attempt_log": [
     {
@@ -16,9 +27,9 @@
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.0
+      "cost_usd": 0.0003505
     }
   ],
   "status": "accepted",
-  "cost_usd": 0.0
+  "cost_usd": 0.000351
 }

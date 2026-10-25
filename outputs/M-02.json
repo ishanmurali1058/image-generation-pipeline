@@ -1,10 +1,25 @@
 {
   "id": "M-02",
-  "route": "placeholder 1",
-  "route_reason": "placeholder 2",
+  "route": "geometry",
+  "route_reason": "The figure is a plain triangle made only of lines and labelled points, with angle measures that the student must read exactly.",
   "spec": {
-    "question_text": "In triangle ABC, angle A = 50° and angle B = 65°. Find angle C."
+    "shape": "triangle",
+    "vertex_labels": {
+      "A": "bottom left",
+      "B": "bottom right",
+      "C": "top"
+    },
+    "angle_A": "50°",
+    "angle_B": "65°",
+    "angle_C": "?",
+    "style": "black outline, white background, labels placed outside the triangle, angle arcs drawn at each vertex",
+    "orientation": "roughly proportional to the stated angles, with C at the apex"
   },
+  "must_show": "Triangle ABC with vertices labelled A, B and C. Angle A marked as 50° and angle B marked as 65°. Angle C marked with a question mark (?). Clean, unshaded, labelled geometry figure.",
+  "must_not_show": [
+    "the value of angle C (65°)",
+    "any calculation or working for angle C"
+  ],
   "attempts": 1,
   "attempt_log": [
     {
@@ -16,9 +31,9 @@
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.0
+      "cost_usd": 0.00028710000000000004
     }
   ],
   "status": "accepted",
-  "cost_usd": 0.0
+  "cost_usd": 0.000287
 }
