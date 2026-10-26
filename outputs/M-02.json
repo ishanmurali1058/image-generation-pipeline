@@ -1,32 +1,35 @@
 {
   "id": "M-02",
   "route": "geometry",
-  "route_reason": "The question needs only a plain triangle with labelled vertices and angle values, which is a line-and-shape figure with no scene or instrument.",
+  "route_reason": "The figure is a plain triangle made only of lines and labelled points, with exact angle values that the student must read, so a geometry diagram fits.",
   "spec": {
     "shape": "triangle",
-    "vertex_labels": {
+    "vertices": {
       "A": "bottom-left",
       "B": "bottom-right",
       "C": "top"
     },
+    "side_lines": "solid straight lines joining A to B, B to C, and C to A",
     "angle_labels": {
       "A": "50°",
       "B": "65°",
       "C": "?"
     },
-    "style": "clean black outline on white background, labels placed inside or near each vertex, no fill, no grid",
-    "orientation": "base AB horizontal, vertex C above the base"
+    "label_placement": "angle values placed just inside each vertex; vertex C shows a single question mark instead of a value",
+    "style": "clean black outline on white background, no shading, no extra lines, no decorations",
+    "scale_note": "not to scale is not required; drawn roughly proportionate to the stated angles"
   },
-  "must_show": "A plain triangle ABC with vertices labelled A, B and C. The interior angle at A is marked 50° and the interior angle at B is marked 65°. The interior angle at C is marked with a question mark only. No other values or options appear.",
+  "must_show": "A plain triangle ABC with vertices labelled A, B and C. Angle A is marked 50° and angle B is marked 65°. Angle C is marked with a question mark and no value.",
   "must_not_show": [
-    "the value of angle C",
-    "the answer options (55°, 60°, 65°, 75°)",
-    "any extra angle measures or auxiliary lines that would reveal angle C"
+    "the value 65° or any value for angle C",
+    "the answer 65° written at vertex C or anywhere in the figure",
+    "any working or angle sum calculation"
   ],
-  "attempts": 3,
+  "attempts": 1,
   "attempt_log": [
     {
       "attempt": 1,
+      "repair_feedback": null,
       "verification": {
         "passed": false,
         "checks": [
@@ -36,41 +39,15 @@
             "detail": "route 'geometry' is not built yet"
           }
         ],
-        "cost": 0.0
+        "cost": 0.0,
+        "retryable": false
       },
-      "cost_usd": 0.0003269
-    },
-    {
-      "attempt": 2,
-      "verification": {
-        "passed": false,
-        "checks": [
-          {
-            "name": "route",
-            "result": "fail",
-            "detail": "route 'geometry' is not built yet"
-          }
-        ],
-        "cost": 0.0
-      },
-      "cost_usd": 0.00035039999999999995
-    },
-    {
-      "attempt": 3,
-      "verification": {
-        "passed": false,
-        "checks": [
-          {
-            "name": "route",
-            "result": "fail",
-            "detail": "route 'geometry' is not built yet"
-          }
-        ],
-        "cost": 0.0
-      },
-      "cost_usd": 0.00035739999999999996
+      "cost_usd": 0.0003469
     }
   ],
   "status": "flagged",
-  "cost_usd": 0.001035
+  "flag_reason": [
+    "route 'geometry' is not built yet"
+  ],
+  "cost_usd": 0.000347
 }

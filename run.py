@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 
 from pipeline.stages import understand, generate, verify
+from pipeline.repair import build_feedback
 
 MAX_ATTEMPTS = 3
 
@@ -11,9 +12,10 @@ def process_question(question, out_dir):
     attempts = []
     total_cost = 0.0
     status = "flagged"
+    feedback = None
 
     for attempt_number in range(1, MAX_ATTEMPTS + 1):
-        plan = understand(question)
+        plan = understand(question, feedback)
         files = generate(plan, question, out_dir)
         check = verify(plan, question, files)
 
@@ -21,6 +23,7 @@ def process_question(question, out_dir):
         total_cost += cost
         attempts.append({
             "attempt": attempt_number,
+            "repair_feedback": feedback,
             "verification": check,
             "cost_usd": cost,
         })
@@ -28,6 +31,15 @@ def process_question(question, out_dir):
         if check["passed"]:
             status = "accepted"
             break
+
+        if not check.get("retryable", True):
+            break
+
+        feedback = build_feedback(plan, check)
+
+    flag_reason = None
+    if status == "flagged":
+        flag_reason = [check["detail"] for check in check["checks"] if check["result"] == "fail"]
 
     metadata = {
         "id": question["id"],
@@ -39,6 +51,7 @@ def process_question(question, out_dir):
         "attempts": len(attempts),
         "attempt_log": attempts,
         "status": status,
+        "flag_reason": flag_reason,
         "cost_usd": round(total_cost, 6),
     }
 

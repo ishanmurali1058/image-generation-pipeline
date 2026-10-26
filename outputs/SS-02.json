@@ -1,26 +1,29 @@
 {
   "id": "SS-02",
   "route": "map",
-  "route_reason": "The question asks the student to identify a shaded region on an outline map of India, which is exactly what the map route produces with shaded and labelled regions.",
+  "route_reason": "The question depends on identifying a shaded region on an outline map, so a map route with a shaded, unlabelled region fits best.",
   "spec": {
     "map_type": "outline map of India",
-    "shaded_region": "Assam, in the northeast of India, shaded in one solid colour",
-    "other_regions": "All other states unshaded, with no names or labels",
-    "labels": "None on the map itself",
-    "boundaries": "Clear state boundary lines; the shaded state must be recognisable by its shape and position",
-    "extras": "Optional small north arrow in a corner; no legend, no title that names a state"
+    "shaded_region": "Assam (northeast India), filled with a solid grey shade",
+    "shaded_region_shape": "accurate real-world outline of Assam",
+    "other_regions": "all other Indian states and union territories unshaded, with boundaries drawn as thin lines and no names",
+    "neighbouring_countries": "shown unshaded and unlabelled",
+    "labels": "none",
+    "extras": "north arrow and simple scale bar only",
+    "style": "plain black outline on white background, suitable for a Grade 8 printed test"
   },
-  "must_show": "An outline map of India with its state boundaries drawn. Exactly one state, Assam (in the northeast), is shaded in a solid colour. The shaded state has no name label, and the other states are unshaded and unlabelled, so the student must identify the shaded state from its shape and position. Include a simple compass arrow or latitude/longitude reference if helpful, and no other text beyond the question.",
+  "must_show": "An outline map of India with its state boundaries drawn as thin lines. Exactly one state, Assam, in the far northeast, is filled with a solid shade. Assam's real shape and position are accurate, and its neighbouring states and countries (Bhutan, Bangladesh, Myanmar, China) appear unshaded. A compass arrow pointing north and a simple scale bar may be included. The map is clean, with no text labels.",
   "must_not_show": [
-    "The name of the shaded state (Assam)",
-    "Any label or text naming any state",
-    "Any hint such as tea plantations, tea leaves or a tea cup",
-    "Any indication of which option is correct"
+    "The name 'Assam' or any other state or country name written on the map",
+    "Any label, caption or highlight that identifies the shaded state",
+    "Any tea plantation or tea-related imagery that gives away the answer",
+    "The answer choices or any indication of which option is correct"
   ],
-  "attempts": 3,
+  "attempts": 1,
   "attempt_log": [
     {
       "attempt": 1,
+      "repair_feedback": null,
       "verification": {
         "passed": false,
         "checks": [
@@ -30,41 +33,15 @@
             "detail": "route 'map' is not built yet"
           }
         ],
-        "cost": 0.0
+        "cost": 0.0,
+        "retryable": false
       },
-      "cost_usd": 0.0003953
-    },
-    {
-      "attempt": 2,
-      "verification": {
-        "passed": false,
-        "checks": [
-          {
-            "name": "route",
-            "result": "fail",
-            "detail": "route 'map' is not built yet"
-          }
-        ],
-        "cost": 0.0
-      },
-      "cost_usd": 0.0004063
-    },
-    {
-      "attempt": 3,
-      "verification": {
-        "passed": false,
-        "checks": [
-          {
-            "name": "route",
-            "result": "fail",
-            "detail": "route 'map' is not built yet"
-          }
-        ],
-        "cost": 0.0
-      },
-      "cost_usd": 0.0003788
+      "cost_usd": 0.0005043000000000001
     }
   ],
   "status": "flagged",
-  "cost_usd": 0.00118
+  "flag_reason": [
+    "route 'map' is not built yet"
+  ],
+  "cost_usd": 0.000504
 }

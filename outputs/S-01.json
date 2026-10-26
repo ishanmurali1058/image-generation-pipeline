@@ -1,24 +1,50 @@
 {
   "id": "S-01",
   "route": "circuit",
-  "route_reason": "The question is about an electric circuit with a cell, switch and bulbs in series, so an electric circuit diagram is the natural format.",
+  "route_reason": "The question depends on an electric circuit diagram with series components and their connections, which is what the circuit route draws.",
   "spec": {
-    "components": "one cell, one closed switch, bulb B1, bulb B2",
-    "connection": "series loop: cell, switch, B1, B2, back to cell",
-    "labels": "B1 and B2 labelled on the bulbs; cell, switch labelled",
-    "state": "switch closed, circuit complete",
-    "extras": "no fault marking, no meters, no annotations"
+    "circuit_type": "series",
+    "components": [
+      {
+        "type": "cell",
+        "label": "cell",
+        "position": "left side of loop"
+      },
+      {
+        "type": "switch",
+        "label": "switch",
+        "state": "closed",
+        "position": "top wire"
+      },
+      {
+        "type": "bulb",
+        "label": "B1",
+        "position": "right side of top wire"
+      },
+      {
+        "type": "bulb",
+        "label": "B2",
+        "position": "right side of loop, after B1"
+      }
+    ],
+    "connections": "single closed loop: cell, switch, B1, B2 in series, returning to cell",
+    "fault_shown": "none",
+    "labels_visible": [
+      "B1",
+      "B2"
+    ]
   },
-  "must_show": "A labelled series circuit diagram with one cell, a closed switch, and two bulbs labelled B1 and B2 connected in a single loop, with all components clearly labelled and the switch shown closed.",
+  "must_show": "A complete single-loop series circuit: one cell, a closed switch, and two bulbs B1 and B2 connected one after another in the same loop, with both bulbs intact and labelled B1 and B2. The switch is closed and the circuit is complete.",
   "must_not_show": [
-    "The effect of B1 fusing on B2",
-    "Any indication of which option is correct",
-    "Any arrows, notes, or text describing brightness or glowing after a fault"
+    "Any sign that B1 has fused or is broken",
+    "Any indication of whether B2 glows or stops glowing",
+    "The answer text or option labels"
   ],
-  "attempts": 3,
+  "attempts": 1,
   "attempt_log": [
     {
       "attempt": 1,
+      "repair_feedback": null,
       "verification": {
         "passed": false,
         "checks": [
@@ -28,41 +54,15 @@
             "detail": "route 'circuit' is not built yet"
           }
         ],
-        "cost": 0.0
+        "cost": 0.0,
+        "retryable": false
       },
-      "cost_usd": 0.00038639999999999996
-    },
-    {
-      "attempt": 2,
-      "verification": {
-        "passed": false,
-        "checks": [
-          {
-            "name": "route",
-            "result": "fail",
-            "detail": "route 'circuit' is not built yet"
-          }
-        ],
-        "cost": 0.0
-      },
-      "cost_usd": 0.00027489999999999996
-    },
-    {
-      "attempt": 3,
-      "verification": {
-        "passed": false,
-        "checks": [
-          {
-            "name": "route",
-            "result": "fail",
-            "detail": "route 'circuit' is not built yet"
-          }
-        ],
-        "cost": 0.0
-      },
-      "cost_usd": 0.0003249
+      "cost_usd": 0.00040239999999999997
     }
   ],
   "status": "flagged",
-  "cost_usd": 0.000986
+  "flag_reason": [
+    "route 'circuit' is not built yet"
+  ],
+  "cost_usd": 0.000402
 }

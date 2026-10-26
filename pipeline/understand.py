@@ -62,9 +62,10 @@ Rules:
 - Never show the answer in the image unless the question requires the student to see it.
 """
 
-
-def understand(question):
+def understand(question, feedback = None):
     user_prompt = json.dumps(question, ensure_ascii=False, indent=2)
+    if feedback:
+        user_prompt += "\n\n" + feedback
     result = call_llm(SYSTEM_PROMPT, user_prompt)
 
     try:
@@ -81,7 +82,6 @@ def understand(question):
 
     plan["cost"] = result["cost"]
     return plan
-
 
 def parse_plan(text):
     start = text.find("{")

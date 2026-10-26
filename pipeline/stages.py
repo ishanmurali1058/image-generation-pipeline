@@ -48,7 +48,7 @@ def verify(plan, question, files):
 
     if files.get("placeholder"):
         detail = f"route '{plan['route']}' is not built yet"
-        return {"passed": False, "checks": [{"name": "route", "result": "fail", "detail": detail}], "cost": 0.0}
+        return {"passed": False, "checks": [{"name": "route", "result": "fail", "detail": detail}], "cost": 0.0, "retryable" : False}
 
     checks = list(files.get("spec_checks", []))
 

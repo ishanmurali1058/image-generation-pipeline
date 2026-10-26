@@ -1,30 +1,29 @@
 {
   "id": "M-03",
   "route": "layered",
-  "route_reason": "The image is an illustrated scene (brick wall, ground, ladder) that also needs exact labelled measurements (10 m and 60°), so it fits the layered route.",
+  "route_reason": "The scene is an illustrated wall and ladder, but the 10 m length and 60° angle must be read exactly, so it needs a scene with exact measurements drawn on top rather than a pure illustration.",
   "spec": {
-    "scene": "Side view of a brick wall with a flat ground line and a leaning ladder",
-    "wall": "Vertical brick wall, drawn in a simple illustrated style, with a right-angle mark at the base where it meets the ground",
-    "ground": "Flat horizontal ground line extending from the base of the wall",
-    "ladder": "Straight ladder from a point on the ground to a point on the wall, drawn as a single straight segment",
-    "labels": {
-      "ladder_length": "10 m, written along the ladder",
-      "angle": "60°, marked at the ground where the ladder meets it"
-    },
-    "unlabelled": "The height where the ladder touches the wall is not labelled",
-    "style": "Clean, uncluttered, suitable for a Grade 10 trigonometry question"
+    "scene": "Brick wall standing vertically on flat ground, with a ladder leaning against it",
+    "wall": "Vertical brick wall, plain brick texture, no labels or markings on its face",
+    "ground": "Flat horizontal ground line meeting the base of the wall",
+    "ladder": "Straight ladder from the ground touching the wall, drawn as a single straight segment",
+    "ladder_length_label": "10 m, placed along the ladder",
+    "angle_label": "60°, marked at the point where the ladder meets the ground, between the ladder and the ground",
+    "height_on_wall_label": "none",
+    "overlay": "Right-triangle outline formed by wall, ground and ladder, with the right angle at the base of the wall shown by a small square mark"
   },
-  "must_show": "A side view of a brick wall standing vertically on flat ground, with a ladder leaning against the wall. The ladder runs from the ground to the wall, its length labelled 10 m, and the angle between the ground and the ladder labelled 60°. The wall has a visible right-angle mark where it meets the ground.",
+  "must_show": "An illustrated brick wall standing vertically on a flat ground line, with a ladder leaning against the wall and its foot on the ground. The ladder's length is labelled 10 m along the ladder. The angle between the ladder and the ground is labelled 60° at the foot of the ladder. The height up the wall where the ladder touches is not labelled.",
   "must_not_show": [
-    "The height where the ladder touches the wall, which is the answer",
-    "The answer options (5 m, 5√3 m, 10√3 m, 10 m)",
-    "Any value or label for the wall height",
-    "Any trigonometric ratio or working"
+    "the height of the ladder on the wall",
+    "any value for the height such as 5 m, 5√3 m or 10√3 m",
+    "the answer option labels",
+    "any other measurements or labels on the wall"
   ],
-  "attempts": 3,
+  "attempts": 1,
   "attempt_log": [
     {
       "attempt": 1,
+      "repair_feedback": null,
       "verification": {
         "passed": false,
         "checks": [
@@ -34,41 +33,15 @@
             "detail": "route 'layered' is not built yet"
           }
         ],
-        "cost": 0.0
+        "cost": 0.0,
+        "retryable": false
       },
-      "cost_usd": 0.00044919999999999997
-    },
-    {
-      "attempt": 2,
-      "verification": {
-        "passed": false,
-        "checks": [
-          {
-            "name": "route",
-            "result": "fail",
-            "detail": "route 'layered' is not built yet"
-          }
-        ],
-        "cost": 0.0
-      },
-      "cost_usd": 0.0004717
-    },
-    {
-      "attempt": 3,
-      "verification": {
-        "passed": false,
-        "checks": [
-          {
-            "name": "route",
-            "result": "fail",
-            "detail": "route 'layered' is not built yet"
-          }
-        ],
-        "cost": 0.0
-      },
-      "cost_usd": 0.0004722
+      "cost_usd": 0.0004867
     }
   ],
   "status": "flagged",
-  "cost_usd": 0.001393
+  "flag_reason": [
+    "route 'layered' is not built yet"
+  ],
+  "cost_usd": 0.000487
 }
