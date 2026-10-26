@@ -54,6 +54,22 @@ operation must be one of:
 - min_label: the answer is the name of the lowest bar among those listed (empty list means all bars)
 - none: the answer cannot be worked out from the chart values
 
+For the geometry route, only triangles are supported. The spec must be:
+{
+  "shape": "triangle",
+  "vertices": ["A", "B", "C"],
+  "angles": {"A": 50, "B": 65, "C": null},
+  "sides": {"AB": null, "BC": null, "CA": null},
+  "units": "cm",
+  "unknown": "C"
+}
+- vertices: the three corner names used in the question, as a list.
+- angles: the angle in degrees at each vertex, but only if the student is told it; otherwise null.
+- sides: each side's length, but only if the student is told it; otherwise null.
+- unknown: the vertex (for an angle) or side (for a length) the student must find. It must be null in angles or sides. Use null if the student finds nothing in the figure.
+- Never put the answer in angles or sides.
+- A right angle the student is told about is 90 in angles.
+
 For other routes, describe the image in the spec as clear key-value fields.
 
 Rules:

@@ -1,29 +1,31 @@
 {
   "id": "M-02",
   "route": "geometry",
-  "route_reason": "The figure is a plain triangle made only of lines and labelled points, with exact angle values that the student must read, so a geometry diagram fits.",
+  "route_reason": "This is a plain triangle made only of lines and labelled angles, which the geometry route draws exactly.",
   "spec": {
     "shape": "triangle",
-    "vertices": {
-      "A": "bottom-left",
-      "B": "bottom-right",
-      "C": "top"
+    "vertices": [
+      "A",
+      "B",
+      "C"
+    ],
+    "angles": {
+      "A": 50,
+      "B": 65,
+      "C": null
     },
-    "side_lines": "solid straight lines joining A to B, B to C, and C to A",
-    "angle_labels": {
-      "A": "50°",
-      "B": "65°",
-      "C": "?"
+    "sides": {
+      "AB": null,
+      "BC": null,
+      "CA": null
     },
-    "label_placement": "angle values placed just inside each vertex; vertex C shows a single question mark instead of a value",
-    "style": "clean black outline on white background, no shading, no extra lines, no decorations",
-    "scale_note": "not to scale is not required; drawn roughly proportionate to the stated angles"
+    "units": "cm",
+    "unknown": "C"
   },
-  "must_show": "A plain triangle ABC with vertices labelled A, B and C. Angle A is marked 50° and angle B is marked 65°. Angle C is marked with a question mark and no value.",
+  "must_show": "Triangle ABC with vertices A, B and C labelled, angle A marked as 50 degrees, angle B marked as 65 degrees, and angle C marked with a question mark.",
   "must_not_show": [
-    "the value 65° or any value for angle C",
-    "the answer 65° written at vertex C or anywhere in the figure",
-    "any working or angle sum calculation"
+    "the value of angle C (65 degrees)",
+    "any answer option values"
   ],
   "attempts": 1,
   "attempt_log": [
@@ -31,23 +33,50 @@
       "attempt": 1,
       "repair_feedback": null,
       "verification": {
-        "passed": false,
+        "passed": true,
         "checks": [
           {
-            "name": "route",
-            "result": "fail",
-            "detail": "route 'geometry' is not built yet"
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a triangle in the geometry format"
+          },
+          {
+            "name": "triangle_solvable",
+            "result": "pass",
+            "detail": "the givens fix the triangle's shape"
+          },
+          {
+            "name": "givens_consistent",
+            "result": "pass",
+            "detail": "all given angles and sides agree with each other"
+          },
+          {
+            "name": "unknown_hidden",
+            "result": "pass",
+            "detail": "the unknown angle C has no value, so it is labelled '?'"
+          },
+          {
+            "name": "values_match_notes",
+            "result": "pass",
+            "detail": "every value appears in the image notes"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "pass",
+            "detail": "angle C in the figure is 65, matching the answer '65°'"
+          },
+          {
+            "name": "drawn_matches_labels",
+            "result": "pass",
+            "detail": "every labelled angle and side is drawn at its labelled size"
           }
         ],
-        "cost": 0.0,
-        "retryable": false
+        "cost": 0.0
       },
-      "cost_usd": 0.0003469
+      "cost_usd": 0.00025540000000000003
     }
   ],
-  "status": "flagged",
-  "flag_reason": [
-    "route 'geometry' is not built yet"
-  ],
-  "cost_usd": 0.000347
+  "status": "accepted",
+  "flag_reason": null,
+  "cost_usd": 0.000255
 }

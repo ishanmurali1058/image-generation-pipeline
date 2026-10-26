@@ -1,20 +1,19 @@
 {
   "id": "SS-01",
   "route": "illustration",
-  "route_reason": "This is a scene with people and objects where nothing the student reads needs to be exact, so a plain illustration fits.",
+  "route_reason": "This is a scene of a person at work where the student only needs to recognise the activity, and nothing read from the image must be exact.",
   "spec": {
-    "scene": "Village workshop outside a simple house",
-    "main_subject": "A person seated at a potter's wheel, hands shaping a lump of wet clay into a pot",
-    "props": "Potter's wheel, bucket of water, a few finished clay pots on a low shelf",
-    "setting": "Village street or yard with a small house with a wooden door, a few trees, and a dirt path",
-    "style": "Clear, friendly, child-appropriate illustration with simple colours",
-    "text_in_image": "None"
+    "scene": "village outdoor setting beside a simple house",
+    "main_subject": "a person seated at a potter's wheel, shaping a lump of clay with their hands",
+    "props": "potter's wheel, lump of wet clay, a bowl or pot shape forming on the wheel, a bucket of water nearby",
+    "setting_details": "single-storey village house with a wooden door, a few trees, dirt ground",
+    "text_in_image": "none",
+    "style": "simple flat children's textbook illustration, clear and uncluttered"
   },
-  "must_show": "A person in a village setting outside a house, shaping wet clay on a potter's wheel, with a clay pot or bowl nearby. The scene should look like a typical village workshop with no text or labels.",
+  "must_show": "A person shaping clay on a potter's wheel outside a village house, with a simple village setting. No text anywhere in the image.",
   "must_not_show": [
-    "Any written words or labels, including the occupation names (weaver, potter, blacksmith, carpenter)",
-    "Visible tools or objects that belong to the other options, such as a loom, an anvil, or carpentry saw and planks",
-    "Any caption or answer text"
+    "the written word 'Potter' or any occupation label",
+    "any text, captions or signs"
   ],
   "attempts": 1,
   "attempt_log": [
@@ -33,12 +32,12 @@
         "cost": 0.0,
         "retryable": false
       },
-      "cost_usd": 0.000377
+      "cost_usd": 0.0003865
     }
   ],
   "status": "flagged",
   "flag_reason": [
     "route 'illustration' is not built yet"
   ],
-  "cost_usd": 0.000377
+  "cost_usd": 0.000387
 }

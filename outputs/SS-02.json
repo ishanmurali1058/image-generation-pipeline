@@ -1,23 +1,25 @@
 {
   "id": "SS-02",
   "route": "map",
-  "route_reason": "The question depends on identifying a shaded region on an outline map, so a map route with a shaded, unlabelled region fits best.",
+  "route_reason": "The question depends on identifying one shaded region on a map of India, so the map must have accurate state boundaries and one clearly shaded region with no labels.",
   "spec": {
     "map_type": "outline map of India",
-    "shaded_region": "Assam (northeast India), filled with a solid grey shade",
-    "shaded_region_shape": "accurate real-world outline of Assam",
-    "other_regions": "all other Indian states and union territories unshaded, with boundaries drawn as thin lines and no names",
-    "neighbouring_countries": "shown unshaded and unlabelled",
+    "shaded_region": "Assam (northeast India)",
+    "shaded_style": "single solid fill colour, no pattern",
+    "boundaries": "state borders as thin dark lines",
     "labels": "none",
-    "extras": "north arrow and simple scale bar only",
-    "style": "plain black outline on white background, suitable for a Grade 8 printed test"
+    "neighbouring_regions": "unshaded, outlined, unlabelled",
+    "international_borders": "outlined only, unlabelled",
+    "orientation": "north at top",
+    "legend": "none",
+    "background": "plain white"
   },
-  "must_show": "An outline map of India with its state boundaries drawn as thin lines. Exactly one state, Assam, in the far northeast, is filled with a solid shade. Assam's real shape and position are accurate, and its neighbouring states and countries (Bhutan, Bangladesh, Myanmar, China) appear unshaded. A compass arrow pointing north and a simple scale bar may be included. The map is clean, with no text labels.",
+  "must_show": "An outline map of India with state boundaries drawn as plain lines. Exactly one state is shaded in a solid colour: Assam, in the northeast, bordered by its real neighbours (Arunachal Pradesh, Nagaland, Manipur, Mizoram, Tripura, Meghalaya, West Bengal, and Bhutan/Bangladesh borders as outlines). No state names, abbreviations, capitals, or labels appear anywhere on the map. Neighbouring states stay unshaded and clearly visible.",
   "must_not_show": [
-    "The name 'Assam' or any other state or country name written on the map",
-    "Any label, caption or highlight that identifies the shaded state",
-    "Any tea plantation or tea-related imagery that gives away the answer",
-    "The answer choices or any indication of which option is correct"
+    "Any state name or label, including the shaded state's name",
+    "Any capital city labels",
+    "Any text that reveals the answer, such as 'tea' or a legend naming the crop",
+    "Any second shaded state"
   ],
   "attempts": 1,
   "attempt_log": [
@@ -36,12 +38,12 @@
         "cost": 0.0,
         "retryable": false
       },
-      "cost_usd": 0.0005043000000000001
+      "cost_usd": 0.0005093
     }
   ],
   "status": "flagged",
   "flag_reason": [
     "route 'map' is not built yet"
   ],
-  "cost_usd": 0.000504
+  "cost_usd": 0.000509
 }

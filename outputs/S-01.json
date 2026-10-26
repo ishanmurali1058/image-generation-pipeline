@@ -1,44 +1,27 @@
 {
   "id": "S-01",
   "route": "circuit",
-  "route_reason": "The question depends on an electric circuit diagram with series components and their connections, which is what the circuit route draws.",
+  "route_reason": "The question concerns an electric circuit diagram with series-connected bulbs, which the circuit route draws with standard symbols.",
   "spec": {
-    "circuit_type": "series",
     "components": [
-      {
-        "type": "cell",
-        "label": "cell",
-        "position": "left side of loop"
-      },
-      {
-        "type": "switch",
-        "label": "switch",
-        "state": "closed",
-        "position": "top wire"
-      },
-      {
-        "type": "bulb",
-        "label": "B1",
-        "position": "right side of top wire"
-      },
-      {
-        "type": "bulb",
-        "label": "B2",
-        "position": "right side of loop, after B1"
-      }
+      "cell",
+      "closed switch",
+      "bulb B1",
+      "bulb B2"
     ],
-    "connections": "single closed loop: cell, switch, B1, B2 in series, returning to cell",
-    "fault_shown": "none",
-    "labels_visible": [
-      "B1",
-      "B2"
-    ]
+    "connection": "series, single loop",
+    "labels": {
+      "B1": "bulb B1",
+      "B2": "bulb B2"
+    },
+    "switch_state": "closed",
+    "fault_shown": "none"
   },
-  "must_show": "A complete single-loop series circuit: one cell, a closed switch, and two bulbs B1 and B2 connected one after another in the same loop, with both bulbs intact and labelled B1 and B2. The switch is closed and the circuit is complete.",
+  "must_show": "A single closed series circuit: one cell, a closed switch, and two bulbs B1 and B2 connected in series in one loop, with labels B1 and B2 on the bulbs and standard circuit symbols.",
   "must_not_show": [
-    "Any sign that B1 has fused or is broken",
-    "Any indication of whether B2 glows or stops glowing",
-    "The answer text or option labels"
+    "Any indication of which option is correct",
+    "Any marking showing B1 has fused or a broken filament",
+    "The answer text 'It stops glowing'"
   ],
   "attempts": 1,
   "attempt_log": [
@@ -57,12 +40,12 @@
         "cost": 0.0,
         "retryable": false
       },
-      "cost_usd": 0.00040239999999999997
+      "cost_usd": 0.00027739999999999997
     }
   ],
   "status": "flagged",
   "flag_reason": [
     "route 'circuit' is not built yet"
   ],
-  "cost_usd": 0.000402
+  "cost_usd": 0.000277
 }
