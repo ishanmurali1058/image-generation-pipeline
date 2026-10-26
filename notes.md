@@ -15,3 +15,6 @@
 
 # Chart verification:
 # Added 7 different checks (6 spec checks and 1 render check) for charts, they are label and value counts, axis range, values and labels against the image notes, answer consistency, answer leaks, and a readback of the drawn values. Changed the answer to M-01 from 42 to 40 to check whether answer consistency would flag the question, and it did. Running it revealed that the svg was still getting created even when the question was flagged, so modified the code to delete svg when question is flagged.
+
+# Repair and smarter retries:
+# Failed checks are now sent back to Claude with previous plan, and unfixable failures like routes which haven't been built yet are flagged after one attempt itself along with the reason. Verified its working by changing the answer to M-01 from 42 to 40, Claude kept the notes' values on each attempt instead of modifying them to match the given answer (40).
