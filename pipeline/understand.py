@@ -43,6 +43,17 @@ For the chart route, the spec must be:
   "y_max": number,
   "y_step": number
 }
+For the chart route, also add a top-level field (next to "spec", not inside it):
+"answer_check": {"operation": "...", "labels": ["the bar labels the answer uses"]}
+operation must be one of:
+- value: the answer is one bar's value
+- sum: the answer is the total of the listed bars
+- difference: the first listed bar minus the second
+- average: the mean of the listed bars
+- max_label: the answer is the name of the highest bar among those listed (empty list means all bars)
+- min_label: the answer is the name of the lowest bar among those listed (empty list means all bars)
+- none: the answer cannot be worked out from the chart values
+
 For other routes, describe the image in the spec as clear key-value fields.
 
 Rules:

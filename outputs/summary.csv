@@ -1,10 +1,10 @@
 id,status,route,attempts,cost_usd
-M-01,accepted,chart,1,0.000318
-M-02,flagged,geometry,3,0.000909
-S-01,flagged,circuit,3,0.000789
-SS-01,flagged,illustration,3,0.001071
-M-03,flagged,layered,3,0.001454
-SS-02,flagged,map,3,0.000979
+M-01,accepted,chart,1,0.000384
+M-02,flagged,geometry,3,0.001035
+S-01,flagged,circuit,3,0.000986
+SS-01,flagged,illustration,3,0.00121
+M-03,flagged,layered,3,0.001393
+SS-02,flagged,map,3,0.00118
 
-total_cost_usd,0.00552
-average_cost_usd,0.00092
+total_cost_usd,0.006188
+average_cost_usd,0.001031

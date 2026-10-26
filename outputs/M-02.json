@@ -1,7 +1,7 @@
 {
   "id": "M-02",
   "route": "geometry",
-  "route_reason": "The image is a plain triangle with labelled angles and no realistic scene, so a clean geometry diagram gives exact angle markings.",
+  "route_reason": "The question needs only a plain triangle with labelled vertices and angle values, which is a line-and-shape figure with no scene or instrument.",
   "spec": {
     "shape": "triangle",
     "vertex_labels": {
@@ -9,18 +9,19 @@
       "B": "bottom-right",
       "C": "top"
     },
-    "angle_A": "50°",
-    "angle_B": "65°",
-    "angle_C": "?",
-    "angle_marks": "arc marks at each vertex, with the angle value written inside or near the arc",
-    "style": "clean black lines on white background, no shading, no extra elements",
-    "orientation": "triangle sits with base AB horizontal"
+    "angle_labels": {
+      "A": "50°",
+      "B": "65°",
+      "C": "?"
+    },
+    "style": "clean black outline on white background, labels placed inside or near each vertex, no fill, no grid",
+    "orientation": "base AB horizontal, vertex C above the base"
   },
-  "must_show": "Triangle ABC with vertices labelled A, B and C. Angle A is marked as 50° and angle B as 65°. Angle C is marked with a question mark. Angle measures are clearly readable.",
+  "must_show": "A plain triangle ABC with vertices labelled A, B and C. The interior angle at A is marked 50° and the interior angle at B is marked 65°. The interior angle at C is marked with a question mark only. No other values or options appear.",
   "must_not_show": [
-    "the value of angle C (65°)",
-    "the correct option answer",
-    "any extra angle measures or side lengths beyond A and B"
+    "the value of angle C",
+    "the answer options (55°, 60°, 65°, 75°)",
+    "any extra angle measures or auxiliary lines that would reveal angle C"
   ],
   "attempts": 3,
   "attempt_log": [
@@ -29,35 +30,47 @@
       "verification": {
         "passed": false,
         "checks": [
-          "route 'geometry' is not built yet"
+          {
+            "name": "route",
+            "result": "fail",
+            "detail": "route 'geometry' is not built yet"
+          }
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.0003066
+      "cost_usd": 0.0003269
     },
     {
       "attempt": 2,
       "verification": {
         "passed": false,
         "checks": [
-          "route 'geometry' is not built yet"
+          {
+            "name": "route",
+            "result": "fail",
+            "detail": "route 'geometry' is not built yet"
+          }
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.00031810000000000003
+      "cost_usd": 0.00035039999999999995
     },
     {
       "attempt": 3,
       "verification": {
         "passed": false,
         "checks": [
-          "route 'geometry' is not built yet"
+          {
+            "name": "route",
+            "result": "fail",
+            "detail": "route 'geometry' is not built yet"
+          }
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.0002841
+      "cost_usd": 0.00035739999999999996
     }
   ],
   "status": "flagged",
-  "cost_usd": 0.000909
+  "cost_usd": 0.001035
 }

@@ -1,22 +1,25 @@
 {
   "id": "M-03",
   "route": "layered",
-  "route_reason": "The image is an illustrated realistic scene (brick wall, ground, ladder) that must also carry exact measurements (10 m length and 60° angle), which the layered route handles.",
+  "route_reason": "The image is an illustrated scene (brick wall, ground, ladder) that also needs exact labelled measurements (10 m and 60°), so it fits the layered route.",
   "spec": {
-    "scene": "Flat ground in the foreground; a vertical brick wall standing on the ground; a straight ladder leaning against the wall with its base on the ground.",
-    "background": "Plain sky or light neutral background, no other objects.",
-    "ladder_length_label": "10 m, written along the ladder's length",
-    "angle_marking": "60° marked at the base of the ladder, between the ground and the ladder",
-    "wall_height_label": "none",
-    "right_angle_at_wall_base": "Optional small right-angle marker where the wall meets the ground, drawn as a thin line overlay",
-    "style": "Clean, simple illustration with exact, legible labels for the 10 m and 60° values."
+    "scene": "Side view of a brick wall with a flat ground line and a leaning ladder",
+    "wall": "Vertical brick wall, drawn in a simple illustrated style, with a right-angle mark at the base where it meets the ground",
+    "ground": "Flat horizontal ground line extending from the base of the wall",
+    "ladder": "Straight ladder from a point on the ground to a point on the wall, drawn as a single straight segment",
+    "labels": {
+      "ladder_length": "10 m, written along the ladder",
+      "angle": "60°, marked at the ground where the ladder meets it"
+    },
+    "unlabelled": "The height where the ladder touches the wall is not labelled",
+    "style": "Clean, uncluttered, suitable for a Grade 10 trigonometry question"
   },
-  "must_show": "A brick wall standing vertically on flat ground, with a ladder leaning against it from the ground up to the wall. The ladder's length is labelled 10 m, and the 60° angle between the ladder and the ground is marked at the foot of the ladder. The point where the ladder touches the wall is visible but its height is not labelled.",
+  "must_show": "A side view of a brick wall standing vertically on flat ground, with a ladder leaning against the wall. The ladder runs from the ground to the wall, its length labelled 10 m, and the angle between the ground and the ladder labelled 60°. The wall has a visible right-angle mark where it meets the ground.",
   "must_not_show": [
-    "the height the ladder reaches up the wall",
-    "the answer 5√3 m",
-    "any of the answer options",
-    "any value or label for the vertical height"
+    "The height where the ladder touches the wall, which is the answer",
+    "The answer options (5 m, 5√3 m, 10√3 m, 10 m)",
+    "Any value or label for the wall height",
+    "Any trigonometric ratio or working"
   ],
   "attempts": 3,
   "attempt_log": [
@@ -25,35 +28,47 @@
       "verification": {
         "passed": false,
         "checks": [
-          "route 'layered' is not built yet"
+          {
+            "name": "route",
+            "result": "fail",
+            "detail": "route 'layered' is not built yet"
+          }
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.0004629
+      "cost_usd": 0.00044919999999999997
     },
     {
       "attempt": 2,
       "verification": {
         "passed": false,
         "checks": [
-          "route 'layered' is not built yet"
+          {
+            "name": "route",
+            "result": "fail",
+            "detail": "route 'layered' is not built yet"
+          }
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.0005519
+      "cost_usd": 0.0004717
     },
     {
       "attempt": 3,
       "verification": {
         "passed": false,
         "checks": [
-          "route 'layered' is not built yet"
+          {
+            "name": "route",
+            "result": "fail",
+            "detail": "route 'layered' is not built yet"
+          }
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.0004389
+      "cost_usd": 0.0004722
     }
   ],
   "status": "flagged",
-  "cost_usd": 0.001454
+  "cost_usd": 0.001393
 }

@@ -1,12 +1,12 @@
 {
   "id": "M-01",
   "route": "chart",
-  "route_reason": "The question asks students to read values from a bar graph, so the image is a data chart that must be exact.",
+  "route_reason": "The question asks the student to read exact bar values and add them, so the bar graph must be drawn precisely from the given data.",
   "spec": {
     "chart_type": "bar",
-    "title": "Trees planted by each class",
+    "title": "Trees Planted by Class",
     "x_label": "Class",
-    "y_label": "Number of trees",
+    "y_label": "Trees planted",
     "labels": [
       "Class 6",
       "Class 7",
@@ -23,11 +23,11 @@
     "y_max": 14,
     "y_step": 2
   },
-  "must_show": "A vertical bar graph titled 'Trees planted by each class' with four bars labelled Class 6, Class 7, Class 8 and Class 9, with bar heights of 8, 12, 10 and 12. The y-axis runs from 0 to 14 in steps of 2 and is labelled 'Number of trees', and the x-axis is labelled 'Class'.",
+  "must_show": "A vertical bar graph titled 'Trees Planted by Class' with four bars labelled Class 6, Class 7, Class 8 and Class 9, with heights 8, 12, 10 and 12. The y-axis runs from 0 to 14 in steps of 2 and is labelled 'Trees planted', and the x-axis is labelled 'Class'.",
   "must_not_show": [
     "the total number of trees (42)",
     "the answer options",
-    "any sum or working written on the graph"
+    "any written sum or working"
   ],
   "attempts": 1,
   "attempt_log": [
@@ -36,13 +36,47 @@
       "verification": {
         "passed": true,
         "checks": [
-          "no real checks yet"
+          {
+            "name": "labels_values_count",
+            "result": "pass",
+            "detail": "4 labels and 4 values"
+          },
+          {
+            "name": "axis_range",
+            "result": "pass",
+            "detail": "axis 0 to 14 covers all values"
+          },
+          {
+            "name": "values_match_notes",
+            "result": "pass",
+            "detail": "every value appears in the image notes"
+          },
+          {
+            "name": "labels_match_notes",
+            "result": "pass",
+            "detail": "every label appears in the image notes"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "pass",
+            "detail": "chart gives 42.0, matching the answer '42'"
+          },
+          {
+            "name": "answer_not_shown",
+            "result": "pass",
+            "detail": "the answer does not appear in the title or axis labels"
+          },
+          {
+            "name": "drawn_matches_spec",
+            "result": "pass",
+            "detail": "drawn values [8.0, 12.0, 10.0, 12.0] match the spec"
+          }
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.000318
+      "cost_usd": 0.0003838
     }
   ],
   "status": "accepted",
-  "cost_usd": 0.000318
+  "cost_usd": 0.000384
 }

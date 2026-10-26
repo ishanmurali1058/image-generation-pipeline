@@ -1,18 +1,24 @@
 {
   "id": "SS-01",
   "route": "illustration",
-  "route_reason": "This is a village scene with people and objects where nothing the student reads needs to be exact, so a plain illustration fits.",
+  "route_reason": "This is a scene of people and objects where nothing the student reads needs to be exact, so a simple illustration fits.",
   "spec": {
-    "scene": "Village house exterior, daytime, simple rural setting",
-    "figure": "One adult person seated at a potter's wheel, hands shaping a lump of wet clay into a bowl shape",
-    "objects": "Potter's wheel with visible clay, a few finished clay pots nearby on a wooden shelf or ground",
-    "text": "None",
-    "style": "Clear flat illustration suitable for a Grade 4 social studies question, uncluttered background"
+    "scene": "Village street outside a simple house with a thatched or tiled roof",
+    "main_subject": "A person seated at a potter's wheel, hands shaping a lump of wet clay into a bowl or pot",
+    "supporting_objects": [
+      "a few finished clay pots on a low shelf or ground nearby",
+      "a bucket of water",
+      "a wooden stool"
+    ],
+    "setting_details": "Plain village background with a dirt path, a small tree, and a low wall; daylight",
+    "style": "Friendly flat illustration suitable for a primary school social studies textbook",
+    "text_in_image": "none"
   },
-  "must_show": "A person shaping clay on a potter's wheel outside a village house, with no text or labels in the image.",
+  "must_show": "A village scene with a person shaping clay on a potter's wheel outside a village house, showing the work clearly enough that a Grade 4 student can identify the occupation from the activity itself.",
   "must_not_show": [
-    "any text naming the occupation, such as the word 'Potter'",
-    "other occupation tools that could be mistaken for the answer, such as a loom, an anvil or a carpentry bench"
+    "any text or labels, including the words Potter, Weaver, Blacksmith or Carpenter",
+    "answer options or captions",
+    "tools or objects that belong only to other listed occupations, such as a loom, an anvil with a forge, or carpentry saws and planks"
   ],
   "attempts": 3,
   "attempt_log": [
@@ -21,35 +27,47 @@
       "verification": {
         "passed": false,
         "checks": [
-          "route 'illustration' is not built yet"
+          {
+            "name": "route",
+            "result": "fail",
+            "detail": "route 'illustration' is not built yet"
+          }
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.00038669999999999997
+      "cost_usd": 0.000382
     },
     {
       "attempt": 2,
       "verification": {
         "passed": false,
         "checks": [
-          "route 'illustration' is not built yet"
+          {
+            "name": "route",
+            "result": "fail",
+            "detail": "route 'illustration' is not built yet"
+          }
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.0003632
+      "cost_usd": 0.0004315
     },
     {
       "attempt": 3,
       "verification": {
         "passed": false,
         "checks": [
-          "route 'illustration' is not built yet"
+          {
+            "name": "route",
+            "result": "fail",
+            "detail": "route 'illustration' is not built yet"
+          }
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.0003212
+      "cost_usd": 0.0003965
     }
   ],
   "status": "flagged",
-  "cost_usd": 0.001071
+  "cost_usd": 0.00121
 }

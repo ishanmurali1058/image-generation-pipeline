@@ -1,27 +1,19 @@
 {
   "id": "S-01",
   "route": "circuit",
-  "route_reason": "The image is an electric circuit diagram with standard cell, switch and bulb symbols, which is exactly what the circuit route is built to draw.",
+  "route_reason": "The question is about an electric circuit with a cell, switch and bulbs in series, so an electric circuit diagram is the natural format.",
   "spec": {
-    "components": [
-      "1 cell",
-      "1 closed switch",
-      "bulb B1",
-      "bulb B2"
-    ],
-    "connection": "series, single loop",
-    "labels": [
-      "B1",
-      "B2"
-    ],
-    "state": "all components intact, switch closed",
-    "style": "standard textbook circuit symbols, clean lines, no annotations beyond B1 and B2 labels"
+    "components": "one cell, one closed switch, bulb B1, bulb B2",
+    "connection": "series loop: cell, switch, B1, B2, back to cell",
+    "labels": "B1 and B2 labelled on the bulbs; cell, switch labelled",
+    "state": "switch closed, circuit complete",
+    "extras": "no fault marking, no meters, no annotations"
   },
-  "must_show": "A single closed series circuit: one cell, a closed switch, and two bulbs labelled B1 and B2 connected in series in one loop, with wires joining all components. B1 should be clearly labelled and drawn intact (the question describes it fusing, but the diagram shows the circuit before the fault).",
+  "must_show": "A labelled series circuit diagram with one cell, a closed switch, and two bulbs labelled B1 and B2 connected in a single loop, with all components clearly labelled and the switch shown closed.",
   "must_not_show": [
-    "The answer 'It stops glowing' or any statement about what happens to B2",
-    "Any indication of which bulb is broken or fused, or a break in the wire",
-    "Options text or explanatory labels about brightness or fusing"
+    "The effect of B1 fusing on B2",
+    "Any indication of which option is correct",
+    "Any arrows, notes, or text describing brightness or glowing after a fault"
   ],
   "attempts": 3,
   "attempt_log": [
@@ -30,35 +22,47 @@
       "verification": {
         "passed": false,
         "checks": [
-          "route 'circuit' is not built yet"
+          {
+            "name": "route",
+            "result": "fail",
+            "detail": "route 'circuit' is not built yet"
+          }
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.00024010000000000004
+      "cost_usd": 0.00038639999999999996
     },
     {
       "attempt": 2,
       "verification": {
         "passed": false,
         "checks": [
-          "route 'circuit' is not built yet"
+          {
+            "name": "route",
+            "result": "fail",
+            "detail": "route 'circuit' is not built yet"
+          }
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.0002821
+      "cost_usd": 0.00027489999999999996
     },
     {
       "attempt": 3,
       "verification": {
         "passed": false,
         "checks": [
-          "route 'circuit' is not built yet"
+          {
+            "name": "route",
+            "result": "fail",
+            "detail": "route 'circuit' is not built yet"
+          }
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.00026660000000000003
+      "cost_usd": 0.0003249
     }
   ],
   "status": "flagged",
-  "cost_usd": 0.000789
+  "cost_usd": 0.000986
 }
