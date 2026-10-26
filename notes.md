@@ -9,3 +9,9 @@
 # Real understand stage:
 # Replaced the fake understand stage in run.py with an actual stage that calls Claude Haiku 5.5 (cheapest Claude model) to return route, route reason and json spec, which is then validated using code. Costs are also calculated using the token count. 
 # After initial run, M-03 was routed to geometry instead of layered, so SYSTEM_PROMPT was modified to give the model more clarity over when to use layered and when to use geometry.
+
+# Chart route:
+# Added a route to draw actual bar, line and pie charts in png and svg from the spec information using matplotlib. The remaining routes which haven't been created yet still have placeholder images, and are now flagged. 
+
+# Chart verification:
+# Added 7 different checks (6 spec checks and 1 render check) for charts, they are label and value counts, axis range, values and labels against the image notes, answer consistency, answer leaks, and a readback of the drawn values. Changed the answer to M-01 from 42 to 40 to check whether answer consistency would flag the question, and it did. Running it revealed that the svg was still getting created even when the question was flagged, so modified the code to delete svg when question is flagged.
