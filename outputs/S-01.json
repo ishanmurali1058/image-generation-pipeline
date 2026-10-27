@@ -1,27 +1,37 @@
 {
   "id": "S-01",
   "route": "circuit",
-  "route_reason": "The question concerns an electric circuit diagram with series-connected bulbs, which the circuit route draws with standard symbols.",
+  "route_reason": "The question asks whether a bulb glows in a circuit, which is an electric circuit diagram with series components.",
   "spec": {
-    "components": [
-      "cell",
-      "closed switch",
-      "bulb B1",
-      "bulb B2"
-    ],
-    "connection": "series, single loop",
-    "labels": {
-      "B1": "bulb B1",
-      "B2": "bulb B2"
+    "source": {
+      "type": "cell",
+      "label": "",
+      "volts": null
     },
-    "switch_state": "closed",
-    "fault_shown": "none"
+    "series": [
+      {
+        "type": "switch",
+        "label": "S",
+        "state": "closed"
+      },
+      {
+        "type": "bulb",
+        "label": "B1",
+        "ohms": null
+      },
+      {
+        "type": "bulb",
+        "label": "B2",
+        "ohms": null
+      }
+    ],
+    "branches": []
   },
-  "must_show": "A single closed series circuit: one cell, a closed switch, and two bulbs B1 and B2 connected in series in one loop, with labels B1 and B2 on the bulbs and standard circuit symbols.",
+  "must_show": "A series circuit: one cell, a closed switch S, and two bulbs B1 and B2 connected in series on one loop, with labels B1, B2 and S visible.",
   "must_not_show": [
-    "Any indication of which option is correct",
-    "Any marking showing B1 has fused or a broken filament",
-    "The answer text 'It stops glowing'"
+    "Any indication that B1 is fused or broken",
+    "The answer about whether B2 glows after B1 fuses",
+    "Crossed-out or broken filament marks on either bulb"
   ],
   "attempts": 1,
   "attempt_log": [
@@ -29,23 +39,50 @@
       "attempt": 1,
       "repair_feedback": null,
       "verification": {
-        "passed": false,
+        "passed": true,
         "checks": [
           {
-            "name": "route",
-            "result": "fail",
-            "detail": "route 'circuit' is not built yet"
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid circuit"
+          },
+          {
+            "name": "labels_match_notes",
+            "result": "pass",
+            "detail": "every component label appears in the image notes"
+          },
+          {
+            "name": "arrangement_matches_notes",
+            "result": "pass",
+            "detail": "the notes say series and the circuit matches"
+          },
+          {
+            "name": "values_match_notes",
+            "result": "pass",
+            "detail": "every value appears in the image notes"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "pass",
+            "detail": "in the drawn circuit B2 does not glow, which matches the answer"
+          },
+          {
+            "name": "answer_not_shown",
+            "result": "pass",
+            "detail": "the answer does not appear in any label"
+          },
+          {
+            "name": "drawn_matches_spec",
+            "result": "pass",
+            "detail": "the drawing has exactly the 4 symbols in the spec"
           }
         ],
-        "cost": 0.0,
-        "retryable": false
+        "cost": 0.0
       },
-      "cost_usd": 0.00027739999999999997
+      "cost_usd": 0.00034970000000000004
     }
   ],
-  "status": "flagged",
-  "flag_reason": [
-    "route 'circuit' is not built yet"
-  ],
-  "cost_usd": 0.000277
+  "status": "accepted",
+  "flag_reason": null,
+  "cost_usd": 0.00035
 }

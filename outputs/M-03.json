@@ -1,23 +1,28 @@
 {
   "id": "M-03",
   "route": "layered",
-  "route_reason": "The image is an illustrated scene (wall, ground, ladder) that must carry exact values, the 10 m length and the 60° angle, so it needs the layered route rather than illustration or plain geometry.",
+  "route_reason": "The scene is an illustrated wall, ground and ladder, but the 10 m length and 60° angle must be exact, so the illustration needs exact measurements drawn on top.",
   "spec": {
-    "scene": "brick wall and flat ground, viewed from the side",
-    "wall": "vertical brick wall on the right, with the top edge of the ladder touching it",
-    "ground": "flat horizontal ground line meeting the foot of the wall at a right angle",
-    "ladder": "straight ladder from the ground to the wall, drawn as a single straight line",
-    "ladder_length_label": "10 m, placed along the ladder",
-    "angle_marked": "60° at the foot of the ladder, between the ladder and the ground",
-    "height_label": "none",
-    "overlay": "exact angle arc at the ground and exact 10 m length label, no grid needed"
+    "scene": "brick wall standing vertically on flat ground, ladder leaning against it",
+    "wall": "vertical brick wall, right angle with the ground, height not labelled",
+    "ground": "flat horizontal ground line from the foot of the wall",
+    "ladder": "straight ladder from the ground to the top of the wall, touching the wall at its upper end",
+    "labels": {
+      "ladder_length": "10 m",
+      "angle_at_ground": "60°"
+    },
+    "unlabelled": [
+      "height on wall",
+      "distance from wall to ladder foot"
+    ],
+    "angle_drawn_as": "angle between the ladder and the ground at the foot of the ladder, shown as 60°"
   },
-  "must_show": "An illustrated brick wall standing vertically on flat ground, with a ladder leaning against the wall so its foot is on the ground and its top touches the wall. The ladder's length is labelled 10 m along the ladder. The 60° angle is marked at the foot of the ladder, between the ladder and the ground. The height up the wall is not labelled, and the wall shows no measurement marks that give the height.",
+  "must_show": "An illustrated brick wall standing vertically on a flat ground line, with a ladder leaning against the wall so its foot is on the ground and its top touches the wall. The ladder is labelled 10 m along its length. The 60° angle is marked between the ladder and the ground at the foot of the ladder. The height up the wall is unlabelled and has no marked measurement.",
   "must_not_show": [
-    "the height of the ladder on the wall",
-    "any value or expression for the height such as 5 m, 5√3 m or 10√3 m",
-    "the answer options",
-    "any hint of the trigonometric ratio used"
+    "the height of the ladder's top on the wall",
+    "the value 5√3 m or any other answer option",
+    "any dimension for the wall's height or the distance from the wall to the foot of the ladder",
+    "a right-angle marker at the base of the wall unless it is part of the drawn scene"
   ],
   "attempts": 1,
   "attempt_log": [
@@ -36,12 +41,12 @@
         "cost": 0.0,
         "retryable": false
       },
-      "cost_usd": 0.0006017
+      "cost_usd": 0.0005355
     }
   ],
   "status": "flagged",
   "flag_reason": [
     "route 'layered' is not built yet"
   ],
-  "cost_usd": 0.000602
+  "cost_usd": 0.000535
 }

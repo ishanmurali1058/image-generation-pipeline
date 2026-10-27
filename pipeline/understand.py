@@ -70,6 +70,24 @@ For the geometry route, only triangles are supported. The spec must be:
 - Never put the answer in angles or sides.
 - A right angle the student is told about is 90 in angles.
 
+For the circuit route, the spec must be:
+{
+  "source": {"type": "cell", "label": "", "volts": null},
+  "series": [{"type": "switch", "label": "S", "state": "closed"}, {"type": "bulb", "label": "B1", "ohms": null}],
+  "branches": []
+}
+- source: type is cell or battery. volts only if the student is told it, otherwise null.
+- series: the components on the main wire, in order.
+- branches: for parallel parts, a list of branches, each a list of components in order. All branches join the same two points. Use [] for a circuit with no parallel parts.
+- component types: bulb, resistor, switch, ammeter, voltmeter. A switch needs "state": "open" or "closed". ohms only if the student is told it, otherwise null.
+- Give each component the label used in the question, or "" if it has none.
+
+For the circuit route, also add a top-level "answer_check" (next to "spec", not inside it):
+- {"operation": "lit", "target": "B2", "removed": ["B1"], "switches": {"S": "open"}, "expected": false}
+  for questions about whether a bulb glows. removed lists fused or removed components, switches lists any switch changes the question describes, and expected is true if the correct answer means the target glows, false if not.
+- {"operation": "total_resistance"} or {"operation": "current"} for calculation questions.
+- {"operation": "none"} if the answer cannot be worked out from the circuit.
+
 For other routes, describe the image in the spec as clear key-value fields.
 
 Rules:

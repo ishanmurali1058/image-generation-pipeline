@@ -1,19 +1,17 @@
 {
   "id": "SS-01",
   "route": "illustration",
-  "route_reason": "This is a scene of a person at work where the student only needs to recognise the activity, and nothing read from the image must be exact.",
+  "route_reason": "This is a village scene with people and objects, and nothing the student reads from the image needs to be exact.",
   "spec": {
-    "scene": "village outdoor setting beside a simple house",
-    "main_subject": "a person seated at a potter's wheel, shaping a lump of clay with their hands",
-    "props": "potter's wheel, lump of wet clay, a bowl or pot shape forming on the wheel, a bucket of water nearby",
-    "setting_details": "single-storey village house with a wooden door, a few trees, dirt ground",
-    "text_in_image": "none",
-    "style": "simple flat children's textbook illustration, clear and uncluttered"
+    "scene": "village street outside a house",
+    "person": "adult shaping clay on a potter's wheel",
+    "setting_details": "simple village house, clay pot or bowl on the wheel",
+    "text_in_image": "none"
   },
-  "must_show": "A person shaping clay on a potter's wheel outside a village house, with a simple village setting. No text anywhere in the image.",
+  "must_show": "A person shaping clay on a potter's wheel outside a village house, with no text in the image.",
   "must_not_show": [
-    "the written word 'Potter' or any occupation label",
-    "any text, captions or signs"
+    "the word 'Potter' or any occupation name as text",
+    "answer options or labels"
   ],
   "attempts": 1,
   "attempt_log": [
@@ -32,12 +30,12 @@
         "cost": 0.0,
         "retryable": false
       },
-      "cost_usd": 0.0003865
+      "cost_usd": 0.00035130000000000003
     }
   ],
   "status": "flagged",
   "flag_reason": [
     "route 'illustration' is not built yet"
   ],
-  "cost_usd": 0.000387
+  "cost_usd": 0.000351
 }
