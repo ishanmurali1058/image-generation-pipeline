@@ -1,7 +1,7 @@
 {
   "id": "S-01",
   "route": "circuit",
-  "route_reason": "The question asks whether a bulb glows in a circuit, which is an electric circuit diagram with series components.",
+  "route_reason": "The question asks what happens to a bulb in a series circuit, which is an electric circuit diagram with components that must be read exactly.",
   "spec": {
     "source": {
       "type": "cell",
@@ -27,11 +27,11 @@
     ],
     "branches": []
   },
-  "must_show": "A series circuit: one cell, a closed switch S, and two bulbs B1 and B2 connected in series on one loop, with labels B1, B2 and S visible.",
+  "must_show": "A series circuit with one cell, a closed switch labelled S, and two bulbs labelled B1 and B2 connected in a single loop. B1 is intact, so the circuit is complete and both bulbs are shown as working.",
   "must_not_show": [
-    "Any indication that B1 is fused or broken",
-    "The answer about whether B2 glows after B1 fuses",
-    "Crossed-out or broken filament marks on either bulb"
+    "Any sign that B1 has fused or been removed",
+    "Whether B2 glows after B1 fuses",
+    "The answer option text"
   ],
   "attempts": 1,
   "attempt_log": [
@@ -79,10 +79,10 @@
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.00034970000000000004
+      "cost_usd": 0.0005177000000000001
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.00035
+  "cost_usd": 0.000518
 }

@@ -1,7 +1,7 @@
 {
   "id": "M-02",
   "route": "geometry",
-  "route_reason": "It is a plain triangle made only of lines and vertices with angle labels, which the geometry route supports.",
+  "route_reason": "The question is about a plain triangle with angles given in degrees, which the geometry route supports directly.",
   "spec": {
     "shape": "triangle",
     "vertices": [
@@ -22,10 +22,10 @@
     "units": "cm",
     "unknown": "C"
   },
-  "must_show": "Triangle ABC with vertices A, B, C labelled; angle A marked as 50 degrees and angle B marked as 65 degrees; angle C marked with a question mark.",
+  "must_show": "Triangle ABC with vertices labelled A, B and C, angle A marked as 50°, angle B marked as 65°, and angle C marked with a question mark.",
   "must_not_show": [
-    "the value 65 degrees for angle C",
-    "any answer option values for angle C"
+    "The value of angle C (65°)",
+    "The answer options"
   ],
   "attempts": 1,
   "attempt_log": [
@@ -73,10 +73,10 @@
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.0003042
+      "cost_usd": 0.00031470000000000006
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.000304
+  "cost_usd": 0.000315
 }

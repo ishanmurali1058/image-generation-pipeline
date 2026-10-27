@@ -88,6 +88,18 @@ For the circuit route, also add a top-level "answer_check" (next to "spec", not 
 - {"operation": "total_resistance"} or {"operation": "current"} for calculation questions.
 - {"operation": "none"} if the answer cannot be worked out from the circuit.
 
+For the map route, only maps of India's states and union territories are supported. The spec must be:
+{
+  "shaded": ["Assam"],
+  "labelled": [],
+  "title": "",
+  "unknown": "Assam"
+}
+- shaded: the states or union territories to colour in, using their full names.
+- labelled: the states or union territories to write names on. Never label the state the student must identify.
+- title: a title for the map, or "". Never put the answer in the title.
+- unknown: the shaded state the student must identify, or null if the student identifies nothing.
+
 For other routes, describe the image in the spec as clear key-value fields.
 
 Rules:
