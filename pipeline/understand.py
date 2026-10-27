@@ -100,6 +100,18 @@ For the map route, only maps of India's states and union territories are support
 - title: a title for the map, or "". Never put the answer in the title.
 - unknown: the shaded state the student must identify, or null if the student identifies nothing.
 
+For the illustration route, the spec must be:
+{
+  "prompt": "A detailed description of the scene for an image model",
+  "style": "flat, colourful children's book illustration",
+  "must_contain": ["a person shaping clay on a potter's wheel", "a village house"],
+  "answer_from_image": true
+}
+- prompt: describe the scene, people, objects, setting and composition in detail. Never ask for any words, letters, numbers, labels or signs, and never put text in quotation marks.
+- style: a simple, clear style suitable for a school paper.
+- must_contain: 1 to 5 short things that must be clearly visible in the picture.
+- answer_from_image: true if the student needs the picture to choose the answer, false if the picture only decorates the question.
+
 For other routes, describe the image in the spec as clear key-value fields.
 
 Rules:

@@ -136,7 +136,7 @@ def angle_at(points, vertex, p, q):
     cosine = (ux * wx + uy * wy) / (math.hypot(ux, uy) * math.hypot(wx, wy))
     return math.degrees(math.acos(max(-1.0, min(1.0, cosine))))
 
-def check_render(plan, files):
+def check_render(plan, files, question = None):
     spec = plan["spec"]
     v0, v1, v2 = spec["vertices"]
     points = files.get("drawn_points", {})

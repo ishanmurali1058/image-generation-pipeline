@@ -2,3 +2,7 @@ llm:
   claude-haiku-5-5:
     input_per_million: 0.10
     output_per_million: 0.50
+
+image:
+  fal-ai/flux/schnell:
+    per_megapixel: 0.003

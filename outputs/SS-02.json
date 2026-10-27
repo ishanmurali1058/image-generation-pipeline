@@ -1,25 +1,30 @@
 {
   "id": "SS-02",
   "route": "map",
-  "route_reason": "The question asks the student to identify one shaded state on an outline map of India, which is exactly what the map route supports.",
+  "route_reason": "The question asks the student to identify a shaded state on an outline map of India, which is exactly what the map route supports.",
   "spec": {
     "shaded": [
       "Assam"
     ],
-    "labelled": [],
-    "title": "Outline map of India",
+    "labelled": [
+      "Kerala",
+      "West Bengal",
+      "Karnataka"
+    ],
+    "title": "Outline Map of India",
     "unknown": "Assam"
   },
-  "must_show": "An outline map of India with the state of Assam shaded. Assam is the only shaded region. The map has no state names written on it.",
+  "must_show": "An outline map of India with exactly one state shaded, Assam. Kerala, West Bengal and Karnataka are visible as unshaded neighbouring or distractor regions, labelled so the student can orient the map.",
   "must_not_show": [
     "The name Assam anywhere on the map or in the title",
-    "Any label that identifies the shaded state",
-    "Any other shaded state"
+    "Any label on the shaded state",
+    "Any indication that the shaded state is the tea producer"
   ],
   "attempts": 1,
   "attempt_log": [
     {
       "attempt": 1,
+      "plan_reused": false,
       "repair_feedback": null,
       "verification": {
         "passed": true,
@@ -52,10 +57,10 @@
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.0004466
+      "cost_usd": 0.00046120000000000004
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.000447
+  "cost_usd": 0.000461
 }

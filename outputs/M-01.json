@@ -1,10 +1,10 @@
 {
   "id": "M-01",
   "route": "chart",
-  "route_reason": "The question asks the student to read values from a bar graph and add them, so the chart must be drawn exactly.",
+  "route_reason": "The question asks the student to read exact bar values from a bar graph and add them, so the chart must be drawn precisely.",
   "spec": {
     "chart_type": "bar",
-    "title": "Trees Planted by Four Classes",
+    "title": "Trees planted by four classes",
     "x_label": "Class",
     "y_label": "Number of trees",
     "labels": [
@@ -23,16 +23,17 @@
     "y_max": 14,
     "y_step": 2
   },
-  "must_show": "A vertical bar chart titled 'Trees Planted by Four Classes' with four bars labelled Class 6, Class 7, Class 8 and Class 9. Bar heights are 8, 12, 10 and 12. The y-axis runs from 0 to 14 in steps of 2 and is labelled 'Number of trees', and the x-axis is labelled 'Class'.",
+  "must_show": "A vertical bar graph titled 'Trees planted by four classes' with four bars labelled Class 6, Class 7, Class 8 and Class 9, heights 8, 12, 10 and 12. The y-axis runs from 0 to 14 in steps of 2 and is labelled 'Number of trees', and the x-axis is labelled 'Class'.",
   "must_not_show": [
     "the total number of trees (42)",
     "the answer options",
-    "any written sum of the bar values"
+    "any sum or total written on the graph"
   ],
   "attempts": 1,
   "attempt_log": [
     {
       "attempt": 1,
+      "plan_reused": false,
       "repair_feedback": null,
       "verification": {
         "passed": true,
@@ -75,10 +76,10 @@
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.0004871
+      "cost_usd": 0.0005272
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.000487
+  "cost_usd": 0.000527
 }

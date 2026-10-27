@@ -3,6 +3,9 @@ from pathlib import Path
 import anthropic
 import yaml
 from dotenv import load_dotenv
+import base64
+import io
+from PIL import Image
 
 load_dotenv()
 
@@ -14,13 +17,24 @@ with open(PRICES_PATH, encoding = "utf_8") as f:
 
 client = anthropic.Anthropic(api_key = os.environ.get("ANTHROPIC_API_KEY"))
 
-def call_llm(system_prompt, user_prompt, max_tokens = 2000):
+def image_block(image_path, longest_side = 768):
+    image = Image.open(image_path).convert("RGB")
+    image.thumbnail((longest_side, longest_side))
+    buffer = io.BytesIO()
+    image.save(buffer, format="JPEG", quality=85)
+    data = base64.b64encode(buffer.getvalue()).decode("ascii")
+    return {"type": "image", "source": {"type": "base64", "media_type": "image/jpeg", "data": data}}
+
+def call_llm(system_prompt, user_prompt, max_tokens = 2000, image_path = None):
+    content = user_prompt
+    if image_path is not None:
+        content = [image_block(image_path), {"type": "text", "text": user_prompt}]
     response = client.messages.create(
         model = MODEL,
         max_tokens = max_tokens,
         system = system_prompt,
         messages = [
-            {"role": "user", "content": user_prompt}
+            {"role": "user", "content": content}
         ]
     )
 

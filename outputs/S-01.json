@@ -1,7 +1,7 @@
 {
   "id": "S-01",
   "route": "circuit",
-  "route_reason": "The question asks what happens to a bulb in a series circuit, which is an electric circuit diagram with components that must be read exactly.",
+  "route_reason": "The question asks how a bulb's behaviour changes in an electric circuit, which is a circuit diagram task.",
   "spec": {
     "source": {
       "type": "cell",
@@ -27,16 +27,17 @@
     ],
     "branches": []
   },
-  "must_show": "A series circuit with one cell, a closed switch labelled S, and two bulbs labelled B1 and B2 connected in a single loop. B1 is intact, so the circuit is complete and both bulbs are shown as working.",
+  "must_show": "A complete series circuit: one cell, a closed switch labelled S, and two bulbs labelled B1 and B2, all on one loop of wire. The circuit is intact, with no fuse or break shown.",
   "must_not_show": [
-    "Any sign that B1 has fused or been removed",
-    "Whether B2 glows after B1 fuses",
-    "The answer option text"
+    "any sign that B1 has fused or broken",
+    "any indication of what happens to B2 when B1 fuses",
+    "the answer text"
   ],
   "attempts": 1,
   "attempt_log": [
     {
       "attempt": 1,
+      "plan_reused": false,
       "repair_feedback": null,
       "verification": {
         "passed": true,
@@ -79,10 +80,10 @@
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.0005177000000000001
+      "cost_usd": 0.0005553
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.000518
+  "cost_usd": 0.000555
 }

@@ -91,7 +91,7 @@ def check_unknown_hidden(spec):
                  f"{unknown} is shaded but not named",
                  f"{unknown} is named on the map, which shows the answer")
 
-def check_render(plan, files):
+def check_render(plan, files, question = None):
     spec = plan["spec"]
     states = load_states()
     expected = sorted(find_state(name, states) for name in spec["shaded"])

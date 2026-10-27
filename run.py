@@ -13,16 +13,21 @@ def process_question(question, out_dir):
     total_cost = 0.0
     status = "flagged"
     feedback = None
+    plan = None
 
     for attempt_number in range(1, MAX_ATTEMPTS + 1):
-        plan = understand(question, feedback)
+        reuse_plan = plan is not None and feedback is None
+        if not reuse_plan:
+            plan = understand(question, feedback)
+        plan_cost = 0.0 if reuse_plan else plan["cost"]
         files = generate(plan, question, out_dir)
         check = verify(plan, question, files)
 
-        cost = plan["cost"] + files["cost"] + check["cost"]
+        cost = plan_cost + files["cost"] + check["cost"]
         total_cost += cost
         attempts.append({
             "attempt": attempt_number,
+            "plan_reused": reuse_plan,
             "repair_feedback": feedback,
             "verification": check,
             "cost_usd": cost,
@@ -35,7 +40,10 @@ def process_question(question, out_dir):
         if not check.get("retryable", True):
             break
 
-        feedback = build_feedback(plan, check)
+        if check.get("redraw"):
+            feedback = None
+        else:
+            feedback = build_feedback(plan, check)
 
     flag_reason = None
     if status == "flagged":

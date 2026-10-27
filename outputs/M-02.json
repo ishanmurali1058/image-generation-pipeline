@@ -1,7 +1,7 @@
 {
   "id": "M-02",
   "route": "geometry",
-  "route_reason": "The question is about a plain triangle with angles given in degrees, which the geometry route supports directly.",
+  "route_reason": "The question is a plain triangle with labelled angles and no scene, so a geometry figure gives exact angle markings.",
   "spec": {
     "shape": "triangle",
     "vertices": [
@@ -22,15 +22,16 @@
     "units": "cm",
     "unknown": "C"
   },
-  "must_show": "Triangle ABC with vertices labelled A, B and C, angle A marked as 50°, angle B marked as 65°, and angle C marked with a question mark.",
+  "must_show": "Triangle ABC with vertices A, B and C labelled, angle A marked as 50 degrees, angle B marked as 65 degrees, and angle C marked with a question mark.",
   "must_not_show": [
-    "The value of angle C (65°)",
-    "The answer options"
+    "the value of angle C (65 degrees)",
+    "the answer option values beyond the given angles"
   ],
   "attempts": 1,
   "attempt_log": [
     {
       "attempt": 1,
+      "plan_reused": false,
       "repair_feedback": null,
       "verification": {
         "passed": true,
@@ -73,10 +74,10 @@
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.00031470000000000006
+      "cost_usd": 0.0003508
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.000315
+  "cost_usd": 0.000351
 }

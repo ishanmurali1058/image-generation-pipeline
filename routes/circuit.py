@@ -164,7 +164,7 @@ def check_answer_not_shown(spec, question):
                  f"the answer '{answer}' appears in the labels {shown}")
 
 
-def check_render(plan, files):
+def check_render(plan, files, question = None):
     spec = plan["spec"]
     expected = []
     for component in components(spec) + [spec["source"]]:

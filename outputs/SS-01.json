@@ -1,43 +1,88 @@
 {
   "id": "SS-01",
   "route": "illustration",
-  "route_reason": "This is a simple village scene with people and objects where no text or exact measurement needs to be read from the image.",
+  "route_reason": "The scene is a village illustration where the student needs the picture to identify the occupation, and nothing read from it must be exact.",
   "spec": {
-    "scene": "Village street outside a simple house",
-    "main_subject": "A person seated at a potter's wheel, shaping a lump of clay with both hands",
-    "setting": "Outside a village house with a few rural details such as a thatched or tiled roof and a dirt path",
-    "text_in_image": "none",
-    "style": "Simple, friendly, child-appropriate flat illustration"
+    "prompt": "A village scene outside a simple village house. In the foreground, a person sits at a potter's wheel, gently shaping a lump of wet clay with both hands. The wheel is made of wood and stone, and a few clay pots sit nearby to show the craft. A small, tidy village house with a tiled roof stands in the background, with a few trees and a dirt path. The composition is clear and centred on the person and the wheel. No text, letters, numbers, labels or signs anywhere in the picture.",
+    "style": "flat, colourful children's book illustration",
+    "must_contain": [
+      "a person shaping clay on a potter's wheel",
+      "a village house"
+    ],
+    "answer_from_image": true
   },
-  "must_show": "A person in a village setting shaping clay on a potter's wheel outside a village house, with no text anywhere in the image.",
+  "must_show": "A person shaping clay on a potter's wheel outside a village house, with no text in the image.",
   "must_not_show": [
-    "Any written name of the occupation or the answer options",
-    "Labels, signs or captions naming the job",
-    "Other workers or tools that would make a different occupation clearly identifiable"
+    "any written words or labels, including the occupation names",
+    "signs, letters or numbers"
   ],
   "attempts": 1,
   "attempt_log": [
     {
       "attempt": 1,
+      "plan_reused": false,
       "repair_feedback": null,
       "verification": {
-        "passed": false,
+        "passed": true,
         "checks": [
           {
-            "name": "route",
-            "result": "fail",
-            "detail": "route 'illustration' is not built yet"
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid illustration"
+          },
+          {
+            "name": "no_quoted_text",
+            "result": "pass",
+            "detail": "the prompt asks for no written words"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "A young boy in a blue tank top and jeans sits on a stone stool, shaping a lump of clay on a wooden potter's wheel in a sunny village yard. Behind him are white houses with red tile roofs, a large tree on the left, and terracotta pots and a yellow clay jar in the foreground.",
+            "cost": 0.0001708
+          },
+          {
+            "name": "safety",
+            "result": "pass",
+            "detail": "the image model's safety filter found nothing",
+            "fix": "redraw"
+          },
+          {
+            "name": "must_contain",
+            "result": "pass",
+            "detail": "the judge sees everything on the checklist",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_text_in_image",
+            "result": "pass",
+            "detail": "the judge sees no text in the image",
+            "fix": "redraw"
+          },
+          {
+            "name": "suitable_for_children",
+            "result": "pass",
+            "detail": "the judge finds the image suitable for children",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "pass",
+            "detail": "the judge sees no drawing errors",
+            "fix": "redraw"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "skipped",
+            "detail": "the answer does not depend on the picture"
           }
         ],
-        "cost": 0.0,
-        "retryable": false
+        "cost": 0.0
       },
-      "cost_usd": 0.0004733
+      "cost_usd": 0.0028506960000000002
     }
   ],
-  "status": "flagged",
-  "flag_reason": [
-    "route 'illustration' is not built yet"
-  ],
-  "cost_usd": 0.000473
+  "status": "accepted",
+  "flag_reason": null,
+  "cost_usd": 0.002851
 }

@@ -86,7 +86,7 @@ def check_answer_not_shown(spec, question):
             return make_check("answer_not_shown", "fail", f"the answer '{answer}' appears in the {field}: '{text}'")
     return make_check("answer_not_shown", "pass", "the answer does not appear in the title or axis labels")
 
-def check_render(plan, files):
+def check_render(plan, files, question = None):
     expected = [float(v) for v in plan["spec"]["values"]]
     drawn = files.get("drawn_values", [])
     same = len(drawn) == len(expected) and all(abs(d - e) < 1e-9 for d, e in zip(drawn, expected))
