@@ -1,0 +1,106 @@
+{
+  "id": "SS-05",
+  "route": "layered",
+  "route_reason": "The question is about an illustrated playground plan, but the student must read an exact grid to work out the area, so the layered route fits.",
+  "spec": {
+    "overlay": "grid",
+    "scene": "A village playground seen from above on a sunny day, with a sandpit, a slide, swings, a see-saw, wooden benches, a few shade trees and a small path of grass around the edges, shown as a neat top-down plan view.",
+    "style": "flat, colourful children's book illustration",
+    "background": "drawn",
+    "units": "m",
+    "unknown": "area",
+    "columns": 6,
+    "rows": 5,
+    "square_size": 10
+  },
+  "must_show": "A top-down plan of a village playground, 60 m by 50 m, with a 6 by 5 grid of 10 m squares drawn over it. The grid lines must line up exactly with the edges of the playground.",
+  "must_not_show": [
+    "the area value",
+    "the number of squares as a written total",
+    "any numbers, words or labels on the plan"
+  ],
+  "attempts": 2,
+  "attempt_log": [
+    {
+      "attempt": 1,
+      "plan_reused": false,
+      "repair_feedback": null,
+      "verification": {
+        "passed": false,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid layered figure"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "pass",
+            "detail": "the area worked out from the figure is 3000, matching the answer '3000 m²'"
+          },
+          {
+            "name": "values_match_notes",
+            "result": "pass",
+            "detail": "every value appears in the image notes"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "A top-down view of a park with a sandy area, trees, benches, a swing set, a slide, and a central sandbox with a play toy. A rectangular grid of 10 m squares is overlaid on the scene.",
+            "cost": 0.0004896,
+            "fix": "redraw"
+          },
+          {
+            "name": "overlay_aligned",
+            "result": "fail",
+            "detail": "the figure does not line up with the scene; set background to drawn to use a plain drawn scene"
+          },
+          {
+            "name": "no_text_in_scene",
+            "result": "pass",
+            "detail": "the judge sees no text in the scene",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "pass",
+            "detail": "the judge sees no drawing errors",
+            "fix": "redraw"
+          }
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.003071096
+    },
+    {
+      "attempt": 2,
+      "plan_reused": false,
+      "repair_feedback": "Your previous plan for this question failed these checks:\n- overlay_aligned: the figure does not line up with the scene; set background to drawn to use a plain drawn scene\n\nYour previous plan was:\n{\n  \"route\": \"layered\",\n  \"spec\": {\n    \"overlay\": \"grid\",\n    \"scene\": \"A village playground seen from above on a sunny day, with a sandpit, a slide, swings, a see-saw, wooden benches, a few shade trees and a small path of grass around the edges, shown as a neat top-down plan view.\",\n    \"style\": \"flat, colourful children's book illustration\",\n    \"background\": \"generated\",\n    \"units\": \"m\",\n    \"unknown\": \"area\",\n    \"columns\": 6,\n    \"rows\": 5,\n    \"square_size\": 10\n  }\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
+      "verification": {
+        "passed": true,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid layered figure"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "pass",
+            "detail": "the area worked out from the figure is 3000, matching the answer '3000 m²'"
+          },
+          {
+            "name": "values_match_notes",
+            "result": "pass",
+            "detail": "every value appears in the image notes"
+          }
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.0005691
+    }
+  ],
+  "status": "accepted",
+  "flag_reason": null,
+  "cost_usd": 0.00364
+}

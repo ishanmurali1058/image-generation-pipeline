@@ -1,10 +1,10 @@
 {
   "id": "M-03",
   "route": "layered",
-  "route_reason": "The scene is a realistic wall and ground, but the ladder, angle and length must be exact, so a layered right-triangle overlay is needed; the correction uses a drawn background so the overlay lines up with the scene.",
+  "route_reason": "The question is set in a scene with a ladder, wall and ground, and needs an exact right-triangle overlay showing the slant length and angle.",
   "spec": {
     "overlay": "right_triangle",
-    "scene": "A plain brick wall standing upright on flat ground, with a grassy area in front of it and a clear blue sky behind. No people, no ladder, no text.",
+    "scene": "A plain brick wall standing upright on flat, open ground under a clear sky, seen from the side at eye level, with no other objects or people.",
     "style": "flat, colourful children's book illustration",
     "background": "drawn",
     "units": "m",
@@ -16,11 +16,11 @@
     "slant": 10,
     "angle": 60
   },
-  "must_show": "A plain drawn brick wall standing upright on flat ground, with a ladder leaning against it from the ground, the ladder length of 10 m and the 60° angle with the ground marked. The height up the wall is not labelled.",
+  "must_show": "An illustrated brick wall standing upright on flat ground under a clear sky. A 10 m ladder leans from the ground up against the wall, with its length marked as 10 m and the 60° angle with the ground marked. The height up the wall is not labelled.",
   "must_not_show": [
-    "the height up the wall",
-    "the height value 5√3 m or any numeric answer",
-    "any text, words or numbers in the scene"
+    "the height the ladder reaches on the wall",
+    "the value 5√3",
+    "any answer option"
   ],
   "attempts": 2,
   "attempt_log": [
@@ -52,43 +52,19 @@
             "detail": "every value appears in the image notes"
           },
           {
-            "name": "drawn_matches_spec",
-            "result": "pass",
-            "detail": "the drawn angle is 60.0°, matching the figure"
-          },
-          {
-            "name": "judge_description",
-            "result": "pass",
-            "detail": "A brick wall stands on a grassy hill under a blue sky. A red right-triangle outline with a brown diagonal line is drawn in front of the wall, with its base on the grass below the wall's base line.",
-            "cost": 0.0003306,
-            "fix": "redraw"
-          },
-          {
-            "name": "overlay_aligned",
+            "name": "generate",
             "result": "fail",
-            "detail": "the figure does not line up with the scene; set background to drawn to use a plain drawn scene"
-          },
-          {
-            "name": "no_text_in_scene",
-            "result": "pass",
-            "detail": "the judge sees no text in the scene",
-            "fix": "redraw"
-          },
-          {
-            "name": "no_visible_defects",
-            "result": "pass",
-            "detail": "the judge sees no drawing errors",
-            "fix": "redraw"
+            "detail": "Drawing failed: ValueError(\"image generation failed: cannot access local variable 'prompt' where it is not associated with a value\")"
           }
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.002823096
+      "cost_usd": 0.0005792000000000001
     },
     {
       "attempt": 2,
       "plan_reused": false,
-      "repair_feedback": "Your previous plan for this question failed these checks:\n- overlay_aligned: the figure does not line up with the scene; set background to drawn to use a plain drawn scene\n\nYour previous plan was:\n{\n  \"route\": \"layered\",\n  \"spec\": {\n    \"overlay\": \"right_triangle\",\n    \"scene\": \"A plain brick wall standing upright on flat ground, with a grassy area in front of it and a clear blue sky behind. No people, no ladder, no text.\",\n    \"style\": \"flat, colourful children's book illustration\",\n    \"background\": \"generated\",\n    \"units\": \"m\",\n    \"unknown\": \"height\",\n    \"vertical_object\": \"brick wall\",\n    \"slant_style\": \"ladder\",\n    \"base\": null,\n    \"height\": null,\n    \"slant\": 10,\n    \"angle\": 60\n  }\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
+      "repair_feedback": "Your previous plan for this question failed these checks:\n- generate: Drawing failed: ValueError(\"image generation failed: cannot access local variable 'prompt' where it is not associated with a value\")\n\nYour previous plan was:\n{\n  \"route\": \"layered\",\n  \"spec\": {\n    \"overlay\": \"right_triangle\",\n    \"scene\": \"A plain brick wall standing upright on flat, open ground under a clear sky, seen from the side at eye level, with no other objects or people.\",\n    \"style\": \"flat, colourful children's book illustration\",\n    \"background\": \"generated\",\n    \"units\": \"m\",\n    \"unknown\": \"height\",\n    \"vertical_object\": \"brick wall\",\n    \"slant_style\": \"ladder\",\n    \"base\": null,\n    \"height\": null,\n    \"slant\": 10,\n    \"angle\": 60\n  }\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
       "verification": {
         "passed": true,
         "checks": [
@@ -120,10 +96,10 @@
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.0005633
+      "cost_usd": 0.0007049000000000001
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.003386
+  "cost_usd": 0.001284
 }

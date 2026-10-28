@@ -1,0 +1,105 @@
+{
+  "id": "M-12",
+  "route": "layered",
+  "route_reason": "The question is set in an illustrated house scene but needs exact measurements (15 m ladder and 12 m window height) drawn as a right triangle, which only the layered route provides.",
+  "spec": {
+    "overlay": "right_triangle",
+    "scene": "A plain brick house wall with one window set high up, standing on flat ground under a clear sky, seen straight on from the front, with no people and no objects other than the house and the ground.",
+    "style": "flat, colourful children's book illustration",
+    "background": "drawn",
+    "units": "m",
+    "unknown": "base",
+    "vertical_object": "brick wall",
+    "slant_style": "ladder",
+    "base": null,
+    "height": 12,
+    "slant": 15,
+    "angle": null
+  },
+  "must_show": "A plain brick house wall with one window set high up, standing on flat ground under a clear sky. A straight ladder leans from the ground against the wall up to the window, with its length (15 m) and the window's height (12 m) marked. The distance from the foot of the ladder to the wall is not labelled.",
+  "must_not_show": [
+    "the distance from the foot of the ladder to the wall",
+    "the answer 9 m",
+    "the other option values 3 m, 12 m and 27 m"
+  ],
+  "attempts": 2,
+  "attempt_log": [
+    {
+      "attempt": 1,
+      "plan_reused": false,
+      "repair_feedback": null,
+      "verification": {
+        "passed": false,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid layered figure"
+          },
+          {
+            "name": "unknown_hidden",
+            "result": "pass",
+            "detail": "the unknown base has no value, so it is labelled '?'"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "pass",
+            "detail": "the base worked out from the figure is 9, matching the answer '9 m'"
+          },
+          {
+            "name": "values_match_notes",
+            "result": "pass",
+            "detail": "every value appears in the image notes"
+          },
+          {
+            "name": "generate",
+            "result": "fail",
+            "detail": "Drawing failed: ValueError(\"image generation failed: cannot access local variable 'prompt' where it is not associated with a value\")"
+          }
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.0006346
+    },
+    {
+      "attempt": 2,
+      "plan_reused": false,
+      "repair_feedback": "Your previous plan for this question failed these checks:\n- generate: Drawing failed: ValueError(\"image generation failed: cannot access local variable 'prompt' where it is not associated with a value\")\n\nYour previous plan was:\n{\n  \"route\": \"layered\",\n  \"spec\": {\n    \"overlay\": \"right_triangle\",\n    \"scene\": \"A plain brick house wall with one window set high up, standing on flat ground under a clear sky, seen straight on from the front, with no people and no objects other than the house and the ground.\",\n    \"style\": \"flat, colourful children's book illustration\",\n    \"background\": \"generated\",\n    \"units\": \"m\",\n    \"unknown\": \"base\",\n    \"vertical_object\": \"brick wall\",\n    \"slant_style\": \"ladder\",\n    \"base\": null,\n    \"height\": 12,\n    \"slant\": 15,\n    \"angle\": null\n  },\n  \"answer_check\": null\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
+      "verification": {
+        "passed": true,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid layered figure"
+          },
+          {
+            "name": "unknown_hidden",
+            "result": "pass",
+            "detail": "the unknown base has no value, so it is labelled '?'"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "pass",
+            "detail": "the base worked out from the figure is 9, matching the answer '9 m'"
+          },
+          {
+            "name": "values_match_notes",
+            "result": "pass",
+            "detail": "every value appears in the image notes"
+          },
+          {
+            "name": "drawn_matches_spec",
+            "result": "pass",
+            "detail": "the drawn angle is 53.1°, matching the figure"
+          }
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.0007187999999999999
+    }
+  ],
+  "status": "accepted",
+  "flag_reason": null,
+  "cost_usd": 0.001353
+}

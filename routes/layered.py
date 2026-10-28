@@ -27,6 +27,11 @@ Reply with ONLY a JSON object, no other text:
  "other_text": "any text in the scene itself, ignoring the measurement labels, or an empty string",
  "defects": ["visible drawing errors in the scene, such as distorted people or merged objects"]}"""
 
+LOCATE_PROMPT = """You find positions in a picture. Give positions as fractions: across from 0 (left edge) to 1 (right edge), and up from 0 (bottom edge) to 1 (top edge).
+Reply with ONLY a JSON object, no other text:
+{"left_edge": how far across the left side of the object is, "ground": how far up the ground is where the object stands, "top": how far up the top of the object is}"""
+WALL_WORDS = ("wall", "tower", "building", "house")
+DEFAULT_LAYOUT = {"wall_x": WALL_X, "ground_y": GROUND_Y, "top_y": HEIGHT - 9}
 
 def solve_triangle(spec):
     base, height, slant, angle = (spec[key] for key in ("base", "height", "slant", "angle"))
@@ -54,10 +59,8 @@ def solve_triangle(spec):
     return {"base": base, "height": height, "slant": math.hypot(base, height),
             "angle": math.degrees(math.atan2(height, base))}
 
-
 def grid_size(spec):
     return spec["columns"] * spec["square_size"], spec["rows"] * spec["square_size"]
-
 
 def unknown_value(spec):
     unknown = spec["unknown"]
@@ -71,7 +74,6 @@ def unknown_value(spec):
     if unknown is not None and unknown not in values:
         raise ValueError(f"unknown must be one of {list(values)} or null")
     return values.get(unknown)
-
 
 def check_spec(plan, question):
     spec = plan["spec"]
@@ -104,23 +106,23 @@ def check_spec(plan, question):
     checks.append(check_values_in_notes(given, question))
     return checks
 
-
 def draw_scene(ax, spec):
     triangle = spec["overlay"] == "right_triangle"
     if spec["background"] == "drawn":
         ax.add_patch(Rectangle((0, 0), WIDTH, HEIGHT, color="#E3F1FB" if triangle else "#CDE8B5"))
         if triangle:
             ax.add_patch(Rectangle((0, 0), WIDTH, GROUND_Y, color="#B9D98C"))
-            ax.add_patch(Rectangle((WALL_X, GROUND_Y), 7, HEIGHT - GROUND_Y - 4, facecolor="#D9C2A7", edgecolor="#7A6650"))
-        return 0.0
+            if any(word in spec["vertical_object"].lower() for word in WALL_WORDS):
+                ax.add_patch(Rectangle((WALL_X, GROUND_Y), 7, HEIGHT - GROUND_Y - 4, facecolor="#D9C2A7", edgecolor="#7A6650"))
+        return 0.0, DEFAULT_LAYOUT
 
     if triangle:
-        layout = (f"A {spec['vertical_object']} stands upright about seven tenths of the way across the picture, "
-                  "rising from flat ground that fills the bottom sixth, with open space to its left and nothing leaning on it.")
+        layout = (f"A single tall {spec['vertical_object']} stands upright on flat ground in the right half of the picture, "
+                  "seen from the side, with plenty of open ground to its left and nothing leaning on it.")
     else:
         layout = "A top-down view, with the area filling the middle of the picture."
-    prompt = (f"{spec['scene']} {layout} Flat, colourful children's book illustration. "
-              "No text, letters, numbers, signs or writing anywhere.")
+        prompt = (f"{spec['scene']} {layout} Flat, colourful children's book illustration. "
+              "No ladder, string, rope, lines or measurements. No text, letters, numbers, signs or writing anywhere.")
 
     with tempfile.TemporaryDirectory() as folder:
         scene_path = Path(folder) / "scene.png"
@@ -129,12 +131,24 @@ def draw_scene(ax, spec):
         except Exception as error:
             raise ValueError(f"image generation failed: {error}") from error
         ax.imshow(Image.open(scene_path), extent=[0, WIDTH, 0, HEIGHT], aspect="auto")
-    return result["cost"]
+        if not triangle:
+            return result["cost"], DEFAULT_LAYOUT
+        located = call_llm(LOCATE_PROMPT, f"The object is the {spec['vertical_object']}.", max_tokens=1000,
+                           image_path=scene_path)
+    return result["cost"] + located["cost"], read_layout(located["text"])
 
+def read_layout(text):
+    try:
+        found = json.loads(text[text.find("{"):text.rfind("}") + 1])
+        x, ground, top = float(found["left_edge"]), float(found["ground"]), float(found["top"])
+    except (json.JSONDecodeError, KeyError, TypeError, ValueError):
+        return DEFAULT_LAYOUT
+    if not (0.3 <= x <= 0.95 and 0.02 <= ground <= 0.45 and top >= ground + 0.25):
+        return DEFAULT_LAYOUT
+    return {"wall_x": x * WIDTH, "ground_y": ground * HEIGHT, "top_y": min(top, 0.95) * HEIGHT}
 
 def label(ax, x, y, text):
     ax.text(x, y, text, ha="center", va="center", fontsize=14, bbox=LABEL_BOX)
-
 
 def label_text(spec, key):
     if spec["unknown"] == key:
@@ -143,33 +157,32 @@ def label_text(spec, key):
         return None
     return f"{spec[key]:g}°" if key == "angle" else f"{spec[key]:g} {spec['units']}"
 
-
-def draw_triangle(ax, spec):
+def draw_triangle(ax, spec, layout):
     solved = solve_triangle(spec)
-    scale = min((WALL_X - 8) / solved["base"], (HEIGHT - GROUND_Y - 9) / solved["height"])
-    foot = (WALL_X - solved["base"] * scale, GROUND_Y)
-    top = (WALL_X, GROUND_Y + solved["height"] * scale)
+    wall_x, ground_y = layout["wall_x"], layout["ground_y"]
+    scale = min((wall_x - 8) / solved["base"], (layout["top_y"] - ground_y) / solved["height"])
+    foot = (wall_x - solved["base"] * scale, ground_y)
+    top = (wall_x, ground_y + solved["height"] * scale)
 
-    ax.plot([foot[0], WALL_X, WALL_X], [GROUND_Y, GROUND_Y, top[1]], color=RED, linewidth=3)
+    ax.plot([foot[0], wall_x, wall_x], [ground_y, ground_y, top[1]], color=RED, linewidth=3)
     if spec.get("dashed") is True:
         ax.plot([foot[0], top[0]], [foot[1], top[1]], color=RED, linewidth=2.5, linestyle="--")
     else:
         ax.plot([foot[0], top[0]], [foot[1], top[1]], color="#6E4B2A", linewidth=5)
-    ax.plot([WALL_X - 3, WALL_X - 3, WALL_X], [GROUND_Y, GROUND_Y + 3, GROUND_Y + 3], color=RED, linewidth=1.5)
+    ax.plot([wall_x - 3, wall_x - 3, wall_x], [ground_y, ground_y + 3, ground_y + 3], color=RED, linewidth=1.5)
 
     if label_text(spec, "angle"):
         ax.add_patch(Arc(foot, 14, 14, theta1=0, theta2=solved["angle"], color=RED, linewidth=2))
         middle = math.radians(solved["angle"] / 2)
         label(ax, foot[0] + 12 * math.cos(middle), foot[1] + 12 * math.sin(middle), label_text(spec, "angle"))
 
-    positions = {"base": ((foot[0] + WALL_X) / 2, GROUND_Y - 5),
-                 "height": (WALL_X + 7, (GROUND_Y + top[1]) / 2),
+    positions = {"base": ((foot[0] + wall_x) / 2, ground_y - 5),
+                 "height": (wall_x + 7, (ground_y + top[1]) / 2),
                  "slant": ((foot[0] + top[0]) / 2 - 4, (foot[1] + top[1]) / 2 + 4)}
     for key, (x, y) in positions.items():
         if label_text(spec, key):
             label(ax, x, y, label_text(spec, key))
     return {"foot": list(foot), "top": list(top)}
-
 
 def draw_grid(ax, spec):
     columns, rows = spec["columns"], spec["rows"]
@@ -183,7 +196,6 @@ def draw_grid(ax, spec):
     size = f"{spec['square_size']:g} {spec['units']}"
     label(ax, WIDTH / 2, bottom - 5, f"Each square is {size} × {size}")
 
-
 def render(spec, png_path, svg_path):
     fig = plt.figure(figsize=(8, 6))
     ax = fig.add_axes([0, 0, 1, 1])
@@ -191,9 +203,10 @@ def render(spec, png_path, svg_path):
     ax.set_ylim(0, HEIGHT)
     ax.axis("off")
     try:
-        details = {"cost": draw_scene(ax, spec)}
+        cost, layout = draw_scene(ax, spec)
+        details = {"cost": cost}
         if spec["overlay"] == "right_triangle":
-            details["drawn_points"] = draw_triangle(ax, spec)
+            details["drawn_points"] = draw_triangle(ax, spec, layout)
         else:
             draw_grid(ax, spec)
         fig.savefig(png_path, dpi=128)
@@ -202,7 +215,6 @@ def render(spec, png_path, svg_path):
     finally:
         plt.close(fig)
     return details
-
 
 def check_render(plan, files, question=None):
     spec = plan["spec"]
@@ -217,7 +229,6 @@ def check_render(plan, files, question=None):
     if spec["background"] == "generated":
         checks.extend(judge_checks(spec, files))
     return checks
-
 
 def judge_checks(spec, files):
     target = f"the {spec['vertical_object']} and the ground" if spec["overlay"] == "right_triangle" else "the area shown"

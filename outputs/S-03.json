@@ -1,0 +1,87 @@
+{
+  "id": "S-03",
+  "route": "circuit",
+  "route_reason": "The question asks for a current in a series circuit, which requires an exact electric circuit diagram with labelled components and values.",
+  "spec": {
+    "source": {
+      "type": "battery",
+      "label": "",
+      "volts": 6
+    },
+    "series": [
+      {
+        "type": "ammeter",
+        "label": "A"
+      },
+      {
+        "type": "resistor",
+        "label": "R1",
+        "ohms": 5
+      },
+      {
+        "type": "resistor",
+        "label": "R2",
+        "ohms": 10
+      }
+    ],
+    "branches": []
+  },
+  "must_show": "A series circuit diagram with a 6 V battery, an ammeter labelled A, resistor R1 labelled 5 Ω, and resistor R2 labelled 10 Ω, all on one loop of wire.",
+  "must_not_show": [
+    "the current value (0.4 A)",
+    "any ammeter reading"
+  ],
+  "attempts": 1,
+  "attempt_log": [
+    {
+      "attempt": 1,
+      "plan_reused": false,
+      "repair_feedback": null,
+      "verification": {
+        "passed": true,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid circuit"
+          },
+          {
+            "name": "labels_match_notes",
+            "result": "pass",
+            "detail": "every component label appears in the image notes"
+          },
+          {
+            "name": "arrangement_matches_notes",
+            "result": "pass",
+            "detail": "the notes say series and the circuit matches"
+          },
+          {
+            "name": "values_match_notes",
+            "result": "pass",
+            "detail": "every value appears in the image notes"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "pass",
+            "detail": "the current in the drawn circuit is 0.4, matching the answer '0.4 A'"
+          },
+          {
+            "name": "answer_not_shown",
+            "result": "pass",
+            "detail": "the answer does not appear in any label"
+          },
+          {
+            "name": "drawn_matches_spec",
+            "result": "pass",
+            "detail": "the drawing has exactly the 4 symbols in the spec"
+          }
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.0005658
+    }
+  ],
+  "status": "accepted",
+  "flag_reason": null,
+  "cost_usd": 0.000566
+}

@@ -1,0 +1,45 @@
+{
+  "id": "M-15",
+  "route": "template",
+  "route_reason": "The student must count an exact number of objects (balloons), which only the template route can draw precisely.",
+  "spec": {
+    "scene": "a child standing outdoors on grass holding a bunch of balloons",
+    "object": "balloon",
+    "count": 9,
+    "arrangement": "balloons spread out so each one is clearly separate and countable",
+    "style": "flat, simple, clear drawing suitable for a school paper",
+    "text_in_image": "none"
+  },
+  "must_show": "A child holding exactly 9 balloons, all clearly separated and easy to count, with no balloons overlapping or hidden.",
+  "must_not_show": [
+    "the number 6",
+    "any balloons burst or removed",
+    "any written numbers, labels or answer options"
+  ],
+  "attempts": 1,
+  "attempt_log": [
+    {
+      "attempt": 1,
+      "plan_reused": false,
+      "repair_feedback": null,
+      "verification": {
+        "passed": false,
+        "checks": [
+          {
+            "name": "route",
+            "result": "fail",
+            "detail": "route 'template' is not built yet"
+          }
+        ],
+        "cost": 0.0,
+        "retryable": false
+      },
+      "cost_usd": 0.0005004
+    }
+  ],
+  "status": "flagged",
+  "flag_reason": [
+    "route 'template' is not built yet"
+  ],
+  "cost_usd": 0.0005
+}

@@ -145,6 +145,8 @@ Rules:
 - If image_notes are given, use their values exactly.
 - If they are not given, choose sensible values that fit the question and its answer.
 - Never show the answer in the image unless the question requires the student to see it.
+- If the student must count objects in a picture, choose the template route, since no other route can draw an exact number of objects.
+- If the question already gives every number the student needs and the picture only sets the scene, choose illustration, set answer_from_image to false, and do not show any numbers in the picture.
 """
 
 def understand(question, feedback = None):

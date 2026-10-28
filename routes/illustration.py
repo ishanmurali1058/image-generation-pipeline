@@ -16,10 +16,10 @@ Look carefully at the picture and reply with ONLY a JSON object, no other text:
   "checklist": [true or false for each checklist item, in the same order],
   "visible_text": "any letters, words or numbers you can see, or an empty string",
   "suitable_for_children": true or false,
-  "defects": ["visible drawing errors, such as extra fingers or limbs, distorted faces, or objects merged together"],
+  "defects": ["only serious drawing errors a student would notice, such as extra limbs or badly distorted faces; ignore small imperfections"],
   "chosen_option": "the option a student would choose from the picture alone, or null"
 }
-Mark a checklist item true only if it is clearly visible. Be strict and honest."""
+Mark a checklist item true if a student would clearly recognise it in the picture, even if it is small or partly hidden. Be honest."""
 
 def check_spec(plan, question):
     spec = plan["spec"]

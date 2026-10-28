@@ -1,0 +1,154 @@
+{
+  "id": "S-05",
+  "route": "illustration",
+  "route_reason": "The picture only sets the scene and the student must recognise each animal, so an illustration fits and no exact measurements or readable text are needed.",
+  "spec": {
+    "prompt": "A calm, sunlit forest clearing with tall green trees, ferns and grass. On the left, a tiger stands on the grass, fully visible. In the centre, a deer with large antlers stands facing the viewer. On the right, a large eagle is perched on a thick, sturdy tree branch that stretches out from the trunk, its wings folded and its body clearly visible against the bright sky. In the front, a snake lies coiled on a grey rock. Each animal is fully visible and clearly separated from the others, with no overlapping. The composition is balanced and easy to read, with no text, letters, numbers or signs anywhere in the picture.",
+    "style": "flat, colourful children's book illustration",
+    "must_contain": [
+      "a tiger standing on the grass",
+      "a deer with large antlers",
+      "an eagle perched on a thick tree branch",
+      "a snake coiled on a rock"
+    ],
+    "answer_from_image": true
+  },
+  "must_show": "A forest scene with a tiger, a deer with antlers, an eagle perched on a clearly visible tree branch, and a snake, each animal fully visible and easy to tell apart. No text.",
+  "must_not_show": [
+    "any text, labels or signs",
+    "any indication of what each animal eats",
+    "any mark that singles out the deer as the answer"
+  ],
+  "attempts": 2,
+  "attempt_log": [
+    {
+      "attempt": 1,
+      "plan_reused": false,
+      "repair_feedback": null,
+      "verification": {
+        "passed": false,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid illustration"
+          },
+          {
+            "name": "no_quoted_text",
+            "result": "pass",
+            "detail": "the prompt asks for no written words"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "A cartoon forest clearing with tall trees and ferns. A tiger stands on the left, a deer with antlers stands in the middle, and a brown hawk-like bird perches on a coiled snake on a grey rock on the right.",
+            "cost": 0.0003076
+          },
+          {
+            "name": "safety",
+            "result": "pass",
+            "detail": "the image model's safety filter found nothing",
+            "fix": "redraw"
+          },
+          {
+            "name": "must_contain",
+            "result": "fail",
+            "detail": "the judge does not see ['an eagle on a branch']",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_text_in_image",
+            "result": "pass",
+            "detail": "the judge sees no text in the image",
+            "fix": "redraw"
+          },
+          {
+            "name": "suitable_for_children",
+            "result": "pass",
+            "detail": "the judge finds the image suitable for children",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "pass",
+            "detail": "the judge sees no drawing errors",
+            "fix": "redraw"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "skipped",
+            "detail": "the answer does not depend on the picture"
+          }
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.0030004960000000005
+    },
+    {
+      "attempt": 2,
+      "plan_reused": false,
+      "repair_feedback": "Your previous plan for this question failed these checks:\n- must_contain: the judge does not see ['an eagle on a branch']\n\nYour previous plan was:\n{\n  \"route\": \"illustration\",\n  \"spec\": {\n    \"prompt\": \"A calm, sunlit forest clearing with tall green trees, ferns and grass. A tiger stands at one side, a deer with antlers stands near the centre, an eagle perches on a low branch on the other side, and a snake coils on a rock near the front. Each animal is fully visible and clearly separated from the others, with no overlapping. The composition is balanced and easy to read, with no text, letters, numbers or signs anywhere in the picture.\",\n    \"style\": \"flat, colourful children's book illustration\",\n    \"must_contain\": [\n      \"a tiger\",\n      \"a deer with antlers\",\n      \"an eagle on a branch\",\n      \"a snake coiled on a rock\"\n    ],\n    \"answer_from_image\": true\n  }\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
+      "verification": {
+        "passed": true,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid illustration"
+          },
+          {
+            "name": "no_quoted_text",
+            "result": "pass",
+            "detail": "the prompt asks for no written words"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "A forest clearing with tall trees and ferns shows a striped tiger standing on the grass at left and a deer with antlers in the middle. A bald eagle perches on a thick tree branch on the right, and a yellow snake is coiled on a rock at the bottom right, with a second orange snake on the grass.",
+            "cost": 0.00029039999999999996
+          },
+          {
+            "name": "safety",
+            "result": "pass",
+            "detail": "the image model's safety filter found nothing",
+            "fix": "redraw"
+          },
+          {
+            "name": "must_contain",
+            "result": "pass",
+            "detail": "the judge sees everything on the checklist",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_text_in_image",
+            "result": "pass",
+            "detail": "the judge sees no text in the image",
+            "fix": "redraw"
+          },
+          {
+            "name": "suitable_for_children",
+            "result": "pass",
+            "detail": "the judge finds the image suitable for children",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "pass",
+            "detail": "the judge sees no drawing errors",
+            "fix": "redraw"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "skipped",
+            "detail": "the answer does not depend on the picture"
+          }
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.0030584960000000004
+    }
+  ],
+  "status": "accepted",
+  "flag_reason": null,
+  "cost_usd": 0.006059
+}

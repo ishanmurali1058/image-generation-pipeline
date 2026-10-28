@@ -1,0 +1,63 @@
+{
+  "id": "SS-06",
+  "route": "map",
+  "route_reason": "The question asks the student to identify a shaded state on a map of India, which only the map route can draw accurately.",
+  "spec": {
+    "shaded": [
+      "Kerala"
+    ],
+    "labelled": [
+      "Tamil Nadu"
+    ],
+    "title": "",
+    "unknown": "Kerala"
+  },
+  "must_show": "Outline map of India with Tamil Nadu labelled by name and Kerala shaded in a distinct colour, without a name label.",
+  "must_not_show": [
+    "the name Kerala written on the map",
+    "any label on the shaded state"
+  ],
+  "attempts": 1,
+  "attempt_log": [
+    {
+      "attempt": 1,
+      "plan_reused": false,
+      "repair_feedback": null,
+      "verification": {
+        "passed": true,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "every shaded and labelled name is a state or union territory"
+          },
+          {
+            "name": "names_match_notes",
+            "result": "pass",
+            "detail": "every shaded and labelled state appears in the image notes"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "pass",
+            "detail": "the shaded unknown state is Kerala, matching the answer"
+          },
+          {
+            "name": "unknown_hidden",
+            "result": "pass",
+            "detail": "Kerala is shaded but not named"
+          },
+          {
+            "name": "drawn_matches_spec",
+            "result": "pass",
+            "detail": "exactly the states ['Kerala'] are shaded"
+          }
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.0005356
+    }
+  ],
+  "status": "accepted",
+  "flag_reason": null,
+  "cost_usd": 0.000536
+}

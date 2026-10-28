@@ -4,7 +4,12 @@
     "subject": "Math",
     "grade": 5,
     "question": "The bar graph shows the number of trees planted by four classes. How many trees were planted in total?",
-    "options": ["38", "42", "45", "48"],
+    "options": [
+      "38",
+      "42",
+      "45",
+      "48"
+    ],
     "answer": "42",
     "image_notes": "Class 6: 8, Class 7: 12, Class 8: 10, Class 9: 12. Vertical bars, y-axis from 0 to 14 in steps of 2.",
     "source": "Original, written for this project"
@@ -14,7 +19,12 @@
     "subject": "Math",
     "grade": 7,
     "question": "In triangle ABC, angle A = 50° and angle B = 65°. Find angle C.",
-    "options": ["55°", "60°", "65°", "75°"],
+    "options": [
+      "55°",
+      "60°",
+      "65°",
+      "75°"
+    ],
     "answer": "65°",
     "image_notes": "Triangle ABC with angle A = 50° and angle B = 65° marked. Angle C marked with a question mark.",
     "source": "Original, written for this project"
@@ -24,7 +34,12 @@
     "subject": "Science",
     "grade": 6,
     "question": "In the circuit shown, if bulb B1 fuses, what happens to bulb B2?",
-    "options": ["It glows brighter", "It glows dimmer", "It stops glowing", "No change"],
+    "options": [
+      "It glows brighter",
+      "It glows dimmer",
+      "It stops glowing",
+      "No change"
+    ],
     "answer": "It stops glowing",
     "image_notes": "One cell, a closed switch and two bulbs B1 and B2 connected in series.",
     "source": "Original, written for this project"
@@ -34,7 +49,12 @@
     "subject": "Social Studies",
     "grade": 4,
     "question": "The picture shows a person at work in a village. Which occupation is shown?",
-    "options": ["Weaver", "Potter", "Blacksmith", "Carpenter"],
+    "options": [
+      "Weaver",
+      "Potter",
+      "Blacksmith",
+      "Carpenter"
+    ],
     "answer": "Potter",
     "image_notes": "A person shaping clay on a potter's wheel outside a village house. No text in the image.",
     "source": "Original, written for this project"
@@ -44,7 +64,12 @@
     "subject": "Math",
     "grade": 10,
     "question": "A ladder 10 m long leans against a vertical wall and makes an angle of 60° with the ground. How high up the wall does the ladder reach?",
-    "options": ["5 m", "5√3 m", "10√3 m", "10 m"],
+    "options": [
+      "5 m",
+      "5√3 m",
+      "10√3 m",
+      "10 m"
+    ],
     "answer": "5√3 m",
     "image_notes": "Illustrated brick wall and ground. Ladder from the ground to the wall with its length (10 m) and the 60° angle with the ground marked. Height on the wall not labelled.",
     "source": "Original, written for this project"
@@ -54,7 +79,326 @@
     "subject": "Social Studies",
     "grade": 8,
     "question": "On the outline map of India, one state is shaded. This state is the largest producer of tea in India. Name the state.",
-    "options": ["Assam", "Kerala", "West Bengal", "Karnataka"],
+    "options": [
+      "Assam",
+      "Kerala",
+      "West Bengal",
+      "Karnataka"
+    ],
     "source": "Original, written for this project"
+  },
+  {
+    "id": "M-04",
+    "subject": "Math",
+    "grade": 6,
+    "question": "The bar graph shows the number of bicycles made in a factory from Monday to Thursday. How many bicycles were made in all?",
+    "options": [
+      "160",
+      "170",
+      "180",
+      "190"
+    ],
+    "answer": "180",
+    "image_notes": "Bar graph. Monday: 40, Tuesday: 55, Wednesday: 35, Thursday: 50. y-axis from 0 to 60 in steps of 10.",
+    "source": "Adapted from NCERT Class 6 Mathematics, Data Handling (wording and values changed)"
+  },
+  {
+    "id": "M-05",
+    "subject": "Math",
+    "grade": 8,
+    "question": "The pie chart shows the favourite sports of 36 students. Which sport is the most popular?",
+    "options": [
+      "Cricket",
+      "Football",
+      "Hockey",
+      "Badminton"
+    ],
+    "answer": "Cricket",
+    "image_notes": "Pie chart. Cricket: 15, Football: 9, Hockey: 6, Badminton: 6. No numbers or percentages on the slices.",
+    "source": "Adapted from NCERT Class 8 Mathematics, Data Handling (wording and values changed)"
+  },
+  {
+    "id": "M-06",
+    "subject": "Math",
+    "grade": 8,
+    "question": "The line graph shows a patient's body temperature recorded every hour. At what time was the temperature highest?",
+    "options": [
+      "9 am",
+      "10 am",
+      "11 am",
+      "12 noon"
+    ],
+    "answer": "11 am",
+    "image_notes": "Line graph of temperature in degrees Celsius. 9 am: 37.0, 10 am: 37.8, 11 am: 38.6, 12 noon: 38.2, 1 pm: 37.6. y-axis from 36 to 39 in steps of 0.5.",
+    "source": "Adapted from NCERT Class 8 Mathematics, Introduction to Graphs (wording and values changed)"
+  },
+  {
+    "id": "M-07",
+    "subject": "Math",
+    "grade": 7,
+    "question": "In triangle PQR, angle P = 70° and angle Q = 45°. Find angle R.",
+    "options": [
+      "55°",
+      "65°",
+      "75°",
+      "115°"
+    ],
+    "answer": "65°",
+    "image_notes": "Triangle PQR with angle P = 70° and angle Q = 45° marked, and angle R marked with a question mark.",
+    "source": "Adapted from NCERT Class 7 Mathematics, The Triangle and its Properties (wording and values changed)"
+  },
+  {
+    "id": "M-08",
+    "subject": "Math",
+    "grade": 7,
+    "question": "Triangle ABC is right-angled at C. If AC = 5 cm and BC = 12 cm, find the length of AB.",
+    "options": [
+      "11 cm",
+      "13 cm",
+      "15 cm",
+      "17 cm"
+    ],
+    "answer": "13 cm",
+    "image_notes": "Right-angled triangle ABC with angle C = 90° marked, AC = 5 cm and BC = 12 cm labelled, and AB marked with a question mark.",
+    "source": "Adapted from NCERT Class 7 Mathematics, The Triangle and its Properties (wording and values changed)"
+  },
+  {
+    "id": "M-09",
+    "subject": "Math",
+    "grade": 7,
+    "question": "In isosceles triangle ABC, AB = AC and angle A = 50°. Find angle B.",
+    "options": [
+      "50°",
+      "65°",
+      "80°",
+      "130°"
+    ],
+    "answer": "65°",
+    "image_notes": "Triangle ABC with AB and AC shown equal by tick marks, angle A = 50° marked, and angle B marked with a question mark.",
+    "source": "Adapted from NCERT Class 7 Mathematics, The Triangle and its Properties (wording and values changed)"
+  },
+  {
+    "id": "M-10",
+    "subject": "Math",
+    "grade": 10,
+    "question": "A tower stands vertically on the ground. From a point on the ground 20 m away from its foot, the angle of elevation of the top of the tower is 60°. Find the height of the tower.",
+    "options": [
+      "10√3 m",
+      "20 m",
+      "20√3 m",
+      "40 m"
+    ],
+    "answer": "20√3 m",
+    "image_notes": "Illustrated tower on flat ground. The line of sight from the observer to the top of the tower, the 20 m distance along the ground and the 60° angle of elevation marked. The tower's height not labelled.",
+    "source": "Adapted from NCERT Class 10 Mathematics, Some Applications of Trigonometry (wording and values changed)"
+  },
+  {
+    "id": "M-11",
+    "subject": "Math",
+    "grade": 10,
+    "question": "A kite is flying at a height of 30 m above the ground. Its string makes an angle of 60° with the ground. Find the length of the string, assuming it is straight.",
+    "options": [
+      "15 m",
+      "20√3 m",
+      "30√3 m",
+      "60 m"
+    ],
+    "answer": "20√3 m",
+    "image_notes": "Illustrated park with a kite in the sky. The straight string from the ground to the kite, the kite's height (30 m) and the 60° angle between the string and the ground marked. The string's length not labelled.",
+    "source": "Adapted from NCERT Class 10 Mathematics, Some Applications of Trigonometry (wording and values changed)"
+  },
+  {
+    "id": "M-12",
+    "subject": "Math",
+    "grade": 7,
+    "question": "A 15 m long ladder reaches a window 12 m above the ground. How far is the foot of the ladder from the wall?",
+    "options": [
+      "3 m",
+      "9 m",
+      "12 m",
+      "27 m"
+    ],
+    "answer": "9 m",
+    "image_notes": "Illustrated house wall with a window. A ladder from the ground to the window, its length (15 m) and the window's height (12 m) marked. The distance from the foot of the ladder to the wall not labelled.",
+    "source": "Adapted from NCERT Class 7 Mathematics, The Triangle and its Properties (wording and values changed)"
+  },
+  {
+    "id": "M-13",
+    "subject": "Math",
+    "grade": 10,
+    "question": "A slide for children in a park has its top 2 m above the ground and is inclined at 30° to the ground. Find the length of the slide.",
+    "options": [
+      "2 m",
+      "2√3 m",
+      "4 m",
+      "4√3 m"
+    ],
+    "answer": "4 m",
+    "image_notes": "Illustrated park with a children's slide. The slide's height (2 m) and its 30° angle with the ground marked. The slide's length not labelled.",
+    "source": "Adapted from NCERT Class 10 Mathematics, Some Applications of Trigonometry (wording and values changed)"
+  },
+  {
+    "id": "M-14",
+    "subject": "Math",
+    "grade": 10,
+    "question": "A tree breaks in a storm, and its broken part bends so that the top touches the ground 8 m from the foot of the tree, making an angle of 30° with the ground. Find the height of the tree before it broke.",
+    "options": [
+      "8 m",
+      "8√3 m",
+      "16 m",
+      "16√3 m"
+    ],
+    "answer": "8√3 m",
+    "image_notes": "Illustrated tree with its top part broken and bent down so the top touches the ground. The 8 m distance along the ground and the 30° angle with the ground marked.",
+    "source": "Adapted from NCERT Class 10 Mathematics, Some Applications of Trigonometry (wording and values changed)"
+  },
+  {
+    "id": "M-15",
+    "subject": "Math",
+    "grade": 3,
+    "question": "Look at the balloons in the picture. If 3 of them burst, how many balloons will be left?",
+    "options": [
+      "5",
+      "6",
+      "7",
+      "9"
+    ],
+    "answer": "6",
+    "image_notes": "A child holding exactly 9 balloons, all clearly visible and easy to count.",
+    "source": "Written for this project, in the style of NCERT Class 3 Mathematics"
+  },
+  {
+    "id": "M-16",
+    "subject": "Math",
+    "grade": 3,
+    "question": "Rahul buys a notebook for ₹25 and a pen for ₹10. How much does he pay in all?",
+    "options": [
+      "₹15",
+      "₹30",
+      "₹35",
+      "₹45"
+    ],
+    "answer": "₹35",
+    "source": "Written for this project, in the style of NCERT Class 3 Mathematics"
+  },
+  {
+    "id": "S-02",
+    "subject": "Science",
+    "grade": 7,
+    "question": "In the circuit shown, if bulb B1 fuses, what happens to bulb B2?",
+    "options": [
+      "It stops glowing",
+      "It keeps glowing",
+      "It glows dimmer",
+      "It flickers"
+    ],
+    "answer": "It keeps glowing",
+    "image_notes": "A cell, a closed switch S in the main wire, and bulbs B1 and B2 connected in parallel.",
+    "source": "Adapted from NCERT Class 7 Science, Electric Current and its Effects (wording changed)"
+  },
+  {
+    "id": "S-03",
+    "subject": "Science",
+    "grade": 10,
+    "question": "Resistors of 5 Ω and 10 Ω are connected in series to a 6 V battery. Find the current in the circuit.",
+    "options": [
+      "0.4 A",
+      "0.6 A",
+      "1.2 A",
+      "2.5 A"
+    ],
+    "answer": "0.4 A",
+    "image_notes": "A 6 V battery, an ammeter A, and resistors R1 = 5 Ω and R2 = 10 Ω in series.",
+    "source": "Adapted from NCERT Class 10 Science, Electricity (wording and values changed)"
+  },
+  {
+    "id": "S-04",
+    "subject": "Science",
+    "grade": 10,
+    "question": "Two resistors of 6 Ω and 3 Ω are connected in parallel to a battery. Find their total resistance.",
+    "options": [
+      "2 Ω",
+      "3 Ω",
+      "4.5 Ω",
+      "9 Ω"
+    ],
+    "answer": "2 Ω",
+    "image_notes": "A battery with resistors R1 = 6 Ω and R2 = 3 Ω connected in parallel.",
+    "source": "Adapted from NCERT Class 10 Science, Electricity (wording and values changed)"
+  },
+  {
+    "id": "S-05",
+    "subject": "Science",
+    "grade": 4,
+    "question": "The picture shows some animals in a forest. Which of them eats only plants?",
+    "options": [
+      "Tiger",
+      "Deer",
+      "Eagle",
+      "Snake"
+    ],
+    "answer": "Deer",
+    "image_notes": "A forest scene with a tiger, a deer, an eagle and a snake, each clearly visible. No text.",
+    "source": "Written for this project, in the style of NCERT primary EVS"
+  },
+  {
+    "id": "SS-03",
+    "subject": "Social Studies",
+    "grade": 6,
+    "question": "The shaded state on the map of India has the longest coastline of any state. Name it.",
+    "options": [
+      "Gujarat",
+      "Andhra Pradesh",
+      "Tamil Nadu",
+      "Maharashtra"
+    ],
+    "answer": "Gujarat",
+    "image_notes": "Outline map of India with Gujarat shaded and no state names shown.",
+    "source": "Written for this project, on a topic from NCERT Class 6 Social Science (geography of India)"
+  },
+  {
+    "id": "SS-04",
+    "subject": "Social Studies",
+    "grade": 3,
+    "question": "The picture shows a farmer ploughing a field. Which animals is he using?",
+    "options": [
+      "Horses",
+      "Bullocks",
+      "Camels",
+      "Elephants"
+    ],
+    "answer": "Bullocks",
+    "image_notes": "A farmer ploughing a field with a pair of bullocks pulling a wooden plough. No text.",
+    "source": "Written for this project, in the style of NCERT primary EVS"
+  },
+  {
+    "id": "SS-05",
+    "subject": "Social Studies",
+    "grade": 6,
+    "question": "The plan shows a village playground drawn on a grid. Each square is 10 m by 10 m. What is the area of the playground?",
+    "options": [
+      "300 m²",
+      "1100 m²",
+      "3000 m²",
+      "6000 m²"
+    ],
+    "answer": "3000 m²",
+    "image_notes": "A village playground seen from above, 60 m by 50 m, marked with a grid of 10 m squares (6 squares by 5 squares).",
+    "source": "Written for this project, on a topic from NCERT Class 6 Social Science (geography: maps, scale and plans)"
+  },
+  {
+    "id": "SS-06",
+    "subject": "Social Studies",
+    "grade": 6,
+    "question": "On the map, Tamil Nadu is labelled. Name the shaded state that shares its western border.",
+    "options": [
+      "Kerala",
+      "Karnataka",
+      "Andhra Pradesh",
+      "Goa"
+    ],
+    "answer": "Kerala",
+    "image_notes": "Outline map of India with Tamil Nadu labelled and Kerala shaded but not labelled.",
+    "source": "Written for this project, on a topic from NCERT Class 6 Social Science (geography of India)"
   }
 ]

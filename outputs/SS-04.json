@@ -1,0 +1,89 @@
+{
+  "id": "SS-04",
+  "route": "illustration",
+  "route_reason": "This is a farming scene where the student must identify the animals from the picture, and nothing read from the image needs exact measurement.",
+  "spec": {
+    "prompt": "A farmer in a simple cotton kurta and turban guides a wooden plough across an open field of freshly turned brown soil. A pair of bullocks, sturdy cattle with broad backs and short horns, are yoked together side by side and pull the wooden plough in front of them. Dry green bushes and a few trees stand at the edge of the field under a clear blue sky. The bullocks are the clear focus of the composition, shown from the side so their body shape is easy to see.",
+    "style": "flat, colourful children's book illustration",
+    "must_contain": [
+      "a farmer holding the handles of a wooden plough",
+      "a pair of bullocks yoked together pulling the plough",
+      "a freshly ploughed brown field"
+    ],
+    "answer_from_image": true
+  },
+  "must_show": "A farmer ploughing a field, with a pair of bullocks (yoked cattle) pulling a wooden plough. The bullocks must be clearly visible and distinct from horses, camels and elephants.",
+  "must_not_show": [
+    "any text, labels or names of the animals",
+    "horses, camels or elephants in the scene"
+  ],
+  "attempts": 1,
+  "attempt_log": [
+    {
+      "attempt": 1,
+      "plan_reused": false,
+      "repair_feedback": null,
+      "verification": {
+        "passed": true,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid illustration"
+          },
+          {
+            "name": "no_quoted_text",
+            "result": "pass",
+            "detail": "the prompt asks for no written words"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "A farmer in a white kurta and orange turban walks behind a wooden plough, holding its handles. A pair of dark bullocks with curved horns, yoked together, pull the plough across a dry, furrowed brown field. Trees and a clear blue sky are in the background.",
+            "cost": 0.0002979
+          },
+          {
+            "name": "safety",
+            "result": "pass",
+            "detail": "the image model's safety filter found nothing",
+            "fix": "redraw"
+          },
+          {
+            "name": "must_contain",
+            "result": "pass",
+            "detail": "the judge sees everything on the checklist",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_text_in_image",
+            "result": "pass",
+            "detail": "the judge sees no text in the image",
+            "fix": "redraw"
+          },
+          {
+            "name": "suitable_for_children",
+            "result": "pass",
+            "detail": "the judge finds the image suitable for children",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "pass",
+            "detail": "the judge sees no drawing errors",
+            "fix": "redraw"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "skipped",
+            "detail": "the answer does not depend on the picture"
+          }
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.003002596
+    }
+  ],
+  "status": "accepted",
+  "flag_reason": null,
+  "cost_usd": 0.003003
+}

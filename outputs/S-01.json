@@ -1,7 +1,7 @@
 {
   "id": "S-01",
   "route": "circuit",
-  "route_reason": "The question is about how bulbs in an electric circuit behave, so the image must be an exact circuit diagram with correct components and connections.",
+  "route_reason": "The question asks about a bulb glowing in a circuit, which needs an exact circuit diagram with correct component connections.",
   "spec": {
     "source": {
       "type": "cell",
@@ -27,11 +27,11 @@
     ],
     "branches": []
   },
-  "must_show": "A single closed loop circuit with one cell, a closed switch labelled S, and two bulbs labelled B1 and B2 connected in series on the same wire, all intact.",
+  "must_show": "A series circuit with one cell, a closed switch S, and two bulbs B1 and B2 connected in series on one loop of wire.",
   "must_not_show": [
-    "any sign that B1 has fused or broken",
-    "any indication of whether B2 glows after B1 fuses",
-    "the answer 'It stops glowing'"
+    "the outcome of B1 fusing",
+    "any indication that B2 stops glowing",
+    "the answer text"
   ],
   "attempts": 1,
   "attempt_log": [
@@ -80,10 +80,10 @@
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.0005855
+      "cost_usd": 0.00043940000000000006
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.000585
+  "cost_usd": 0.000439
 }

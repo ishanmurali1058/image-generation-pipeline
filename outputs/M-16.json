@@ -1,0 +1,219 @@
+{
+  "id": "M-16",
+  "route": "illustration",
+  "route_reason": "The question already gives both prices and asks for a sum, so the picture only sets the scene and no exact reading is needed.",
+  "spec": {
+    "prompt": "A bright, cheerful stationery shop interior seen from the front at eye level. The wooden counter is low and sits across the middle of the picture, so the whole body of the shopkeeper shows clearly above and behind it. Behind the counter, a friendly adult shopkeeper stands upright at full height, from head to feet, smiling and facing the viewer with both hands resting on the counter. In front of the counter on the left, a smiling boy of about nine years old stands at full height, from head to feet, facing the counter with his hands at his sides. On the counter, in the foreground, lie one notebook with a blue cover and one pen beside it, both clearly visible. Shelves on the back wall hold neatly arranged pencils, erasers and rulers. Warm lighting, simple uncluttered composition, with the two people clearly separated and not overlapping.",
+    "style": "flat, colourful children's book illustration",
+    "must_contain": [
+      "a full-length shopkeeper standing upright behind the low wooden counter",
+      "a full-length boy standing on the near side of the counter",
+      "a notebook with a blue cover on the counter",
+      "a pen on the counter"
+    ],
+    "answer_from_image": false
+  },
+  "must_show": "A stationery shop scene with a full-length adult shopkeeper standing upright behind a low wooden counter, and a full-length boy standing on the near side of the counter, facing it. On the counter sit one notebook with a blue cover and one pen.",
+  "must_not_show": [
+    "any prices, numbers, money, coins or notes",
+    "any words, letters, labels or signs",
+    "the total amount or the answer"
+  ],
+  "attempts": 3,
+  "attempt_log": [
+    {
+      "attempt": 1,
+      "plan_reused": false,
+      "repair_feedback": null,
+      "verification": {
+        "passed": false,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid illustration"
+          },
+          {
+            "name": "no_quoted_text",
+            "result": "pass",
+            "detail": "the prompt asks for no written words"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "Two smiling boys stand behind a wooden counter in a colourful stationery shop. A blue notebook and a blue pen lie on the counter in front of them. The shelves behind them hold books, folders, pencils, and other school supplies.",
+            "cost": 0.0004504
+          },
+          {
+            "name": "safety",
+            "result": "pass",
+            "detail": "the image model's safety filter found nothing",
+            "fix": "redraw"
+          },
+          {
+            "name": "must_contain",
+            "result": "fail",
+            "detail": "the judge does not see ['a shopkeeper behind the counter']",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_text_in_image",
+            "result": "pass",
+            "detail": "the judge sees no text in the image",
+            "fix": "redraw"
+          },
+          {
+            "name": "suitable_for_children",
+            "result": "pass",
+            "detail": "the judge finds the image suitable for children",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "pass",
+            "detail": "the judge sees no drawing errors",
+            "fix": "redraw"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "skipped",
+            "detail": "the answer does not depend on the picture"
+          }
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.0029745960000000004
+    },
+    {
+      "attempt": 2,
+      "plan_reused": false,
+      "repair_feedback": "Your previous plan for this question failed these checks:\n- must_contain: the judge does not see ['a shopkeeper behind the counter']\n\nYour previous plan was:\n{\n  \"route\": \"illustration\",\n  \"spec\": {\n    \"prompt\": \"A bright, cheerful stationery shop interior. A smiling boy named Rahul, about nine years old, stands at a wooden counter. On the counter lie a single notebook with a blue cover and a single pen beside it. A shopkeeper stands behind the counter, smiling. Shelves behind them hold neatly arranged school supplies such as pencils, erasers and rulers. Warm lighting, simple composition, the notebook and pen clearly visible in the foreground. There are no price tags, numbers, money, words or signs in the scene.\",\n    \"style\": \"flat, colourful children's book illustration\",\n    \"must_contain\": [\n      \"a boy standing at a counter\",\n      \"a notebook with a blue cover on the counter\",\n      \"a pen on the counter\",\n      \"a shopkeeper behind the counter\"\n    ],\n    \"answer_from_image\": false\n  }\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
+      "verification": {
+        "passed": false,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid illustration"
+          },
+          {
+            "name": "no_quoted_text",
+            "result": "pass",
+            "detail": "the prompt asks for no written words"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "A cartoon stationery shop with a smiling shopkeeper in glasses and an grey apron standing behind a wooden counter. A boy in a plaid shirt stands beside him with his arms folded. Shelves behind them hold books, notebooks, rulers and boxes, and a blue notebook with a red pen sits on the counter.",
+            "cost": 0.000429
+          },
+          {
+            "name": "safety",
+            "result": "pass",
+            "detail": "the image model's safety filter found nothing",
+            "fix": "redraw"
+          },
+          {
+            "name": "must_contain",
+            "result": "fail",
+            "detail": "the judge does not see ['a shopkeeper standing fully visible behind the wooden counter', 'a boy standing in front of the counter']",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_text_in_image",
+            "result": "pass",
+            "detail": "the judge sees no text in the image",
+            "fix": "redraw"
+          },
+          {
+            "name": "suitable_for_children",
+            "result": "pass",
+            "detail": "the judge finds the image suitable for children",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "pass",
+            "detail": "the judge sees no drawing errors",
+            "fix": "redraw"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "skipped",
+            "detail": "the answer does not depend on the picture"
+          }
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.0030414960000000003
+    },
+    {
+      "attempt": 3,
+      "plan_reused": false,
+      "repair_feedback": "Your previous plan for this question failed these checks:\n- must_contain: the judge does not see ['a shopkeeper standing fully visible behind the wooden counter', 'a boy standing in front of the counter']\n\nYour previous plan was:\n{\n  \"route\": \"illustration\",\n  \"spec\": {\n    \"prompt\": \"A bright, cheerful stationery shop interior, shown from the front at a comfortable height. In the centre of the image, a friendly adult shopkeeper stands fully visible behind a wooden counter, smiling and facing the viewer, with both arms visible above the counter. In front of the counter on the left, a smiling boy named Rahul, about nine years old, stands with his hands at his sides. On the counter, in the foreground, lie a single notebook with a blue cover and a single pen beside it, both clearly visible. Shelves behind the shopkeeper hold neatly arranged school supplies such as pencils, erasers and rulers. Warm lighting, simple uncluttered composition. There are no price tags, numbers, money, words or signs anywhere in the scene.\",\n    \"style\": \"flat, colourful children's book illustration\",\n    \"must_contain\": [\n      \"a shopkeeper standing fully visible behind the wooden counter\",\n      \"a boy standing in front of the counter\",\n      \"a notebook with a blue cover on the counter\",\n      \"a pen on the counter\"\n    ],\n    \"answer_from_image\": false\n  }\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
+      "verification": {
+        "passed": false,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid illustration"
+          },
+          {
+            "name": "no_quoted_text",
+            "result": "pass",
+            "detail": "the prompt asks for no written words"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "A smiling shopkeeper in a green shirt and orange apron stands behind a wooden counter in a stationery shop, with shelves of pencils, boxes and supplies behind him. A boy in a blue T-shirt stands in front of the counter with his hands behind his back, and a blue notebook and a pen rest on the foreground table.",
+            "cost": 0.0003907
+          },
+          {
+            "name": "safety",
+            "result": "pass",
+            "detail": "the image model's safety filter found nothing",
+            "fix": "redraw"
+          },
+          {
+            "name": "must_contain",
+            "result": "fail",
+            "detail": "the judge does not see ['a full-length shopkeeper standing upright behind the low wooden counter', 'a full-length boy standing on the near side of the counter']",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_text_in_image",
+            "result": "pass",
+            "detail": "the judge sees no text in the image",
+            "fix": "redraw"
+          },
+          {
+            "name": "suitable_for_children",
+            "result": "pass",
+            "detail": "the judge finds the image suitable for children",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "pass",
+            "detail": "the judge sees no drawing errors",
+            "fix": "redraw"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "skipped",
+            "detail": "the answer does not depend on the picture"
+          }
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.0031756960000000004
+    }
+  ],
+  "status": "flagged",
+  "flag_reason": [
+    "the judge does not see ['a full-length shopkeeper standing upright behind the low wooden counter', 'a full-length boy standing on the near side of the counter']"
+  ],
+  "cost_usd": 0.009192
+}

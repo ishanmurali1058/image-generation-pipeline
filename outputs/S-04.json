@@ -1,0 +1,87 @@
+{
+  "id": "S-04",
+  "route": "circuit",
+  "route_reason": "This is an electric circuit with parallel resistors, which the circuit route draws exactly with correct component labels and values.",
+  "spec": {
+    "source": {
+      "type": "battery",
+      "label": "",
+      "volts": null
+    },
+    "series": [],
+    "branches": [
+      [
+        {
+          "type": "resistor",
+          "label": "R1",
+          "ohms": 6
+        }
+      ],
+      [
+        {
+          "type": "resistor",
+          "label": "R2",
+          "ohms": 3
+        }
+      ]
+    ]
+  },
+  "must_show": "A battery connected to two resistors wired in parallel: R1 (6 Ω) on one branch and R2 (3 Ω) on the other, both branches joining the same two points on the battery's wires.",
+  "must_not_show": [
+    "the total resistance value (2 Ω)",
+    "any calculation or equivalent resistance"
+  ],
+  "attempts": 1,
+  "attempt_log": [
+    {
+      "attempt": 1,
+      "plan_reused": false,
+      "repair_feedback": null,
+      "verification": {
+        "passed": true,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid circuit"
+          },
+          {
+            "name": "labels_match_notes",
+            "result": "pass",
+            "detail": "every component label appears in the image notes"
+          },
+          {
+            "name": "arrangement_matches_notes",
+            "result": "pass",
+            "detail": "the notes say parallel and the circuit matches"
+          },
+          {
+            "name": "values_match_notes",
+            "result": "pass",
+            "detail": "every value appears in the image notes"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "pass",
+            "detail": "the total resistance of the drawn circuit is 2, matching the answer '2 Ω'"
+          },
+          {
+            "name": "answer_not_shown",
+            "result": "pass",
+            "detail": "the answer does not appear in any label"
+          },
+          {
+            "name": "drawn_matches_spec",
+            "result": "pass",
+            "detail": "the drawing has exactly the 3 symbols in the spec"
+          }
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.0005599000000000001
+    }
+  ],
+  "status": "accepted",
+  "flag_reason": null,
+  "cost_usd": 0.00056
+}

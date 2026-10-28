@@ -1,0 +1,84 @@
+{
+  "id": "M-04",
+  "route": "chart",
+  "route_reason": "The question asks the student to read exact bar values from a bar graph and add them, so the chart must be drawn precisely from the given values.",
+  "spec": {
+    "chart_type": "bar",
+    "title": "Bicycles Made per Day",
+    "x_label": "Day",
+    "y_label": "Number of bicycles",
+    "labels": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday"
+    ],
+    "values": [
+      40,
+      55,
+      35,
+      50
+    ],
+    "y_min": 0,
+    "y_max": 60,
+    "y_step": 10
+  },
+  "must_show": "A bar graph titled 'Bicycles Made per Day' with four bars for Monday (40), Tuesday (55), Wednesday (35) and Thursday (50), a y-axis from 0 to 60 in steps of 10, and labelled axes. The bar heights must match these values exactly so the student can read each one.",
+  "must_not_show": [
+    "the total of 180 or any sum of the bars",
+    "the answer options"
+  ],
+  "attempts": 1,
+  "attempt_log": [
+    {
+      "attempt": 1,
+      "plan_reused": false,
+      "repair_feedback": null,
+      "verification": {
+        "passed": true,
+        "checks": [
+          {
+            "name": "labels_values_count",
+            "result": "pass",
+            "detail": "4 labels and 4 values"
+          },
+          {
+            "name": "axis_range",
+            "result": "pass",
+            "detail": "axis 0 to 60 covers all values"
+          },
+          {
+            "name": "values_match_notes",
+            "result": "pass",
+            "detail": "every value appears in the image notes"
+          },
+          {
+            "name": "labels_match_notes",
+            "result": "pass",
+            "detail": "every label appears in the image notes"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "pass",
+            "detail": "the answer worked out from the chart is 180, matching the answer '180'"
+          },
+          {
+            "name": "answer_not_shown",
+            "result": "pass",
+            "detail": "the answer does not appear in the title or axis labels"
+          },
+          {
+            "name": "drawn_matches_spec",
+            "result": "pass",
+            "detail": "drawn values [40.0, 55.0, 35.0, 50.0] match the spec"
+          }
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.000578
+    }
+  ],
+  "status": "accepted",
+  "flag_reason": null,
+  "cost_usd": 0.000578
+}

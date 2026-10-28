@@ -1,0 +1,105 @@
+{
+  "id": "M-10",
+  "route": "layered",
+  "route_reason": "The question is an illustrated real-world scene, but the 20 m distance and 60° angle must be drawn exactly as a right triangle, which only the layered route supports.",
+  "spec": {
+    "overlay": "right_triangle",
+    "scene": "A tall stone tower standing upright on flat open ground under a clear sky, with a person standing on the grass some distance away from the foot of the tower, looking up toward the top of the tower. A few small bushes on the grass.",
+    "style": "flat, colourful children's book illustration",
+    "background": "drawn",
+    "units": "m",
+    "unknown": "height",
+    "vertical_object": "tower",
+    "slant_style": "sight_line",
+    "base": 20,
+    "height": null,
+    "slant": null,
+    "angle": 60
+  },
+  "must_show": "A plain drawn tower standing vertically on flat ground, with an observer standing 20 m from its foot. A line of sight runs from the observer up to the top of the tower, with the 20 m ground distance and the 60° angle of elevation marked. The tower's height is not labelled.",
+  "must_not_show": [
+    "the tower's height value",
+    "the answer 20√3 m",
+    "any numbers or labels on the tower"
+  ],
+  "attempts": 2,
+  "attempt_log": [
+    {
+      "attempt": 1,
+      "plan_reused": false,
+      "repair_feedback": null,
+      "verification": {
+        "passed": false,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid layered figure"
+          },
+          {
+            "name": "unknown_hidden",
+            "result": "pass",
+            "detail": "the unknown height has no value, so it is labelled '?'"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "pass",
+            "detail": "the height worked out from the figure is 34.64, matching the answer '20√3 m'"
+          },
+          {
+            "name": "values_match_notes",
+            "result": "pass",
+            "detail": "every value appears in the image notes"
+          },
+          {
+            "name": "generate",
+            "result": "fail",
+            "detail": "Drawing failed: ValueError(\"image generation failed: cannot access local variable 'prompt' where it is not associated with a value\")"
+          }
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.0006663
+    },
+    {
+      "attempt": 2,
+      "plan_reused": false,
+      "repair_feedback": "Your previous plan for this question failed these checks:\n- generate: Drawing failed: ValueError(\"image generation failed: cannot access local variable 'prompt' where it is not associated with a value\")\n\nYour previous plan was:\n{\n  \"route\": \"layered\",\n  \"spec\": {\n    \"overlay\": \"right_triangle\",\n    \"scene\": \"A tall stone tower standing upright on flat open ground under a clear sky, with a person standing on the ground some distance away from the foot of the tower, looking up toward the top of the tower. Simple grass and a few small bushes on the ground.\",\n    \"style\": \"flat, colourful children's book illustration\",\n    \"background\": \"generated\",\n    \"units\": \"m\",\n    \"unknown\": \"height\",\n    \"vertical_object\": \"tower\",\n    \"slant_style\": \"sight_line\",\n    \"base\": 20,\n    \"height\": null,\n    \"slant\": null,\n    \"angle\": 60\n  }\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
+      "verification": {
+        "passed": true,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid layered figure"
+          },
+          {
+            "name": "unknown_hidden",
+            "result": "pass",
+            "detail": "the unknown height has no value, so it is labelled '?'"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "pass",
+            "detail": "the height worked out from the figure is 34.64, matching the answer '20√3 m'"
+          },
+          {
+            "name": "values_match_notes",
+            "result": "pass",
+            "detail": "every value appears in the image notes"
+          },
+          {
+            "name": "drawn_matches_spec",
+            "result": "pass",
+            "detail": "the drawn angle is 60.0°, matching the figure"
+          }
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.0007936
+    }
+  ],
+  "status": "accepted",
+  "flag_reason": null,
+  "cost_usd": 0.00146
+}

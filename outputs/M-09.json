@@ -1,0 +1,126 @@
+{
+  "id": "M-09",
+  "route": "geometry",
+  "route_reason": "The figure is a plain triangle made of lines, points and angle marks, so the geometry route fits.",
+  "spec": {
+    "shape": "triangle",
+    "vertices": [
+      "A",
+      "B",
+      "C"
+    ],
+    "angles": {
+      "A": 50,
+      "B": null,
+      "C": null
+    },
+    "sides": {
+      "AB": null,
+      "BC": null,
+      "CA": null
+    },
+    "units": "cm",
+    "unknown": "B"
+  },
+  "must_show": "Isosceles triangle ABC with vertices A, B and C. Sides AB and AC carry matching tick marks to show they are equal. Angle A is marked as 50°. Angle B is marked with a question mark. No side lengths are shown.",
+  "must_not_show": [
+    "the value of angle B",
+    "the value of angle C",
+    "any side lengths",
+    "the answer options"
+  ],
+  "attempts": 3,
+  "attempt_log": [
+    {
+      "attempt": 1,
+      "plan_reused": false,
+      "repair_feedback": null,
+      "verification": {
+        "passed": false,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a triangle in the geometry format"
+          },
+          {
+            "name": "triangle_solvable",
+            "result": "fail",
+            "detail": "the givens do not fix the triangle's shape (need two angles, three sides, or two sides and the angle between them)"
+          }
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.0005559000000000001
+    },
+    {
+      "attempt": 2,
+      "plan_reused": false,
+      "repair_feedback": "Your previous plan for this question failed these checks:\n- triangle_solvable: the givens do not fix the triangle's shape (need two angles, three sides, or two sides and the angle between them)\n\nYour previous plan was:\n{\n  \"route\": \"geometry\",\n  \"spec\": {\n    \"shape\": \"triangle\",\n    \"vertices\": [\n      \"A\",\n      \"B\",\n      \"C\"\n    ],\n    \"angles\": {\n      \"A\": 50,\n      \"B\": null,\n      \"C\": null\n    },\n    \"sides\": {\n      \"AB\": null,\n      \"BC\": null,\n      \"CA\": null\n    },\n    \"units\": \"cm\",\n    \"unknown\": \"B\"\n  }\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
+      "verification": {
+        "passed": false,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a triangle in the geometry format"
+          },
+          {
+            "name": "triangle_solvable",
+            "result": "pass",
+            "detail": "the givens fix the triangle's shape"
+          },
+          {
+            "name": "givens_consistent",
+            "result": "pass",
+            "detail": "all given angles and sides agree with each other"
+          },
+          {
+            "name": "unknown_hidden",
+            "result": "pass",
+            "detail": "the unknown angle B has no value, so it is labelled '?'"
+          },
+          {
+            "name": "values_match_notes",
+            "result": "fail",
+            "detail": "values [6, 6] are not in the image notes"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "pass",
+            "detail": "angle B in the figure is 65, matching the answer '65°'"
+          }
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.0009877
+    },
+    {
+      "attempt": 3,
+      "plan_reused": false,
+      "repair_feedback": "Your previous plan for this question failed these checks:\n- values_match_notes: values [6, 6] are not in the image notes\n\nYour previous plan was:\n{\n  \"route\": \"geometry\",\n  \"spec\": {\n    \"shape\": \"triangle\",\n    \"vertices\": [\n      \"A\",\n      \"B\",\n      \"C\"\n    ],\n    \"angles\": {\n      \"A\": 50,\n      \"B\": null,\n      \"C\": null\n    },\n    \"sides\": {\n      \"AB\": 6,\n      \"BC\": null,\n      \"CA\": 6\n    },\n    \"units\": \"cm\",\n    \"unknown\": \"B\"\n  }\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
+      "verification": {
+        "passed": false,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a triangle in the geometry format"
+          },
+          {
+            "name": "triangle_solvable",
+            "result": "fail",
+            "detail": "the givens do not fix the triangle's shape (need two angles, three sides, or two sides and the angle between them)"
+          }
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.0005922000000000001
+    }
+  ],
+  "status": "flagged",
+  "flag_reason": [
+    "the givens do not fix the triangle's shape (need two angles, three sides, or two sides and the angle between them)"
+  ],
+  "cost_usd": 0.002136
+}
