@@ -112,6 +112,33 @@ For the illustration route, the spec must be:
 - must_contain: 1 to 5 short things that must be clearly visible in the picture.
 - answer_from_image: true if the student needs the picture to choose the answer, false if the picture only decorates the question.
 
+For the layered route, the spec has these fields for every figure:
+- overlay: right_triangle (a ladder, line of sight or string forming a right triangle with something vertical and the ground) or grid (squares marked over an area).
+- scene: a description of the background scene for an image model. Never include the ladder, measurement lines, grid, words or numbers.
+- style: a simple style suitable for a school paper, such as "flat, colourful children's book illustration".
+- background: "generated" to draw the scene with an image model, or "drawn" for a plain drawn scene. Use "generated" unless told otherwise.
+- units: the unit of length, such as "m".
+- unknown: what the student must find.
+
+For a right_triangle overlay, also include:
+{
+  "vertical_object": "brick wall",
+  "slant_style": "ladder",
+  "base": null,
+  "height": null,
+  "slant": 10,
+  "angle": 60
+}
+- vertical_object: the upright thing, such as a brick wall, tower or tree.
+- slant_style: ladder, sight_line (for an angle of elevation) or string (for a kite).
+- base: the distance along the ground; height: the height up the vertical object; slant: the length of the slanted line; angle: the angle in degrees between the ground and the slanted line. Give only the values the student is told; set the rest to null.
+- unknown: base, height, slant, angle or null. It must be null above.
+
+For a grid overlay, also include:
+{"columns": 6, "rows": 4, "square_size": 1}
+- columns and rows: whole numbers of squares across and down; square_size: the side of one square.
+- unknown: area, perimeter or null.
+
 For other routes, describe the image in the spec as clear key-value fields.
 
 Rules:

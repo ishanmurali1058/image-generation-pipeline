@@ -71,7 +71,7 @@ def redraw_check(name, ok, pass_detail, fail_detail):
 def check_render(plan, files, question=None):
     spec = plan["spec"]
     question = question or {}
-    result = call_llm(JUDGE_PROMPT, judge_message(spec, question), max_tokens=800, image_path=files["png"])
+    result = call_llm(JUDGE_PROMPT, judge_message(spec, question), max_tokens=1500, image_path=files["png"])
 
     text = result["text"]
     try:

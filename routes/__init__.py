@@ -1,8 +1,9 @@
-from . import chart, circuit, geometry, maps, illustration
+from . import chart, circuit, geometry, maps, illustration, layered
 ROUTE_MODULES = {
     "chart": chart,
     "geometry": geometry,
     "circuit": circuit,
     "map": maps,
-    "illustration": illustration
+    "illustration": illustration,
+    "layered": layered,
 }

@@ -1,27 +1,91 @@
 {
   "id": "SS-01",
   "route": "illustration",
-  "route_reason": "The scene is a village illustration where the student needs the picture to identify the occupation, and nothing read from it must be exact.",
+  "route_reason": "The picture only needs to show a recognisable scene with no exact readings, so an illustration fits.",
   "spec": {
-    "prompt": "A village scene outside a simple village house. In the foreground, a person sits at a potter's wheel, gently shaping a lump of wet clay with both hands. The wheel is made of wood and stone, and a few clay pots sit nearby to show the craft. A small, tidy village house with a tiled roof stands in the background, with a few trees and a dirt path. The composition is clear and centred on the person and the wheel. No text, letters, numbers, labels or signs anywhere in the picture.",
+    "prompt": "A simple village scene in daylight, seen from the front. In the centre foreground stands a large potter's wheel: a round, flat wooden turntable on a short central post, with a mound of wet grey clay sitting on top of the spinning head. A smiling adult sits on a low stool behind the wheel, leaning forward with both hands pressed onto the clay, which is rising into a vase shape. A small bowl of water sits on the ground beside the wheel. Behind them stands a small whitewashed village house with a thatched roof, a wooden door and a window. A few trees and a dirt path frame the background. No text, letters, numbers or signs anywhere in the scene.",
     "style": "flat, colourful children's book illustration",
     "must_contain": [
-      "a person shaping clay on a potter's wheel",
-      "a village house"
+      "a potter's wheel with grey clay on top",
+      "a person with both hands shaping the clay",
+      "a village house with a thatched roof"
     ],
     "answer_from_image": true
   },
-  "must_show": "A person shaping clay on a potter's wheel outside a village house, with no text in the image.",
+  "must_show": "A person seated at a potter's wheel outside a village house, with both hands shaping grey clay on the spinning wheel head. The wheel is large, round and clearly visible at the centre of the scene. The village house is behind the wheel.",
   "must_not_show": [
-    "any written words or labels, including the occupation names",
-    "signs, letters or numbers"
+    "a loom, anvil, carpentry bench or any other occupation's tools",
+    "any text, letters, numbers or signs"
   ],
-  "attempts": 1,
+  "attempts": 2,
   "attempt_log": [
     {
       "attempt": 1,
       "plan_reused": false,
       "repair_feedback": null,
+      "verification": {
+        "passed": false,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid illustration"
+          },
+          {
+            "name": "no_quoted_text",
+            "result": "pass",
+            "detail": "the prompt asks for no written words"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "A smiling man in a green t-shirt sits on a wooden stool and shapes a dark grey clay vase with both hands. Beside him is a round wooden base with wet clay residue, and behind him stand a white village house with a thatched roof, clay pots, and trees.",
+            "cost": 0.000366
+          },
+          {
+            "name": "safety",
+            "result": "pass",
+            "detail": "the image model's safety filter found nothing",
+            "fix": "redraw"
+          },
+          {
+            "name": "must_contain",
+            "result": "fail",
+            "detail": "the judge does not see [\"a person shaping clay on a potter's wheel\"]",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_text_in_image",
+            "result": "pass",
+            "detail": "the judge sees no text in the image",
+            "fix": "redraw"
+          },
+          {
+            "name": "suitable_for_children",
+            "result": "pass",
+            "detail": "the judge finds the image suitable for children",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "pass",
+            "detail": "the judge sees no drawing errors",
+            "fix": "redraw"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "skipped",
+            "detail": "the answer does not depend on the picture"
+          }
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.0029318960000000002
+    },
+    {
+      "attempt": 2,
+      "plan_reused": false,
+      "repair_feedback": "Your previous plan for this question failed these checks:\n- must_contain: the judge does not see [\"a person shaping clay on a potter's wheel\"]\n\nYour previous plan was:\n{\n  \"route\": \"illustration\",\n  \"spec\": {\n    \"prompt\": \"A simple village scene in daylight. In the foreground, a smiling adult person sits at a wooden potter's wheel, with both hands shaping a lump of wet grey clay that is rising into a vase shape. Wet clay is smeared on the wheel and a bowl of water sits nearby. Behind them stands a small whitewashed village house with a thatched roof, a wooden door and a window, with a few trees and a dirt path in the background. No text, letters, numbers or signs anywhere in the scene.\",\n    \"style\": \"flat, colourful children's book illustration\",\n    \"must_contain\": [\n      \"a person shaping clay on a potter's wheel\",\n      \"a village house with a thatched roof\",\n      \"wet clay being shaped into a pot\"\n    ],\n    \"answer_from_image\": true\n  }\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
       "verification": {
         "passed": true,
         "checks": [
@@ -38,8 +102,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A young boy in a blue tank top and jeans sits on a stone stool, shaping a lump of clay on a wooden potter's wheel in a sunny village yard. Behind him are white houses with red tile roofs, a large tree on the left, and terracotta pots and a yellow clay jar in the foreground.",
-            "cost": 0.0001708
+            "detail": "A smiling boy with black hair sits behind a wooden potter's wheel, shaping a grey clay pot with both hands. Behind him stands a white village house with a thatched roof and a wooden door, surrounded by trees on a dusty ground.",
+            "cost": 0.0001574
           },
           {
             "name": "safety",
@@ -79,10 +143,10 @@
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.0028506960000000002
+      "cost_usd": 0.0031439960000000005
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.002851
+  "cost_usd": 0.006076
 }

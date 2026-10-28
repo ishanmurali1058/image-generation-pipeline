@@ -1,7 +1,7 @@
 {
   "id": "S-01",
   "route": "circuit",
-  "route_reason": "The question asks how a bulb's behaviour changes in an electric circuit, which is a circuit diagram task.",
+  "route_reason": "The question is about how bulbs in an electric circuit behave, so the image must be an exact circuit diagram with correct components and connections.",
   "spec": {
     "source": {
       "type": "cell",
@@ -27,11 +27,11 @@
     ],
     "branches": []
   },
-  "must_show": "A complete series circuit: one cell, a closed switch labelled S, and two bulbs labelled B1 and B2, all on one loop of wire. The circuit is intact, with no fuse or break shown.",
+  "must_show": "A single closed loop circuit with one cell, a closed switch labelled S, and two bulbs labelled B1 and B2 connected in series on the same wire, all intact.",
   "must_not_show": [
     "any sign that B1 has fused or broken",
-    "any indication of what happens to B2 when B1 fuses",
-    "the answer text"
+    "any indication of whether B2 glows after B1 fuses",
+    "the answer 'It stops glowing'"
   ],
   "attempts": 1,
   "attempt_log": [
@@ -80,10 +80,10 @@
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.0005553
+      "cost_usd": 0.0005855
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.000555
+  "cost_usd": 0.000585
 }

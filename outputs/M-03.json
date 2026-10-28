@@ -1,39 +1,28 @@
 {
   "id": "M-03",
   "route": "layered",
-  "route_reason": "The image is an illustrated scene (brick wall, ground, ladder) that also carries exact measurements (10 m length and 60° angle) drawn on top, so it fits the layered route rather than plain geometry or illustration.",
+  "route_reason": "The scene is a realistic wall and ground, but the ladder, angle and length must be exact, so a layered right-triangle overlay is needed; the correction uses a drawn background so the overlay lines up with the scene.",
   "spec": {
-    "base_scene": "Illustrated brick wall standing vertically on flat ground, drawn in a simple, clear style suitable for a school paper.",
-    "scene_objects": [
-      "brick wall",
-      "flat ground",
-      "ladder leaning against the wall"
-    ],
-    "overlays": [
-      {
-        "type": "length_label",
-        "target": "ladder",
-        "text": "10 m"
-      },
-      {
-        "type": "angle_mark",
-        "location": "foot of the ladder, between the ladder and the ground",
-        "text": "60°"
-      }
-    ],
-    "hidden": [
-      "height on the wall where the ladder touches"
-    ],
-    "units": "m"
+    "overlay": "right_triangle",
+    "scene": "A plain brick wall standing upright on flat ground, with a grassy area in front of it and a clear blue sky behind. No people, no ladder, no text.",
+    "style": "flat, colourful children's book illustration",
+    "background": "drawn",
+    "units": "m",
+    "unknown": "height",
+    "vertical_object": "brick wall",
+    "slant_style": "ladder",
+    "base": null,
+    "height": null,
+    "slant": 10,
+    "angle": 60
   },
-  "must_show": "An illustrated brick wall standing vertically on flat ground, with a ladder leaning against the wall so its foot is on the ground and its top touches the wall. The ladder's full length is labelled 10 m. The 60° angle is marked between the ladder and the ground at the foot of the ladder. The height up the wall is not labelled.",
+  "must_show": "A plain drawn brick wall standing upright on flat ground, with a ladder leaning against it from the ground, the ladder length of 10 m and the 60° angle with the ground marked. The height up the wall is not labelled.",
   "must_not_show": [
-    "the height where the ladder touches the wall",
-    "the answer 5√3 m or 5 m",
-    "any label or measurement for the vertical height",
-    "the other answer options"
+    "the height up the wall",
+    "the height value 5√3 m or any numeric answer",
+    "any text, words or numbers in the scene"
   ],
-  "attempts": 1,
+  "attempts": 2,
   "attempt_log": [
     {
       "attempt": 1,
@@ -43,20 +32,98 @@
         "passed": false,
         "checks": [
           {
-            "name": "route",
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid layered figure"
+          },
+          {
+            "name": "unknown_hidden",
+            "result": "pass",
+            "detail": "the unknown height has no value, so it is labelled '?'"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "pass",
+            "detail": "the height worked out from the figure is 8.66, matching the answer '5√3 m'"
+          },
+          {
+            "name": "values_match_notes",
+            "result": "pass",
+            "detail": "every value appears in the image notes"
+          },
+          {
+            "name": "drawn_matches_spec",
+            "result": "pass",
+            "detail": "the drawn angle is 60.0°, matching the figure"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "A brick wall stands on a grassy hill under a blue sky. A red right-triangle outline with a brown diagonal line is drawn in front of the wall, with its base on the grass below the wall's base line.",
+            "cost": 0.0003306,
+            "fix": "redraw"
+          },
+          {
+            "name": "overlay_aligned",
             "result": "fail",
-            "detail": "route 'layered' is not built yet"
+            "detail": "the figure does not line up with the scene; set background to drawn to use a plain drawn scene"
+          },
+          {
+            "name": "no_text_in_scene",
+            "result": "pass",
+            "detail": "the judge sees no text in the scene",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "pass",
+            "detail": "the judge sees no drawing errors",
+            "fix": "redraw"
           }
         ],
-        "cost": 0.0,
-        "retryable": false
+        "cost": 0.0
       },
-      "cost_usd": 0.0005866000000000001
+      "cost_usd": 0.002823096
+    },
+    {
+      "attempt": 2,
+      "plan_reused": false,
+      "repair_feedback": "Your previous plan for this question failed these checks:\n- overlay_aligned: the figure does not line up with the scene; set background to drawn to use a plain drawn scene\n\nYour previous plan was:\n{\n  \"route\": \"layered\",\n  \"spec\": {\n    \"overlay\": \"right_triangle\",\n    \"scene\": \"A plain brick wall standing upright on flat ground, with a grassy area in front of it and a clear blue sky behind. No people, no ladder, no text.\",\n    \"style\": \"flat, colourful children's book illustration\",\n    \"background\": \"generated\",\n    \"units\": \"m\",\n    \"unknown\": \"height\",\n    \"vertical_object\": \"brick wall\",\n    \"slant_style\": \"ladder\",\n    \"base\": null,\n    \"height\": null,\n    \"slant\": 10,\n    \"angle\": 60\n  }\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
+      "verification": {
+        "passed": true,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid layered figure"
+          },
+          {
+            "name": "unknown_hidden",
+            "result": "pass",
+            "detail": "the unknown height has no value, so it is labelled '?'"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "pass",
+            "detail": "the height worked out from the figure is 8.66, matching the answer '5√3 m'"
+          },
+          {
+            "name": "values_match_notes",
+            "result": "pass",
+            "detail": "every value appears in the image notes"
+          },
+          {
+            "name": "drawn_matches_spec",
+            "result": "pass",
+            "detail": "the drawn angle is 60.0°, matching the figure"
+          }
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.0005633
     }
   ],
-  "status": "flagged",
-  "flag_reason": [
-    "route 'layered' is not built yet"
-  ],
-  "cost_usd": 0.000587
+  "status": "accepted",
+  "flag_reason": null,
+  "cost_usd": 0.003386
 }
