@@ -1,7 +1,12 @@
 {
   "id": "M-07",
   "route": "geometry",
-  "route_reason": "This is a plain triangle with only angle values and one unknown angle, so the geometry route can draw it exactly.",
+  "route_reason": "The figure is a plain triangle made of lines and points with given angles, which the geometry route draws exactly.",
+  "must_show": "Triangle PQR with vertices P, Q and R, angle P labelled 70 degrees at P, angle Q labelled 45 degrees at Q, and angle R marked with a question mark at R.",
+  "must_not_show": [
+    "the value 65 degrees for angle R",
+    "the answer option 65°"
+  ],
   "spec": {
     "shape": "triangle",
     "vertices": [
@@ -22,12 +27,6 @@
     "units": "cm",
     "unknown": "R"
   },
-  "must_show": "Triangle PQR with vertices P, Q and R. The angle at P is marked 70 degrees and the angle at Q is marked 45 degrees. The angle at R is marked with a question mark.",
-  "must_not_show": [
-    "the value of angle R",
-    "the answer options",
-    "any side lengths"
-  ],
   "attempts": 1,
   "attempt_log": [
     {
@@ -73,12 +72,13 @@
             "detail": "every labelled angle and side is drawn at its labelled size"
           }
         ],
-        "cost": 0.0
+        "cost": 0.0,
+        "redraw": false
       },
-      "cost_usd": 0.0004852
+      "cost_usd": 0.0004213
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.000485
+  "cost_usd": 0.000421
 }

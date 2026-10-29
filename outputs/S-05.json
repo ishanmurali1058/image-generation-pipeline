@@ -1,24 +1,23 @@
 {
   "id": "S-05",
   "route": "illustration",
-  "route_reason": "The picture only sets the scene and the student must recognise each animal, so an illustration fits and no exact measurements or readable text are needed.",
+  "route_reason": "The picture only sets the scene and identifies the animals, with no exact measurements or readable values, so an illustration fits.",
+  "must_show": "A forest scene with four clearly recognisable animals, each distinct and easy to identify: a tiger, a deer, an eagle and a snake. Each animal is fully visible and separate from the others.",
+  "must_not_show": [
+    "any text, labels, names or signs",
+    "any food, prey or feeding behaviour that would reveal which animal eats only plants"
+  ],
   "spec": {
-    "prompt": "A calm, sunlit forest clearing with tall green trees, ferns and grass. On the left, a tiger stands on the grass, fully visible. In the centre, a deer with large antlers stands facing the viewer. On the right, a large eagle is perched on a thick, sturdy tree branch that stretches out from the trunk, its wings folded and its body clearly visible against the bright sky. In the front, a snake lies coiled on a grey rock. Each animal is fully visible and clearly separated from the others, with no overlapping. The composition is balanced and easy to read, with no text, letters, numbers or signs anywhere in the picture.",
+    "prompt": "A lush green forest clearing in soft daylight, with tall trees, ferns and grass. In the middle distance a spotted tiger with orange and black stripes stands alert on a rock. Nearby a brown deer with white spots grazes calmly in the grass. High in a tree sits an eagle with brown wings and a white head. Coiled on the forest floor near some leaves is a green snake. The four animals are spread out across the scene so each one is clearly separate and easy to recognise. No text, letters, numbers or signs appear anywhere in the image.",
     "style": "flat, colourful children's book illustration",
     "must_contain": [
-      "a tiger standing on the grass",
-      "a deer with large antlers",
-      "an eagle perched on a thick tree branch",
-      "a snake coiled on a rock"
+      "a tiger with orange and black stripes",
+      "a brown deer with white spots",
+      "an eagle with a white head perched in a tree",
+      "a green snake coiled on the forest floor"
     ],
     "answer_from_image": true
   },
-  "must_show": "A forest scene with a tiger, a deer with antlers, an eagle perched on a clearly visible tree branch, and a snake, each animal fully visible and easy to tell apart. No text.",
-  "must_not_show": [
-    "any text, labels or signs",
-    "any indication of what each animal eats",
-    "any mark that singles out the deer as the answer"
-  ],
   "attempts": 2,
   "attempt_log": [
     {
@@ -41,8 +40,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A cartoon forest clearing with tall trees and ferns. A tiger stands on the left, a deer with antlers stands in the middle, and a brown hawk-like bird perches on a coiled snake on a grey rock on the right.",
-            "cost": 0.0003076
+            "detail": "A forest clearing with tall trees and ferns. A striped tiger stands on a rock on the right, a brown adult deer and a spotted fawn graze on the grass in the middle, and a green snake lies on the forest floor at the bottom. A brown and white eagle with spread wings flies near a tree at the top.",
+            "cost": 0.00031560000000000003
           },
           {
             "name": "safety",
@@ -53,7 +52,7 @@
           {
             "name": "must_contain",
             "result": "fail",
-            "detail": "the judge does not see ['an eagle on a branch']",
+            "detail": "the judge does not see ['an eagle with a white head perched in a tree']",
             "fix": "redraw"
           },
           {
@@ -76,18 +75,20 @@
           },
           {
             "name": "answer_consistency",
-            "result": "skipped",
-            "detail": "the answer does not depend on the picture"
+            "result": "pass",
+            "detail": "from the picture alone the judge chose 'Deer', matching the answer",
+            "fix": "redraw"
           }
         ],
-        "cost": 0.0
+        "cost": 0.00031560000000000003,
+        "redraw": true
       },
-      "cost_usd": 0.0030004960000000005
+      "cost_usd": 0.0033926960000000006
     },
     {
       "attempt": 2,
-      "plan_reused": false,
-      "repair_feedback": "Your previous plan for this question failed these checks:\n- must_contain: the judge does not see ['an eagle on a branch']\n\nYour previous plan was:\n{\n  \"route\": \"illustration\",\n  \"spec\": {\n    \"prompt\": \"A calm, sunlit forest clearing with tall green trees, ferns and grass. A tiger stands at one side, a deer with antlers stands near the centre, an eagle perches on a low branch on the other side, and a snake coils on a rock near the front. Each animal is fully visible and clearly separated from the others, with no overlapping. The composition is balanced and easy to read, with no text, letters, numbers or signs anywhere in the picture.\",\n    \"style\": \"flat, colourful children's book illustration\",\n    \"must_contain\": [\n      \"a tiger\",\n      \"a deer with antlers\",\n      \"an eagle on a branch\",\n      \"a snake coiled on a rock\"\n    ],\n    \"answer_from_image\": true\n  }\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
+      "plan_reused": true,
+      "repair_feedback": null,
       "verification": {
         "passed": true,
         "checks": [
@@ -104,8 +105,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A forest clearing with tall trees and ferns shows a striped tiger standing on the grass at left and a deer with antlers in the middle. A bald eagle perches on a thick tree branch on the right, and a yellow snake is coiled on a rock at the bottom right, with a second orange snake on the grass.",
-            "cost": 0.00029039999999999996
+            "detail": "A forest clearing with a tiger standing on a grey rock on the left and a spotted deer on the right. An eagle with a white head and spread wings is perched on a branch at the top, and a green coiled snake lies in the grass at the bottom right.",
+            "cost": 0.0002706
           },
           {
             "name": "safety",
@@ -139,16 +140,18 @@
           },
           {
             "name": "answer_consistency",
-            "result": "skipped",
-            "detail": "the answer does not depend on the picture"
+            "result": "pass",
+            "detail": "from the picture alone the judge chose 'Deer', matching the answer",
+            "fix": "redraw"
           }
         ],
-        "cost": 0.0
+        "cost": 0.0002706,
+        "redraw": false
       },
-      "cost_usd": 0.0030584960000000004
+      "cost_usd": 0.0026298960000000005
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.006059
+  "cost_usd": 0.006023
 }

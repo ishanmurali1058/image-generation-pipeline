@@ -1,70 +1,35 @@
 {
   "id": "M-10",
   "route": "layered",
-  "route_reason": "The question is an illustrated real-world scene, but the 20 m distance and 60° angle must be drawn exactly as a right triangle, which only the layered route supports.",
+  "route_reason": "The question describes a realistic scene (a tower and an observer) and needs exact measurements and an angle drawn on top, which is the layered route's purpose.",
+  "must_show": "A tall vertical tower standing on flat ground, a figure of an observer standing on the ground about 20 m from the tower's foot, a slanted line of sight from the observer up to the top of the tower with a 60° angle of elevation marked at the observer, and the 20 m ground distance marked. The tower's height is not labelled.",
+  "must_not_show": [
+    "the height of the tower",
+    "the value of the tower's height or any answer option",
+    "any written labels or numbers on the tower"
+  ],
   "spec": {
     "overlay": "right_triangle",
-    "scene": "A tall stone tower standing upright on flat open ground under a clear sky, with a person standing on the grass some distance away from the foot of the tower, looking up toward the top of the tower. A few small bushes on the grass.",
+    "scene": "A flat open ground area in daylight with a tall vertical stone tower standing upright on the left, and a small observer figure standing on the ground on the right, facing the tower. Clear sky in the background, with a few grass tufts on the ground.",
     "style": "flat, colourful children's book illustration",
-    "background": "drawn",
+    "background": "generated",
     "units": "m",
     "unknown": "height",
     "vertical_object": "tower",
+    "target": "the top of the tower",
     "slant_style": "sight_line",
+    "dashed": false,
     "base": 20,
     "height": null,
     "slant": null,
     "angle": 60
   },
-  "must_show": "A plain drawn tower standing vertically on flat ground, with an observer standing 20 m from its foot. A line of sight runs from the observer up to the top of the tower, with the 20 m ground distance and the 60° angle of elevation marked. The tower's height is not labelled.",
-  "must_not_show": [
-    "the tower's height value",
-    "the answer 20√3 m",
-    "any numbers or labels on the tower"
-  ],
-  "attempts": 2,
+  "attempts": 1,
   "attempt_log": [
     {
       "attempt": 1,
       "plan_reused": false,
       "repair_feedback": null,
-      "verification": {
-        "passed": false,
-        "checks": [
-          {
-            "name": "spec_format",
-            "result": "pass",
-            "detail": "the spec is a valid layered figure"
-          },
-          {
-            "name": "unknown_hidden",
-            "result": "pass",
-            "detail": "the unknown height has no value, so it is labelled '?'"
-          },
-          {
-            "name": "answer_consistency",
-            "result": "pass",
-            "detail": "the height worked out from the figure is 34.64, matching the answer '20√3 m'"
-          },
-          {
-            "name": "values_match_notes",
-            "result": "pass",
-            "detail": "every value appears in the image notes"
-          },
-          {
-            "name": "generate",
-            "result": "fail",
-            "detail": "Drawing failed: ValueError(\"image generation failed: cannot access local variable 'prompt' where it is not associated with a value\")"
-          }
-        ],
-        "cost": 0.0
-      },
-      "cost_usd": 0.0006663
-    },
-    {
-      "attempt": 2,
-      "plan_reused": false,
-      "repair_feedback": "Your previous plan for this question failed these checks:\n- generate: Drawing failed: ValueError(\"image generation failed: cannot access local variable 'prompt' where it is not associated with a value\")\n\nYour previous plan was:\n{\n  \"route\": \"layered\",\n  \"spec\": {\n    \"overlay\": \"right_triangle\",\n    \"scene\": \"A tall stone tower standing upright on flat open ground under a clear sky, with a person standing on the ground some distance away from the foot of the tower, looking up toward the top of the tower. Simple grass and a few small bushes on the ground.\",\n    \"style\": \"flat, colourful children's book illustration\",\n    \"background\": \"generated\",\n    \"units\": \"m\",\n    \"unknown\": \"height\",\n    \"vertical_object\": \"tower\",\n    \"slant_style\": \"sight_line\",\n    \"base\": 20,\n    \"height\": null,\n    \"slant\": null,\n    \"angle\": 60\n  }\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
       "verification": {
         "passed": true,
         "checks": [
@@ -92,14 +57,39 @@
             "name": "drawn_matches_spec",
             "result": "pass",
             "detail": "the drawn angle is 60.0°, matching the figure"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "A cartoon desert scene shows a tall stone tower with a ladder on its side and a small person standing at its base on the right. A brown line forms a slanted triangle with a red right-angle outline that runs up the tower's edge and along the ground.",
+            "cost": 0.00031689999999999995,
+            "fix": "redraw"
+          },
+          {
+            "name": "overlay_aligned",
+            "result": "pass",
+            "detail": "the figure lines up with the scene"
+          },
+          {
+            "name": "no_text_in_scene",
+            "result": "pass",
+            "detail": "the judge sees no text in the scene",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "pass",
+            "detail": "the judge sees no drawing errors",
+            "fix": "redraw"
           }
         ],
-        "cost": 0.0
+        "cost": 0.00031689999999999995,
+        "redraw": false
       },
-      "cost_usd": 0.0007936
+      "cost_usd": 0.0035644960000000003
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.00146
+  "cost_usd": 0.003564
 }

@@ -1,27 +1,93 @@
 {
   "id": "SS-04",
   "route": "illustration",
-  "route_reason": "This is a farming scene where the student must identify the animals from the picture, and nothing read from the image needs exact measurement.",
+  "route_reason": "The student must identify the animals from the picture, but no exact measurements or readable text are needed, so a scene illustration fits.",
+  "must_show": "A farmer ploughing an open field. A wooden plough is hitched by a yoke to a pair of bullocks (castrated male cattle) walking side by side, and they are the clearly visible animals pulling it. The farmer guides the plough from behind. No other animals appear in the scene.",
+  "must_not_show": [
+    "any written words, letters, numbers or labels",
+    "horses, camels or elephants anywhere in the scene",
+    "the name of any animal written in the picture"
+  ],
   "spec": {
-    "prompt": "A farmer in a simple cotton kurta and turban guides a wooden plough across an open field of freshly turned brown soil. A pair of bullocks, sturdy cattle with broad backs and short horns, are yoked together side by side and pull the wooden plough in front of them. Dry green bushes and a few trees stand at the edge of the field under a clear blue sky. The bullocks are the clear focus of the composition, shown from the side so their body shape is easy to see.",
+    "prompt": "A farmer in a simple cotton shirt and turban walks behind a wooden plough in an open brown field being ploughed. A pair of bullocks with humps and yokes across their necks pulls the plough forward, their muscles and harness clearly visible. Freshly turned soil lies in neat furrows behind the plough. In the background there is a green tree and a small village house under a clear blue sky. The composition shows the farmer and the bullock pair clearly in the foreground. No text, letters, numbers or signs appear anywhere in the picture.",
     "style": "flat, colourful children's book illustration",
     "must_contain": [
-      "a farmer holding the handles of a wooden plough",
-      "a pair of bullocks yoked together pulling the plough",
-      "a freshly ploughed brown field"
+      "a farmer guiding a wooden plough",
+      "a pair of bullocks with a yoke pulling the plough",
+      "a ploughed field with furrows"
     ],
     "answer_from_image": true
   },
-  "must_show": "A farmer ploughing a field, with a pair of bullocks (yoked cattle) pulling a wooden plough. The bullocks must be clearly visible and distinct from horses, camels and elephants.",
-  "must_not_show": [
-    "any text, labels or names of the animals",
-    "horses, camels or elephants in the scene"
-  ],
-  "attempts": 1,
+  "attempts": 2,
   "attempt_log": [
     {
       "attempt": 1,
       "plan_reused": false,
+      "repair_feedback": null,
+      "verification": {
+        "passed": false,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid illustration"
+          },
+          {
+            "name": "no_quoted_text",
+            "result": "pass",
+            "detail": "the prompt asks for no written words"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "A farmer in a white kurta and orange turban walks beside a pair of brown bullocks joined by a yoke and rope. They are pulling an implement across a dry, sandy field with curved furrows. A mud-brick hut and trees stand in the background under a clear blue sky.",
+            "cost": 0.00033739999999999996
+          },
+          {
+            "name": "safety",
+            "result": "pass",
+            "detail": "the image model's safety filter found nothing",
+            "fix": "redraw"
+          },
+          {
+            "name": "must_contain",
+            "result": "fail",
+            "detail": "the judge does not see ['a farmer guiding a wooden plough']",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_text_in_image",
+            "result": "pass",
+            "detail": "the judge sees no text in the image",
+            "fix": "redraw"
+          },
+          {
+            "name": "suitable_for_children",
+            "result": "pass",
+            "detail": "the judge finds the image suitable for children",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "pass",
+            "detail": "the judge sees no drawing errors",
+            "fix": "redraw"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "pass",
+            "detail": "from the picture alone the judge chose 'Bullocks', matching the answer",
+            "fix": "redraw"
+          }
+        ],
+        "cost": 0.00033739999999999996,
+        "redraw": true
+      },
+      "cost_usd": 0.0033590960000000002
+    },
+    {
+      "attempt": 2,
+      "plan_reused": true,
       "repair_feedback": null,
       "verification": {
         "passed": true,
@@ -39,8 +105,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A farmer in a white kurta and orange turban walks behind a wooden plough, holding its handles. A pair of dark bullocks with curved horns, yoked together, pull the plough across a dry, furrowed brown field. Trees and a clear blue sky are in the background.",
-            "cost": 0.0002979
+            "detail": "A farmer in a white dhoti and turban walks behind a pair of brown bullocks with horns, which are pulling a wooden plough across a dry, open field. The field has deep furrows, and a thatched hut, a large tree and distant hills are visible in the background.",
+            "cost": 0.00034589999999999995
           },
           {
             "name": "safety",
@@ -74,16 +140,18 @@
           },
           {
             "name": "answer_consistency",
-            "result": "skipped",
-            "detail": "the answer does not depend on the picture"
+            "result": "pass",
+            "detail": "from the picture alone the judge chose 'Bullocks', matching the answer",
+            "fix": "redraw"
           }
         ],
-        "cost": 0.0
+        "cost": 0.00034589999999999995,
+        "redraw": false
       },
-      "cost_usd": 0.003002596
+      "cost_usd": 0.0027051960000000004
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.003003
+  "cost_usd": 0.006064
 }

@@ -1,7 +1,13 @@
 {
   "id": "SS-06",
   "route": "map",
-  "route_reason": "The question asks the student to identify a shaded state on a map of India, which only the map route can draw accurately.",
+  "route_reason": "The question depends on identifying a shaded state on a map of India's states, which only the map route can draw accurately.",
+  "must_show": "Outline map of India with Tamil Nadu labelled by name and Kerala shaded in, with no name written on Kerala. Tamil Nadu's western border with Kerala should be clearly visible.",
+  "must_not_show": [
+    "the name Kerala written on the map",
+    "any shading on Karnataka, Andhra Pradesh or Goa",
+    "the answer in the title or any label"
+  ],
   "spec": {
     "shaded": [
       "Kerala"
@@ -9,14 +15,9 @@
     "labelled": [
       "Tamil Nadu"
     ],
-    "title": "",
+    "title": "States of South India",
     "unknown": "Kerala"
   },
-  "must_show": "Outline map of India with Tamil Nadu labelled by name and Kerala shaded in a distinct colour, without a name label.",
-  "must_not_show": [
-    "the name Kerala written on the map",
-    "any label on the shaded state"
-  ],
   "attempts": 1,
   "attempt_log": [
     {
@@ -52,12 +53,13 @@
             "detail": "exactly the states ['Kerala'] are shaded"
           }
         ],
-        "cost": 0.0
+        "cost": 0.0,
+        "redraw": false
       },
-      "cost_usd": 0.0005356
+      "cost_usd": 0.0005542
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.000536
+  "cost_usd": 0.000554
 }

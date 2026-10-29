@@ -20,6 +20,8 @@ LABEL_BOX = {"boxstyle": "round,pad=0.25", "facecolor": "white", "edgecolor": "n
 COMMON_FIELDS = ["overlay", "scene", "background", "units", "unknown"]
 OVERLAY_FIELDS = {"right_triangle": ["vertical_object", "base", "height", "slant", "angle"],
                   "grid": ["columns", "rows", "square_size"]}
+WALL_WORDS = ("wall", "tower", "building", "house")
+DEFAULT_LAYOUT = {"wall_x": WALL_X, "ground_y": GROUND_Y, "top_y": HEIGHT - 9}
 
 JUDGE_PROMPT = """You check pictures for school questions. The picture is a scene with measurement lines and labels drawn on top.
 Reply with ONLY a JSON object, no other text:
@@ -30,8 +32,7 @@ Reply with ONLY a JSON object, no other text:
 LOCATE_PROMPT = """You find positions in a picture. Give positions as fractions: across from 0 (left edge) to 1 (right edge), and up from 0 (bottom edge) to 1 (top edge).
 Reply with ONLY a JSON object, no other text:
 {"left_edge": how far across the left side of the object is, "ground": how far up the ground is where the object stands, "top": how far up the top of the object is}"""
-WALL_WORDS = ("wall", "tower", "building", "house")
-DEFAULT_LAYOUT = {"wall_x": WALL_X, "ground_y": GROUND_Y, "top_y": HEIGHT - 9}
+
 
 def solve_triangle(spec):
     base, height, slant, angle = (spec[key] for key in ("base", "height", "slant", "angle"))
@@ -59,8 +60,10 @@ def solve_triangle(spec):
     return {"base": base, "height": height, "slant": math.hypot(base, height),
             "angle": math.degrees(math.atan2(height, base))}
 
+
 def grid_size(spec):
     return spec["columns"] * spec["square_size"], spec["rows"] * spec["square_size"]
+
 
 def unknown_value(spec):
     unknown = spec["unknown"]
@@ -74,6 +77,7 @@ def unknown_value(spec):
     if unknown is not None and unknown not in values:
         raise ValueError(f"unknown must be one of {list(values)} or null")
     return values.get(unknown)
+
 
 def check_spec(plan, question):
     spec = plan["spec"]
@@ -106,6 +110,7 @@ def check_spec(plan, question):
     checks.append(check_values_in_notes(given, question))
     return checks
 
+
 def draw_scene(ax, spec):
     triangle = spec["overlay"] == "right_triangle"
     if spec["background"] == "drawn":
@@ -121,7 +126,7 @@ def draw_scene(ax, spec):
                   "seen from the side, with plenty of open ground to its left and nothing leaning on it.")
     else:
         layout = "A top-down view, with the area filling the middle of the picture."
-        prompt = (f"{spec['scene']} {layout} Flat, colourful children's book illustration. "
+    prompt = (f"{spec['scene']} {layout} Flat, colourful children's book illustration. "
               "No ladder, string, rope, lines or measurements. No text, letters, numbers, signs or writing anywhere.")
 
     with tempfile.TemporaryDirectory() as folder:
@@ -137,6 +142,7 @@ def draw_scene(ax, spec):
                            image_path=scene_path)
     return result["cost"] + located["cost"], read_layout(located["text"])
 
+
 def read_layout(text):
     try:
         found = json.loads(text[text.find("{"):text.rfind("}") + 1])
@@ -147,8 +153,10 @@ def read_layout(text):
         return DEFAULT_LAYOUT
     return {"wall_x": x * WIDTH, "ground_y": ground * HEIGHT, "top_y": min(top, 0.95) * HEIGHT}
 
+
 def label(ax, x, y, text):
     ax.text(x, y, text, ha="center", va="center", fontsize=14, bbox=LABEL_BOX)
+
 
 def label_text(spec, key):
     if spec["unknown"] == key:
@@ -156,6 +164,7 @@ def label_text(spec, key):
     if spec[key] is None:
         return None
     return f"{spec[key]:g}°" if key == "angle" else f"{spec[key]:g} {spec['units']}"
+
 
 def draw_triangle(ax, spec, layout):
     solved = solve_triangle(spec)
@@ -184,6 +193,7 @@ def draw_triangle(ax, spec, layout):
             label(ax, x, y, label_text(spec, key))
     return {"foot": list(foot), "top": list(top)}
 
+
 def draw_grid(ax, spec):
     columns, rows = spec["columns"], spec["rows"]
     cell = min(80 / columns, 58 / rows)
@@ -195,6 +205,7 @@ def draw_grid(ax, spec):
     ax.add_patch(Rectangle((left, bottom), columns * cell, rows * cell, fill=False, edgecolor=RED, linewidth=3))
     size = f"{spec['square_size']:g} {spec['units']}"
     label(ax, WIDTH / 2, bottom - 5, f"Each square is {size} × {size}")
+
 
 def render(spec, png_path, svg_path):
     fig = plt.figure(figsize=(8, 6))
@@ -216,6 +227,7 @@ def render(spec, png_path, svg_path):
         plt.close(fig)
     return details
 
+
 def check_render(plan, files, question=None):
     spec = plan["spec"]
     checks = []
@@ -227,10 +239,12 @@ def check_render(plan, files, question=None):
                             f"the drawn angle is {drawn:.1f}°, matching the figure",
                             f"the drawn angle is {drawn:.1f}°, but the figure needs {expected:.1f}°"))
     if spec["background"] == "generated":
-        checks.extend(judge_checks(spec, files))
+        checks.extend(judge_checks(plan, files))
     return checks
 
-def judge_checks(spec, files):
+
+def judge_checks(plan, files):
+    spec = plan["spec"]
     target = f"the {spec['vertical_object']} and the ground" if spec["overlay"] == "right_triangle" else "the area shown"
     result = call_llm(JUDGE_PROMPT, f"Set aligned to whether the drawn figure lines up with {target}.",
                       max_tokens=1500, image_path=files["png"])
@@ -254,6 +268,12 @@ def judge_checks(spec, files):
     ]
     for item in scene_checks:
         item["fix"] = "redraw"
+
     aligned = check("overlay_aligned", report.get("aligned") is True, "the figure lines up with the scene",
                     "the figure does not line up with the scene; set background to drawn to use a plain drawn scene")
+    if aligned["result"] == "fail":
+        plan["alignment_failures"] = plan.get("alignment_failures", 0) + 1
+        if plan["alignment_failures"] < 2:
+            aligned["detail"] = "the figure does not line up with the scene; trying a new generated scene"
+            aligned["fix"] = "redraw"
     return [described, aligned] + scene_checks

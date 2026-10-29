@@ -1,28 +1,30 @@
 {
   "id": "M-14",
   "route": "layered",
-  "route_reason": "The question describes a realistic scene (a broken tree) with exact measurements and an angle, so it needs the layered route with a right-triangle overlay drawn over the scene.",
+  "route_reason": "The question is set in an illustrated outdoor scene but needs exact measurements (8 m and 30°) drawn as a right triangle formed by the trunk, the ground and the bent broken part.",
+  "must_show": "An illustrated tree standing upright on flat ground, with its top broken off and bent down so the broken part reaches the ground. The 8 m distance along the ground from the foot of the tree to the point where the top touches, and the 30° angle between the bent part and the ground, are marked.",
+  "must_not_show": [
+    "the answer 8√3 m",
+    "the height of the standing trunk",
+    "the length of the broken part",
+    "the options 8 m, 16 m, 16√3 m"
+  ],
   "spec": {
     "overlay": "right_triangle",
-    "scene": "A tall tree in a grassy park after a storm. Its upper part has snapped and bent down so the broken top touches the grass on the ground, with a few fallen leaves and a clear blue sky.",
+    "scene": "A tall tree with a thick brown trunk and green leaves on a grassy field under a clear blue sky, the broken top section bent down toward the ground, with no ladder, string, rope, lines, numbers or words in the picture.",
     "style": "flat, colourful children's book illustration",
     "background": "generated",
     "units": "m",
     "unknown": null,
     "vertical_object": "tree trunk",
+    "target": "the point on the trunk where the tree broke",
     "slant_style": "ladder",
+    "dashed": false,
     "base": 8,
     "height": null,
     "slant": null,
     "angle": 30
   },
-  "must_show": "An illustrated tree in a storm-hit park. The standing trunk is upright, and its broken upper part bends down so the tip rests on the grass. The 8 m distance along the ground from the trunk's foot to the tip, and the 30° angle between the bent part and the ground, are marked.",
-  "must_not_show": [
-    "the height of the tree before it broke",
-    "the value 8√3",
-    "the total height of the tree as a number",
-    "the answer options"
-  ],
   "attempts": 3,
   "attempt_log": [
     {
@@ -53,14 +55,15 @@
             "detail": "every value appears in the image notes"
           }
         ],
-        "cost": 0.0
+        "cost": 0.0,
+        "redraw": false
       },
-      "cost_usd": 0.0008787
+      "cost_usd": 0.0010123
     },
     {
       "attempt": 2,
       "plan_reused": false,
-      "repair_feedback": "Your previous plan for this question failed these checks:\n- answer_consistency: the height worked out from the figure is 4.62, but the answer is '8√3 m'\n\nYour previous plan was:\n{\n  \"route\": \"layered\",\n  \"spec\": {\n    \"overlay\": \"right_triangle\",\n    \"scene\": \"A tall tree in an open grassy field after a storm, with a broken upper part bent down toward the ground. Scattered leaves on the grass, a clear sky, and a few distant trees.\",\n    \"style\": \"flat, colourful children's book illustration\",\n    \"background\": \"generated\",\n    \"units\": \"m\",\n    \"unknown\": \"height\",\n    \"vertical_object\": \"tree trunk\",\n    \"slant_style\": \"ladder\",\n    \"base\": 8,\n    \"height\": null,\n    \"slant\": null,\n    \"angle\": 30\n  }\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
+      "repair_feedback": "Your previous plan for this question failed these checks:\n- answer_consistency: the height worked out from the figure is 4.62, but the answer is '8√3 m'\n\nYour previous plan was:\n{\n  \"route\": \"layered\",\n  \"spec\": {\n    \"overlay\": \"right_triangle\",\n    \"scene\": \"A grassy open field during a storm, with dark clouds and a few bent grass blades, and one tall, sturdy tree trunk standing upright on the left side. No broken branches or fallen parts are drawn.\",\n    \"style\": \"flat, colourful children's book illustration\",\n    \"background\": \"generated\",\n    \"units\": \"m\",\n    \"unknown\": \"height\",\n    \"vertical_object\": \"tree trunk\",\n    \"target\": \"the point where the tree broke\",\n    \"slant_style\": \"ladder\",\n    \"dashed\": false,\n    \"base\": 8,\n    \"height\": null,\n    \"slant\": null,\n    \"angle\": 30\n  }\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
       "verification": {
         "passed": false,
         "checks": [
@@ -72,7 +75,7 @@
         ],
         "cost": 0.0
       },
-      "cost_usd": 0.0013285999999999999
+      "cost_usd": 0.0013363
     },
     {
       "attempt": 3,
@@ -97,19 +100,45 @@
             "detail": "every value appears in the image notes"
           },
           {
-            "name": "generate",
+            "name": "drawn_matches_spec",
+            "result": "pass",
+            "detail": "the drawn angle is 30.0°, matching the figure"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "A cartoon dead tree with a few leafy branches stands on a grassy field under a blue sky. A red right triangle with a 30° angle is drawn beside the trunk, with its base on the ground and its vertical side near the trunk's left edge.",
+            "cost": 0.0003782,
+            "fix": "redraw"
+          },
+          {
+            "name": "overlay_aligned",
             "result": "fail",
-            "detail": "Drawing failed: ValueError(\"image generation failed: cannot access local variable 'prompt' where it is not associated with a value\")"
+            "detail": "the figure does not line up with the scene; trying a new generated scene",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_text_in_scene",
+            "result": "pass",
+            "detail": "the judge sees no text in the scene",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "pass",
+            "detail": "the judge sees no drawing errors",
+            "fix": "redraw"
           }
         ],
-        "cost": 0.0
+        "cost": 0.0003782,
+        "redraw": true
       },
-      "cost_usd": 0.0010161
+      "cost_usd": 0.0041553960000000004
     }
   ],
   "status": "flagged",
   "flag_reason": [
-    "Drawing failed: ValueError(\"image generation failed: cannot access local variable 'prompt' where it is not associated with a value\")"
+    "the figure does not line up with the scene; trying a new generated scene"
   ],
-  "cost_usd": 0.003223
+  "cost_usd": 0.006504
 }

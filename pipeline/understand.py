@@ -114,22 +114,16 @@ For the illustration route, the spec must be:
 
 For the layered route, the spec has these fields for every figure:
 - overlay: right_triangle (a ladder, line of sight or string forming a right triangle with something vertical and the ground) or grid (squares marked over an area).
-- scene: a description of the background scene for an image model. Never include the ladder, measurement lines, grid, words or numbers.
+- scene: a description of the background scene for an image model. Never include the ladder, slide, ramp, string, rope, measurement lines, grid, words or numbers: the code draws the slanted line itself.
 - style: a simple style suitable for a school paper, such as "flat, colourful children's book illustration".
 - background: "generated" to draw the scene with an image model, or "drawn" for a plain drawn scene. Use "generated" unless told otherwise.
 - units: the unit of length, such as "m".
 - unknown: what the student must find.
 
 For a right_triangle overlay, also include:
-{
-  "vertical_object": "brick wall",
-  "slant_style": "ladder",
-  "base": null,
-  "height": null,
-  "slant": 10,
-  "angle": 60
-}
+{"vertical_object": "brick wall", "target": "the top of the wall", "dashed": false, "base": null, "height": null, "slant": 10, "angle": 60}
 - vertical_object: the upright thing, such as a brick wall, tower or tree.
+- target: where the slanted line ends, such as "the top of the tower" or "the window".
 - slant_style: ladder, sight_line (for an angle of elevation) or string (for a kite).
 - base: the distance along the ground; height: the height up the vertical object; slant: the length of the slanted line; angle: the angle in degrees between the ground and the slanted line. Give only the values the student is told; set the rest to null.
 - unknown: base, height, slant, angle or null. It must be null above.
@@ -153,7 +147,11 @@ def understand(question, feedback = None):
     user_prompt = json.dumps(question, ensure_ascii=False, indent=2)
     if feedback:
         user_prompt += "\n\n" + feedback
-    result = call_llm(SYSTEM_PROMPT, user_prompt)
+    try:
+      result = call_llm(SYSTEM_PROMPT, user_prompt)
+    except Exception as error:
+      return {"must_show": "", "must_not_show": [], "route": "none", "route_reason": "The planning call failed.",
+              "spec": {}, "error": f"planning call failed: {error}", "cost": 0.0}
 
     try:
         plan = parse_plan(result["text"])

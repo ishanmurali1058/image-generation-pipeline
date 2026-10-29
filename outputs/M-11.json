@@ -1,70 +1,36 @@
 {
   "id": "M-11",
   "route": "layered",
-  "route_reason": "The question needs exact values (30 m height and 60° angle) drawn over a realistic scene, so the layered route with a right-triangle overlay fits better than illustration.",
+  "route_reason": "The question describes a realistic outdoor scene and needs exact measurements (30 m height and 60° angle) drawn over it, which is what the layered route is built for.",
+  "must_show": "A sunny park scene with green grass, trees and a child standing on the ground looking up at the sky. A right triangle is drawn over the scene: a vertical line marked 30 m from the ground up to the kite, a straight string from the ground to the kite, and the 60° angle between the string and the ground. The string's length is not labelled.",
+  "must_not_show": [
+    "the length of the string",
+    "the answer 20√3 m",
+    "the answer options",
+    "any value for the string length"
+  ],
   "spec": {
     "overlay": "right_triangle",
-    "scene": "A sunny open park with green grass, tall trees and a few people walking on a path, with a blue sky and a kite flying high above the ground",
+    "scene": "A sunny park with green grass, leafy trees and a blue sky with a few white clouds. A child stands on the grass at the bottom of the picture, looking up. No kite, string or lines are drawn in the scene.",
     "style": "flat, colourful children's book illustration",
-    "background": "drawn",
+    "background": "generated",
     "units": "m",
     "unknown": "slant",
-    "vertical_object": "vertical line from the kite straight down to the ground",
+    "vertical_object": "tall tree",
+    "target": "the kite",
     "slant_style": "string",
+    "dashed": false,
     "base": null,
     "height": 30,
     "slant": null,
     "angle": 60
   },
-  "must_show": "An illustrated park with grass, trees and people, and a kite high in the sky. A straight string runs from the ground to the kite. The kite's height of 30 m is marked as a vertical line from the kite to the ground, and the 60° angle between the string and the ground is marked.",
-  "must_not_show": [
-    "the length of the string",
-    "the value 20√3 or its decimal approximation",
-    "the answer options"
-  ],
-  "attempts": 2,
+  "attempts": 1,
   "attempt_log": [
     {
       "attempt": 1,
       "plan_reused": false,
       "repair_feedback": null,
-      "verification": {
-        "passed": false,
-        "checks": [
-          {
-            "name": "spec_format",
-            "result": "pass",
-            "detail": "the spec is a valid layered figure"
-          },
-          {
-            "name": "unknown_hidden",
-            "result": "pass",
-            "detail": "the unknown slant has no value, so it is labelled '?'"
-          },
-          {
-            "name": "answer_consistency",
-            "result": "pass",
-            "detail": "the slant worked out from the figure is 34.64, matching the answer '20√3 m'"
-          },
-          {
-            "name": "values_match_notes",
-            "result": "pass",
-            "detail": "every value appears in the image notes"
-          },
-          {
-            "name": "generate",
-            "result": "fail",
-            "detail": "Drawing failed: ValueError(\"image generation failed: cannot access local variable 'prompt' where it is not associated with a value\")"
-          }
-        ],
-        "cost": 0.0
-      },
-      "cost_usd": 0.0007186
-    },
-    {
-      "attempt": 2,
-      "plan_reused": false,
-      "repair_feedback": "Your previous plan for this question failed these checks:\n- generate: Drawing failed: ValueError(\"image generation failed: cannot access local variable 'prompt' where it is not associated with a value\")\n\nYour previous plan was:\n{\n  \"route\": \"layered\",\n  \"spec\": {\n    \"overlay\": \"right_triangle\",\n    \"scene\": \"A sunny open park with green grass, tall trees and a few people walking on a path, with a blue sky and a kite flying high above the ground\",\n    \"style\": \"flat, colourful children's book illustration\",\n    \"background\": \"generated\",\n    \"units\": \"m\",\n    \"unknown\": \"slant\",\n    \"vertical_object\": \"vertical line from the kite straight down to the ground\",\n    \"slant_style\": \"string\",\n    \"base\": null,\n    \"height\": 30,\n    \"slant\": null,\n    \"angle\": 60\n  }\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
       "verification": {
         "passed": true,
         "checks": [
@@ -92,14 +58,39 @@
             "name": "drawn_matches_spec",
             "result": "pass",
             "detail": "the drawn angle is 60.0°, matching the figure"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "A boy in a green shirt looks up toward a large leafy tree on the left, with a brown triangle overlaid on the scene. The triangle's vertical side runs along the edge of a tall cypress on the right, and its base lies along the grass.",
+            "cost": 0.0003591,
+            "fix": "redraw"
+          },
+          {
+            "name": "overlay_aligned",
+            "result": "pass",
+            "detail": "the figure lines up with the scene"
+          },
+          {
+            "name": "no_text_in_scene",
+            "result": "pass",
+            "detail": "the judge sees no text in the scene",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "pass",
+            "detail": "the judge sees no drawing errors",
+            "fix": "redraw"
           }
         ],
-        "cost": 0.0
+        "cost": 0.0003591,
+        "redraw": false
       },
-      "cost_usd": 0.0010437
+      "cost_usd": 0.0037136960000000007
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.001762
+  "cost_usd": 0.003714
 }

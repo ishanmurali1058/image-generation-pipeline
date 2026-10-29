@@ -1,25 +1,21 @@
 {
   "id": "SS-02",
   "route": "map",
-  "route_reason": "The student must identify a shaded state on a map of India, which only the map route can draw accurately.",
+  "route_reason": "The question asks the student to identify one shaded state on an outline map of India, which is exactly what the map route supports.",
+  "must_show": "An outline map of India with exactly one state, Assam, shaded. No state names are written on the map.",
+  "must_not_show": [
+    "The name Assam written on or near the map",
+    "Any title or label that names the answer",
+    "Names of the other option states"
+  ],
   "spec": {
     "shaded": [
       "Assam"
     ],
-    "labelled": [
-      "Kerala",
-      "West Bengal",
-      "Karnataka"
-    ],
-    "title": "Outline map of India",
+    "labelled": [],
+    "title": "",
     "unknown": "Assam"
   },
-  "must_show": "An outline map of India with only Assam shaded in one colour, and the other states and union territories left unshaded. The labelled states are written on the map.",
-  "must_not_show": [
-    "the name Assam written on the map",
-    "any shading on states other than Assam",
-    "the answer in the title"
-  ],
   "attempts": 1,
   "attempt_log": [
     {
@@ -55,12 +51,13 @@
             "detail": "exactly the states ['Assam'] are shaded"
           }
         ],
-        "cost": 0.0
+        "cost": 0.0,
+        "redraw": false
       },
-      "cost_usd": 0.0005212999999999999
+      "cost_usd": 0.00047740000000000006
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.000521
+  "cost_usd": 0.000477
 }

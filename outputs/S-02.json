@@ -1,7 +1,12 @@
 {
   "id": "S-02",
   "route": "circuit",
-  "route_reason": "The question asks how a parallel bulb circuit behaves, which needs an exact electric circuit diagram.",
+  "route_reason": "The question asks whether a bulb glows in a circuit with parallel branches, which is exactly what the circuit route draws with exact component types and connections.",
+  "must_show": "A cell as the source, a closed switch S on the main wire, and bulbs B1 and B2 connected in parallel between the same two junction points, with each bulb labelled.",
+  "must_not_show": [
+    "the outcome of B1 fusing",
+    "any indication that B2 keeps glowing or stops glowing"
+  ],
   "spec": {
     "source": {
       "type": "cell",
@@ -32,11 +37,6 @@
       ]
     ]
   },
-  "must_show": "A cell, a closed switch S in the main wire, and bulbs B1 and B2 connected in parallel between the same two junctions.",
-  "must_not_show": [
-    "the fact that B1 has fused",
-    "the answer about whether B2 glows"
-  ],
   "attempts": 1,
   "attempt_log": [
     {
@@ -82,12 +82,13 @@
             "detail": "the drawing has exactly the 4 symbols in the spec"
           }
         ],
-        "cost": 0.0
+        "cost": 0.0,
+        "redraw": false
       },
-      "cost_usd": 0.0005652000000000001
+      "cost_usd": 0.0006113
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.000565
+  "cost_usd": 0.000611
 }

@@ -1,70 +1,36 @@
 {
   "id": "M-03",
   "route": "layered",
-  "route_reason": "The question is set in a scene with a ladder, wall and ground, and needs an exact right-triangle overlay showing the slant length and angle.",
+  "route_reason": "The question is set in a realistic scene (a ladder against a wall) and needs exact measurements and an angle drawn on top, which is the layered route's purpose.",
+  "must_show": "An illustrated brick wall standing vertically on flat ground, with a ladder leaning from the ground up against the wall. The ladder's length (10 m) and the 60° angle between the ladder and the ground are marked. The height up the wall is not labelled.",
+  "must_not_show": [
+    "the height reached up the wall",
+    "the answer 5√3 m",
+    "the answer options",
+    "any label or measurement on the wall itself"
+  ],
   "spec": {
     "overlay": "right_triangle",
-    "scene": "A plain brick wall standing upright on flat, open ground under a clear sky, seen from the side at eye level, with no other objects or people.",
+    "scene": "A flat, sunny outdoor area with a plain brick wall standing upright on level ground, with a clear blue sky and a little grass at the base of the wall. Nothing leaning against the wall.",
     "style": "flat, colourful children's book illustration",
-    "background": "drawn",
+    "background": "generated",
     "units": "m",
     "unknown": "height",
     "vertical_object": "brick wall",
+    "target": "the top of the wall where the ladder touches it",
     "slant_style": "ladder",
+    "dashed": false,
     "base": null,
     "height": null,
     "slant": 10,
     "angle": 60
   },
-  "must_show": "An illustrated brick wall standing upright on flat ground under a clear sky. A 10 m ladder leans from the ground up against the wall, with its length marked as 10 m and the 60° angle with the ground marked. The height up the wall is not labelled.",
-  "must_not_show": [
-    "the height the ladder reaches on the wall",
-    "the value 5√3",
-    "any answer option"
-  ],
-  "attempts": 2,
+  "attempts": 1,
   "attempt_log": [
     {
       "attempt": 1,
       "plan_reused": false,
       "repair_feedback": null,
-      "verification": {
-        "passed": false,
-        "checks": [
-          {
-            "name": "spec_format",
-            "result": "pass",
-            "detail": "the spec is a valid layered figure"
-          },
-          {
-            "name": "unknown_hidden",
-            "result": "pass",
-            "detail": "the unknown height has no value, so it is labelled '?'"
-          },
-          {
-            "name": "answer_consistency",
-            "result": "pass",
-            "detail": "the height worked out from the figure is 8.66, matching the answer '5√3 m'"
-          },
-          {
-            "name": "values_match_notes",
-            "result": "pass",
-            "detail": "every value appears in the image notes"
-          },
-          {
-            "name": "generate",
-            "result": "fail",
-            "detail": "Drawing failed: ValueError(\"image generation failed: cannot access local variable 'prompt' where it is not associated with a value\")"
-          }
-        ],
-        "cost": 0.0
-      },
-      "cost_usd": 0.0005792000000000001
-    },
-    {
-      "attempt": 2,
-      "plan_reused": false,
-      "repair_feedback": "Your previous plan for this question failed these checks:\n- generate: Drawing failed: ValueError(\"image generation failed: cannot access local variable 'prompt' where it is not associated with a value\")\n\nYour previous plan was:\n{\n  \"route\": \"layered\",\n  \"spec\": {\n    \"overlay\": \"right_triangle\",\n    \"scene\": \"A plain brick wall standing upright on flat, open ground under a clear sky, seen from the side at eye level, with no other objects or people.\",\n    \"style\": \"flat, colourful children's book illustration\",\n    \"background\": \"generated\",\n    \"units\": \"m\",\n    \"unknown\": \"height\",\n    \"vertical_object\": \"brick wall\",\n    \"slant_style\": \"ladder\",\n    \"base\": null,\n    \"height\": null,\n    \"slant\": 10,\n    \"angle\": 60\n  }\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
       "verification": {
         "passed": true,
         "checks": [
@@ -92,14 +58,39 @@
             "name": "drawn_matches_spec",
             "result": "pass",
             "detail": "the drawn angle is 60.0°, matching the figure"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "A brown right triangle with a 10 m hypotenuse and a 60° angle at the ground is drawn over a red-brick wall. The red vertical and horizontal lines run along the wall's left edge and the ground.",
+            "cost": 0.0002346,
+            "fix": "redraw"
+          },
+          {
+            "name": "overlay_aligned",
+            "result": "pass",
+            "detail": "the figure lines up with the scene"
+          },
+          {
+            "name": "no_text_in_scene",
+            "result": "pass",
+            "detail": "the judge sees no text in the scene",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "pass",
+            "detail": "the judge sees no drawing errors",
+            "fix": "redraw"
           }
         ],
-        "cost": 0.0
+        "cost": 0.0002346,
+        "redraw": false
       },
-      "cost_usd": 0.0007049000000000001
+      "cost_usd": 0.0033812960000000006
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.001284
+  "cost_usd": 0.003381
 }

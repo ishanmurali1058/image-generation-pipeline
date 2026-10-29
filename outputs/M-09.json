@@ -1,7 +1,14 @@
 {
   "id": "M-09",
   "route": "geometry",
-  "route_reason": "The figure is a plain triangle made of lines, points and angle marks, so the geometry route fits.",
+  "route_reason": "The figure is a plain triangle made only of lines and points, with equal-side tick marks and given angle values.",
+  "must_show": "Isosceles triangle ABC with vertices A, B and C labelled. Sides AB and AC carry matching tick marks to show they are equal. Angle A is marked as 50°. Angle B is marked with a question mark.",
+  "must_not_show": [
+    "the value of angle B",
+    "the value of angle C",
+    "any side lengths",
+    "the answer 65°"
+  ],
   "spec": {
     "shape": "triangle",
     "vertices": [
@@ -22,13 +29,6 @@
     "units": "cm",
     "unknown": "B"
   },
-  "must_show": "Isosceles triangle ABC with vertices A, B and C. Sides AB and AC carry matching tick marks to show they are equal. Angle A is marked as 50°. Angle B is marked with a question mark. No side lengths are shown.",
-  "must_not_show": [
-    "the value of angle B",
-    "the value of angle C",
-    "any side lengths",
-    "the answer options"
-  ],
   "attempts": 3,
   "attempt_log": [
     {
@@ -49,14 +49,15 @@
             "detail": "the givens do not fix the triangle's shape (need two angles, three sides, or two sides and the angle between them)"
           }
         ],
-        "cost": 0.0
+        "cost": 0.0,
+        "redraw": false
       },
-      "cost_usd": 0.0005559000000000001
+      "cost_usd": 0.000696
     },
     {
       "attempt": 2,
       "plan_reused": false,
-      "repair_feedback": "Your previous plan for this question failed these checks:\n- triangle_solvable: the givens do not fix the triangle's shape (need two angles, three sides, or two sides and the angle between them)\n\nYour previous plan was:\n{\n  \"route\": \"geometry\",\n  \"spec\": {\n    \"shape\": \"triangle\",\n    \"vertices\": [\n      \"A\",\n      \"B\",\n      \"C\"\n    ],\n    \"angles\": {\n      \"A\": 50,\n      \"B\": null,\n      \"C\": null\n    },\n    \"sides\": {\n      \"AB\": null,\n      \"BC\": null,\n      \"CA\": null\n    },\n    \"units\": \"cm\",\n    \"unknown\": \"B\"\n  }\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
+      "repair_feedback": "Your previous plan for this question failed these checks:\n- triangle_solvable: the givens do not fix the triangle's shape (need two angles, three sides, or two sides and the angle between them)\n\nYour previous plan was:\n{\n  \"route\": \"geometry\",\n  \"spec\": {\n    \"shape\": \"triangle\",\n    \"vertices\": [\n      \"A\",\n      \"B\",\n      \"C\"\n    ],\n    \"angles\": {\n      \"A\": 50,\n      \"B\": null,\n      \"C\": null\n    },\n    \"sides\": {\n      \"AB\": null,\n      \"BC\": null,\n      \"CA\": null\n    },\n    \"units\": \"degrees\",\n    \"unknown\": \"B\"\n  }\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
       "verification": {
         "passed": false,
         "checks": [
@@ -91,9 +92,10 @@
             "detail": "angle B in the figure is 65, matching the answer '65°'"
           }
         ],
-        "cost": 0.0
+        "cost": 0.0,
+        "redraw": false
       },
-      "cost_usd": 0.0009877
+      "cost_usd": 0.0009964000000000002
     },
     {
       "attempt": 3,
@@ -113,14 +115,15 @@
             "detail": "the givens do not fix the triangle's shape (need two angles, three sides, or two sides and the angle between them)"
           }
         ],
-        "cost": 0.0
+        "cost": 0.0,
+        "redraw": false
       },
-      "cost_usd": 0.0005922000000000001
+      "cost_usd": 0.0005817999999999999
     }
   ],
   "status": "flagged",
   "flag_reason": [
     "the givens do not fix the triangle's shape (need two angles, three sides, or two sides and the angle between them)"
   ],
-  "cost_usd": 0.002136
+  "cost_usd": 0.002274
 }

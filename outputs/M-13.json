@@ -1,28 +1,30 @@
 {
   "id": "M-13",
   "route": "layered",
-  "route_reason": "The question is set in a park scene but needs exact measurements (2 m height and 30° angle) drawn over the picture, which only the layered route can do.",
+  "route_reason": "The scene is a realistic park with exact measurements (2 m height and 30° angle) drawn over it, which fits the layered route with a right triangle overlay.",
+  "must_show": "A plain drawn park scene with a children's play tower of height 2 m standing on the ground, and a slide running from the top of the tower down to the ground at 30° to the ground. The 2 m height and the 30° angle are marked. The slide's length is not labelled.",
+  "must_not_show": [
+    "the slide's length",
+    "the answer 4 m",
+    "any answer option"
+  ],
   "spec": {
     "overlay": "right_triangle",
-    "scene": "A sunny public park with green grass, a few trees and a wooden bench, and a metal children's slide structure with a small platform at its top. Clear daytime sky, no people in the foreground.",
+    "scene": "A sunny children's park with green grass, a few trees and a bench, and a small play tower with a flat top standing on the ground at the side of the scene.",
     "style": "flat, colourful children's book illustration",
     "background": "drawn",
     "units": "m",
     "unknown": "slant",
-    "vertical_object": "slide tower",
+    "vertical_object": "play tower",
+    "target": "the top of the play tower",
     "slant_style": "ladder",
+    "dashed": false,
     "base": null,
     "height": 2,
     "slant": null,
     "angle": 30
   },
-  "must_show": "A sunny illustrated park with a children's slide. The slide's vertical height of 2 m is marked from the ground to the top of the slide, and the 30° angle between the slide and the ground is marked. The slide's length is not labelled.",
-  "must_not_show": [
-    "the slide's length",
-    "the answer 4 m",
-    "the options 2 √3 m or 4 √3 m"
-  ],
-  "attempts": 2,
+  "attempts": 3,
   "attempt_log": [
     {
       "attempt": 1,
@@ -52,19 +54,107 @@
             "detail": "every value appears in the image notes"
           },
           {
-            "name": "generate",
+            "name": "drawn_matches_spec",
+            "result": "pass",
+            "detail": "the drawn angle is 30.0°, matching the figure"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "A cartoon park scene with benches, trees, and a tall yellow ladder-style play tower on a sandy path. A red right-triangle overlay with a 30° angle, a \"?\" label, and a \"2 m\" label is drawn across the ground and beside the tower.",
+            "cost": 0.0003555,
+            "fix": "redraw"
+          },
+          {
+            "name": "overlay_aligned",
             "result": "fail",
-            "detail": "Drawing failed: ValueError(\"image generation failed: cannot access local variable 'prompt' where it is not associated with a value\")"
+            "detail": "the figure does not line up with the scene; trying a new generated scene",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_text_in_scene",
+            "result": "pass",
+            "detail": "the judge sees no text in the scene",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "pass",
+            "detail": "the judge sees no drawing errors",
+            "fix": "redraw"
           }
         ],
-        "cost": 0.0
+        "cost": 0.0003555,
+        "redraw": true
       },
-      "cost_usd": 0.0006712
+      "cost_usd": 0.0036535960000000003
     },
     {
       "attempt": 2,
+      "plan_reused": true,
+      "repair_feedback": null,
+      "verification": {
+        "passed": false,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid layered figure"
+          },
+          {
+            "name": "unknown_hidden",
+            "result": "pass",
+            "detail": "the unknown slant has no value, so it is labelled '?'"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "pass",
+            "detail": "the slant worked out from the figure is 4, matching the answer '4 m'"
+          },
+          {
+            "name": "values_match_notes",
+            "result": "pass",
+            "detail": "every value appears in the image notes"
+          },
+          {
+            "name": "drawn_matches_spec",
+            "result": "pass",
+            "detail": "the drawn angle is 30.0°, matching the figure"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "A cartoon park with a bench, several trees, and a wooden play tower with a ladder and red top on a sandy patch. A red right triangle with a 30° angle is overlaid, with its vertical side near the tower's left edge.",
+            "cost": 0.0004935,
+            "fix": "redraw"
+          },
+          {
+            "name": "overlay_aligned",
+            "result": "fail",
+            "detail": "the figure does not line up with the scene; set background to drawn to use a plain drawn scene"
+          },
+          {
+            "name": "no_text_in_scene",
+            "result": "pass",
+            "detail": "the judge sees no text in the scene",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "pass",
+            "detail": "the judge sees no drawing errors",
+            "fix": "redraw"
+          }
+        ],
+        "cost": 0.0004935,
+        "redraw": false
+      },
+      "cost_usd": 0.003001796
+    },
+    {
+      "attempt": 3,
       "plan_reused": false,
-      "repair_feedback": "Your previous plan for this question failed these checks:\n- generate: Drawing failed: ValueError(\"image generation failed: cannot access local variable 'prompt' where it is not associated with a value\")\n\nYour previous plan was:\n{\n  \"route\": \"layered\",\n  \"spec\": {\n    \"overlay\": \"right_triangle\",\n    \"scene\": \"A sunny public park with green grass, a few trees and a bench, and a metal children's slide with a ladder at one end and a slide surface sloping down to the ground. Clear daytime sky, no people in the foreground.\",\n    \"style\": \"flat, colourful children's book illustration\",\n    \"background\": \"generated\",\n    \"units\": \"m\",\n    \"unknown\": \"slant\",\n    \"vertical_object\": \"slide tower\",\n    \"slant_style\": \"ladder\",\n    \"base\": null,\n    \"height\": 2,\n    \"slant\": null,\n    \"angle\": 30\n  }\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
+      "repair_feedback": "Your previous plan for this question failed these checks:\n- overlay_aligned: the figure does not line up with the scene; set background to drawn to use a plain drawn scene\n\nYour previous plan was:\n{\n  \"route\": \"layered\",\n  \"spec\": {\n    \"overlay\": \"right_triangle\",\n    \"scene\": \"A sunny children's park with green grass, a few trees and a bench, and a small playground play tower with a flat top at the side of the scene, standing on the ground.\",\n    \"style\": \"flat, colourful children's book illustration\",\n    \"background\": \"generated\",\n    \"units\": \"m\",\n    \"unknown\": \"slant\",\n    \"vertical_object\": \"play tower\",\n    \"target\": \"the top of the slide\",\n    \"slant_style\": \"ladder\",\n    \"dashed\": false,\n    \"base\": null,\n    \"height\": 2,\n    \"slant\": null,\n    \"angle\": 30\n  },\n  \"answer_check\": {\n    \"operation\": \"value\",\n    \"labels\": [\n      \"slant\"\n    ]\n  }\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
       "verification": {
         "passed": true,
         "checks": [
@@ -94,12 +184,13 @@
             "detail": "the drawn angle is 30.0°, matching the figure"
           }
         ],
-        "cost": 0.0
+        "cost": 0.0,
+        "redraw": false
       },
-      "cost_usd": 0.000863
+      "cost_usd": 0.0008248
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.001534
+  "cost_usd": 0.00748
 }

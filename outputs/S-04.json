@@ -1,7 +1,12 @@
 {
   "id": "S-04",
   "route": "circuit",
-  "route_reason": "This is an electric circuit with parallel resistors, which the circuit route draws exactly with correct component labels and values.",
+  "route_reason": "The question is about the total resistance of a parallel resistor arrangement, which is a standard electric circuit diagram.",
+  "must_show": "A battery connected to two resistors wired in parallel: R1 = 6 Ω on one branch and R2 = 3 Ω on the other branch, with both branches joining the same two points on the battery's wires.",
+  "must_not_show": [
+    "the total resistance value (2 Ω)",
+    "any calculated equivalent resistance or reciprocal values"
+  ],
   "spec": {
     "source": {
       "type": "battery",
@@ -26,11 +31,6 @@
       ]
     ]
   },
-  "must_show": "A battery connected to two resistors wired in parallel: R1 (6 Ω) on one branch and R2 (3 Ω) on the other, both branches joining the same two points on the battery's wires.",
-  "must_not_show": [
-    "the total resistance value (2 Ω)",
-    "any calculation or equivalent resistance"
-  ],
   "attempts": 1,
   "attempt_log": [
     {
@@ -76,12 +76,13 @@
             "detail": "the drawing has exactly the 3 symbols in the spec"
           }
         ],
-        "cost": 0.0
+        "cost": 0.0,
+        "redraw": false
       },
-      "cost_usd": 0.0005599000000000001
+      "cost_usd": 0.0005995
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.00056
+  "cost_usd": 0.000599
 }

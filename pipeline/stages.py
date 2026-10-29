@@ -1,10 +1,9 @@
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+
 from pipeline.understand import understand
 from routes import ROUTE_MODULES
-
-SPEC_ERRORS = (KeyError, ValueError, TypeError)
 
 def draw_placeholder(question, png_path):
     fig, ax = plt.subplots(figsize=(6, 4))
@@ -12,6 +11,7 @@ def draw_placeholder(question, png_path):
     ax.axis("off")
     fig.savefig(png_path, dpi=100)
     plt.close(fig)
+
 
 def generate(plan, question, out_dir):
     png_path = out_dir / f"{question['id']}.png"
@@ -25,7 +25,7 @@ def generate(plan, question, out_dir):
 
     try:
         spec_checks = route.check_spec(plan, question)
-    except SPEC_ERRORS as error:
+    except Exception as error:
         draw_placeholder(question, png_path)
         return {"png": str(png_path), "svg": None, "cost": 0.0, "error": f"Spec could not be checked: {error!r}"}
 
@@ -35,12 +35,15 @@ def generate(plan, question, out_dir):
 
     try:
         details = route.render(plan["spec"], png_path, svg_path)
-    except SPEC_ERRORS as error:
+    except Exception as error:
         draw_placeholder(question, png_path)
         return {"png": str(png_path), "svg": None, "cost": 0.0, "spec_checks": spec_checks,
                 "error": f"Drawing failed: {error!r}"}
 
-    return {"png": str(png_path), "svg": str(svg_path), "cost": 0.0, "spec_checks": spec_checks, **details}
+    cost = details.pop("cost", 0.0)
+    svg = str(svg_path) if svg_path.exists() else None
+    return {"png": str(png_path), "svg": svg, "cost": cost, "spec_checks": spec_checks, **details}
+
 
 def verify(plan, question, files):
     if "error" in plan:
@@ -48,7 +51,8 @@ def verify(plan, question, files):
 
     if files.get("placeholder"):
         detail = f"route '{plan['route']}' is not built yet"
-        return {"passed": False, "checks": [{"name": "route", "result": "fail", "detail": detail}], "cost": 0.0, "retryable" : False}
+        return {"passed": False, "checks": [{"name": "route", "result": "fail", "detail": detail}],
+                "cost": 0.0, "retryable": False}
 
     checks = list(files.get("spec_checks", []))
 
@@ -56,7 +60,16 @@ def verify(plan, question, files):
         checks.append({"name": "generate", "result": "fail", "detail": files["error"]})
     elif not files.get("skipped_drawing"):
         route = ROUTE_MODULES[plan["route"]]
-        checks.extend(route.check_render(plan, files))
+        try:
+            checks.extend(route.check_render(plan, files, question))
+        except Exception as error:
+            checks.append({"name": "image_checks", "result": "fail", "fix": "redraw",
+                           "detail": f"the image checks could not run: {error!r}"})
 
-    passed = all(check["result"] != "fail" for check in checks)
-    return {"passed": passed, "checks": checks, "cost": 0.0}
+    failed = [check for check in checks if check["result"] == "fail"]
+    return {
+        "passed": not failed,
+        "checks": checks,
+        "cost": sum(check.get("cost", 0.0) for check in checks),
+        "redraw": bool(failed) and all(check.get("fix") == "redraw" for check in failed),
+    }
