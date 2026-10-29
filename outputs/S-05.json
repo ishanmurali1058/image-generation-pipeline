@@ -1,21 +1,21 @@
 {
   "id": "S-05",
   "route": "illustration",
-  "route_reason": "The student must recognise each animal in the picture to answer, but no exact measurements, counts or readings are needed, so a clear illustrated scene is enough.",
-  "must_show": "A forest scene with a tiger, a deer, an eagle and a snake, each clearly recognisable and separate from the others, with no text or labels",
+  "route_reason": "The question is about recognising familiar animals in a scene, and nothing the student reads from the picture needs to be exact.",
+  "must_show": "A forest scene with a tiger, a deer, an eagle and a snake, each clearly recognisable, with green plants and trees around them and no food items showing what any animal eats.",
   "must_not_show": [
-    "the answer, meaning any sign of which animal is the plant-only eater",
-    "animals eating food, meat, prey or plants",
-    "text, letters, numbers or labels"
+    "any text, labels or names of the animals",
+    "food such as meat, prey or fruit that would reveal each animal's diet",
+    "numbers or signs"
   ],
   "spec": {
-    "prompt": "A peaceful forest clearing with tall trees and green bushes. A striped tiger stands at the left edge, side-on and clearly recognisable. A spotted deer with antlers stands in the middle of the clearing, facing the viewer. A large eagle with brown and white feathers perches on a low branch on the right. A long snake lies coiled on the ground near the bottom right. Each animal is separate, fully visible, and not doing anything that shows what it eats. Bright daylight, simple composition, no text anywhere in the image.",
+    "prompt": "A lush green forest scene in daytime with tall trees, ferns and bushes. A tiger stands at the left edge near a tree trunk. A spotted deer stands in a sunny clearing in the centre, with its head slightly raised. A large eagle perches on a branch at the upper right. A snake lies coiled on a rock at the lower right. Each animal is clearly visible and separate from the others, with no food or prey shown.",
     "style": "flat, colourful children's book illustration",
     "must_contain": [
-      "a striped tiger",
-      "a spotted deer with antlers",
-      "an eagle perched on a branch",
-      "a snake on the ground"
+      "a tiger",
+      "a spotted deer",
+      "an eagle on a branch",
+      "a snake coiled on a rock"
     ],
     "answer_from_image": true
   },
@@ -41,8 +41,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A cartoon forest clearing with tall trees, bushes and grass. A striped tiger walks on the left, two deer stand in the middle, and a bird of prey perches on a tree trunk on the right. A brown snake lies coiled on the ground at the bottom right, and another bird is perched near the top left.",
-            "cost": 0.00028660000000000003
+            "detail": "A cartoon forest clearing with grass and bushes. A tiger stands on the left, a spotted deer with antlers stands in the centre, and a bird of prey perches on a branch at the upper right. A snake is coiled on a rock at the lower right.",
+            "cost": 0.00026510000000000005
           },
           {
             "name": "safety",
@@ -81,13 +81,13 @@
             "fix": "redraw"
           }
         ],
-        "cost": 0.00028660000000000003,
+        "cost": 0.00026510000000000005,
         "redraw": false
       },
-      "cost_usd": 0.0032607960000000003
+      "cost_usd": 0.003215696
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.003261
+  "cost_usd": 0.003216
 }

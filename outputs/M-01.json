@@ -1,12 +1,12 @@
 {
   "id": "M-01",
   "route": "chart",
-  "route_reason": "The question asks the student to read exact bar values and add them, so the bars must be drawn to exact heights on a labelled axis.",
-  "must_show": "A vertical bar chart titled 'Trees planted by four classes' with four bars labelled Class 6, Class 7, Class 8 and Class 9, showing 8, 12, 10 and 12 trees. The y-axis runs from 0 to 14 in steps of 2 and is labelled 'Number of trees'.",
+  "route_reason": "The question asks the student to read exact bar heights and add them, so the bar graph must be drawn with exact values on a fixed axis.",
+  "must_show": "A vertical bar graph titled 'Trees planted by four classes' with four bars labelled Class 6, Class 7, Class 8 and Class 9, showing values 8, 12, 10 and 12. The y-axis runs from 0 to 14 in steps of 2 and is labelled 'Number of trees', and the x-axis is labelled 'Class'.",
   "must_not_show": [
-    "the total of 42",
+    "the total number of trees (42)",
     "the answer options",
-    "any written total or calculation"
+    "any written calculation of the total"
   ],
   "spec": {
     "chart_type": "bar",
@@ -77,10 +77,10 @@
         "cost": 0.0,
         "redraw": false
       },
-      "cost_usd": 0.0005685
+      "cost_usd": 0.0005919000000000001
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.000568
+  "cost_usd": 0.000592
 }

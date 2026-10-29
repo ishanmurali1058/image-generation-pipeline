@@ -1,16 +1,16 @@
 {
   "id": "M-10",
   "route": "layered",
-  "route_reason": "The question is set in a realistic outdoor scene and needs exact measurements (20 m base and a 60° angle of elevation) drawn over it as a right triangle.",
-  "must_show": "A tower standing vertically on flat ground, an observer on the ground 20 m from the tower's foot, a dashed line of sight from the observer to the top of the tower, the 20 m base distance along the ground, and the 60° angle of elevation marked at the observer's eye. The tower's height is not labelled.",
+  "route_reason": "The question is a realistic scene (a tower and an observer) that needs exact measurements and an angle drawn on top, which is the layered route's purpose.",
+  "must_show": "A tall vertical tower standing on flat ground, with an observer standing on the ground 20 m from its foot. A line of sight rises from the observer's eye to the top of the tower, with the 20 m ground distance and the 60° angle of elevation marked. The tower's height is not labelled.",
   "must_not_show": [
-    "the tower's height value",
-    "the answer 20√3 m or any of the answer options",
-    "any value for the slant length"
+    "the height of the tower",
+    "the value 20√3",
+    "any answer option"
   ],
   "spec": {
     "overlay": "right_triangle",
-    "scene": "A tall tower standing upright on flat open ground under a clear blue sky, with a small figure of an observer standing on the ground some distance away from the tower's base, looking up toward the top of the tower. Simple green grass and a few trees in the background.",
+    "scene": "A tall stone tower standing upright on flat green ground under a clear blue sky, with a person standing on the grass some distance away from the base of the tower, viewed from the side.",
     "style": "flat, colourful children's book illustration",
     "background": "generated",
     "units": "m",
@@ -59,8 +59,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A cartoon tower stands on a grassy slope beside a small person, with a red right triangle drawn over the scene. The triangle's vertical side runs along the tower's left edge and its horizontal side lies along the ground.",
-            "cost": 0.00040239999999999997,
+            "detail": "A stone tower with crenellated top and arched windows stands on a grassy hill under a blue sky, with a small figure at the doorway. A red right triangle with a dashed hypotenuse is overlaid, with its vertical side running along the tower's left edge and its horizontal base along the ground.",
+            "cost": 0.0003119,
             "fix": "redraw"
           },
           {
@@ -81,13 +81,13 @@
             "fix": "redraw"
           }
         ],
-        "cost": 0.00040239999999999997,
+        "cost": 0.0003119,
         "redraw": false
       },
-      "cost_usd": 0.0035590960000000003
+      "cost_usd": 0.0035189960000000004
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.003559
+  "cost_usd": 0.003519
 }

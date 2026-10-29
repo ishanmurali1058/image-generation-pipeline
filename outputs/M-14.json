@@ -1,85 +1,16 @@
 {
   "id": "M-14",
-  "route": "layered",
-  "route_reason": "The question is set in an illustrated outdoor scene, but the 8 m base and 30° angle must be exact, so a right-triangle overlay is drawn on top of the picture.",
-  "must_show": "A windy outdoor park scene with a tall tree whose broken upper part bends down so its top touches the level ground 8 m from the foot of the trunk, with the 8 m ground distance and the 30° angle with the ground marked.",
-  "must_not_show": [
-    "the answer 8√3 m",
-    "the length of the broken part",
-    "the height of the remaining upright trunk",
-    "the total height of the tree",
-    "any of the other option values"
-  ],
-  "spec": {
-    "overlay": "right_triangle",
-    "scene": "A windy open park on a clear day with a few clouds, flat grassy ground, and a tall tree trunk standing upright on the left side of the picture, with no other objects near the tree.",
-    "style": "flat, colourful children's book illustration",
-    "background": "generated",
-    "units": "m",
-    "unknown": null,
-    "vertical_object": "tree",
-    "dashed": false,
-    "base": 8,
-    "height": null,
-    "slant": null,
-    "angle": 30
-  },
+  "route": "none",
+  "route_reason": "The LLM reply could not be used.",
+  "must_show": "",
+  "must_not_show": [],
+  "spec": {},
   "attempts": 3,
   "attempt_log": [
     {
       "attempt": 1,
       "plan_reused": false,
       "repair_feedback": null,
-      "verification": {
-        "passed": false,
-        "checks": [
-          {
-            "name": "spec_format",
-            "result": "pass",
-            "detail": "the spec is a valid layered figure"
-          },
-          {
-            "name": "unknown_hidden",
-            "result": "pass",
-            "detail": "the unknown height has no value, so it is labelled '?'"
-          },
-          {
-            "name": "answer_consistency",
-            "result": "fail",
-            "detail": "the height worked out from the figure is 4.62, but the answer is '8√3 m'"
-          },
-          {
-            "name": "values_match_notes",
-            "result": "pass",
-            "detail": "every value appears in the image notes"
-          }
-        ],
-        "cost": 0.0,
-        "redraw": false
-      },
-      "cost_usd": 0.0008664000000000001
-    },
-    {
-      "attempt": 2,
-      "plan_reused": false,
-      "repair_feedback": "Your previous plan for this question failed these checks:\n- answer_consistency: the height worked out from the figure is 4.62, but the answer is '8√3 m'\n\nYour previous plan was:\n{\n  \"route\": \"layered\",\n  \"spec\": {\n    \"overlay\": \"right_triangle\",\n    \"scene\": \"A park with green grass and a tall tree with full leaves on a sunny day, with a clear blue sky and a few small bushes at the base of the tree. The tree trunk stands upright on the grass, with no fallen parts drawn.\",\n    \"style\": \"flat, colourful children's book illustration\",\n    \"background\": \"generated\",\n    \"units\": \"m\",\n    \"unknown\": \"height\",\n    \"vertical_object\": \"tree trunk\",\n    \"dashed\": false,\n    \"base\": 8,\n    \"height\": null,\n    \"slant\": null,\n    \"angle\": 30\n  }\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
-      "verification": {
-        "passed": false,
-        "checks": [
-          {
-            "name": "plan",
-            "result": "fail",
-            "detail": "Reply contained no JSON object."
-          }
-        ],
-        "cost": 0.0
-      },
-      "cost_usd": 0.0013268
-    },
-    {
-      "attempt": 3,
-      "plan_reused": false,
-      "repair_feedback": "Your previous plan for this question failed these checks:\n- plan: Reply contained no JSON object.\n\nYour previous plan was:\n{\n  \"route\": \"none\",\n  \"spec\": {}\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
       "verification": {
         "passed": false,
         "checks": [
@@ -106,8 +37,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A cartoon grassy park shows a tall brown tree trunk on the right, with a brown slanted line rising from the left ground to a point in the sky beside the trunk. A red right-angle outline runs along the ground and up beside the trunk, with a 30° angle marked at the left and 8 m labeled along the base.",
-            "cost": 0.0003634,
+            "detail": "A brown pole rises at 30° from the grassy ground to a point above a red right-triangle outline, with a red base and vertical leg. A tree trunk stands on the grass inside the red outline, offset left of the vertical leg.",
+            "cost": 0.0003517,
             "fix": "redraw"
           },
           {
@@ -129,15 +60,89 @@
             "fix": "redraw"
           }
         ],
-        "cost": 0.0003634,
+        "cost": 0.0003517,
         "redraw": true
       },
-      "cost_usd": 0.0039758960000000005
+      "cost_usd": 0.003725496
+    },
+    {
+      "attempt": 2,
+      "plan_reused": true,
+      "repair_feedback": null,
+      "verification": {
+        "passed": false,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid layered figure"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "skipped",
+            "detail": "the figure has no unknown"
+          },
+          {
+            "name": "values_match_notes",
+            "result": "pass",
+            "detail": "every value appears in the image notes"
+          },
+          {
+            "name": "drawn_matches_spec",
+            "result": "pass",
+            "detail": "the drawn angle is 30.0°, matching the figure"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "A cartoon tree stands on grass under a blue sky with clouds. A red right triangle with a brown slanted line is drawn to the left of the tree, with a 30° angle marked at the bottom left and an 8 m base label.",
+            "cost": 0.0004132,
+            "fix": "redraw"
+          },
+          {
+            "name": "overlay_aligned",
+            "result": "fail",
+            "detail": "the figure does not line up with the scene; set background to drawn to use a plain drawn scene"
+          },
+          {
+            "name": "no_text_in_scene",
+            "result": "pass",
+            "detail": "the judge sees no text in the scene",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "fail",
+            "detail": "the judge sees drawing errors: ['The red vertical leg of the triangle sits to the left of the trunk instead of on it', \"The brown slanted line ends at the top of the red vertical leg, not at the tree's top\", \"The triangle's base sits at the tree's base line but is offset from the trunk, so the figure does not match the tree\"]",
+            "fix": "redraw"
+          }
+        ],
+        "cost": 0.0004132,
+        "redraw": false
+      },
+      "cost_usd": 0.002915696
+    },
+    {
+      "attempt": 3,
+      "plan_reused": false,
+      "repair_feedback": "Your previous plan for this question failed these checks:\n- overlay_aligned: the figure does not line up with the scene; set background to drawn to use a plain drawn scene\n- no_visible_defects: the judge sees drawing errors: ['The red vertical leg of the triangle sits to the left of the trunk instead of on it', \"The brown slanted line ends at the top of the red vertical leg, not at the tree's top\", \"The triangle's base sits at the tree's base line but is offset from the trunk, so the figure does not match the tree\"]\n\nYour previous plan was:\n{\n  \"route\": \"layered\",\n  \"spec\": {\n    \"overlay\": \"right_triangle\",\n    \"scene\": \"An open grassy field under a clear blue sky with a few soft clouds, flat ground stretching into the distance, no trees, no people.\",\n    \"style\": \"flat, colourful children's book illustration\",\n    \"background\": \"generated\",\n    \"units\": \"m\",\n    \"unknown\": null,\n    \"vertical_object\": \"tree trunk\",\n    \"dashed\": false,\n    \"base\": 8,\n    \"height\": null,\n    \"slant\": null,\n    \"angle\": 30\n  }\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
+      "verification": {
+        "passed": false,
+        "checks": [
+          {
+            "name": "plan",
+            "result": "fail",
+            "detail": "Reply is missing fields: ['must_show', 'must_not_show', 'route_reason']"
+          }
+        ],
+        "cost": 0.0
+      },
+      "cost_usd": 0.0008681
     }
   ],
   "status": "flagged",
   "flag_reason": [
-    "the figure does not line up with the scene; trying a new generated scene"
+    "Reply is missing fields: ['must_show', 'must_not_show', 'route_reason']"
   ],
-  "cost_usd": 0.006169
+  "cost_usd": 0.007509
 }

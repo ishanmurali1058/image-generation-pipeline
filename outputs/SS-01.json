@@ -1,157 +1,26 @@
 {
   "id": "SS-01",
   "route": "illustration",
-  "route_reason": "The student must recognise the occupation from the scene, and no exact measurements or readable text are needed, so a clear illustration fits.",
-  "must_show": "A person shaping clay on a potter's wheel outside a village house, with no text, letters, numbers or signs anywhere in the picture.",
+  "route_reason": "The student must identify the occupation from the scene, and nothing read from the image needs exact measurement or precision.",
+  "must_show": "A person shaping clay on a potter's wheel outside a village house, with no text in the image",
   "must_not_show": [
-    "the words for any occupation, such as 'Potter', 'Weaver', 'Blacksmith' or 'Carpenter'",
-    "any written text, labels, letters, numbers or signs"
+    "the word 'Potter' or any other written label, name or caption",
+    "text, letters, numbers or signs of any kind"
   ],
   "spec": {
-    "prompt": "A simple village scene in daylight. In the foreground, a person sits at a potter's wheel shaping a lump of wet clay into a bowl, with clay-covered hands and a damp cloth nearby. A small village house with a thatched roof and a wooden door stands behind them, with a few clay pots drying in the sun beside the wheel. Trees and a dirt path frame the composition. No text, letters, numbers or signs appear anywhere in the picture.",
+    "prompt": "A village scene with a single person at work outside a simple village house. The person sits at a potter's wheel, shaping a lump of wet clay with both hands. The wheel is a simple wooden or stone disc on a low stand, with a small bowl or jar nearby to show the craft. A thatched or tiled village house stands in the background with a few trees and a dirt path. Clear, uncluttered composition with the potter in the centre of the picture. No text, letters, numbers, labels or signs anywhere in the image.",
     "style": "flat, colourful children's book illustration",
     "must_contain": [
       "a person shaping clay on a potter's wheel",
-      "a village house",
-      "clay pots drying in the sun"
+      "a village house"
     ],
     "answer_from_image": true
   },
-  "attempts": 3,
+  "attempts": 1,
   "attempt_log": [
     {
       "attempt": 1,
       "plan_reused": false,
-      "repair_feedback": null,
-      "verification": {
-        "passed": false,
-        "checks": [
-          {
-            "name": "spec_format",
-            "result": "pass",
-            "detail": "the spec is a valid illustration"
-          },
-          {
-            "name": "no_quoted_text",
-            "result": "pass",
-            "detail": "the prompt asks for no written words"
-          },
-          {
-            "name": "judge_description",
-            "result": "pass",
-            "detail": "A boy in a red shirt and white apron sits on a stool and shapes a clay bowl on a potter's wheel outdoors. Behind him is a thatched-roof stone house with a wooden door, with clay pots placed nearby, all set in a village with trees and hills.",
-            "cost": 0.00034960000000000004
-          },
-          {
-            "name": "safety",
-            "result": "pass",
-            "detail": "the image model's safety filter found nothing",
-            "fix": "redraw"
-          },
-          {
-            "name": "must_contain",
-            "result": "fail",
-            "detail": "the judge does not see ['clay pots drying in the sun']",
-            "fix": "redraw"
-          },
-          {
-            "name": "no_text_in_image",
-            "result": "pass",
-            "detail": "the judge sees no text in the image",
-            "fix": "redraw"
-          },
-          {
-            "name": "suitable_for_children",
-            "result": "pass",
-            "detail": "the judge finds the image suitable for children",
-            "fix": "redraw"
-          },
-          {
-            "name": "no_visible_defects",
-            "result": "pass",
-            "detail": "the judge sees no drawing errors",
-            "fix": "redraw"
-          },
-          {
-            "name": "answer_consistency",
-            "result": "pass",
-            "detail": "from the picture alone the judge chose 'Potter', matching the answer",
-            "fix": "redraw"
-          }
-        ],
-        "cost": 0.00034960000000000004,
-        "redraw": true
-      },
-      "cost_usd": 0.0032895960000000005
-    },
-    {
-      "attempt": 2,
-      "plan_reused": true,
-      "repair_feedback": null,
-      "verification": {
-        "passed": false,
-        "checks": [
-          {
-            "name": "spec_format",
-            "result": "pass",
-            "detail": "the spec is a valid illustration"
-          },
-          {
-            "name": "no_quoted_text",
-            "result": "pass",
-            "detail": "the prompt asks for no written words"
-          },
-          {
-            "name": "judge_description",
-            "result": "pass",
-            "detail": "A young boy sits on a small wooden stool in a sunny village courtyard, shaping a clay bowl with his hands. Nearby, a large clay ring sits on the ground, and several finished clay pots are placed by a thatched mud-walled hut and along a line outdoors.",
-            "cost": 0.00038710000000000003
-          },
-          {
-            "name": "safety",
-            "result": "pass",
-            "detail": "the image model's safety filter found nothing",
-            "fix": "redraw"
-          },
-          {
-            "name": "must_contain",
-            "result": "fail",
-            "detail": "the judge does not see [\"a person shaping clay on a potter's wheel\"]",
-            "fix": "redraw"
-          },
-          {
-            "name": "no_text_in_image",
-            "result": "pass",
-            "detail": "the judge sees no text in the image",
-            "fix": "redraw"
-          },
-          {
-            "name": "suitable_for_children",
-            "result": "pass",
-            "detail": "the judge finds the image suitable for children",
-            "fix": "redraw"
-          },
-          {
-            "name": "no_visible_defects",
-            "result": "pass",
-            "detail": "the judge sees no drawing errors",
-            "fix": "redraw"
-          },
-          {
-            "name": "answer_consistency",
-            "result": "pass",
-            "detail": "from the picture alone the judge chose 'Potter', matching the answer",
-            "fix": "redraw"
-          }
-        ],
-        "cost": 0.00038710000000000003,
-        "redraw": true
-      },
-      "cost_usd": 0.0027463960000000003
-    },
-    {
-      "attempt": 3,
-      "plan_reused": true,
       "repair_feedback": null,
       "verification": {
         "passed": true,
@@ -169,8 +38,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A boy sits on a stool outside a whitewashed village house with a thatched roof, holding a clay pot. In front of him is a wooden potter's wheel with a lump of wet clay on top, and several clay pots are placed on the ground near the house.",
-            "cost": 0.00034760000000000005
+            "detail": "A boy sits on a small wooden stool beside a potter's wheel, holding a small clay pot and working with clay. Nearby are a finished clay pot and a tall vase in front of a mud house with a red tiled roof, with a dirt path and fields in the background.",
+            "cost": 0.00029780000000000003
           },
           {
             "name": "safety",
@@ -209,13 +78,13 @@
             "fix": "redraw"
           }
         ],
-        "cost": 0.00034760000000000005,
+        "cost": 0.00029780000000000003,
         "redraw": false
       },
-      "cost_usd": 0.0027068960000000003
+      "cost_usd": 0.0032331960000000002
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.008743
+  "cost_usd": 0.003233
 }

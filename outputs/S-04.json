@@ -1,12 +1,12 @@
 {
   "id": "S-04",
   "route": "circuit",
-  "route_reason": "The question asks for the equivalent resistance of a parallel resistor circuit, which is an electric circuit diagram.",
-  "must_show": "A battery connected to two resistors wired in parallel: R1 (6 Ω) on one branch and R2 (3 Ω) on the other, both branches joining the same two points on the main wire. The resistance values 6 Ω and 3 Ω are labelled.",
+  "route_reason": "The question asks for the equivalent resistance of a parallel circuit, which is a calculation that needs an exact electric circuit diagram.",
+  "must_show": "A battery connected to two resistors wired in parallel, one branch labelled R1 = 6 Ω and the other labelled R2 = 3 Ω, with both branches joining the same two points on the battery's wires.",
   "must_not_show": [
-    "the total resistance (2 Ω)",
-    "the answer options",
-    "any calculated current or voltage values"
+    "the total resistance of the parallel combination",
+    "the value 2 Ω",
+    "the answer options"
   ],
   "spec": {
     "source": {
@@ -80,10 +80,10 @@
         "cost": 0.0,
         "redraw": false
       },
-      "cost_usd": 0.0005546
+      "cost_usd": 0.000565
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.000555
+  "cost_usd": 0.000565
 }

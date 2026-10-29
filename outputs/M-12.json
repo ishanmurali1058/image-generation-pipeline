@@ -1,15 +1,16 @@
 {
   "id": "M-12",
   "route": "layered",
-  "route_reason": "The image is a realistic house scene, but the student must read exact measurements (15 m ladder, 12 m height) from a right triangle drawn over it, so the layered route fits.",
-  "must_show": "An illustrated house wall with a window about 12 m above the ground, and a ladder leaning from the ground to the window. The ladder is labelled 15 m and the window height is labelled 12 m. The distance from the foot of the ladder to the wall is not labelled.",
+  "route_reason": "The scene is a realistic house wall, and the exact lengths 15 m and 12 m must be drawn on a right triangle formed by the ladder, wall and ground.",
+  "must_show": "An illustrated brick house wall with a window about 12 m above flat ground, with a ladder from the ground to the window drawn as a straight slanted line. The length 15 m and height 12 m are marked. The distance from the foot of the ladder to the wall is not labelled.",
   "must_not_show": [
-    "the distance from the foot of the ladder to the wall (9 m)",
-    "any label or marking on the ground distance between the ladder foot and the wall"
+    "the horizontal distance from the foot of the ladder to the wall",
+    "any number or label for the base distance",
+    "the answer 9 m"
   ],
   "spec": {
     "overlay": "right_triangle",
-    "scene": "A plain two-storey house front in flat, colourful children's book style, with a brick wall, one window on the upper floor, and a grassy ground in front of the wall. Clear daylight, no people.",
+    "scene": "A plain brick house wall with a single window, seen from the front, standing on flat grassy ground under a clear sky. The window is high on the wall. Nothing is leaning against the wall.",
     "style": "flat, colourful children's book illustration",
     "background": "generated",
     "units": "m",
@@ -58,8 +59,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A brick house stands on the left with a red-roofed top, a door, and two windows. On the right, a brick pillar has a red triangle drawn against its left edge and along the ground, with a brown hypotenuse running from the ground to the pillar's top.",
-            "cost": 0.0003056,
+            "detail": "A brown diagonal line runs from the ground at the base of a large brick wall up past its top-right corner, with a red vertical line and a red horizontal line marking the height and base of a shorter adjacent wall. The scene shows a brick building with a window on a grassy, sunny landscape.",
+            "cost": 0.0004486,
             "fix": "redraw"
           },
           {
@@ -80,13 +81,13 @@
             "fix": "redraw"
           }
         ],
-        "cost": 0.0003056,
+        "cost": 0.0004486,
         "redraw": false
       },
-      "cost_usd": 0.0034147960000000003
+      "cost_usd": 0.003574696
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.003415
+  "cost_usd": 0.003575
 }

@@ -1,28 +1,28 @@
 {
   "id": "M-13",
   "route": "layered",
-  "route_reason": "The question is about a realistic park scene, but the student must read exact values (2 m height and 30° angle) from a right triangle drawn over it, so the layered route with a right-triangle overlay fits.",
-  "must_show": "A park scene with a right triangle over it: a vertical support post of height 2 m rising from the ground, a slanted slide line from the ground to the top of the post, and the 30° angle marked at the ground. The height of 2 m and the 30° angle are labelled. The slide's length is not labelled.",
+  "route_reason": "The question is a realistic park scene that needs exact measurements (2 m height and 30° angle) drawn on top, so the layered route fits.",
+  "must_show": "An illustrated park with a vertical play-tower platform on the left, its top 2 m above the flat ground. A slide runs from the top of the platform down to the ground at 30° to the ground, with the 2 m height and the 30° angle marked. The slide's length is not labelled.",
   "must_not_show": [
-    "the slide length (4 m)",
-    "the options 2 m, 2√3 m, 4√3 m",
-    "any label or value for the slanted side"
+    "the length of the slide",
+    "the answer 4 m",
+    "any label or value on the slanted slide line"
   ],
   "spec": {
     "overlay": "right_triangle",
-    "scene": "A sunny public park with green grass, leafy trees, a wooden bench and a gravel path, with children playing on the grass in the background. The ground is flat and open in the foreground.",
+    "scene": "A bright, sunny public park with green grass, a few trees and a blue sky. On the left stands a sturdy vertical play-tower platform with a railing at the top, where children can stand. The ground in front is open and flat. No slide is drawn in the background.",
     "style": "flat, colourful children's book illustration",
-    "background": "generated",
+    "background": "drawn",
     "units": "m",
     "unknown": "slant",
-    "vertical_object": "support post",
+    "vertical_object": "play-tower platform",
     "dashed": false,
     "base": null,
     "height": 2,
     "slant": null,
     "angle": 30
   },
-  "attempts": 2,
+  "attempts": 3,
   "attempt_log": [
     {
       "attempt": 1,
@@ -59,8 +59,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A park scene with a red support post on a light pavement, a bench on the left, and children playing on the grass. A red right-triangle overlay with a brown diagonal line and labels (30°, ?, 2 m) is drawn on top of the scene.",
-            "cost": 0.0004249,
+            "detail": "A cartoon landscape shows a metal lookout tower with a circular platform on the left and a leafy tree on the right under a clear blue sky. A brown diagonal beam and a red right triangle are drawn over the grass, with labels for the angle, the unknown side, and the tree's height.",
+            "cost": 0.0004868,
             "fix": "redraw"
           },
           {
@@ -78,21 +78,21 @@
           {
             "name": "no_visible_defects",
             "result": "fail",
-            "detail": "the judge sees drawing errors: ['The brown diagonal line runs across the bench and through the tree area rather than sitting cleanly within the scene.']",
+            "detail": "the judge sees drawing errors: [\"The brown diagonal line passes through the base of the tower's legs instead of reaching the platform.\", \"The red triangle's vertical side is placed at the tree rather than the tower, so the figure does not match the tower platform.\"]",
             "fix": "redraw"
           }
         ],
-        "cost": 0.0004249,
+        "cost": 0.0004868,
         "redraw": true
       },
-      "cost_usd": 0.003752496
+      "cost_usd": 0.0037626960000000003
     },
     {
       "attempt": 2,
       "plan_reused": true,
       "repair_feedback": null,
       "verification": {
-        "passed": true,
+        "passed": false,
         "checks": [
           {
             "name": "spec_format",
@@ -122,14 +122,14 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A park scene shows a wooden bench on gravel, a tree, children, and a tall wooden post on the right with a diagonal measurement line running from the ground to the top of the post. The red horizontal ground line and right-angle marker meet the base of the post, and the post stands vertically.",
-            "cost": 0.00038189999999999996,
+            "detail": "A park scene with a tall ladder-and-platform play tower on the left and trees, benches, and grass around it. A red-and-brown right triangle is overlaid on the grass, with its base near the bottom of the image and its vertical side on the right.",
+            "cost": 0.00033830000000000004,
             "fix": "redraw"
           },
           {
             "name": "overlay_aligned",
-            "result": "pass",
-            "detail": "the figure lines up with the scene"
+            "result": "fail",
+            "detail": "the figure does not line up with the scene; set background to drawn to use a plain drawn scene"
           },
           {
             "name": "no_text_in_scene",
@@ -144,13 +144,51 @@
             "fix": "redraw"
           }
         ],
-        "cost": 0.00038189999999999996,
+        "cost": 0.00033830000000000004,
         "redraw": false
       },
-      "cost_usd": 0.0028915960000000006
+      "cost_usd": 0.0028613960000000004
+    },
+    {
+      "attempt": 3,
+      "plan_reused": false,
+      "repair_feedback": "Your previous plan for this question failed these checks:\n- overlay_aligned: the figure does not line up with the scene; set background to drawn to use a plain drawn scene\n\nYour previous plan was:\n{\n  \"route\": \"layered\",\n  \"spec\": {\n    \"overlay\": \"right_triangle\",\n    \"scene\": \"A bright, sunny public park with green grass, a few trees and a blue sky. On the left stands a sturdy vertical play-tower platform with a railing at the top, where children can stand. The ground in front is open and flat. No slide is drawn in the background.\",\n    \"style\": \"flat, colourful children's book illustration\",\n    \"background\": \"generated\",\n    \"units\": \"m\",\n    \"unknown\": \"slant\",\n    \"vertical_object\": \"play-tower platform\",\n    \"dashed\": false,\n    \"base\": null,\n    \"height\": 2,\n    \"slant\": null,\n    \"angle\": 30\n  }\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
+      "verification": {
+        "passed": true,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid layered figure"
+          },
+          {
+            "name": "unknown_hidden",
+            "result": "pass",
+            "detail": "the unknown slant has no value, so it is labelled '?'"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "pass",
+            "detail": "the slant worked out from the figure is 4, matching the answer '4 m'"
+          },
+          {
+            "name": "values_match_notes",
+            "result": "pass",
+            "detail": "every value appears in the image notes"
+          },
+          {
+            "name": "drawn_matches_spec",
+            "result": "pass",
+            "detail": "the drawn angle is 30.0°, matching the figure"
+          }
+        ],
+        "cost": 0.0,
+        "redraw": false
+      },
+      "cost_usd": 0.0006653
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.006644
+  "cost_usd": 0.007289
 }

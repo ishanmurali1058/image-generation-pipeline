@@ -1,12 +1,12 @@
 {
   "id": "S-01",
   "route": "circuit",
-  "route_reason": "The question asks about a bulb glowing in an electric circuit, so the circuit route draws the components exactly and can check the lit state.",
-  "must_show": "A series circuit with one cell, a closed switch S, and two bulbs B1 and B2 connected in series on one loop of wire, with B1 and B2 clearly labelled.",
+  "route_reason": "The question asks about whether a bulb glows in an electric circuit, which needs an exact circuit diagram with correct component connections.",
+  "must_show": "A series electric circuit diagram with one cell, a closed switch labelled S, and two bulbs labelled B1 and B2 connected in a single loop, all bulbs intact.",
   "must_not_show": [
-    "any indication that bulb B1 has fused or is broken",
-    "the answer about whether B2 glows",
-    "any words describing the outcome"
+    "The effect of B1 fusing on B2",
+    "Any indication of whether B2 glows after B1 fuses",
+    "Any fuse symbol or sign that B1 is broken"
   ],
   "spec": {
     "source": {
@@ -81,10 +81,10 @@
         "cost": 0.0,
         "redraw": false
       },
-      "cost_usd": 0.0004506
+      "cost_usd": 0.000599
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.000451
+  "cost_usd": 0.000599
 }

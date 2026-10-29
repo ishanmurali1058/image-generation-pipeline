@@ -1,21 +1,20 @@
 {
   "id": "M-16",
   "route": "illustration",
-  "route_reason": "The question already gives both prices and the picture only sets the scene, so an illustration is enough and no exact values need to be read from the image.",
-  "must_show": "A friendly stationery shop scene with a notebook and a pen on a counter, and a shopkeeper ready to serve a child named Rahul. No prices or numbers are shown.",
+  "route_reason": "The question already gives both prices and the picture only sets the scene, so a simple illustration without numbers is enough.",
+  "must_show": "A notebook and a pen lying together on a wooden table in a stationery shop, with no price tags, writing or numbers anywhere in the picture.",
   "must_not_show": [
     "the total amount",
-    "the answer options",
-    "any price tags or numbers, including ₹ symbols"
+    "the prices ₹25 and ₹10",
+    "any price tags, numbers, currency symbols or text"
   ],
   "spec": {
-    "prompt": "A bright, cheerful stationery shop interior. A young boy named Rahul, about 8 years old, stands at a wooden counter smiling and holding a small wallet. On the counter lies a single notebook with a blue cover and a single pen with a red body. A friendly shopkeeper with a warm smile stands behind the counter. Shelves in the background are stocked with colourful pencils, erasers and rulers. Clear, uncluttered composition with the counter and items in the centre of the picture.",
+    "prompt": "A friendly scene in a small stationery shop. A notebook with a colourful cover and a blue pen lie side by side on a wooden counter. A shelf behind the counter holds more notebooks and pencils. Bright, even lighting, simple composition with the notebook and pen in the centre foreground. No people in close-up, no text, no numbers, no price tags, no signs.",
     "style": "flat, colourful children's book illustration",
     "must_contain": [
-      "a notebook with a blue cover",
-      "a pen with a red body",
-      "a boy named Rahul holding a wallet",
-      "a friendly shopkeeper behind a counter"
+      "a notebook with a colourful cover",
+      "a blue pen",
+      "a wooden counter in a stationery shop"
     ],
     "answer_from_image": false
   },
@@ -41,8 +40,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A smiling boy named Rahul stands at a stationery shop counter, holding a blue notebook against his chest. An elderly shopkeeper in a blue apron stands behind him among shelves of pens, pencils, and notebooks. An open blue notebook and a red pen rest on the wooden counter.",
-            "cost": 0.0003013
+            "detail": "A spiral-bound notebook with a white page and a pink stripe lies on a light wooden table, with a blue pen resting across it. Behind the table, blurred shelves hold coloured folders, storage boxes, pencil pots and a wall poster, suggesting a classroom or home study area.",
+            "cost": 0.0003808
           },
           {
             "name": "safety",
@@ -53,13 +52,13 @@
           {
             "name": "must_contain",
             "result": "fail",
-            "detail": "the judge does not see ['a boy named Rahul holding a wallet']",
+            "detail": "the judge does not see ['a wooden counter in a stationery shop']",
             "fix": "redraw"
           },
           {
             "name": "no_text_in_image",
-            "result": "fail",
-            "detail": "the judge sees text in the image: 'Rahul'",
+            "result": "pass",
+            "detail": "the judge sees no text in the image",
             "fix": "redraw"
           },
           {
@@ -80,10 +79,10 @@
             "detail": "the answer does not depend on the picture"
           }
         ],
-        "cost": 0.0003013,
+        "cost": 0.0003808,
         "redraw": true
       },
-      "cost_usd": 0.0032460960000000004
+      "cost_usd": 0.0032874960000000004
     },
     {
       "attempt": 2,
@@ -105,8 +104,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A smiling boy in a green shirt stands at a wooden counter in a stationery shop, holding a blue notebook. Behind the counter, another smiling boy in a yellow-and-grey apron stands among shelves of colourful stationery. A blue notebook, a yellow-and-red pen, and a cup of coloured pencils sit on the counter.",
-            "cost": 0.0003418
+            "detail": "A white spiral notebook with a rainbow-striped edge and a blue pen rest on a wooden table. A teal cup holds colored pencils at the right. Shelves of books, notebooks and folders blur in the background.",
+            "cost": 0.00035830000000000004
           },
           {
             "name": "safety",
@@ -117,7 +116,7 @@
           {
             "name": "must_contain",
             "result": "fail",
-            "detail": "the judge does not see ['a pen with a red body', 'a boy named Rahul holding a wallet']",
+            "detail": "the judge does not see ['a notebook with a colourful cover', 'a wooden counter in a stationery shop']",
             "fix": "redraw"
           },
           {
@@ -144,10 +143,10 @@
             "detail": "the answer does not depend on the picture"
           }
         ],
-        "cost": 0.0003418,
+        "cost": 0.00035830000000000004,
         "redraw": true
       },
-      "cost_usd": 0.0027010960000000005
+      "cost_usd": 0.0027175960000000005
     },
     {
       "attempt": 3,
@@ -169,8 +168,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A smiling boy in a red shirt sits at a wooden counter holding a blue wallet-like item, with a blue spiral notebook and a red pen on the counter. Behind him, a smiling man in a green apron and checked shirt stands among shelves stocked with notebooks, pencils and folders in a stationery shop.",
-            "cost": 0.0004903
+            "detail": "A white spiral notebook with a thin red cover edge lies on a wooden desk or counter, with a blue pen beside it. Behind them, shelves hold folders, exercise books, pencils and a yellow bag, with a wall chart of ticks.",
+            "cost": 0.0003878
           },
           {
             "name": "safety",
@@ -181,7 +180,7 @@
           {
             "name": "must_contain",
             "result": "fail",
-            "detail": "the judge does not see ['a boy named Rahul holding a wallet']",
+            "detail": "the judge does not see ['a notebook with a colourful cover', 'a wooden counter in a stationery shop']",
             "fix": "redraw"
           },
           {
@@ -208,15 +207,15 @@
             "detail": "the answer does not depend on the picture"
           }
         ],
-        "cost": 0.0004903,
+        "cost": 0.0003878,
         "redraw": true
       },
-      "cost_usd": 0.0028495960000000002
+      "cost_usd": 0.002747096
     }
   ],
   "status": "flagged",
   "flag_reason": [
-    "the judge does not see ['a boy named Rahul holding a wallet']"
+    "the judge does not see ['a notebook with a colourful cover', 'a wooden counter in a stationery shop']"
   ],
-  "cost_usd": 0.008797
+  "cost_usd": 0.008752
 }

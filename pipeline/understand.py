@@ -96,7 +96,7 @@ For the map route, only maps of India's states and union territories are support
   "unknown": "Assam"
 }
 - shaded: the states or union territories to colour in, using their full names.
-- labelled: the states or union territories to write names on. Never label the state the student must identify.
+- labelled: the states or union territories to write names on. Never label the state the student must identify, and never label any state that is one of the question's options.
 - title: a title for the map, or "". Never put the answer in the title.
 - unknown: the shaded state the student must identify, or null if the student identifies nothing.
 

@@ -1,20 +1,22 @@
 {
   "id": "SS-04",
   "route": "illustration",
-  "route_reason": "The question is about recognising animals in a scene, and nothing the student reads needs to be exact, so a plain illustrated scene fits.",
-  "must_show": "A farmer ploughing a field, guiding a wooden plough pulled by a pair of bullocks (humped or humpless oxen with yokes), with a clearly visible plough and furrowed soil. No other animals.",
+  "route_reason": "The student must identify the animals from the picture, but the scene is a simple, non-exact illustration with no measurements or readable text.",
+  "must_show": "A farmer ploughing a field with a pair of bullocks (oxen) pulling a wooden plough. The bullocks must be clearly the only draft animals, with their humped, stocky bodies and yokes visible.",
   "must_not_show": [
-    "horses",
-    "camels",
-    "elephants",
-    "any text, labels, letters or numbers"
+    "Horses",
+    "Camels",
+    "Elephants",
+    "Any other animals in the field or scene",
+    "Any text, letters, numbers or labels"
   ],
   "spec": {
-    "prompt": "A farmer in a simple cotton dhoti and turban walks behind a wooden plough across a freshly ploughed brown field. Two bullocks, yoked together with a wooden bar, pull the plough. The bullocks are clearly visible in the foreground, with their horns and muscular bodies shown. Fresh furrows of soil stretch into the background, with a few green trees and a blue sky above. Rural Indian setting, bright and friendly composition, the whole scene clearly readable.",
+    "prompt": "A farmer in a simple cotton shirt and turban walks behind a wooden plough in an open brown field. In front of him, a pair of bullocks with humped backs and wide wooden yokes across their necks pull the plough through the soil. Freshly turned earth lies in furrows behind the plough. A few green trees and a thatched-roof village house stand at the edge of the field under a clear blue sky. The bullocks are the only animals in the scene. Wide, clear composition with the farmer and the bullocks in the centre.",
     "style": "flat, colourful children's book illustration",
     "must_contain": [
-      "a farmer holding a wooden plough",
-      "a pair of bullocks yoked to the plough",
+      "a farmer walking behind a wooden plough",
+      "a pair of bullocks with humped backs pulling the plough",
+      "a wooden yoke across the bullocks' necks",
       "freshly ploughed furrows in a field"
     ],
     "answer_from_image": true
@@ -41,8 +43,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A turbaned farmer in a white dhoti walks beside a single brown bullock that is pulling a wooden plough across a field. The field is covered in neat, freshly ploughed furrows under a clear sky with trees in the background.",
-            "cost": 0.0003522
+            "detail": "A turbaned farmer sits on the back of a single brown bullock with long curved horns, which pulls a wooden plough across a dry, sandy field. The freshly ploughed furrows stretch into the distance, with two thatched huts and a few trees on the horizon under a clear blue sky.",
+            "cost": 0.00044019999999999997
           },
           {
             "name": "safety",
@@ -53,7 +55,7 @@
           {
             "name": "must_contain",
             "result": "fail",
-            "detail": "the judge does not see ['a farmer holding a wooden plough', 'a pair of bullocks yoked to the plough']",
+            "detail": "the judge does not see ['a farmer walking behind a wooden plough', 'a pair of bullocks with humped backs pulling the plough', \"a wooden yoke across the bullocks' necks\"]",
             "fix": "redraw"
           },
           {
@@ -81,10 +83,10 @@
             "fix": "redraw"
           }
         ],
-        "cost": 0.0003522,
+        "cost": 0.00044019999999999997,
         "redraw": true
       },
-      "cost_usd": 0.003282496
+      "cost_usd": 0.0034878960000000003
     },
     {
       "attempt": 2,
@@ -106,8 +108,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A farmer in a white dhoti and turban walks behind a single brown bullock that pulls a wooden beam, which appears to be a plough, across a sandy field. Faint furrow lines run across the soil, and green trees and grass lie in the background.",
-            "cost": 0.0003792
+            "detail": "A farmer in a light shirt and orange turban walks behind a wooden implement on wheels, pulled by two bullocks, one white and one brown. The field has been ploughed into long, straight furrows of reddish-brown soil. A thatched mud hut and green trees stand in the background under a clear blue sky.",
+            "cost": 0.0005112
           },
           {
             "name": "safety",
@@ -118,7 +120,7 @@
           {
             "name": "must_contain",
             "result": "fail",
-            "detail": "the judge does not see ['a farmer holding a wooden plough', 'a pair of bullocks yoked to the plough']",
+            "detail": "the judge does not see [\"a wooden yoke across the bullocks' necks\"]",
             "fix": "redraw"
           },
           {
@@ -146,10 +148,10 @@
             "fix": "redraw"
           }
         ],
-        "cost": 0.0003792,
+        "cost": 0.0005112,
         "redraw": true
       },
-      "cost_usd": 0.0027384960000000004
+      "cost_usd": 0.002870496
     },
     {
       "attempt": 3,
@@ -171,8 +173,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A farmer in a white dhoti and turban guides a wooden plough pulled by a single brown bullock across a reddish-brown field. The field has visible parallel furrows, and several trees stand along the horizon under a pale blue sky.",
-            "cost": 0.0002962
+            "detail": "A turbaned farmer stands beside a pair of white bullocks with humped backs, which are pulling a wooden plough across dry, reddish soil. Furrows from the plough run into the distance towards a thatched hut and a few green trees.",
+            "cost": 0.0005287
           },
           {
             "name": "safety",
@@ -183,7 +185,7 @@
           {
             "name": "must_contain",
             "result": "fail",
-            "detail": "the judge does not see ['a pair of bullocks yoked to the plough']",
+            "detail": "the judge does not see ['a farmer walking behind a wooden plough']",
             "fix": "redraw"
           },
           {
@@ -211,15 +213,15 @@
             "fix": "redraw"
           }
         ],
-        "cost": 0.0002962,
+        "cost": 0.0005287,
         "redraw": true
       },
-      "cost_usd": 0.0026554960000000002
+      "cost_usd": 0.0028879960000000003
     }
   ],
   "status": "flagged",
   "flag_reason": [
-    "the judge does not see ['a pair of bullocks yoked to the plough']"
+    "the judge does not see ['a farmer walking behind a wooden plough']"
   ],
-  "cost_usd": 0.008676
+  "cost_usd": 0.009246
 }

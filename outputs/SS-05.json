@@ -1,15 +1,15 @@
 {
   "id": "SS-05",
   "route": "layered",
-  "route_reason": "The image is a realistic scene (a playground seen from above) that needs an exact grid drawn on top so the student can count squares and find the area.",
-  "must_show": "An aerial view of a village playground with a sandpit, swings, a merry-go-round, benches and trees, with a 6 by 5 grid of equal squares drawn over the whole playground, each square representing 10 m by 10 m.",
+  "route_reason": "The question uses a realistic village scene whose exact dimensions must be read from a grid drawn over it, which is the layered route's grid overlay.",
+  "must_show": "An aerial view of a village playground, 60 m by 50 m, with swings, a climbing frame, a sandpit, trees and a footpath, with a grid of 10 m squares (6 columns by 5 rows) drawn over the whole playground.",
   "must_not_show": [
     "the total area of the playground",
-    "any numbers, words or labels on the image"
+    "the answer options or any numbers other than the grid itself"
   ],
   "spec": {
     "overlay": "grid",
-    "scene": "Aerial bird's-eye view of a village playground with a sandpit in one corner, a row of swings, a round merry-go-round, wooden benches along the edge, a few green trees around the border and a dirt path, seen from directly above, with the whole playground filling the frame.",
+    "scene": "Aerial view of a village playground with green grass, a sandpit, swings, a climbing frame, a few trees around the edge, and a dirt footpath leading to the gate. Children's play equipment is seen from above.",
     "style": "flat, colourful children's book illustration",
     "background": "generated",
     "units": "m",
@@ -18,11 +18,115 @@
     "rows": 5,
     "square_size": 10
   },
-  "attempts": 1,
+  "attempts": 3,
   "attempt_log": [
     {
       "attempt": 1,
       "plan_reused": false,
+      "repair_feedback": null,
+      "verification": {
+        "passed": false,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid layered figure"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "pass",
+            "detail": "the area worked out from the figure is 3000, matching the answer '3000 m²'"
+          },
+          {
+            "name": "values_match_notes",
+            "result": "pass",
+            "detail": "every value appears in the image notes"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "A top-down view of a park with a large sand area, a wooden bridge at the bottom, a playground with a slide and climbing frame on the right, and trees and grass around the edges. A reddish rectangular grid is overlaid on the scene, with each square labeled as 10 m by 10 m.",
+            "cost": 0.0003376,
+            "fix": "redraw"
+          },
+          {
+            "name": "overlay_aligned",
+            "result": "pass",
+            "detail": "the figure lines up with the scene"
+          },
+          {
+            "name": "no_text_in_scene",
+            "result": "fail",
+            "detail": "the judge sees text in the scene: 'Each square is 10 m × 10 m'",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "pass",
+            "detail": "the judge sees no drawing errors",
+            "fix": "redraw"
+          }
+        ],
+        "cost": 0.0003376,
+        "redraw": true
+      },
+      "cost_usd": 0.0033562960000000004
+    },
+    {
+      "attempt": 2,
+      "plan_reused": true,
+      "repair_feedback": null,
+      "verification": {
+        "passed": false,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid layered figure"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "pass",
+            "detail": "the area worked out from the figure is 3000, matching the answer '3000 m²'"
+          },
+          {
+            "name": "values_match_notes",
+            "result": "pass",
+            "detail": "every value appears in the image notes"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "A top-down view of a sandy playground with a swing set, a wooden play structure, a green climbing frame, and two small children near the center. A dark grid of 10 m squares is overlaid on the scene, with a fence and path at the bottom.",
+            "cost": 0.0003021,
+            "fix": "redraw"
+          },
+          {
+            "name": "overlay_aligned",
+            "result": "pass",
+            "detail": "the figure lines up with the scene"
+          },
+          {
+            "name": "no_text_in_scene",
+            "result": "fail",
+            "detail": "the judge sees text in the scene: 'Each square is 10 m × 10 m'",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "pass",
+            "detail": "the judge sees no drawing errors",
+            "fix": "redraw"
+          }
+        ],
+        "cost": 0.0003021,
+        "redraw": true
+      },
+      "cost_usd": 0.0026613960000000003
+    },
+    {
+      "attempt": 3,
+      "plan_reused": true,
       "repair_feedback": null,
       "verification": {
         "passed": true,
@@ -45,8 +149,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "An aerial illustration of a park with a playground, a red-roofed building, a fenced sandy area with a carousel and play equipment, and trees along the edges. A red-bordered grid of 10 m squares is overlaid on the scene.",
-            "cost": 0.00034710000000000003,
+            "detail": "An aerial view of a playground with a yellow swing set, a sandpit containing two toy shovels, a ladder, a small shed, and a wooden bench or structure near the bottom edge. A dark red rectangle divided into a 5 by 4 grid is drawn over the play area, with the lawn, trees, and a curving path around it.",
+            "cost": 0.0004091,
             "fix": "redraw"
           },
           {
@@ -67,13 +171,13 @@
             "fix": "redraw"
           }
         ],
-        "cost": 0.00034710000000000003,
+        "cost": 0.0004091,
         "redraw": false
       },
-      "cost_usd": 0.0034418960000000003
+      "cost_usd": 0.0027683960000000002
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.003442
+  "cost_usd": 0.008786
 }

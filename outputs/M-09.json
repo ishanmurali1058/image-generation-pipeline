@@ -1,13 +1,12 @@
 {
   "id": "M-09",
   "route": "geometry",
-  "route_reason": "The figure is a plain triangle made only of lines and points, and the equal sides are shown by tick marks, so the geometry route fits.",
-  "must_show": "Isosceles triangle ABC with vertices A, B and C. The sides AB and AC carry matching tick marks to show they are equal. Angle A is marked as 50°. Angle B is marked with a question mark. Angle C has no marking.",
+  "route_reason": "The figure is a plain triangle made only of lines and vertices, with tick marks and one given angle, so the geometry route fits.",
+  "must_show": "An isosceles triangle ABC with vertices A (top), B (bottom left) and C (bottom right). Sides AB and AC carry matching tick marks to show they are equal. Angle A is marked as 50°. Angle B is marked with a question mark. No side lengths are shown.",
   "must_not_show": [
-    "the value of angle B",
+    "the value of angle B (65°)",
     "the value of angle C",
-    "any side length in numbers",
-    "the answer 65°"
+    "any side lengths"
   ],
   "spec": {
     "shape": "triangle",
@@ -52,7 +51,7 @@
         "cost": 0.0,
         "redraw": false
       },
-      "cost_usd": 0.0005676
+      "cost_usd": 0.000554
     },
     {
       "attempt": 2,
@@ -95,7 +94,7 @@
         "cost": 0.0,
         "redraw": false
       },
-      "cost_usd": 0.0006794000000000001
+      "cost_usd": 0.0006902999999999999
     },
     {
       "attempt": 3,
@@ -118,12 +117,12 @@
         "cost": 0.0,
         "redraw": false
       },
-      "cost_usd": 0.0006269000000000001
+      "cost_usd": 0.0005872999999999999
     }
   ],
   "status": "flagged",
   "flag_reason": [
     "the givens do not fix the triangle's shape (need two angles, three sides, or two sides and the angle between them)"
   ],
-  "cost_usd": 0.001874
+  "cost_usd": 0.001832
 }

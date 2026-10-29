@@ -1,20 +1,21 @@
 {
   "id": "M-15",
   "route": "template",
-  "route_reason": "The student must count the balloons in the picture, and only the template route can draw an exact number of separate objects.",
-  "must_show": "A child holding exactly 9 balloons, all clearly visible, separated from each other and easy to count, with no overlapping balloons.",
+  "route_reason": "The student must count an exact number of balloons in the picture, and only the template route can draw a precise count of objects.",
+  "must_show": "A child holding exactly 9 balloons, all clearly visible and easy to count, with no overlapping balloons.",
   "must_not_show": [
-    "the number of balloons left after 3 burst (6)",
-    "any number, word or label written in the picture",
-    "burst balloons or broken pieces"
+    "the answer 6",
+    "any number or text",
+    "any balloons bursting or popping",
+    "the number 3 or any indication of which balloons burst"
   ],
   "spec": {
     "object": "balloon",
     "count": 9,
-    "holder": "child holding a bunch of balloons by their strings",
-    "arrangement": "balloons spread out so each one is fully visible",
+    "holder": "child",
+    "arrangement": "balloons tied to strings held in the child's hand, spread out so each is clearly separate",
     "style": "flat, colourful children's book illustration",
-    "labels": []
+    "text_allowed": false
   },
   "attempts": 1,
   "attempt_log": [
@@ -34,12 +35,12 @@
         "cost": 0.0,
         "retryable": false
       },
-      "cost_usd": 0.0004986
+      "cost_usd": 0.000513
     }
   ],
   "status": "flagged",
   "flag_reason": [
     "route 'template' is not built yet"
   ],
-  "cost_usd": 0.000499
+  "cost_usd": 0.000513
 }

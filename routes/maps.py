@@ -59,6 +59,7 @@ def check_spec(plan, question):
 
     checks.append(check_answer(spec, question))
     checks.append(check_unknown_hidden(spec))
+    checks.append(check_options_not_labelled(spec, question))
     return checks
 
 def check_answer(spec, question):
@@ -90,6 +91,15 @@ def check_unknown_hidden(spec):
     return check("unknown_hidden", simplify_name(unknown) not in labelled and not in_title,
                  f"{unknown} is shaded but not named",
                  f"{unknown} is named on the map, which shows the answer")
+
+def check_options_not_labelled(spec, question):
+    options = [simplify_name(option) for option in question.get("options", [])]
+    if not options:
+        return make_check("options_not_labelled", "skipped", "the question has no options")
+    shown = [name for name in spec["labelled"] if simplify_name(name) in options]
+    return check("options_not_labelled", not shown,
+                 "no labelled state is one of the options",
+                 f"the map labels {shown}, which are options, so the answer could be found by elimination")
 
 def check_render(plan, files, question = None):
     spec = plan["spec"]
