@@ -1,158 +1,31 @@
 {
   "id": "M-12",
   "route": "layered",
-  "route_reason": "This is a realistic scene (a house wall and ladder) that needs exact measurements of the ladder and window height drawn on a right-triangle overlay.",
-  "must_show": "An illustrated brick house wall with a window, a flat ground line, a ladder leaning from the ground to the window with its length (15 m) and the window's height (12 m) marked. The distance from the foot of the ladder to the wall is not labelled.",
+  "route_reason": "The scene is a realistic house with a ladder, and the student must read exact lengths from a right triangle formed by the ladder, the wall and the ground.",
+  "must_show": "An illustrated house wall with a window about 12 m above the ground, a slanted ladder from the ground up to the window, the 15 m ladder length and the 12 m window height marked, and the ground distance from the foot of the ladder to the wall left unlabelled.",
   "must_not_show": [
-    "the distance from the foot of the ladder to the wall (9 m)",
-    "any label or measurement for the base of the triangle"
+    "the ground distance from the foot of the ladder to the wall (9 m)",
+    "the answer options"
   ],
   "spec": {
     "overlay": "right_triangle",
-    "scene": "A plain brick house wall seen from the front, with one window with a visible frame and sill, set on a flat, grassy ground. Clear empty space in front of the wall at ground level.",
+    "scene": "A plain two-storey house wall seen from the front on a flat grass lawn under a clear sky, with one upper-floor window in the middle of the wall. Nothing is leaning against the wall.",
     "style": "flat, colourful children's book illustration",
     "background": "generated",
     "units": "m",
     "unknown": "base",
     "vertical_object": "brick wall",
-    "target": "the window",
-    "slant_style": "ladder",
     "dashed": false,
     "base": null,
     "height": 12,
     "slant": 15,
     "angle": null
   },
-  "attempts": 3,
+  "attempts": 1,
   "attempt_log": [
     {
       "attempt": 1,
       "plan_reused": false,
-      "repair_feedback": null,
-      "verification": {
-        "passed": false,
-        "checks": [
-          {
-            "name": "spec_format",
-            "result": "pass",
-            "detail": "the spec is a valid layered figure"
-          },
-          {
-            "name": "unknown_hidden",
-            "result": "pass",
-            "detail": "the unknown base has no value, so it is labelled '?'"
-          },
-          {
-            "name": "answer_consistency",
-            "result": "pass",
-            "detail": "the base worked out from the figure is 9, matching the answer '9 m'"
-          },
-          {
-            "name": "values_match_notes",
-            "result": "pass",
-            "detail": "every value appears in the image notes"
-          },
-          {
-            "name": "drawn_matches_spec",
-            "result": "pass",
-            "detail": "the drawn angle is 53.1°, matching the figure"
-          },
-          {
-            "name": "judge_description",
-            "result": "pass",
-            "detail": "A red right-angle outline runs along the right edge of a brick wall and the grass ground, with a brown diagonal line stretching from the ground across the house to the top corner. A ladder leans against the brick wall on the right, and a brick house with a sloped roof and window stands on the left.",
-            "cost": 0.0003991,
-            "fix": "redraw"
-          },
-          {
-            "name": "overlay_aligned",
-            "result": "pass",
-            "detail": "the figure lines up with the scene"
-          },
-          {
-            "name": "no_text_in_scene",
-            "result": "pass",
-            "detail": "the judge sees no text in the scene",
-            "fix": "redraw"
-          },
-          {
-            "name": "no_visible_defects",
-            "result": "fail",
-            "detail": "the judge sees drawing errors: ['The brown diagonal line is drawn over the front of the house and crosses the window area, so it does not follow any real structure.', \"The ladder's top ends well below the top of the red vertical line, so it does not reach the height the figure suggests.\"]",
-            "fix": "redraw"
-          }
-        ],
-        "cost": 0.0003991,
-        "redraw": true
-      },
-      "cost_usd": 0.0036996960000000006
-    },
-    {
-      "attempt": 2,
-      "plan_reused": true,
-      "repair_feedback": null,
-      "verification": {
-        "passed": false,
-        "checks": [
-          {
-            "name": "spec_format",
-            "result": "pass",
-            "detail": "the spec is a valid layered figure"
-          },
-          {
-            "name": "unknown_hidden",
-            "result": "pass",
-            "detail": "the unknown base has no value, so it is labelled '?'"
-          },
-          {
-            "name": "answer_consistency",
-            "result": "pass",
-            "detail": "the base worked out from the figure is 9, matching the answer '9 m'"
-          },
-          {
-            "name": "values_match_notes",
-            "result": "pass",
-            "detail": "every value appears in the image notes"
-          },
-          {
-            "name": "drawn_matches_spec",
-            "result": "pass",
-            "detail": "the drawn angle is 53.1°, matching the figure"
-          },
-          {
-            "name": "judge_description",
-            "result": "pass",
-            "detail": "A brown diagonal line runs from the grass in front of a brick house up to the top of a tall brick pillar, forming a right triangle with a red base on the ground. The house has a window and a dark roof edge on the left, and the pillar stands on the same grass.",
-            "cost": 0.0005311000000000001,
-            "fix": "redraw"
-          },
-          {
-            "name": "overlay_aligned",
-            "result": "fail",
-            "detail": "the figure does not line up with the scene; trying a new generated scene",
-            "fix": "redraw"
-          },
-          {
-            "name": "no_text_in_scene",
-            "result": "pass",
-            "detail": "the judge sees no text in the scene",
-            "fix": "redraw"
-          },
-          {
-            "name": "no_visible_defects",
-            "result": "fail",
-            "detail": "the judge sees drawing errors: ['The brown diagonal line does not touch the house wall; it floats in the gap between the house and the pillar.', \"The diagonal's lower end sits on the grass in front of the house rather than against the wall it appears to reference.\"]",
-            "fix": "redraw"
-          }
-        ],
-        "cost": 0.0005311000000000001,
-        "redraw": true
-      },
-      "cost_usd": 0.0031369960000000004
-    },
-    {
-      "attempt": 3,
-      "plan_reused": true,
       "repair_feedback": null,
       "verification": {
         "passed": true,
@@ -185,8 +58,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A brick house with a pitched roof and a window stands on the left, and a tall brick tower with a ladder leaning against it stands on the right. A brown diagonal line runs from the ground near the house to the top of the tower, with a red right-angle path along the ground and up the tower's side.",
-            "cost": 0.00043610000000000003,
+            "detail": "A brick chimney-like column stands on green grass beside a yellow house with a brown roof and a window. A red right-triangle overlay runs from the base of the brick column along the ground to a diagonal brown line that reaches the top of the column.",
+            "cost": 0.0003241,
             "fix": "redraw"
           },
           {
@@ -207,13 +80,13 @@
             "fix": "redraw"
           }
         ],
-        "cost": 0.00043610000000000003,
+        "cost": 0.0003241,
         "redraw": false
       },
-      "cost_usd": 0.0031084960000000005
+      "cost_usd": 0.0033882960000000003
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.009945
+  "cost_usd": 0.003388
 }

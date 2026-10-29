@@ -121,11 +121,10 @@ For the layered route, the spec has these fields for every figure:
 - unknown: what the student must find.
 
 For a right_triangle overlay, also include:
-{"vertical_object": "brick wall", "target": "the top of the wall", "dashed": false, "base": null, "height": null, "slant": 10, "angle": 60}
-- vertical_object: the upright thing, such as a brick wall, tower or tree.
-- target: where the slanted line ends, such as "the top of the tower" or "the window".
-- slant_style: ladder, sight_line (for an angle of elevation) or string (for a kite).
-- base: the distance along the ground; height: the height up the vertical object; slant: the length of the slanted line; angle: the angle in degrees between the ground and the slanted line. Give only the values the student is told; set the rest to null.
+{"vertical_object": "brick wall", "dashed": false, "base": null, "height": null, "slant": 10, "angle": 60}
+- vertical_object: the upright thing, such as a brick wall, tower or tree. For a kite, use "kite".
+- dashed: true for a line of sight (angle of elevation); false for a ladder, string or slide.
+- base, height, slant, angle: give only the values the student is told; set the rest to null.
 - unknown: base, height, slant, angle or null. It must be null above.
 
 For a grid overlay, also include:

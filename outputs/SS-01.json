@@ -1,20 +1,19 @@
 {
   "id": "SS-01",
   "route": "illustration",
-  "route_reason": "The scene is a people-and-objects picture with no exact measurements or readable text, and the student must recognise the occupation from the activity shown.",
-  "must_show": "A person at work outside a village house, shaping clay on a potter's wheel, with the wheel and clay clearly visible. No text, letters, labels or signs.",
+  "route_reason": "The scene needs no exact measurements or readable values, and the student must recognise the occupation from the picture, so an illustration with answer_from_image set to true fits.",
+  "must_show": "A person in a village setting shaping clay on a potter's wheel outside a village house, with no text, labels or signs in the image",
   "must_not_show": [
-    "any written name of an occupation",
-    "a loom, anvil, or carpentry tools that would give a different occupation a clear match",
-    "any words, letters, numbers or signs"
+    "any text, letters or labels naming the occupation",
+    "signs or captions naming the occupation"
   ],
   "spec": {
-    "prompt": "A village scene on a sunny day. In the foreground, a person sits at a simple potter's wheel, hands shaping a lump of wet grey clay that rises on the spinning wheel. Beside the wheel is a bowl of water and a few finished clay pots drying on a wooden shelf. Behind them stands a small village house with a thatched roof and a wooden door, with a few trees and a dirt path in the background. Clear, centred composition with the person and wheel as the main focus.",
+    "prompt": "A village scene in a warm, sunny setting. In the foreground, a person sits at a potter's wheel shaping a lump of wet clay with their hands, with a spinning pot taking shape on the wheel. Beside the wheel are a bucket of water and a few finished clay pots on a wooden shelf. Behind them stands a small village house with a tiled roof and a wooden door, and a few trees in the background. The composition is clear and uncluttered, with the potter and the wheel as the central focus. No text, letters, numbers, labels or signs appear anywhere in the picture.",
     "style": "flat, colourful children's book illustration",
     "must_contain": [
       "a person shaping clay on a potter's wheel",
-      "wet clay on the spinning wheel",
-      "a village house with a thatched roof"
+      "a village house",
+      "a lump of wet clay and a clay pot on the wheel"
     ],
     "answer_from_image": true
   },
@@ -40,8 +39,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A boy in a blue apron shapes a grey clay vessel on a wooden potter's wheel in a dusty village. Behind him is a thatched-roof mud house with a wooden door, and nearby are clay pots on a bench and a grey bowl on the ground.",
-            "cost": 0.0003435
+            "detail": "A boy sits on a small stool in a sunny village yard, holding a small clay pot. Beside him is a potter's wheel with a clay jug on it, a wooden bucket of water, and a table with several clay pots. A white house with a red tiled roof and a mud-brick building stand in the background.",
+            "cost": 0.0004975
           },
           {
             "name": "safety",
@@ -80,13 +79,13 @@
             "fix": "redraw"
           }
         ],
-        "cost": 0.0003435,
+        "cost": 0.0004975,
         "redraw": false
       },
-      "cost_usd": 0.0032748960000000002
+      "cost_usd": 0.0034434960000000003
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.003275
+  "cost_usd": 0.003443
 }

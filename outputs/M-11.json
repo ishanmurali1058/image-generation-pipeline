@@ -1,24 +1,22 @@
 {
   "id": "M-11",
   "route": "layered",
-  "route_reason": "The question describes a realistic outdoor scene and needs exact measurements (30 m height and 60° angle) drawn over it, which is what the layered route is built for.",
-  "must_show": "A sunny park scene with green grass, trees and a child standing on the ground looking up at the sky. A right triangle is drawn over the scene: a vertical line marked 30 m from the ground up to the kite, a straight string from the ground to the kite, and the 60° angle between the string and the ground. The string's length is not labelled.",
+  "route_reason": "The question is an illustrated real-world scene, but it needs exact measurements (30 m height and 60° angle) drawn over it, so the layered route fits.",
+  "must_show": "An illustrated park with flat green grass, trees and a path, and a kite high in the sky. The kite's height of 30 m above the ground and the 60° angle between the string and the ground are marked. The string's length is not labelled.",
   "must_not_show": [
-    "the length of the string",
+    "the string's length",
     "the answer 20√3 m",
-    "the answer options",
-    "any value for the string length"
+    "any drawn string or line from the ground to the kite (the code draws it)",
+    "any numbers or words in the scene"
   ],
   "spec": {
     "overlay": "right_triangle",
-    "scene": "A sunny park with green grass, leafy trees and a blue sky with a few white clouds. A child stands on the grass at the bottom of the picture, looking up. No kite, string or lines are drawn in the scene.",
+    "scene": "A sunny public park with flat green grass, a few leafy trees and a winding stone path, with a clear blue sky above. The area beneath the sky is open ground with no people or objects standing in the line between the ground and the sky.",
     "style": "flat, colourful children's book illustration",
     "background": "generated",
     "units": "m",
     "unknown": "slant",
-    "vertical_object": "tall tree",
-    "target": "the kite",
-    "slant_style": "string",
+    "vertical_object": "kite",
     "dashed": false,
     "base": null,
     "height": 30,
@@ -62,8 +60,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A boy in a green shirt looks up toward a large leafy tree on the left, with a brown triangle overlaid on the scene. The triangle's vertical side runs along the edge of a tall cypress on the right, and its base lies along the grass.",
-            "cost": 0.0003591,
+            "detail": "A red diamond-shaped kite flies at the right of a grassy park, with a tall tree on the left and a dashed red tail trailing below it. A brown string forms the hypotenuse of a right triangle with a vertical red line and a horizontal ground line.",
+            "cost": 0.00040839999999999995,
             "fix": "redraw"
           },
           {
@@ -84,13 +82,13 @@
             "fix": "redraw"
           }
         ],
-        "cost": 0.0003591,
+        "cost": 0.00040839999999999995,
         "redraw": false
       },
-      "cost_usd": 0.0037136960000000007
+      "cost_usd": 0.003662396
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.003714
+  "cost_usd": 0.003662
 }

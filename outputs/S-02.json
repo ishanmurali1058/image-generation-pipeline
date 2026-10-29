@@ -1,11 +1,12 @@
 {
   "id": "S-02",
   "route": "circuit",
-  "route_reason": "The question asks whether a bulb glows in a circuit with parallel branches, which is exactly what the circuit route draws with exact component types and connections.",
-  "must_show": "A cell as the source, a closed switch S on the main wire, and bulbs B1 and B2 connected in parallel between the same two junction points, with each bulb labelled.",
+  "route_reason": "This is an electric circuit with parallel bulbs, which the circuit route draws exactly.",
+  "must_show": "A circuit diagram with a cell, a closed switch S in the main wire, and bulbs B1 and B2 connected in parallel between the same two junction points. Both bulbs are intact.",
   "must_not_show": [
-    "the outcome of B1 fusing",
-    "any indication that B2 keeps glowing or stops glowing"
+    "B1 shown as fused or broken",
+    "the answer about whether B2 glows",
+    "any resistance or voltage values"
   ],
   "spec": {
     "source": {
@@ -85,10 +86,10 @@
         "cost": 0.0,
         "redraw": false
       },
-      "cost_usd": 0.0006113
+      "cost_usd": 0.0006139000000000001
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.000611
+  "cost_usd": 0.000614
 }

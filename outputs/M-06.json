@@ -1,16 +1,16 @@
 {
   "id": "M-06",
   "route": "chart",
-  "route_reason": "The question asks the student to read values from a line graph, so the values must be exact and the chart must be drawn from the given data.",
-  "must_show": "A line graph of body temperature in degrees Celsius against time, with points at 9 am (37.0), 10 am (37.8), 11 am (38.6), 12 noon (38.2) and 1 pm (37.6), joined by line segments. The y-axis runs from 36 to 39 in steps of 0.5.",
+  "route_reason": "The question asks the student to read exact values from a line graph, so the chart must be drawn precisely from the given data.",
+  "must_show": "A line graph of body temperature in degrees Celsius against time of day, with points at 9 am (37.0), 10 am (37.8), 11 am (38.6), 12 noon (38.2) and 1 pm (37.6), joined by straight line segments. The y-axis runs from 36 to 39 in steps of 0.5, with labelled axes.",
   "must_not_show": [
-    "the time of highest temperature being marked or highlighted",
-    "any annotation pointing to the peak"
+    "Any label or marker that identifies the time of highest temperature",
+    "The answer 11 am in the title, labels or any highlighting of the peak point"
   ],
   "spec": {
     "chart_type": "line",
-    "title": "Patient's body temperature every hour",
-    "x_label": "Time",
+    "title": "Patient's Body Temperature Over Time",
+    "x_label": "Time of day",
     "y_label": "Temperature (°C)",
     "labels": [
       "9 am",
@@ -78,10 +78,10 @@
         "cost": 0.0,
         "redraw": false
       },
-      "cost_usd": 0.00059
+      "cost_usd": 0.0006451
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.00059
+  "cost_usd": 0.000645
 }

@@ -1,34 +1,95 @@
 {
   "id": "M-10",
   "route": "layered",
-  "route_reason": "The question describes a realistic scene (a tower and an observer) and needs exact measurements and an angle drawn on top, which is the layered route's purpose.",
-  "must_show": "A tall vertical tower standing on flat ground, a figure of an observer standing on the ground about 20 m from the tower's foot, a slanted line of sight from the observer up to the top of the tower with a 60° angle of elevation marked at the observer, and the 20 m ground distance marked. The tower's height is not labelled.",
+  "route_reason": "The question is set in a realistic scene with exact measurements (20 m and 60°) drawn on a right triangle formed by a line of sight, the ground and the tower.",
+  "must_show": "A tall vertical tower standing on flat ground, with an observer's line of sight rising to the top of the tower, the 20 m ground distance from the observer to the tower's foot, and the 60° angle of elevation at the observer's point. The tower's height is not labelled.",
   "must_not_show": [
     "the height of the tower",
-    "the value of the tower's height or any answer option",
-    "any written labels or numbers on the tower"
+    "the answer 20√3 m or any option value",
+    "any written numbers or labels on the figure"
   ],
   "spec": {
     "overlay": "right_triangle",
-    "scene": "A flat open ground area in daylight with a tall vertical stone tower standing upright on the left, and a small observer figure standing on the ground on the right, facing the tower. Clear sky in the background, with a few grass tufts on the ground.",
+    "scene": "A flat open field on a sunny day with a tall, vertical stone tower standing on the ground at the back. A small observer stands on the grass some distance in front of the tower, looking up toward its top. Clear sky, a few distant trees, simple composition.",
     "style": "flat, colourful children's book illustration",
     "background": "generated",
     "units": "m",
     "unknown": "height",
     "vertical_object": "tower",
-    "target": "the top of the tower",
-    "slant_style": "sight_line",
-    "dashed": false,
+    "dashed": true,
     "base": 20,
     "height": null,
     "slant": null,
     "angle": 60
   },
-  "attempts": 1,
+  "attempts": 2,
   "attempt_log": [
     {
       "attempt": 1,
       "plan_reused": false,
+      "repair_feedback": null,
+      "verification": {
+        "passed": false,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid layered figure"
+          },
+          {
+            "name": "unknown_hidden",
+            "result": "pass",
+            "detail": "the unknown height has no value, so it is labelled '?'"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "pass",
+            "detail": "the height worked out from the figure is 34.64, matching the answer '20√3 m'"
+          },
+          {
+            "name": "values_match_notes",
+            "result": "pass",
+            "detail": "every value appears in the image notes"
+          },
+          {
+            "name": "drawn_matches_spec",
+            "result": "pass",
+            "detail": "the drawn angle is 60.0°, matching the figure"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "A stone tower with crenellated top stands on a grassy hill at left, and a small figure in green stands in an open golden field. A red right triangle with a dashed hypotenuse is drawn to the right, with its vertical side far from the tower.",
+            "cost": 0.0003924,
+            "fix": "redraw"
+          },
+          {
+            "name": "overlay_aligned",
+            "result": "fail",
+            "detail": "the figure does not line up with the scene; trying a new generated scene",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_text_in_scene",
+            "result": "pass",
+            "detail": "the judge sees no text in the scene",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "fail",
+            "detail": "the judge sees drawing errors: [\"The triangle's vertical side is not at the tower; it sits far to the right, so the figure does not touch or reference the tower.\", \"The triangle's base lies in the foreground grass, while the tower's base sits farther back on the hill, so the base is not on the same ground.\", \"The dashed hypotenuse runs past the figure rather than from the tower's base to its top, so the figure is not anchored to the tower.\"]",
+            "fix": "redraw"
+          }
+        ],
+        "cost": 0.0003924,
+        "redraw": true
+      },
+      "cost_usd": 0.0035080960000000005
+    },
+    {
+      "attempt": 2,
+      "plan_reused": true,
       "repair_feedback": null,
       "verification": {
         "passed": true,
@@ -61,8 +122,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A cartoon desert scene shows a tall stone tower with a ladder on its side and a small person standing at its base on the right. A brown line forms a slanted triangle with a red right-angle outline that runs up the tower's edge and along the ground.",
-            "cost": 0.00031689999999999995,
+            "detail": "A stone tower stands in a open yellow field with a small person near its base. A red right triangle is overlaid, with its vertical side along the tower's edge, its base along the ground, and a dashed hypotenuse from the left.",
+            "cost": 0.0003094,
             "fix": "redraw"
           },
           {
@@ -83,13 +144,13 @@
             "fix": "redraw"
           }
         ],
-        "cost": 0.00031689999999999995,
+        "cost": 0.0003094,
         "redraw": false
       },
-      "cost_usd": 0.0035644960000000003
+      "cost_usd": 0.0028080960000000004
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.003564
+  "cost_usd": 0.006316
 }

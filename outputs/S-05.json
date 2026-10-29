@@ -1,93 +1,29 @@
 {
   "id": "S-05",
   "route": "illustration",
-  "route_reason": "The picture only sets the scene and identifies the animals, with no exact measurements or readable values, so an illustration fits.",
-  "must_show": "A forest scene with four clearly recognisable animals, each distinct and easy to identify: a tiger, a deer, an eagle and a snake. Each animal is fully visible and separate from the others.",
+  "route_reason": "The question is about recognising animals in a scene, with no exact measurements or readable values, so a clear illustration fits.",
+  "must_show": "A forest scene with four clearly separated, easily recognisable animals: a tiger, a deer, an eagle and a snake, each fully visible with its species features distinct. No text anywhere in the image.",
   "must_not_show": [
-    "any text, labels, names or signs",
-    "any food, prey or feeding behaviour that would reveal which animal eats only plants"
+    "any names, labels, captions or written words",
+    "food items or prey near the animals",
+    "any visual cue about what each animal eats, such as grass or leaves in the deer's mouth or a captured animal in the tiger's or eagle's grip"
   ],
   "spec": {
-    "prompt": "A lush green forest clearing in soft daylight, with tall trees, ferns and grass. In the middle distance a spotted tiger with orange and black stripes stands alert on a rock. Nearby a brown deer with white spots grazes calmly in the grass. High in a tree sits an eagle with brown wings and a white head. Coiled on the forest floor near some leaves is a green snake. The four animals are spread out across the scene so each one is clearly separate and easy to recognise. No text, letters, numbers or signs appear anywhere in the image.",
+    "prompt": "A peaceful forest clearing seen from a gentle angle, with tall green trees and soft sunlight filtering through the leaves. In the foreground, a striped tiger stands alert on the forest floor. Nearby, a spotted deer with a light brown coat stands calmly among low bushes. Above, an eagle with broad brown wings is perched on a high tree branch. At the edge of the clearing, a green snake is coiled on a rock. Each animal is clearly separated from the others and fully visible, with no food, prey or other objects touching them. No text, letters, numbers or signs anywhere in the scene.",
     "style": "flat, colourful children's book illustration",
     "must_contain": [
-      "a tiger with orange and black stripes",
-      "a brown deer with white spots",
-      "an eagle with a white head perched in a tree",
-      "a green snake coiled on the forest floor"
+      "a tiger",
+      "a deer",
+      "an eagle",
+      "a snake"
     ],
     "answer_from_image": true
   },
-  "attempts": 2,
+  "attempts": 1,
   "attempt_log": [
     {
       "attempt": 1,
       "plan_reused": false,
-      "repair_feedback": null,
-      "verification": {
-        "passed": false,
-        "checks": [
-          {
-            "name": "spec_format",
-            "result": "pass",
-            "detail": "the spec is a valid illustration"
-          },
-          {
-            "name": "no_quoted_text",
-            "result": "pass",
-            "detail": "the prompt asks for no written words"
-          },
-          {
-            "name": "judge_description",
-            "result": "pass",
-            "detail": "A forest clearing with tall trees and ferns. A striped tiger stands on a rock on the right, a brown adult deer and a spotted fawn graze on the grass in the middle, and a green snake lies on the forest floor at the bottom. A brown and white eagle with spread wings flies near a tree at the top.",
-            "cost": 0.00031560000000000003
-          },
-          {
-            "name": "safety",
-            "result": "pass",
-            "detail": "the image model's safety filter found nothing",
-            "fix": "redraw"
-          },
-          {
-            "name": "must_contain",
-            "result": "fail",
-            "detail": "the judge does not see ['an eagle with a white head perched in a tree']",
-            "fix": "redraw"
-          },
-          {
-            "name": "no_text_in_image",
-            "result": "pass",
-            "detail": "the judge sees no text in the image",
-            "fix": "redraw"
-          },
-          {
-            "name": "suitable_for_children",
-            "result": "pass",
-            "detail": "the judge finds the image suitable for children",
-            "fix": "redraw"
-          },
-          {
-            "name": "no_visible_defects",
-            "result": "pass",
-            "detail": "the judge sees no drawing errors",
-            "fix": "redraw"
-          },
-          {
-            "name": "answer_consistency",
-            "result": "pass",
-            "detail": "from the picture alone the judge chose 'Deer', matching the answer",
-            "fix": "redraw"
-          }
-        ],
-        "cost": 0.00031560000000000003,
-        "redraw": true
-      },
-      "cost_usd": 0.0033926960000000006
-    },
-    {
-      "attempt": 2,
-      "plan_reused": true,
       "repair_feedback": null,
       "verification": {
         "passed": true,
@@ -105,8 +41,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A forest clearing with a tiger standing on a grey rock on the left and a spotted deer on the right. An eagle with a white head and spread wings is perched on a branch at the top, and a green coiled snake lies in the grass at the bottom right.",
-            "cost": 0.0002706
+            "detail": "A cartoon forest clearing with trees, bushes and a large rock on the right. A tiger stands on the left, two deer (one with antlers) stand in the middle, and a bald eagle with spread wings perches on a branch at the top right. A green snake lies in the grass at the bottom right.",
+            "cost": 0.00023469999999999999
           },
           {
             "name": "safety",
@@ -145,13 +81,13 @@
             "fix": "redraw"
           }
         ],
-        "cost": 0.0002706,
+        "cost": 0.00023469999999999999,
         "redraw": false
       },
-      "cost_usd": 0.0026298960000000005
+      "cost_usd": 0.0032783960000000003
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.006023
+  "cost_usd": 0.003278
 }

@@ -1,24 +1,21 @@
 {
   "id": "M-03",
   "route": "layered",
-  "route_reason": "The question is set in a realistic scene (a ladder against a wall) and needs exact measurements and an angle drawn on top, which is the layered route's purpose.",
-  "must_show": "An illustrated brick wall standing vertically on flat ground, with a ladder leaning from the ground up against the wall. The ladder's length (10 m) and the 60° angle between the ladder and the ground are marked. The height up the wall is not labelled.",
+  "route_reason": "The scene is a realistic illustration of a wall and ladder, but the ladder length and 60° angle must be exact, so a right-triangle overlay is needed on top of the drawn scene.",
+  "must_show": "An illustrated brick wall standing upright on flat ground, with a ladder leaning against the wall, its foot on the ground and its top touching the wall. The ladder length is labelled 10 m and the 60° angle between the ladder and the ground is marked. The height up the wall is not labelled.",
   "must_not_show": [
-    "the height reached up the wall",
-    "the answer 5√3 m",
-    "the answer options",
-    "any label or measurement on the wall itself"
+    "the height of the ladder's top on the wall",
+    "the value 5√3 m",
+    "the answer options"
   ],
   "spec": {
     "overlay": "right_triangle",
-    "scene": "A flat, sunny outdoor area with a plain brick wall standing upright on level ground, with a clear blue sky and a little grass at the base of the wall. Nothing leaning against the wall.",
+    "scene": "A plain brick wall standing upright on flat grass ground under a clear sky, with no people and no objects touching the wall except the empty area where a ladder would rest.",
     "style": "flat, colourful children's book illustration",
     "background": "generated",
     "units": "m",
     "unknown": "height",
     "vertical_object": "brick wall",
-    "target": "the top of the wall where the ladder touches it",
-    "slant_style": "ladder",
     "dashed": false,
     "base": null,
     "height": null,
@@ -62,8 +59,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A brown right triangle with a 10 m hypotenuse and a 60° angle at the ground is drawn over a red-brick wall. The red vertical and horizontal lines run along the wall's left edge and the ground.",
-            "cost": 0.0002346,
+            "detail": "A red brick wall stands on a grassy green ground under a pale blue sky, with a brown diagonal line running from the wall's base up its face and a red vertical line along its right side. A wooden ladder leans against the right edge of the wall, with a dark brown line marking the 60° angle at the base.",
+            "cost": 0.0005141,
             "fix": "redraw"
           },
           {
@@ -84,13 +81,13 @@
             "fix": "redraw"
           }
         ],
-        "cost": 0.0002346,
+        "cost": 0.0005141,
         "redraw": false
       },
-      "cost_usd": 0.0033812960000000006
+      "cost_usd": 0.0034848960000000003
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.003381
+  "cost_usd": 0.003485
 }

@@ -1,24 +1,23 @@
 {
   "id": "M-14",
   "route": "layered",
-  "route_reason": "The question is set in an illustrated outdoor scene but needs exact measurements (8 m and 30°) drawn as a right triangle formed by the trunk, the ground and the bent broken part.",
-  "must_show": "An illustrated tree standing upright on flat ground, with its top broken off and bent down so the broken part reaches the ground. The 8 m distance along the ground from the foot of the tree to the point where the top touches, and the 30° angle between the bent part and the ground, are marked.",
+  "route_reason": "The question is set in a realistic scene (a tree) and needs exact measurements (8 m and 30°) drawn on a right triangle, so the layered route with a right_triangle overlay fits.",
+  "must_show": "An illustrated tree in an open field, with its upper part broken at a point and bent over so the broken top touches the ground. The straight broken part forms a right triangle with the standing trunk and the ground. The 8 m distance from the foot of the tree to the touching point is marked along the ground, and the 30° angle between the broken part and the ground is marked at the touching point.",
   "must_not_show": [
     "the answer 8√3 m",
     "the height of the standing trunk",
     "the length of the broken part",
-    "the options 8 m, 16 m, 16√3 m"
+    "the total height of the tree",
+    "any numbers other than 8 m and 30°"
   ],
   "spec": {
     "overlay": "right_triangle",
-    "scene": "A tall tree with a thick brown trunk and green leaves on a grassy field under a clear blue sky, the broken top section bent down toward the ground, with no ladder, string, rope, lines, numbers or words in the picture.",
+    "scene": "A tall tree in an open grassy field on a sunny day, with its upper part snapped and bent over toward the ground, and a few scattered leaves on the grass. Plain background with blue sky.",
     "style": "flat, colourful children's book illustration",
     "background": "generated",
     "units": "m",
     "unknown": null,
     "vertical_object": "tree trunk",
-    "target": "the point on the trunk where the tree broke",
-    "slant_style": "ladder",
     "dashed": false,
     "base": 8,
     "height": null,
@@ -58,29 +57,12 @@
         "cost": 0.0,
         "redraw": false
       },
-      "cost_usd": 0.0010123
+      "cost_usd": 0.0008999000000000001
     },
     {
       "attempt": 2,
       "plan_reused": false,
-      "repair_feedback": "Your previous plan for this question failed these checks:\n- answer_consistency: the height worked out from the figure is 4.62, but the answer is '8√3 m'\n\nYour previous plan was:\n{\n  \"route\": \"layered\",\n  \"spec\": {\n    \"overlay\": \"right_triangle\",\n    \"scene\": \"A grassy open field during a storm, with dark clouds and a few bent grass blades, and one tall, sturdy tree trunk standing upright on the left side. No broken branches or fallen parts are drawn.\",\n    \"style\": \"flat, colourful children's book illustration\",\n    \"background\": \"generated\",\n    \"units\": \"m\",\n    \"unknown\": \"height\",\n    \"vertical_object\": \"tree trunk\",\n    \"target\": \"the point where the tree broke\",\n    \"slant_style\": \"ladder\",\n    \"dashed\": false,\n    \"base\": 8,\n    \"height\": null,\n    \"slant\": null,\n    \"angle\": 30\n  }\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
-      "verification": {
-        "passed": false,
-        "checks": [
-          {
-            "name": "plan",
-            "result": "fail",
-            "detail": "Reply contained no JSON object."
-          }
-        ],
-        "cost": 0.0
-      },
-      "cost_usd": 0.0013363
-    },
-    {
-      "attempt": 3,
-      "plan_reused": false,
-      "repair_feedback": "Your previous plan for this question failed these checks:\n- plan: Reply contained no JSON object.\n\nYour previous plan was:\n{\n  \"route\": \"none\",\n  \"spec\": {}\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
+      "repair_feedback": "Your previous plan for this question failed these checks:\n- answer_consistency: the height worked out from the figure is 4.62, but the answer is '8√3 m'\n\nYour previous plan was:\n{\n  \"route\": \"layered\",\n  \"spec\": {\n    \"overlay\": \"right_triangle\",\n    \"scene\": \"A tall tree in an open grassy field on a sunny day, with its upper part snapped and bent over toward the ground, and a few scattered leaves on the grass. Plain background with blue sky.\",\n    \"style\": \"flat, colourful children's book illustration\",\n    \"background\": \"generated\",\n    \"units\": \"m\",\n    \"unknown\": \"height\",\n    \"vertical_object\": \"tree trunk\",\n    \"dashed\": false,\n    \"base\": 8,\n    \"height\": null,\n    \"slant\": null,\n    \"angle\": 30\n  },\n  \"answer_check\": null\n}\n\nWrite a corrected plan that fixes these problems. Never change values given in the image notes just to make a check pass. Reply with the full JSON plan only.",
       "verification": {
         "passed": false,
         "checks": [
@@ -107,8 +89,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A cartoon dead tree with a few leafy branches stands on a grassy field under a blue sky. A red right triangle with a 30° angle is drawn beside the trunk, with its base on the ground and its vertical side near the trunk's left edge.",
-            "cost": 0.0003782,
+            "detail": "A stylized cartoon tree trunk, cut flat at the top, stands on a grassy green field under a blue sky. A red-outlined right triangle with a 30° angle and an 8 m base sits on the ground to the left of the trunk.",
+            "cost": 0.0003387,
             "fix": "redraw"
           },
           {
@@ -130,15 +112,74 @@
             "fix": "redraw"
           }
         ],
-        "cost": 0.0003782,
+        "cost": 0.0003387,
         "redraw": true
       },
-      "cost_usd": 0.0041553960000000004
+      "cost_usd": 0.003907696
+    },
+    {
+      "attempt": 3,
+      "plan_reused": true,
+      "repair_feedback": null,
+      "verification": {
+        "passed": false,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid layered figure"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "skipped",
+            "detail": "the figure has no unknown"
+          },
+          {
+            "name": "values_match_notes",
+            "result": "pass",
+            "detail": "every value appears in the image notes"
+          },
+          {
+            "name": "drawn_matches_spec",
+            "result": "pass",
+            "detail": "the drawn angle is 30.0°, matching the figure"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "A cartoon tree with a thick brown trunk and green leafy branches stands on a grassy field under a blue sky. A red right triangle is drawn on the ground with a 30° angle and an 8 m base, with its vertical side rising toward the foliage on the left of the trunk.",
+            "cost": 0.0003677,
+            "fix": "redraw"
+          },
+          {
+            "name": "overlay_aligned",
+            "result": "fail",
+            "detail": "the figure does not line up with the scene; set background to drawn to use a plain drawn scene"
+          },
+          {
+            "name": "no_text_in_scene",
+            "result": "fail",
+            "detail": "the judge sees text in the scene: '30°, 8 m'",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "fail",
+            "detail": "the judge sees drawing errors: [\"The triangle's vertical leg does not coincide with the tree trunk; it runs through the leaves to the left of the trunk.\", 'The top of the trunk is a flat, cut-off shape that looks unnaturally truncated.']",
+            "fix": "redraw"
+          }
+        ],
+        "cost": 0.0003677,
+        "redraw": false
+      },
+      "cost_usd": 0.002907696
     }
   ],
   "status": "flagged",
   "flag_reason": [
-    "the figure does not line up with the scene; trying a new generated scene"
+    "the figure does not line up with the scene; set background to drawn to use a plain drawn scene",
+    "the judge sees text in the scene: '30°, 8 m'",
+    "the judge sees drawing errors: [\"The triangle's vertical leg does not coincide with the tree trunk; it runs through the leaves to the left of the trunk.\", 'The top of the trunk is a flat, cut-off shape that looks unnaturally truncated.']"
   ],
-  "cost_usd": 0.006504
+  "cost_usd": 0.007715
 }

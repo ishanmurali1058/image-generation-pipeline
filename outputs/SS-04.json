@@ -1,24 +1,25 @@
 {
   "id": "SS-04",
   "route": "illustration",
-  "route_reason": "The student must identify the animals from the picture, but no exact measurements or readable text are needed, so a scene illustration fits.",
-  "must_show": "A farmer ploughing an open field. A wooden plough is hitched by a yoke to a pair of bullocks (castrated male cattle) walking side by side, and they are the clearly visible animals pulling it. The farmer guides the plough from behind. No other animals appear in the scene.",
+  "route_reason": "This is a scene of people and animals with no exact measurements, but the student must read the animals from the picture, so an illustration is suitable and answer_from_image is true.",
+  "must_show": "A farmer ploughing a field, with a pair of bullocks (oxen) pulling a wooden plough. The bullocks must be clearly recognisable as cattle with horns, humps and stocky bodies, so the student can identify them from the picture.",
   "must_not_show": [
-    "any written words, letters, numbers or labels",
-    "horses, camels or elephants anywhere in the scene",
-    "the name of any animal written in the picture"
+    "Horses, camels or elephants",
+    "Any text, letters, labels or the answer options",
+    "Any numbers or signs"
   ],
   "spec": {
-    "prompt": "A farmer in a simple cotton shirt and turban walks behind a wooden plough in an open brown field being ploughed. A pair of bullocks with humps and yokes across their necks pulls the plough forward, their muscles and harness clearly visible. Freshly turned soil lies in neat furrows behind the plough. In the background there is a green tree and a small village house under a clear blue sky. The composition shows the farmer and the bullock pair clearly in the foreground. No text, letters, numbers or signs appear anywhere in the picture.",
+    "prompt": "A farmer in a simple cotton kurta and turban walks behind a wooden plough in an open brown field. Two bullocks, a matching pair with large horns, humps and sturdy bodies, are yoked together by a wooden yoke and pull the plough through the soil. Freshly turned furrows of dark earth stretch across the field. In the background there are green trees, a few small huts and a clear blue sky. The composition is clear and easy to read, with the bullocks and plough in the foreground. No text or signs anywhere in the picture.",
     "style": "flat, colourful children's book illustration",
     "must_contain": [
-      "a farmer guiding a wooden plough",
-      "a pair of bullocks with a yoke pulling the plough",
-      "a ploughed field with furrows"
+      "a farmer behind a wooden plough",
+      "a pair of bullocks with horns and humps",
+      "a wooden yoke joining the bullocks",
+      "freshly ploughed furrows in a field"
     ],
     "answer_from_image": true
   },
-  "attempts": 2,
+  "attempts": 3,
   "attempt_log": [
     {
       "attempt": 1,
@@ -40,8 +41,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A farmer in a white kurta and orange turban walks beside a pair of brown bullocks joined by a yoke and rope. They are pulling an implement across a dry, sandy field with curved furrows. A mud-brick hut and trees stand in the background under a clear blue sky.",
-            "cost": 0.00033739999999999996
+            "detail": "A farmer in a white kurta and pink turban walks across a field of freshly ploughed brown furrows, leading a single dark bull with large horns. A rope or beam runs from the animal back toward the right, and small huts and trees stand at the field's edges.",
+            "cost": 0.0004148
           },
           {
             "name": "safety",
@@ -52,7 +53,7 @@
           {
             "name": "must_contain",
             "result": "fail",
-            "detail": "the judge does not see ['a farmer guiding a wooden plough']",
+            "detail": "the judge does not see ['a farmer behind a wooden plough', 'a pair of bullocks with horns and humps', 'a wooden yoke joining the bullocks']",
             "fix": "redraw"
           },
           {
@@ -80,17 +81,17 @@
             "fix": "redraw"
           }
         ],
-        "cost": 0.00033739999999999996,
+        "cost": 0.0004148,
         "redraw": true
       },
-      "cost_usd": 0.0033590960000000002
+      "cost_usd": 0.0034215960000000003
     },
     {
       "attempt": 2,
       "plan_reused": true,
       "repair_feedback": null,
       "verification": {
-        "passed": true,
+        "passed": false,
         "checks": [
           {
             "name": "spec_format",
@@ -105,8 +106,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A farmer in a white dhoti and turban walks behind a pair of brown bullocks with horns, which are pulling a wooden plough across a dry, open field. The field has deep furrows, and a thatched hut, a large tree and distant hills are visible in the background.",
-            "cost": 0.00034589999999999995
+            "detail": "A farmer in a cream kurta and orange turban walks across a dry, dusty field, leading a single brown-and-white bullock that pulls a plough. The field is covered in freshly turned, curved furrows, with trees and small huts in the background.",
+            "cost": 0.0004233
           },
           {
             "name": "safety",
@@ -116,8 +117,8 @@
           },
           {
             "name": "must_contain",
-            "result": "pass",
-            "detail": "the judge sees everything on the checklist",
+            "result": "fail",
+            "detail": "the judge does not see ['a pair of bullocks with horns and humps', 'a wooden yoke joining the bullocks']",
             "fix": "redraw"
           },
           {
@@ -145,13 +146,80 @@
             "fix": "redraw"
           }
         ],
-        "cost": 0.00034589999999999995,
-        "redraw": false
+        "cost": 0.0004233,
+        "redraw": true
       },
-      "cost_usd": 0.0027051960000000004
+      "cost_usd": 0.0027825960000000005
+    },
+    {
+      "attempt": 3,
+      "plan_reused": true,
+      "repair_feedback": null,
+      "verification": {
+        "passed": false,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid illustration"
+          },
+          {
+            "name": "no_quoted_text",
+            "result": "pass",
+            "detail": "the prompt asks for no written words"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "A farmer in a white kurta and turban stands in a field of freshly ploughed brown furrows, holding a long wooden pole. A single grey bullock with curved horns stands on the left, and a few trees and small houses sit in the background.",
+            "cost": 0.0003858
+          },
+          {
+            "name": "safety",
+            "result": "pass",
+            "detail": "the image model's safety filter found nothing",
+            "fix": "redraw"
+          },
+          {
+            "name": "must_contain",
+            "result": "fail",
+            "detail": "the judge does not see ['a farmer behind a wooden plough', 'a pair of bullocks with horns and humps', 'a wooden yoke joining the bullocks']",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_text_in_image",
+            "result": "pass",
+            "detail": "the judge sees no text in the image",
+            "fix": "redraw"
+          },
+          {
+            "name": "suitable_for_children",
+            "result": "pass",
+            "detail": "the judge finds the image suitable for children",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "pass",
+            "detail": "the judge sees no drawing errors",
+            "fix": "redraw"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "pass",
+            "detail": "from the picture alone the judge chose 'Bullocks', matching the answer",
+            "fix": "redraw"
+          }
+        ],
+        "cost": 0.0003858,
+        "redraw": true
+      },
+      "cost_usd": 0.0027450960000000003
     }
   ],
-  "status": "accepted",
-  "flag_reason": null,
-  "cost_usd": 0.006064
+  "status": "flagged",
+  "flag_reason": [
+    "the judge does not see ['a farmer behind a wooden plough', 'a pair of bullocks with horns and humps', 'a wooden yoke joining the bullocks']"
+  ],
+  "cost_usd": 0.008949
 }

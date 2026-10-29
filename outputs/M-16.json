@@ -1,32 +1,33 @@
 {
   "id": "M-16",
   "route": "illustration",
-  "route_reason": "The question gives every number needed, so the picture only sets the scene and no value needs to be read from it.",
-  "must_show": "A child shopping at a stationery shop counter with a notebook and a pen laid out on it, with no price tags, signs, numbers or written words visible.",
+  "route_reason": "The question gives both prices and the picture only sets the scene, so a plain illustration is enough and no exact values need to be read from the image.",
+  "must_show": "A child named Rahul standing at a stationery shop counter, with a notebook and a pen placed on the counter in front of him. The shop is bright and simple, with shelves of school supplies in the background.",
   "must_not_show": [
-    "the prices ₹25 and ₹10",
-    "the total ₹35",
-    "any numbers, currency symbols, labels or signs"
+    "the prices or any price tags",
+    "the total amount",
+    "any numbers, currency symbols or written text",
+    "the answer options"
   ],
   "spec": {
-    "prompt": "A cheerful Indian school student, Rahul, stands at a small stationery shop counter, smiling and holding out a hand toward the shopkeeper. On the counter lie one spiral notebook with a blue cover and one ballpoint pen. Shelves behind the counter are stocked with colourful notebooks and pencil boxes. Warm lighting, simple uncluttered composition, the notebook and pen clearly visible in the centre of the picture. No price tags, signs, numbers or written words anywhere in the scene.",
+    "prompt": "A friendly young boy named Rahul stands at a small stationery shop counter, smiling and holding his wallet. On the counter in front of him lie one notebook and one pen. Behind the counter, shelves hold colourful school supplies such as pencil boxes, rulers and crayons. A shopkeeper stands on the other side of the counter. Warm, bright lighting, simple uncluttered composition, the objects clearly visible in the centre of the picture. Do not include any price tags, signs, labels, words or numbers.",
     "style": "flat, colourful children's book illustration",
     "must_contain": [
-      "a notebook with a blue cover on the counter",
-      "a pen on the counter",
-      "a smiling student at the counter",
+      "a boy named Rahul at a shop counter",
+      "one notebook on the counter",
+      "one pen on the counter",
       "a shopkeeper behind the counter"
     ],
     "answer_from_image": false
   },
-  "attempts": 1,
+  "attempts": 3,
   "attempt_log": [
     {
       "attempt": 1,
       "plan_reused": false,
       "repair_feedback": null,
       "verification": {
-        "passed": true,
+        "passed": false,
         "checks": [
           {
             "name": "spec_format",
@@ -41,8 +42,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A smiling boy with dark hair and a plaid shirt stands behind a wooden counter in a colourful stationery shop. Shelves behind him hold notebooks, boxes, and folders. A blue spiral notebook and a dark blue pen lie on the counter in front of him.",
-            "cost": 0.00043539999999999996
+            "detail": "A smiling cartoon boy stands behind a wooden shop counter holding a dark notebook. An open notebook with a blue pen rests on the counter, and shelves behind him are stocked with stationery such as pencils, books, and boxes.",
+            "cost": 0.0003978
           },
           {
             "name": "safety",
@@ -52,8 +53,8 @@
           },
           {
             "name": "must_contain",
-            "result": "pass",
-            "detail": "the judge sees everything on the checklist",
+            "result": "fail",
+            "detail": "the judge does not see ['a boy named Rahul at a shop counter', 'a shopkeeper behind the counter']",
             "fix": "redraw"
           },
           {
@@ -80,13 +81,143 @@
             "detail": "the answer does not depend on the picture"
           }
         ],
-        "cost": 0.00043539999999999996,
-        "redraw": false
+        "cost": 0.0003978,
+        "redraw": true
       },
-      "cost_usd": 0.0034220960000000003
+      "cost_usd": 0.0033355960000000006
+    },
+    {
+      "attempt": 2,
+      "plan_reused": true,
+      "repair_feedback": null,
+      "verification": {
+        "passed": false,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid illustration"
+          },
+          {
+            "name": "no_quoted_text",
+            "result": "pass",
+            "detail": "the prompt asks for no written words"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "A smiling boy with dark hair and an orange shirt stands behind a wooden counter, holding a dark blue tablet or book. On the counter are a white notepad with a teal pencil and a spiral notebook. Shelves behind him are stocked with colourful stationery, and pencil holders stand on the right.",
+            "cost": 0.0004223
+          },
+          {
+            "name": "safety",
+            "result": "pass",
+            "detail": "the image model's safety filter found nothing",
+            "fix": "redraw"
+          },
+          {
+            "name": "must_contain",
+            "result": "fail",
+            "detail": "the judge does not see ['a boy named Rahul at a shop counter', 'a shopkeeper behind the counter']",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_text_in_image",
+            "result": "pass",
+            "detail": "the judge sees no text in the image",
+            "fix": "redraw"
+          },
+          {
+            "name": "suitable_for_children",
+            "result": "pass",
+            "detail": "the judge finds the image suitable for children",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "pass",
+            "detail": "the judge sees no drawing errors",
+            "fix": "redraw"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "skipped",
+            "detail": "the answer does not depend on the picture"
+          }
+        ],
+        "cost": 0.0004223,
+        "redraw": true
+      },
+      "cost_usd": 0.0027815960000000003
+    },
+    {
+      "attempt": 3,
+      "plan_reused": true,
+      "repair_feedback": null,
+      "verification": {
+        "passed": false,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid illustration"
+          },
+          {
+            "name": "no_quoted_text",
+            "result": "pass",
+            "detail": "the prompt asks for no written words"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "A smiling boy stands at a stationery shop counter holding a blue notebook. A yellow notebook and a blue pen lie on the counter in front of him. Behind him, a man in an apron stands among shelves of colourful stationery.",
+            "cost": 0.0003233
+          },
+          {
+            "name": "safety",
+            "result": "pass",
+            "detail": "the image model's safety filter found nothing",
+            "fix": "redraw"
+          },
+          {
+            "name": "must_contain",
+            "result": "fail",
+            "detail": "the judge does not see ['a boy named Rahul at a shop counter']",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_text_in_image",
+            "result": "pass",
+            "detail": "the judge sees no text in the image",
+            "fix": "redraw"
+          },
+          {
+            "name": "suitable_for_children",
+            "result": "pass",
+            "detail": "the judge finds the image suitable for children",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "pass",
+            "detail": "the judge sees no drawing errors",
+            "fix": "redraw"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "skipped",
+            "detail": "the answer does not depend on the picture"
+          }
+        ],
+        "cost": 0.0003233,
+        "redraw": true
+      },
+      "cost_usd": 0.002682596
     }
   ],
-  "status": "accepted",
-  "flag_reason": null,
-  "cost_usd": 0.003422
+  "status": "flagged",
+  "flag_reason": [
+    "the judge does not see ['a boy named Rahul at a shop counter']"
+  ],
+  "cost_usd": 0.0088
 }

@@ -1,12 +1,12 @@
 {
   "id": "SS-03",
   "route": "map",
-  "route_reason": "The question asks the student to identify a shaded state on a map of India, which is exactly what the map route supports.",
-  "must_show": "Outline map of India with Gujarat shaded in a single colour and no state names written on the map",
+  "route_reason": "The student must identify a shaded state on a map of India, which only the map route can draw accurately.",
+  "must_show": "Outline map of India with Gujarat shaded in a single colour, and no state names written on the map.",
   "must_not_show": [
-    "the name Gujarat",
-    "any written state names, including on Gujarat",
-    "the coastline answer or any hint about coastline length"
+    "the name Gujarat written on or near the map",
+    "any state or union territory names",
+    "the answer in the title or any caption"
   ],
   "spec": {
     "shaded": [
@@ -54,10 +54,10 @@
         "cost": 0.0,
         "redraw": false
       },
-      "cost_usd": 0.00046340000000000004
+      "cost_usd": 0.0004505
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.000463
+  "cost_usd": 0.00045
 }
