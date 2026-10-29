@@ -1,19 +1,18 @@
 {
   "id": "M-05",
   "route": "chart",
-  "route_reason": "A pie chart with exact slice proportions must be drawn precisely from the data, which only the chart route can do.",
-  "must_show": "A pie chart of the favourite sports of 36 students, with four slices labelled Cricket, Football, Hockey and Badminton. Cricket is the largest slice (15 of 36), Football is next (9), and Hockey and Badminton are equal at 6 each. The slices are sized in proportion to these values.",
+  "route_reason": "The question asks the student to read a pie chart's slice sizes, so the chart must be drawn with exact proportions.",
+  "must_show": "A pie chart titled 'Favourite Sports of 36 Students' with four slices labelled Cricket, Football, Hockey and Badminton. Slice sizes are proportional to 15, 9, 6 and 6 students, in that order.",
   "must_not_show": [
-    "the numeric counts 15, 9, 6 or 6 on or beside the slices",
-    "percentages on the slices",
-    "any text stating which sport is most popular",
-    "the answer 'Cricket' written as the answer or in the title"
+    "any numbers, counts or percentages on the slices",
+    "any highlighting or emphasis on the largest slice",
+    "the answer 'Cricket' written as the most popular sport"
   ],
   "spec": {
     "chart_type": "pie",
     "title": "Favourite Sports of 36 Students",
-    "x_label": "Sport",
-    "y_label": "Number of students",
+    "x_label": "",
+    "y_label": "",
     "labels": [
       "Cricket",
       "Football",
@@ -73,10 +72,10 @@
         "cost": 0.0,
         "redraw": false
       },
-      "cost_usd": 0.000671
+      "cost_usd": 0.000622
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.000671
+  "cost_usd": 0.000622
 }

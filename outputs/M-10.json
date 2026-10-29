@@ -1,16 +1,16 @@
 {
   "id": "M-10",
   "route": "layered",
-  "route_reason": "The question is set in a realistic scene with exact measurements (20 m and 60°) drawn on a right triangle formed by a line of sight, the ground and the tower.",
-  "must_show": "A tall vertical tower standing on flat ground, with an observer's line of sight rising to the top of the tower, the 20 m ground distance from the observer to the tower's foot, and the 60° angle of elevation at the observer's point. The tower's height is not labelled.",
+  "route_reason": "The question is set in a realistic outdoor scene and needs exact measurements (20 m base and a 60° angle of elevation) drawn over it as a right triangle.",
+  "must_show": "A tower standing vertically on flat ground, an observer on the ground 20 m from the tower's foot, a dashed line of sight from the observer to the top of the tower, the 20 m base distance along the ground, and the 60° angle of elevation marked at the observer's eye. The tower's height is not labelled.",
   "must_not_show": [
-    "the height of the tower",
-    "the answer 20√3 m or any option value",
-    "any written numbers or labels on the figure"
+    "the tower's height value",
+    "the answer 20√3 m or any of the answer options",
+    "any value for the slant length"
   ],
   "spec": {
     "overlay": "right_triangle",
-    "scene": "A flat open field on a sunny day with a tall, vertical stone tower standing on the ground at the back. A small observer stands on the grass some distance in front of the tower, looking up toward its top. Clear sky, a few distant trees, simple composition.",
+    "scene": "A tall tower standing upright on flat open ground under a clear blue sky, with a small figure of an observer standing on the ground some distance away from the tower's base, looking up toward the top of the tower. Simple green grass and a few trees in the background.",
     "style": "flat, colourful children's book illustration",
     "background": "generated",
     "units": "m",
@@ -22,74 +22,11 @@
     "slant": null,
     "angle": 60
   },
-  "attempts": 2,
+  "attempts": 1,
   "attempt_log": [
     {
       "attempt": 1,
       "plan_reused": false,
-      "repair_feedback": null,
-      "verification": {
-        "passed": false,
-        "checks": [
-          {
-            "name": "spec_format",
-            "result": "pass",
-            "detail": "the spec is a valid layered figure"
-          },
-          {
-            "name": "unknown_hidden",
-            "result": "pass",
-            "detail": "the unknown height has no value, so it is labelled '?'"
-          },
-          {
-            "name": "answer_consistency",
-            "result": "pass",
-            "detail": "the height worked out from the figure is 34.64, matching the answer '20√3 m'"
-          },
-          {
-            "name": "values_match_notes",
-            "result": "pass",
-            "detail": "every value appears in the image notes"
-          },
-          {
-            "name": "drawn_matches_spec",
-            "result": "pass",
-            "detail": "the drawn angle is 60.0°, matching the figure"
-          },
-          {
-            "name": "judge_description",
-            "result": "pass",
-            "detail": "A stone tower with crenellated top stands on a grassy hill at left, and a small figure in green stands in an open golden field. A red right triangle with a dashed hypotenuse is drawn to the right, with its vertical side far from the tower.",
-            "cost": 0.0003924,
-            "fix": "redraw"
-          },
-          {
-            "name": "overlay_aligned",
-            "result": "fail",
-            "detail": "the figure does not line up with the scene; trying a new generated scene",
-            "fix": "redraw"
-          },
-          {
-            "name": "no_text_in_scene",
-            "result": "pass",
-            "detail": "the judge sees no text in the scene",
-            "fix": "redraw"
-          },
-          {
-            "name": "no_visible_defects",
-            "result": "fail",
-            "detail": "the judge sees drawing errors: [\"The triangle's vertical side is not at the tower; it sits far to the right, so the figure does not touch or reference the tower.\", \"The triangle's base lies in the foreground grass, while the tower's base sits farther back on the hill, so the base is not on the same ground.\", \"The dashed hypotenuse runs past the figure rather than from the tower's base to its top, so the figure is not anchored to the tower.\"]",
-            "fix": "redraw"
-          }
-        ],
-        "cost": 0.0003924,
-        "redraw": true
-      },
-      "cost_usd": 0.0035080960000000005
-    },
-    {
-      "attempt": 2,
-      "plan_reused": true,
       "repair_feedback": null,
       "verification": {
         "passed": true,
@@ -122,8 +59,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A stone tower stands in a open yellow field with a small person near its base. A red right triangle is overlaid, with its vertical side along the tower's edge, its base along the ground, and a dashed hypotenuse from the left.",
-            "cost": 0.0003094,
+            "detail": "A cartoon tower stands on a grassy slope beside a small person, with a red right triangle drawn over the scene. The triangle's vertical side runs along the tower's left edge and its horizontal side lies along the ground.",
+            "cost": 0.00040239999999999997,
             "fix": "redraw"
           },
           {
@@ -144,13 +81,13 @@
             "fix": "redraw"
           }
         ],
-        "cost": 0.0003094,
+        "cost": 0.00040239999999999997,
         "redraw": false
       },
-      "cost_usd": 0.0028080960000000004
+      "cost_usd": 0.0035590960000000003
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.006316
+  "cost_usd": 0.003559
 }

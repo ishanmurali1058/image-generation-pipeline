@@ -1,12 +1,12 @@
 {
   "id": "S-02",
   "route": "circuit",
-  "route_reason": "This is an electric circuit with parallel bulbs, which the circuit route draws exactly.",
-  "must_show": "A circuit diagram with a cell, a closed switch S in the main wire, and bulbs B1 and B2 connected in parallel between the same two junction points. Both bulbs are intact.",
+  "route_reason": "The question asks about the effect of a fault on a parallel circuit, which needs an exact electric circuit diagram with correctly connected components.",
+  "must_show": "A circuit diagram with a cell, a closed switch S in the main wire, and bulbs B1 and B2 connected in parallel between the same two junctions, with B1 and B2 clearly labelled.",
   "must_not_show": [
-    "B1 shown as fused or broken",
-    "the answer about whether B2 glows",
-    "any resistance or voltage values"
+    "Whether either bulb is glowing or lit",
+    "Any indication that B1 has fused or been removed",
+    "The answer options or the answer"
   ],
   "spec": {
     "source": {
@@ -86,10 +86,10 @@
         "cost": 0.0,
         "redraw": false
       },
-      "cost_usd": 0.0006139000000000001
+      "cost_usd": 0.0006669000000000001
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.000614
+  "cost_usd": 0.000667
 }

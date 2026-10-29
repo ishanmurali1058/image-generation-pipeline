@@ -1,33 +1,95 @@
 {
   "id": "M-13",
   "route": "layered",
-  "route_reason": "The question is set in a realistic park scene but needs exact measurements (2 m height and 30° angle) drawn on a right triangle, which only the layered route can provide.",
-  "must_show": "A park scene with a play tower whose height of 2 m is marked on the vertical side, the 30° angle with the ground marked at the base of the slanted line, and the slanted line's length left unlabelled.",
+  "route_reason": "The question is about a realistic park scene, but the student must read exact values (2 m height and 30° angle) from a right triangle drawn over it, so the layered route with a right-triangle overlay fits.",
+  "must_show": "A park scene with a right triangle over it: a vertical support post of height 2 m rising from the ground, a slanted slide line from the ground to the top of the post, and the 30° angle marked at the ground. The height of 2 m and the 30° angle are labelled. The slide's length is not labelled.",
   "must_not_show": [
-    "the length of the slide (4 m)",
-    "the answer options",
-    "a drawn slide or ramp in the background scene",
-    "any printed numbers other than the given 2 m and 30°"
+    "the slide length (4 m)",
+    "the options 2 m, 2√3 m, 4√3 m",
+    "any label or value for the slanted side"
   ],
   "spec": {
     "overlay": "right_triangle",
-    "scene": "A sunny children's playground in a park with green grass, trees, a bench and a few children playing nearby, and a tall play tower with a flat platform at the top. Empty space is left clear beside the tower where the slanted line will be drawn. No slide or ramp is shown in the scene.",
+    "scene": "A sunny public park with green grass, leafy trees, a wooden bench and a gravel path, with children playing on the grass in the background. The ground is flat and open in the foreground.",
     "style": "flat, colourful children's book illustration",
     "background": "generated",
     "units": "m",
     "unknown": "slant",
-    "vertical_object": "play tower",
+    "vertical_object": "support post",
     "dashed": false,
     "base": null,
     "height": 2,
     "slant": null,
     "angle": 30
   },
-  "attempts": 1,
+  "attempts": 2,
   "attempt_log": [
     {
       "attempt": 1,
       "plan_reused": false,
+      "repair_feedback": null,
+      "verification": {
+        "passed": false,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid layered figure"
+          },
+          {
+            "name": "unknown_hidden",
+            "result": "pass",
+            "detail": "the unknown slant has no value, so it is labelled '?'"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "pass",
+            "detail": "the slant worked out from the figure is 4, matching the answer '4 m'"
+          },
+          {
+            "name": "values_match_notes",
+            "result": "pass",
+            "detail": "every value appears in the image notes"
+          },
+          {
+            "name": "drawn_matches_spec",
+            "result": "pass",
+            "detail": "the drawn angle is 30.0°, matching the figure"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "A park scene with a red support post on a light pavement, a bench on the left, and children playing on the grass. A red right-triangle overlay with a brown diagonal line and labels (30°, ?, 2 m) is drawn on top of the scene.",
+            "cost": 0.0004249,
+            "fix": "redraw"
+          },
+          {
+            "name": "overlay_aligned",
+            "result": "fail",
+            "detail": "the figure does not line up with the scene; trying a new generated scene",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_text_in_scene",
+            "result": "pass",
+            "detail": "the judge sees no text in the scene",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "fail",
+            "detail": "the judge sees drawing errors: ['The brown diagonal line runs across the bench and through the tree area rather than sitting cleanly within the scene.']",
+            "fix": "redraw"
+          }
+        ],
+        "cost": 0.0004249,
+        "redraw": true
+      },
+      "cost_usd": 0.003752496
+    },
+    {
+      "attempt": 2,
+      "plan_reused": true,
       "repair_feedback": null,
       "verification": {
         "passed": true,
@@ -60,8 +122,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A cartoon park scene shows a slanted brown ramp rising from the grass toward a wooden play tower with a ladder. A bench, a child running, and trees sit in the background.",
-            "cost": 0.000514,
+            "detail": "A park scene shows a wooden bench on gravel, a tree, children, and a tall wooden post on the right with a diagonal measurement line running from the ground to the top of the post. The red horizontal ground line and right-angle marker meet the base of the post, and the post stands vertically.",
+            "cost": 0.00038189999999999996,
             "fix": "redraw"
           },
           {
@@ -82,13 +144,13 @@
             "fix": "redraw"
           }
         ],
-        "cost": 0.000514,
+        "cost": 0.00038189999999999996,
         "redraw": false
       },
-      "cost_usd": 0.0037191960000000006
+      "cost_usd": 0.0028915960000000006
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.003719
+  "cost_usd": 0.006644
 }

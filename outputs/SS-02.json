@@ -1,18 +1,22 @@
 {
   "id": "SS-02",
   "route": "map",
-  "route_reason": "The question asks the student to identify a shaded state on an outline map of India, which only the map route supports.",
-  "must_show": "An outline map of India with Assam shaded in, and no other state shaded. The other states appear as plain outlines.",
+  "route_reason": "The question asks the student to identify a shaded state on an outline map of India, which only the map route can draw accurately.",
+  "must_show": "An outline map of India with Assam shaded. The distractor states Kerala, West Bengal and Karnataka are labelled so the student can locate them.",
   "must_not_show": [
-    "The name of the shaded state on the map",
-    "Any hint that names the largest tea-producing state"
+    "The name Assam anywhere on the map",
+    "Any indication that Assam is the tea-producing state"
   ],
   "spec": {
     "shaded": [
       "Assam"
     ],
-    "labelled": [],
-    "title": "Outline map of India",
+    "labelled": [
+      "Kerala",
+      "West Bengal",
+      "Karnataka"
+    ],
+    "title": "Outline Map of India",
     "unknown": "Assam"
   },
   "attempts": 1,
@@ -53,10 +57,10 @@
         "cost": 0.0,
         "redraw": false
       },
-      "cost_usd": 0.000497
+      "cost_usd": 0.000528
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.000497
+  "cost_usd": 0.000528
 }

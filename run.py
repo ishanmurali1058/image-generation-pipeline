@@ -85,7 +85,10 @@ def safe_process(question, out_dir, number):
 
 
 def flag_after_error(question, out_dir, error):
-    draw_placeholder(question, out_dir / f"{question['id']}.png")
+    try:
+        draw_placeholder(question, out_dir / f"{question['id']}.png")
+    except Exception:
+        pass
     metadata = {
         "id": question["id"],
         "route": None,

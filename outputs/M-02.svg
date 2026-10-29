@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-10-29T15:02:41.926831</dc:date>
+    <dc:date>2026-10-29T15:45:08.311331</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -35,25 +35,25 @@ L 303.369231 234.078793
 L 211.373301 36.792886 
 L 45.830769 234.078793 
 z
-" clip-path="url(#p8d0f89a989)" style="fill: none; stroke: #000000; stroke-width: 2; stroke-linejoin: miter"/>
+" clip-path="url(#p965c9b0678)" style="fill: none; stroke: #000000; stroke-width: 2; stroke-linejoin: miter"/>
    </g>
    <g id="patch_3">
     <path d="M 76.735385 234.078793 
 C 76.735385 229.566147 75.74699 225.107785 73.839863 221.017939 
 C 71.932736 216.928092 69.152761 213.305158 65.695873 210.404485 
-" clip-path="url(#p8d0f89a989)" style="fill: none; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+" clip-path="url(#p965c9b0678)" style="fill: none; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
    </g>
    <g id="patch_4">
     <path d="M 290.308376 206.0697 
 C 284.977252 208.555644 280.46507 212.512721 277.304543 217.473756 
 C 274.144015 222.43479 272.464615 228.196549 272.464615 234.078793 
-" clip-path="url(#p8d0f89a989)" style="fill: none; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+" clip-path="url(#p965c9b0678)" style="fill: none; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
    </g>
    <g id="patch_5">
     <path d="M 191.508197 60.467195 
 C 196.014258 64.248229 201.507519 66.665321 207.33944 67.433108 
 C 213.17136 68.200895 219.103032 67.287924 224.434156 64.80198 
-" clip-path="url(#p8d0f89a989)" style="fill: none; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
+" clip-path="url(#p965c9b0678)" style="fill: none; stroke: #000000; stroke-width: 1.2; stroke-linejoin: miter"/>
    </g>
    <g id="text_1">
     <!-- A -->
@@ -311,7 +311,7 @@ z
   </g>
  </g>
  <defs>
-  <clipPath id="p8d0f89a989">
+  <clipPath id="p965c9b0678">
    <rect x="7.2" y="7.2" width="334.8" height="256.47168"/>
   </clipPath>
  </defs>

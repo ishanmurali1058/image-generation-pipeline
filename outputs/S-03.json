@@ -1,11 +1,11 @@
 {
   "id": "S-03",
   "route": "circuit",
-  "route_reason": "This is an electric circuit with a series arrangement of a battery, an ammeter and two resistors, which is exactly what the circuit route is built to draw.",
-  "must_show": "A complete series circuit with a 6 V battery, an ammeter labelled A, resistor R1 (5 Ω) and resistor R2 (10 Ω) connected one after another in a single loop. The labels and resistor values are shown, but the ammeter reading is not.",
+  "route_reason": "The question asks for the current in a series resistor circuit, which is an electric circuit diagram.",
+  "must_show": "A series circuit diagram with a 6 V battery, an ammeter labelled A, resistor R1 (5 Ω) and resistor R2 (10 Ω) connected in a single loop, with the values 6 V, 5 Ω and 10 Ω labelled.",
   "must_not_show": [
     "the current value (0.4 A)",
-    "the total resistance (15 Ω)",
+    "any ammeter reading",
     "the answer options"
   ],
   "spec": {
@@ -80,10 +80,10 @@
         "cost": 0.0,
         "redraw": false
       },
-      "cost_usd": 0.0006285
+      "cost_usd": 0.0006045
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.000629
+  "cost_usd": 0.000605
 }

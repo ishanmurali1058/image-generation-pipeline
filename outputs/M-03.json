@@ -1,32 +1,95 @@
 {
   "id": "M-03",
   "route": "layered",
-  "route_reason": "The scene is a realistic illustration of a wall and ladder, but the ladder length and 60° angle must be exact, so a right-triangle overlay is needed on top of the drawn scene.",
-  "must_show": "An illustrated brick wall standing upright on flat ground, with a ladder leaning against the wall, its foot on the ground and its top touching the wall. The ladder length is labelled 10 m and the 60° angle between the ladder and the ground is marked. The height up the wall is not labelled.",
+  "route_reason": "The question is a ladder against a wall, an illustrated scene that must carry exact measurements (10 m length and 60° angle) drawn on top, so the layered route with a right-triangle overlay fits.",
+  "must_show": "An illustrated brick wall standing vertically on flat ground, with a ladder leaning against the wall touching it high up, the ladder labelled 10 m along its length, and the 60° angle marked between the ladder and the ground at the foot of the ladder. The height up the wall where the ladder touches is not labelled.",
   "must_not_show": [
-    "the height of the ladder's top on the wall",
-    "the value 5√3 m",
-    "the answer options"
+    "the height of the ladder on the wall",
+    "the value 5√3",
+    "any label or marking on the vertical wall showing its height"
   ],
   "spec": {
     "overlay": "right_triangle",
-    "scene": "A plain brick wall standing upright on flat grass ground under a clear sky, with no people and no objects touching the wall except the empty area where a ladder would rest.",
-    "style": "flat, colourful children's book illustration",
-    "background": "generated",
-    "units": "m",
-    "unknown": "height",
     "vertical_object": "brick wall",
     "dashed": false,
     "base": null,
     "height": null,
     "slant": 10,
-    "angle": 60
+    "angle": 60,
+    "scene": "An illustrated brick wall standing upright on flat green ground under a clear blue sky, with a simple grassy area at its base and no other objects in the way. Plain, uncluttered composition with the wall occupying the right side of the picture and open ground on the left.",
+    "style": "flat, colourful children's book illustration",
+    "background": "generated",
+    "units": "m",
+    "unknown": "height"
   },
-  "attempts": 1,
+  "attempts": 2,
   "attempt_log": [
     {
       "attempt": 1,
       "plan_reused": false,
+      "repair_feedback": null,
+      "verification": {
+        "passed": false,
+        "checks": [
+          {
+            "name": "spec_format",
+            "result": "pass",
+            "detail": "the spec is a valid layered figure"
+          },
+          {
+            "name": "unknown_hidden",
+            "result": "pass",
+            "detail": "the unknown height has no value, so it is labelled '?'"
+          },
+          {
+            "name": "answer_consistency",
+            "result": "pass",
+            "detail": "the height worked out from the figure is 8.66, matching the answer '5√3 m'"
+          },
+          {
+            "name": "values_match_notes",
+            "result": "pass",
+            "detail": "every value appears in the image notes"
+          },
+          {
+            "name": "drawn_matches_spec",
+            "result": "pass",
+            "detail": "the drawn angle is 60.0°, matching the figure"
+          },
+          {
+            "name": "judge_description",
+            "result": "pass",
+            "detail": "A brown 10 m rod leans from the grass at a 60° angle up to a red right-angle line that rises beside a red brick wall. The red vertical line runs through the middle of the wall face, and the triangle's base sits on the grass in front of the wall.",
+            "cost": 0.0004061,
+            "fix": "redraw"
+          },
+          {
+            "name": "overlay_aligned",
+            "result": "fail",
+            "detail": "the figure does not line up with the scene; trying a new generated scene",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_text_in_scene",
+            "result": "pass",
+            "detail": "the judge sees no text in the scene",
+            "fix": "redraw"
+          },
+          {
+            "name": "no_visible_defects",
+            "result": "fail",
+            "detail": "the judge sees drawing errors: ['The red vertical line crosses the middle of the wall face instead of following its edge.', \"The triangle's base is drawn lower on the grass than the wall's bottom edge, so the figure and the wall do not share a ground line.\", \"The red vertical line extends well above the top of the wall, so the figure does not match the wall's height.\"]",
+            "fix": "redraw"
+          }
+        ],
+        "cost": 0.0004061,
+        "redraw": true
+      },
+      "cost_usd": 0.0034023960000000002
+    },
+    {
+      "attempt": 2,
+      "plan_reused": true,
       "repair_feedback": null,
       "verification": {
         "passed": true,
@@ -59,8 +122,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A red brick wall stands on a grassy green ground under a pale blue sky, with a brown diagonal line running from the wall's base up its face and a red vertical line along its right side. A wooden ladder leans against the right edge of the wall, with a dark brown line marking the 60° angle at the base.",
-            "cost": 0.0005141,
+            "detail": "A brown ladder leans from the grass up to the top-left corner of a red brick wall, forming a right triangle with the ground. The ground line meets the base of the wall at a right angle.",
+            "cost": 0.00032710000000000004,
             "fix": "redraw"
           },
           {
@@ -81,13 +144,13 @@
             "fix": "redraw"
           }
         ],
-        "cost": 0.0005141,
+        "cost": 0.00032710000000000004,
         "redraw": false
       },
-      "cost_usd": 0.0034848960000000003
+      "cost_usd": 0.002821496
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.003485
+  "cost_usd": 0.006224
 }

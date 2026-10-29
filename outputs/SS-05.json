@@ -1,81 +1,28 @@
 {
   "id": "SS-05",
   "route": "layered",
-  "route_reason": "The image is a realistic scene from above (a playground) that needs an exact grid drawn on top so the student can count squares to find the area.",
-  "must_show": "An aerial plan-style view of a village playground, 60 m by 50 m, with a 6 by 5 grid of 10 m squares drawn over it, so the student can count the squares to find the area.",
+  "route_reason": "The image is a realistic scene (a playground seen from above) that needs an exact grid drawn on top so the student can count squares and find the area.",
+  "must_show": "An aerial view of a village playground with a sandpit, swings, a merry-go-round, benches and trees, with a 6 by 5 grid of equal squares drawn over the whole playground, each square representing 10 m by 10 m.",
   "must_not_show": [
-    "the area value (3000 m²)",
-    "any written numbers, labels, words or units in the picture",
-    "the answer options"
+    "the total area of the playground",
+    "any numbers, words or labels on the image"
   ],
   "spec": {
     "overlay": "grid",
-    "columns": 6,
-    "rows": 5,
-    "square_size": 10,
-    "scene": "Aerial view from directly above of a village playground with a sandy play area, a small slide, two swings, a seesaw, a climbing frame, a few benches around the edges and green grass borders, bright and friendly, no people in the foreground.",
+    "scene": "Aerial bird's-eye view of a village playground with a sandpit in one corner, a row of swings, a round merry-go-round, wooden benches along the edge, a few green trees around the border and a dirt path, seen from directly above, with the whole playground filling the frame.",
     "style": "flat, colourful children's book illustration",
     "background": "generated",
     "units": "m",
-    "unknown": "area"
+    "unknown": "area",
+    "columns": 6,
+    "rows": 5,
+    "square_size": 10
   },
-  "attempts": 2,
+  "attempts": 1,
   "attempt_log": [
     {
       "attempt": 1,
       "plan_reused": false,
-      "repair_feedback": null,
-      "verification": {
-        "passed": false,
-        "checks": [
-          {
-            "name": "spec_format",
-            "result": "pass",
-            "detail": "the spec is a valid layered figure"
-          },
-          {
-            "name": "answer_consistency",
-            "result": "pass",
-            "detail": "the area worked out from the figure is 3000, matching the answer '3000 m²'"
-          },
-          {
-            "name": "values_match_notes",
-            "result": "pass",
-            "detail": "every value appears in the image notes"
-          },
-          {
-            "name": "judge_description",
-            "result": "pass",
-            "detail": "A top-down view of a park with a circular sandpit, a red slide lying across its center, and a swing set in the upper left, surrounded by a grass ring and a path. Orange benches sit at three corners, and a dark red rectangle with a 10 m square grid is overlaid on the play area.",
-            "cost": 0.0003131,
-            "fix": "redraw"
-          },
-          {
-            "name": "overlay_aligned",
-            "result": "pass",
-            "detail": "the figure lines up with the scene"
-          },
-          {
-            "name": "no_text_in_scene",
-            "result": "fail",
-            "detail": "the judge sees text in the scene: 'Each square is 10 m × 10 m'",
-            "fix": "redraw"
-          },
-          {
-            "name": "no_visible_defects",
-            "result": "pass",
-            "detail": "the judge sees no drawing errors",
-            "fix": "redraw"
-          }
-        ],
-        "cost": 0.0003131,
-        "redraw": true
-      },
-      "cost_usd": 0.0034148960000000006
-    },
-    {
-      "attempt": 2,
-      "plan_reused": true,
       "repair_feedback": null,
       "verification": {
         "passed": true,
@@ -98,8 +45,8 @@
           {
             "name": "judge_description",
             "result": "pass",
-            "detail": "A top-down view of a sandy playground with a red-and-yellow swing set, a teal slide with a ladder, and wooden benches around the edge. A dark red rectangle divided into a 10 m by 10 m grid is drawn over the sand.",
-            "cost": 0.0003691,
+            "detail": "An aerial illustration of a park with a playground, a red-roofed building, a fenced sandy area with a carousel and play equipment, and trees along the edges. A red-bordered grid of 10 m squares is overlaid on the scene.",
+            "cost": 0.00034710000000000003,
             "fix": "redraw"
           },
           {
@@ -120,13 +67,13 @@
             "fix": "redraw"
           }
         ],
-        "cost": 0.0003691,
+        "cost": 0.00034710000000000003,
         "redraw": false
       },
-      "cost_usd": 0.002728396
+      "cost_usd": 0.0034418960000000003
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.006143
+  "cost_usd": 0.003442
 }

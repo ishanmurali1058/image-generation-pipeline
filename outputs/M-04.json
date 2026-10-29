@@ -1,12 +1,12 @@
 {
   "id": "M-04",
   "route": "chart",
-  "route_reason": "The question asks the student to read exact bar values from a bar graph, so the chart must be drawn precisely by code.",
-  "must_show": "A bar graph titled 'Bicycles Made per Day' with four bars for Monday (40), Tuesday (55), Wednesday (35) and Thursday (50), a y-axis from 0 to 60 in steps of 10, and labelled x and y axes.",
+  "route_reason": "The question asks the student to read exact bar values from a bar graph, so the chart must be drawn precisely from the given data.",
+  "must_show": "A bar graph titled 'Bicycles Made per Day' with four bars labelled Monday, Tuesday, Wednesday and Thursday, showing heights 40, 55, 35 and 50. The y-axis runs from 0 to 60 in steps of 10, with axis labels 'Day' and 'Number of bicycles'.",
   "must_not_show": [
     "the total of 180",
-    "the answer options 160, 170, 180 or 190",
-    "any sum or working of the bar values"
+    "the sum or any calculated total",
+    "the answer options"
   ],
   "spec": {
     "chart_type": "bar",
@@ -77,10 +77,10 @@
         "cost": 0.0,
         "redraw": false
       },
-      "cost_usd": 0.0005597
+      "cost_usd": 0.0005412
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.00056
+  "cost_usd": 0.000541
 }

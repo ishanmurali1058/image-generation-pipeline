@@ -1,11 +1,11 @@
 {
   "id": "M-02",
   "route": "geometry",
-  "route_reason": "The figure is a plain triangle made only of lines and vertices, with two given angles and one unknown angle, which the geometry route supports.",
-  "must_show": "Triangle ABC with vertices labelled A, B and C, angle A marked as 50 degrees and angle B marked as 65 degrees, and angle C marked with a question mark.",
+  "route_reason": "The figure is a plain triangle made only of lines and vertices, with given angles that the student must use to find the missing angle.",
+  "must_show": "Triangle ABC with vertices labelled A, B and C, angle A marked as 50 degrees, angle B marked as 65 degrees, and angle C marked with a question mark.",
   "must_not_show": [
     "the value of angle C (65 degrees)",
-    "the answer option values as a list"
+    "any answer option values for angle C"
   ],
   "spec": {
     "shape": "triangle",
@@ -24,7 +24,7 @@
       "BC": null,
       "CA": null
     },
-    "units": "cm",
+    "units": "",
     "unknown": "C"
   },
   "attempts": 1,
@@ -75,10 +75,10 @@
         "cost": 0.0,
         "redraw": false
       },
-      "cost_usd": 0.00041160000000000003
+      "cost_usd": 0.0004086
     }
   ],
   "status": "accepted",
   "flag_reason": null,
-  "cost_usd": 0.000412
+  "cost_usd": 0.000409
 }
