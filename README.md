@@ -101,7 +101,7 @@ The outputs from the final run are in `outputs/`. In that run, 22 questions were
 
 ## Project structure
 ```
-run.py                      Single command that runs the whole pipeline /n
+run.py                      Single command that runs the whole pipeline
 pipeline/
     understand.py           Planning: the Claude prompt and plan validation
     stages.py               Generate and verify stages that call the routes

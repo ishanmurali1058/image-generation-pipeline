@@ -41,21 +41,21 @@ Combination images: an exact right-triangle figure or grid drawn by code on top 
 Grew the sample set to 27 questions across Math, Science and Social Studies, keeping the original six first. Most new questions are adapted from NCERT exercise types with new wording and values; each records its source. The set deliberately includes hard cases: hidden answers, an exact count, questions between categories, questions with no answer or image notes, and questions no route can draw.
 
 # Layered scenes, five approaches
-Generated layered scenes rarely lined up with the figure. I tried five approaches and measured each:
-Fixed positions, asking FLUX to put the object in a set place: almost never lined up.
-Locating the object in the generated scene with Claude, and drawing the figure there: some lined up, varying a lot between runs.
-Giving each question a second try at a new scene before falling back to a drawn one: most layered questions came out generated, but some showed the wrong thing.
-Telling the judge what the scene should show and where the slanted line should end: wrong scenes were rejected, so most fell back to drawn scenes.
-Generating the object alone on white, cutting it out and placing it: still had errors or drawn fallbacks.
-Kept version 3, with the drawn fallback, and dropped 4 and 5. The underlying problem is that FLUX draws the scene without knowing where the figure will go; generating the scene around a layout sketch is the most promising next step.
+- Generated layered scenes rarely lined up with the figure. I tried five approaches and measured each:
+- Fixed positions, asking FLUX to put the object in a set place: almost never lined up.
+- Locating the object in the generated scene with Claude, and drawing the figure there: some lined up, varying a lot between runs.
+- Giving each question a second try at a new scene before falling back to a drawn one: most layered questions came out generated, but some showed the wrong thing.
+- Telling the judge what the scene should show and where the slanted line should end: wrong scenes were rejected, so most fell back to drawn scenes.
+- Generating the object alone on white, cutting it out and placing it: still had errors or drawn fallbacks.
+- Kept version 3, with the drawn fallback, and dropped 4 and 5. The underlying problem is that FLUX draws the scene without knowing where the figure will go; generating the scene around a layout sketch is the most promising next step.
 
 # Routing rules from the results
-Each run exposed ambiguous questions, and each led to a rule in the planning prompt:
-An illustrated scene with exact measurements goes to layered, not geometry (M-03 was first routed to geometry).
-Exact counts of objects go to template, which isn't built, so they're flagged (M-15 was drawn as a bar chart with one bar at 9).
-If the question gives every number and the picture only sets the scene, use illustration with no numbers shown (M-16 was drawn as a bar chart of prices).
-For a kite, use the kite itself as the vertical object (M-11 had no kite in the picture).
-Use a dashed line for a line of sight (M-10's was drawn solid).
+- Each run exposed ambiguous questions, and each led to a rule in the planning prompt:
+- An illustrated scene with exact measurements goes to layered, not geometry (M-03 was first routed to geometry).
+- Exact counts of objects go to template, which isn't built, so they're flagged (M-15 was drawn as a bar chart with one bar at 9).
+- If the question gives every number and the picture only sets the scene, use illustration with no numbers shown (M-16 was drawn as a bar chart of prices).
+- For a kite, use the kite itself as the vertical object (M-11 had no kite in the picture).
+- Use a dashed line for a line of sight (M-10's was drawn solid).
 
 # Robustness
 Any error in one question now flags that question with the reason and moves on: failed Claude or fal.ai calls, failed image checks, specs in unexpected shapes, and unexpected bugs. Questions without an ID get one, unsafe IDs are made safe for file names, and an unreadable input file gives a clear message. Tested with a file of deliberately broken questions; every one was processed.
