@@ -7,7 +7,7 @@ from pipeline.llm import PRICES
 
 IMAGE_MODEL = "fal-ai/flux/schnell"
 
-def generate_image(prompt, png_path, width=1024, height=768):
+def generate_image(prompt, png_path, width=1024, height=768): #sends a request to the FAL API to generate an image based on the prompt and saves it to the specified path
     result = fal_client.subscribe(IMAGE_MODEL, arguments={
         "prompt": prompt,
         "image_size": {"width": width, "height": height},

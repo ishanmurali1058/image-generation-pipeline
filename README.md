@@ -100,8 +100,8 @@ Prices are set in `config/prices.yaml`. Costs are calculated from the token coun
 The outputs from the final run are in `outputs/`. In that run, 22 questions were accepted and 5 flagged, at an average cost of $0.0029 per image.
 
 ## Project structure
-
-run.py                      Single command that runs the whole pipeline
+```
+run.py                      Single command that runs the whole pipeline /n
 pipeline/
     understand.py           Planning: the Claude prompt and plan validation
     stages.py               Generate and verify stages that call the routes
@@ -120,6 +120,7 @@ config/prices.yaml          Prices used for cost tracking
 data/india_states.geojson   State boundaries for the map route
 samples/questions.json      Sample question set
 outputs/                    Outputs of the final sample run
+```
 
 ### Adding a route
 

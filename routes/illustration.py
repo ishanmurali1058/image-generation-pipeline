@@ -21,7 +21,7 @@ Look carefully at the picture and reply with ONLY a JSON object, no other text:
 }
 Mark a checklist item true if a student would clearly recognise it in the picture, even if it is small or partly hidden. Be honest."""
 
-def check_spec(plan, question):
+def check_spec(plan, question): #the checks done on the illustration spec before drawing the image
     spec = plan["spec"]
     missing = [key for key in REQUIRED_FIELDS if key not in spec]
     if missing:
@@ -42,7 +42,7 @@ def check_spec(plan, question):
                   "the prompt asks for no written words",
                   f"the prompt asks for written words {quoted}, which image models misspell")]
 
-def render(spec, png_path, svg_path):
+def render(spec, png_path, svg_path): #builds the full prompt and generates the image using FLUX
     full_prompt = f"{spec['prompt']} Style: {spec['style']}. {NO_TEXT}"
     try:
         result = generate_image(full_prompt, png_path)
@@ -50,7 +50,7 @@ def render(spec, png_path, svg_path):
         raise ValueError(f"image generation failed: {error}") from error
     return {"cost": result["cost"], "safety_flagged": result["safety_flagged"]}
 
-def judge_message(spec, question):
+def judge_message(spec, question): #writes the message to send to the judge LLM (Claude Haiku 5.5) 
     lines = ["Checklist:"]
     for number, item in enumerate(spec["must_contain"], start=1):
         lines.append(f"{number}. {item}")
@@ -63,12 +63,12 @@ def judge_message(spec, question):
         lines.append("There is no question to answer, so set chosen_option to null.")
     return "\n".join(lines)
 
-def redraw_check(name, ok, pass_detail, fail_detail):
+def redraw_check(name, ok, pass_detail, fail_detail): #adds a fix field to the check result to indicate that the image should be redrawn if the check fails
     result = check(name, ok, pass_detail, fail_detail)
     result["fix"] = "redraw"
     return result
 
-def check_render(plan, files, question=None):
+def check_render(plan, files, question=None): #calls the judge LLM to verify the generated image against the spec and question with a numbers of checks
     spec = plan["spec"]
     question = question or {}
     result = call_llm(JUDGE_PROMPT, judge_message(spec, question), max_tokens=1500, image_path=files["png"])
@@ -113,7 +113,7 @@ def check_render(plan, files, question=None):
     checks.append(option_check(spec, question, report.get("chosen_option")))
     return checks
 
-def option_check(spec, question, chosen):
+def option_check(spec, question, chosen): #checks that the option chosen by the judge matches the answer or one of the options in the question
     options = question.get("options")
     if not spec["answer_from_image"] or not options:
         return make_check("answer_consistency", "skipped", "the answer does not depend on the picture")

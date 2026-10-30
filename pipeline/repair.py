@@ -1,6 +1,6 @@
 import json
 
-def build_feedback(plan, verification):
+def build_feedback(plan, verification): #writes a prompt to Claude asking for a corrected plan, based on the previous plan and the failed checks with their reasons
     failed = [check for check in verification["checks"] if check["result"] == "fail"]
     problems = "\n".join(f"- {check['name']}: {check['detail']}" for check in failed)
 

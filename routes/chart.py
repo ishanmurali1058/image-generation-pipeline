@@ -9,7 +9,7 @@ from .common import check, check_answer, check_values_in_notes, make_check
 
 OPERATIONS = ["value", "sum", "difference", "average", "max_label", "min_label"]
 
-def check_spec(plan, question):
+def check_spec(plan, question): #the function that does all the checks on the spec and returns a list of check results
     spec = plan["spec"]
     labels = spec["labels"]
     values = [float(v) for v in spec["values"]]
@@ -37,7 +37,7 @@ def check_spec(plan, question):
     checks.append(check_answer_not_shown(spec, question))
     return checks
 
-def compute_answer(answer_check, labels, values):
+def compute_answer(answer_check, labels, values): #computes the worked out result from the chart based on the answer_check operation and returns it, or None if the operation is not supported
     operation = answer_check.get("operation")
     if operation not in OPERATIONS:
         return None
@@ -59,7 +59,7 @@ def compute_answer(answer_check, labels, values):
     if operation == "min_label":
         return min(chosen, key=lambda label: lookup[label])
 
-def chart_answer_check(plan, question, labels, values):
+def chart_answer_check(plan, question, labels, values): #checks the answer_check in the plan against the worked out result from the chart and returns a check result
     answer_check = plan.get("answer_check")
     if not answer_check:
         return make_check("answer_consistency", "skipped", "plan gave no answer_check")
@@ -74,7 +74,7 @@ def chart_answer_check(plan, question, labels, values):
 
     return check_answer(question, result, "the answer worked out from the chart")
 
-def check_answer_not_shown(spec, question):
+def check_answer_not_shown(spec, question): #checks that the answer doesn't appear in the title or axis labels
     answer = (question.get("answer") or "").strip()
     if not answer:
         return make_check("answer_not_shown", "skipped", "no answer given")
@@ -86,7 +86,7 @@ def check_answer_not_shown(spec, question):
             return make_check("answer_not_shown", "fail", f"the answer '{answer}' appears in the {field}: '{text}'")
     return make_check("answer_not_shown", "pass", "the answer does not appear in the title or axis labels")
 
-def check_render(plan, files, question = None):
+def check_render(plan, files, question = None): #checks that the drawn values match the spec values and returns a list of check results
     expected = [float(v) for v in plan["spec"]["values"]]
     drawn = files.get("drawn_values", [])
     same = len(drawn) == len(expected) and all(abs(d - e) < 1e-9 for d, e in zip(drawn, expected))
@@ -94,7 +94,7 @@ def check_render(plan, files, question = None):
                   f"drawn values {drawn} match the spec",
                   f"drawn values {drawn} do not match the spec {expected}")]
 
-def render(spec, png_path, svg_path):
+def render(spec, png_path, svg_path): #draws the chart based on the spec using matplotlib
     labels = spec["labels"]
     values = spec["values"]
     chart_type = spec["chart_type"]

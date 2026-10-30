@@ -11,7 +11,7 @@ from pipeline.stages import understand, generate, verify, draw_placeholder
 MAX_ATTEMPTS = 3
 
 
-def process_question(question, out_dir):
+def process_question(question, out_dir): #takes each question and processes it through the pipeline, returning the metadata for the question
     attempts = []
     total_cost = 0.0
     status = "flagged"
@@ -73,7 +73,7 @@ def process_question(question, out_dir):
     return metadata
 
 
-def safe_process(question, out_dir, number):
+def safe_process(question, out_dir, number): #used to safely process a question and handle any errors that may occur during processing
     if not isinstance(question, dict):
         question = {"question": str(question)}
     raw_id = str(question.get("id") or f"Q-{number:03d}")
@@ -84,7 +84,7 @@ def safe_process(question, out_dir, number):
         return flag_after_error(question, out_dir, error)
 
 
-def flag_after_error(question, out_dir, error):
+def flag_after_error(question, out_dir, error): #used to draw a placeholder image and create a metadata file for a question that encountered an error during processing
     try:
         draw_placeholder(question, out_dir / f"{question['id']}.png")
     except Exception:
@@ -105,7 +105,7 @@ def flag_after_error(question, out_dir, error):
     return metadata
 
 
-def load_questions(path):
+def load_questions(path): #used to read the questions from questions.json
     try:
         with open(path, encoding="utf-8") as f:
             data = json.load(f)
@@ -118,7 +118,7 @@ def load_questions(path):
     return data
 
 
-def write_summary(results, out_dir):
+def write_summary(results, out_dir): #used to write a summary of the results to a CSV file (summary.csv)
     total = sum(r["cost_usd"] for r in results)
     average = total / len(results) if results else 0.0
 
@@ -132,7 +132,7 @@ def write_summary(results, out_dir):
         writer.writerow(["average_cost_usd", round(average, 6)])
 
 
-def main():
+def main(): #runs every part of the pipeline, from reading the questions to writing the summary
     parser = argparse.ArgumentParser(description="Generate and verify images for assessment questions.")
     parser.add_argument("--input", required=True, help="Path to the questions JSON file")
     parser.add_argument("--out", required=True, help="Folder to write outputs into")

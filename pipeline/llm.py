@@ -15,9 +15,9 @@ PRICES_PATH = Path(__file__).resolve().parent.parent / "config" / "prices.yaml"
 with open(PRICES_PATH, encoding = "utf_8") as f:
     PRICES = yaml.safe_load(f)
 
-client = anthropic.Anthropic(api_key = os.environ.get("ANTHROPIC_API_KEY"))
+client = anthropic.Anthropic(api_key = os.environ.get("ANTHROPIC_API_KEY")) 
 
-def image_block(image_path, longest_side = 768):
+def image_block(image_path, longest_side = 768): #used to prepare an image for sending to Claude
     image = Image.open(image_path).convert("RGB")
     image.thumbnail((longest_side, longest_side))
     buffer = io.BytesIO()
@@ -25,7 +25,7 @@ def image_block(image_path, longest_side = 768):
     data = base64.b64encode(buffer.getvalue()).decode("ascii")
     return {"type": "image", "source": {"type": "base64", "media_type": "image/jpeg", "data": data}}
 
-def call_llm(system_prompt, user_prompt, max_tokens = 2000, image_path = None):
+def call_llm(system_prompt, user_prompt, max_tokens = 2000, image_path = None): #sends a prompt to Claude and returns the response, along with token usage and cost
     content = user_prompt
     if image_path is not None:
         content = [image_block(image_path), {"type": "text", "text": user_prompt}]

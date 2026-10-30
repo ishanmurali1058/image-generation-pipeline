@@ -11,19 +11,19 @@ ANGLE_TOLERANCE = 0.5
 SIDE_TOLERANCE = 0.01
 REQUIRED_FIELDS = ["shape", "vertices", "angles", "sides", "unknown"]
 
-def get_side(sides, p, q):
+def get_side(sides, p, q): #looks up the length of a side in the spec, checking both orders of the vertices i.e PQ and QP
     value = sides.get(p + q)
     return value if value is not None else sides.get(q + p)
 
-def third_side(angle, s1, s2):
+def third_side(angle, s1, s2): #uses the cosine rule to calculate the length of the third side of a triangle given two sides and the angle between them
     return math.sqrt(s1 * s1 + s2 * s2 - 2 * s1 * s2 * math.cos(math.radians(angle)))
 
-def angles_from_sides(a, b, c):
+def angles_from_sides(a, b, c): #uses the cosine rule to calculate the angles of a triangle given its three sides
     A = math.degrees(math.acos((b * b + c * c - a * a) / (2 * b * c)))
     B = math.degrees(math.acos((a * a + c * c - b * b) / (2 * a * c)))
     return A, B, 180 - A - B
 
-def solve_triangle(spec):
+def solve_triangle(spec): #finds the three angles and sides of a triangle given the spec, returning them along with the coordinates of the vertices
     v0, v1, v2 = spec["vertices"]
     angles = spec.get("angles") or {}
     sides = spec.get("sides") or {}
@@ -70,7 +70,7 @@ def solve_triangle(spec):
             "sides": {v1 + v2: a, v2 + v0: b, v0 + v1: c},
             "points": points}
 
-def find_unknown(spec, solution):
+def find_unknown(spec, solution): #finds the unknown angle or side and returns its type, name, and value from the solution
     unknown = spec.get("unknown")
     if unknown in spec["vertices"]:
         return "angle", unknown, solution["angles"][unknown]
@@ -79,7 +79,7 @@ def find_unknown(spec, solution):
             return "side", side, length
     return None, unknown, None
 
-def check_spec(plan, question):
+def check_spec(plan, question): #the checks on the spec of the triangle done before drawing
     spec = plan["spec"]
 
     missing = [key for key in REQUIRED_FIELDS if key not in spec]
@@ -129,14 +129,14 @@ def check_spec(plan, question):
         checks.append(check_answer(question, unknown_value, f"{kind} {name} in the figure"))
     return checks
 
-def angle_at(points, vertex, p, q):
+def angle_at(points, vertex, p, q): #measures the angle at a vertex given the coordinates of the three vertices
     vx, vy = points[vertex]
     ux, uy = points[p][0] - vx, points[p][1] - vy
     wx, wy = points[q][0] - vx, points[q][1] - vy
     cosine = (ux * wx + uy * wy) / (math.hypot(ux, uy) * math.hypot(wx, wy))
     return math.degrees(math.acos(max(-1.0, min(1.0, cosine))))
 
-def check_render(plan, files, question = None):
+def check_render(plan, files, question = None): #measures the angles and sides of the drawn triangle and checks that they match the labels 
     spec = plan["spec"]
     v0, v1, v2 = spec["vertices"]
     points = files.get("drawn_points", {})
@@ -158,13 +158,13 @@ def check_render(plan, files, question = None):
     return [check("drawn_matches_labels", not problems,
                   "every labelled angle and side is drawn at its labelled size", "; ".join(problems))]
 
-def label_outside(ax, point, centre, distance, text, **style):
+def label_outside(ax, point, centre, distance, text, **style): #used to draw the labels for angles and sides of the drawn triangle
     dx, dy = point[0] - centre[0], point[1] - centre[1]
     length = math.hypot(dx, dy)
     ax.text(point[0] + dx / length * distance, point[1] + dy / length * distance, text,
             ha="center", va="center", **style)
 
-def draw_angle_mark(ax, points, vertex, p, q, label, given, size):
+def draw_angle_mark(ax, points, vertex, p, q, label, given, size): #used to draw the angle's arc or a square for a right angle, along with the label for the angle
     vx, vy = points[vertex]
     t1 = math.degrees(math.atan2(points[p][1] - vy, points[p][0] - vx))
     t2 = math.degrees(math.atan2(points[q][1] - vy, points[q][0] - vx))
@@ -188,7 +188,7 @@ def draw_angle_mark(ax, points, vertex, p, q, label, given, size):
     ax.text(vx + 1.9 * radius * math.cos(middle), vy + 1.9 * radius * math.sin(middle), label,
             ha="center", va="center", fontsize=13)
 
-def render(spec, png_path, svg_path):
+def render(spec, png_path, svg_path): #draws the triangle and saves it as PNG and SVG
     solution = solve_triangle(spec)
     points = solution["points"]
     vertices = spec["vertices"]

@@ -13,30 +13,26 @@ SYMBOLS = {"cell": elm.BatteryCell, "battery": elm.Battery, "bulb": elm.Lamp2, "
            "ammeter": elm.MeterA, "voltmeter": elm.MeterV, "switch": elm.Switch}
 COMPONENT_TYPES = ["bulb", "resistor", "switch", "ammeter", "voltmeter"]
 
-
-def components(spec):
+def components(spec): #the list of all components in the circuit
     every = list(spec["series"])
     for branch in spec["branches"]:
         every += branch
     return every
 
-
-def conducts(component, removed, switches):
+def conducts(component, removed, switches): #checks whether a component lets current through it
     if component.get("label") in removed or component["type"] == "voltmeter":
         return False
     if component["type"] == "switch":
         return switches.get(component.get("label"), component.get("state")) == "closed"
     return True
 
-
-def path_complete(parts, removed, switches):
+def path_complete(parts, removed, switches): #checks whether current can flow through a list of components
     for component in parts:
         if not conducts(component, removed, switches):
             return False
     return True
 
-
-def is_lit(spec, target, removed, switches):
+def is_lit(spec, target, removed, switches): #checks whether a bulb glows in a circuit, given the spec, the bulb's label, and any removed components or switch states
     series_ok = path_complete(spec["series"], removed, switches)
     branch_ok = []
     for branch in spec["branches"]:
@@ -49,16 +45,14 @@ def is_lit(spec, target, removed, switches):
             return ok
     return True
 
-
-def resistance_of(parts):
+def resistance_of(parts): #adds up resistors in series
     resistors = [c for c in parts if c["type"] in ("bulb", "resistor")]
     missing = [c.get("label") or c["type"] for c in resistors if c.get("ohms") is None]
     if missing:
         raise ValueError(f"{missing} have no resistance value")
     return sum(c["ohms"] for c in resistors)
 
-
-def total_resistance(spec):
+def total_resistance(spec): #finds the equivalent resistance of the circuit, given the spec
     branch_values = []
     for branch in spec["branches"]:
         has_voltmeter = any(c["type"] == "voltmeter" for c in branch)
@@ -73,8 +67,7 @@ def total_resistance(spec):
         total += 1 / sum(1 / r for r in branch_values)
     return total
 
-
-def check_spec(plan, question):
+def check_spec(plan, question): #the function with all the checks on the spec, returning a list of check results
     spec = plan["spec"]
     missing = [key for key in ["source", "series", "branches"] if key not in spec]
     if missing:
@@ -123,8 +116,7 @@ def check_spec(plan, question):
     checks.append(check_answer_not_shown(spec, question))
     return checks
 
-
-def circuit_answer_check(plan, question):
+def circuit_answer_check(plan, question): #runs the answer_check in the plan against the worked out result from the circuit and returns a check result
     spec = plan["spec"]
     answer_check = plan.get("answer_check") or {}
     operation = answer_check.get("operation")
@@ -147,8 +139,7 @@ def circuit_answer_check(plan, question):
         return make_check("answer_consistency", "fail", f"could not work out the answer from the circuit: {error!r}")
     return make_check("answer_consistency", "skipped", f"operation '{operation}' cannot be checked")
 
-
-def check_answer_not_shown(spec, question):
+def check_answer_not_shown(spec, question): #checks whether the answer appears in any of the labels in the circuit
     answer = (question.get("answer") or "").strip()
     if not answer or answer in [c.get("label") for c in components(spec)]:
         return make_check("answer_not_shown", "skipped", "no answer given, or the answer is a component name")
@@ -163,8 +154,7 @@ def check_answer_not_shown(spec, question):
     return check("answer_not_shown", not shown, "the answer does not appear in any label",
                  f"the answer '{answer}' appears in the labels {shown}")
 
-
-def check_render(plan, files, question = None):
+def check_render(plan, files, question = None): #checks whether the drawn circuit contains the symbols that the spec needs
     spec = plan["spec"]
     expected = []
     for component in components(spec) + [spec["source"]]:
@@ -175,8 +165,7 @@ def check_render(plan, files, question = None):
                   f"the drawing has exactly the {len(expected)} symbols in the spec",
                   f"the drawing has symbols {drawn} but the spec needs {expected}")]
 
-
-def label_text(component):
+def label_text(component): #used to write the label for a component in the circuit
     lines = []
     if component.get("label"):
         lines.append(component["label"])
@@ -186,8 +175,7 @@ def label_text(component):
         lines.append(f"{component['volts']:g} V")
     return "\n".join(lines)
 
-
-def symbol(component):
+def symbol(component): #uses schemdraw to get the symbol for a component in the circuit with its label if it has one
     if component["type"] == "switch":
         element = elm.Switch(nc=component.get("state") == "closed")
     else:
@@ -195,13 +183,11 @@ def symbol(component):
     text = label_text(component)
     return element.label(text) if text else element
 
-
-def wire(d, start, end):
+def wire(d, start, end): #draws a wire between two points in the circuit
     if start != end:
         d.add(elm.Line().at(start).to(end))
 
-
-def render(spec, png_path, svg_path):
+def render(spec, png_path, svg_path): #draws the entire circuit and saves it as PNG and SVG
     branches = spec["branches"] or [[]]
     longest = max(len(branch) for branch in branches)
     height = UNIT * max(1, longest)

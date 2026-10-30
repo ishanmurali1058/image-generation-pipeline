@@ -33,8 +33,7 @@ LOCATE_PROMPT = """You find positions in a picture. Give positions as fractions:
 Reply with ONLY a JSON object, no other text:
 {"left_edge": how far across the left side of the object is, "ground": how far up the ground is where the object stands, "top": how far up the top of the object is}"""
 
-
-def solve_triangle(spec):
+def solve_triangle(spec): #works out the base, height, slant and angle of a right triangle from the given spec
     base, height, slant, angle = (spec[key] for key in ("base", "height", "slant", "angle"))
     if angle is not None:
         if not 0 < angle < 90:
@@ -60,12 +59,10 @@ def solve_triangle(spec):
     return {"base": base, "height": height, "slant": math.hypot(base, height),
             "angle": math.degrees(math.atan2(height, base))}
 
-
-def grid_size(spec):
+def grid_size(spec): #gives the length and width of a grid from the given spec
     return spec["columns"] * spec["square_size"], spec["rows"] * spec["square_size"]
 
-
-def unknown_value(spec):
+def unknown_value(spec): #gives the value of the unknown quantity in the spec and checks that it is a valid unknown
     unknown = spec["unknown"]
     if spec["overlay"] == "right_triangle":
         values = solve_triangle(spec)
@@ -78,8 +75,7 @@ def unknown_value(spec):
         raise ValueError(f"unknown must be one of {list(values)} or null")
     return values.get(unknown)
 
-
-def check_spec(plan, question):
+def check_spec(plan, question): #the checks done on the spec before drawing
     spec = plan["spec"]
     missing = [key for key in COMMON_FIELDS + OVERLAY_FIELDS.get(spec.get("overlay"), []) if key not in spec]
     if spec.get("overlay") not in OVERLAY_FIELDS or missing or spec.get("background") not in ("generated", "drawn"):
@@ -110,8 +106,7 @@ def check_spec(plan, question):
     checks.append(check_values_in_notes(given, question))
     return checks
 
-
-def draw_scene(ax, spec):
+def draw_scene(ax, spec): #draws the background either using FLUX or using code
     triangle = spec["overlay"] == "right_triangle"
     if spec["background"] == "drawn":
         ax.add_patch(Rectangle((0, 0), WIDTH, HEIGHT, color="#E3F1FB" if triangle else "#CDE8B5"))
@@ -142,8 +137,7 @@ def draw_scene(ax, spec):
                            image_path=scene_path)
     return result["cost"] + located["cost"], read_layout(located["text"])
 
-
-def read_layout(text):
+def read_layout(text): #reads Claude's positions, checks their sensibility and converts them to the drawing grid
     try:
         found = json.loads(text[text.find("{"):text.rfind("}") + 1])
         x, ground, top = float(found["left_edge"]), float(found["ground"]), float(found["top"])
@@ -153,20 +147,17 @@ def read_layout(text):
         return DEFAULT_LAYOUT
     return {"wall_x": x * WIDTH, "ground_y": ground * HEIGHT, "top_y": min(top, 0.95) * HEIGHT}
 
-
-def label(ax, x, y, text):
+def label(ax, x, y, text): #writes a label at the centre of a white box
     ax.text(x, y, text, ha="center", va="center", fontsize=14, bbox=LABEL_BOX)
 
-
-def label_text(spec, key):
+def label_text(spec, key): #writes all measurement's labels
     if spec["unknown"] == key:
         return "?"
     if spec[key] is None:
         return None
     return f"{spec[key]:g}°" if key == "angle" else f"{spec[key]:g} {spec['units']}"
 
-
-def draw_triangle(ax, spec, layout):
+def draw_triangle(ax, spec, layout): #draws the right triangle at the layout positions
     solved = solve_triangle(spec)
     wall_x, ground_y = layout["wall_x"], layout["ground_y"]
     scale = min((wall_x - 8) / solved["base"], (layout["top_y"] - ground_y) / solved["height"])
@@ -193,8 +184,7 @@ def draw_triangle(ax, spec, layout):
             label(ax, x, y, label_text(spec, key))
     return {"foot": list(foot), "top": list(top)}
 
-
-def draw_grid(ax, spec):
+def draw_grid(ax, spec): #draws the grid of squares
     columns, rows = spec["columns"], spec["rows"]
     cell = min(80 / columns, 58 / rows)
     left, bottom = (WIDTH - columns * cell) / 2, (HEIGHT - rows * cell) / 2 + 3
@@ -206,8 +196,7 @@ def draw_grid(ax, spec):
     size = f"{spec['square_size']:g} {spec['units']}"
     label(ax, WIDTH / 2, bottom - 5, f"Each square is {size} × {size}")
 
-
-def render(spec, png_path, svg_path):
+def render(spec, png_path, svg_path): #draws the scene and figure, saving it as PNG
     fig = plt.figure(figsize=(8, 6))
     ax = fig.add_axes([0, 0, 1, 1])
     ax.set_xlim(0, WIDTH)
@@ -227,8 +216,7 @@ def render(spec, png_path, svg_path):
         plt.close(fig)
     return details
 
-
-def check_render(plan, files, question=None):
+def check_render(plan, files, question=None): #used to measure the drawn angle, and uses the judge LLM in case of a generated background
     spec = plan["spec"]
     checks = []
     if spec["overlay"] == "right_triangle":
@@ -242,8 +230,7 @@ def check_render(plan, files, question=None):
         checks.extend(judge_checks(plan, files))
     return checks
 
-
-def judge_checks(plan, files):
+def judge_checks(plan, files): #asks the judge LLM whether the figure lines up with the scene and whether the scene has any defects/text. The first misalignment leads to a redraw with a new scene, the second misalignment sends the plan back to Claude for a code drawn background.
     spec = plan["spec"]
     target = f"the {spec['vertical_object']} and the ground" if spec["overlay"] == "right_triangle" else "the area shown"
     result = call_llm(JUDGE_PROMPT, f"Set aligned to whether the drawn figure lines up with {target}.",

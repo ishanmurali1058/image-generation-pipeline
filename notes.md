@@ -1,20 +1,68 @@
 # Process Notes
 
 # Project Setup:
-# Created the GitHub repo, venv and the structure of folders and files.
+Created the GitHub repo, venv and the structure of folders and files.
 
 # Pipeline Skeleton:
-# Built run.py with 3 fake stages (understand, generate and verify), which will eventually write all required outputs. Six starter questions are being used, which cover math, science and social studies, as well as all 3 types of questions (technical diagrams, illustrations and combinations). The images generated for the questions will be blank placeholders with text showing the question id only for now.
+Built run.py with 3 fake stages (understand, generate and verify), which will eventually write all required outputs. Six starter questions are being used, which cover math, science and social studies, as well as all 3 types of questions (technical diagrams, illustrations and combinations). The images generated for the questions will be blank placeholders with text showing the question id only for now.
 
 # Real understand stage:
-# Replaced the fake understand stage in run.py with an actual stage that calls Claude Haiku 5.5 (cheapest Claude model) to return route, route reason and json spec, which is then validated using code. Costs are also calculated using the token count. 
-# After initial run, M-03 was routed to geometry instead of layered, so SYSTEM_PROMPT was modified to give the model more clarity over when to use layered and when to use geometry.
+Replaced the fake understand stage in run.py with an actual stage that calls Claude Haiku 5.5 (cheapest Claude model) to return route, route reason and json spec, which is then validated using code. Costs are also calculated using the token count. 
+After initial run, M-03 was routed to geometry instead of layered, so SYSTEM_PROMPT was modified to give the model more clarity over when to use layered and when to use geometry.
 
 # Chart route:
-# Added a route to draw actual bar, line and pie charts in png and svg from the spec information using matplotlib. The remaining routes which haven't been created yet still have placeholder images, and are now flagged. 
+Added a route to draw actual bar, line and pie charts in png and svg from the spec information using matplotlib. The remaining routes which haven't been created yet still have placeholder images, and are now flagged. 
 
 # Chart verification:
-# Added 7 different checks (6 spec checks and 1 render check) for charts, they are label and value counts, axis range, values and labels against the image notes, answer consistency, answer leaks, and a readback of the drawn values. Changed the answer to M-01 from 42 to 40 to check whether answer consistency would flag the question, and it did. Running it revealed that the svg was still getting created even when the question was flagged, so modified the code to delete svg when question is flagged.
+Added 7 different checks (6 spec checks and 1 render check) for charts, they are label and value counts, axis range, values and labels against the image notes, answer consistency, answer leaks, and a readback of the drawn values. Changed the answer to M-01 from 42 to 40 to check whether answer consistency would flag the question, and it did. Running it revealed that the svg was still getting created even when the question was flagged, so modified the code to delete svg when question is flagged.
 
 # Repair and smarter retries:
-# Failed checks are now sent back to Claude with previous plan, and unfixable failures like routes which haven't been built yet are flagged after one attempt itself along with the reason. Verified its working by changing the answer to M-01 from 42 to 40, Claude kept the notes' values on each attempt instead of modifying them to match the given answer (40).
+Failed checks are now sent back to Claude with previous plan, and unfixable failures like routes which haven't been built yet are flagged after one attempt itself along with the reason. Verified its working by changing the answer to M-01 from 42 to 40, Claude kept the notes' values on each attempt instead of modifying them to match the given answer (40).
+
+# Refactor
+Moved checks shared by several routes (numbers in the notes, answer matching, surds) into routes/common.py before adding more routes, so each route file only holds what is specific to it. Every route has the same three functions: check_spec, render and check_render.
+
+# Geometry route
+Triangles are solved from the givens (two angles, three sides, or two sides and the angle between them) and drawn from the solved corners. I first considered having the LLM write coordinates, but solving the triangle means the drawn angles always match their labels. Checks cover a solvable triangle, givens that agree, the unknown hidden, and every drawn angle and side measured back from the corners.
+
+# Circuit route
+Circuits are drawn with schemdraw, with a small simulator that decides whether a bulb glows when another fuses or a switch opens, and works out total resistance and current. Found by looking at the output: the images were transparent, which looked dark in a dark editor theme, so they now have a white background.
+
+# Map route
+Maps of India's states and union territories, drawn with geopandas from DataMeet's boundaries (CC BY 4.0), simplified from about 17 MB to about 0.4 MB. Checks cover real state names (with "did you mean" suggestions), the unknown state shaded and matching the answer, and the unknown not named.
+
+# Illustration route
+Open-ended scenes are generated by FLUX schnell with an instruction forbidding text, then checked by a Claude judge. The judge describes the image before judging it, then reports a checklist, any text, suitability for children, drawing defects, and which option a student would choose from the picture alone. Failures that are only about the picture lead to a redraw with the same plan, not a new plan.
+
+# Layered route
+Combination images: an exact right-triangle figure or grid drawn by code on top of a generated scene, with a plain drawn scene as a fallback. The first versions kept failing for reasons outside the route: the planning prompt still described an old spec format, and an outdated stages.py meant judge costs weren't counted. In one run, the judge correctly caught a figure that didn't line up with its wall, and repair switched to the drawn background, as designed. Made the dashed field optional after Claude repeatedly got it wrong, and raised the judge's token limit after a reply came back as invalid JSON.
+
+# Sample set
+Grew the sample set to 27 questions across Math, Science and Social Studies, keeping the original six first. Most new questions are adapted from NCERT exercise types with new wording and values; each records its source. The set deliberately includes hard cases: hidden answers, an exact count, questions between categories, questions with no answer or image notes, and questions no route can draw.
+
+# Layered scenes, five approaches
+Generated layered scenes rarely lined up with the figure. I tried five approaches and measured each:
+Fixed positions, asking FLUX to put the object in a set place: almost never lined up.
+Locating the object in the generated scene with Claude, and drawing the figure there: some lined up, varying a lot between runs.
+Giving each question a second try at a new scene before falling back to a drawn one: most layered questions came out generated, but some showed the wrong thing.
+Telling the judge what the scene should show and where the slanted line should end: wrong scenes were rejected, so most fell back to drawn scenes.
+Generating the object alone on white, cutting it out and placing it: still had errors or drawn fallbacks.
+Kept version 3, with the drawn fallback, and dropped 4 and 5. The underlying problem is that FLUX draws the scene without knowing where the figure will go; generating the scene around a layout sketch is the most promising next step.
+
+# Routing rules from the results
+Each run exposed ambiguous questions, and each led to a rule in the planning prompt:
+An illustrated scene with exact measurements goes to layered, not geometry (M-03 was first routed to geometry).
+Exact counts of objects go to template, which isn't built, so they're flagged (M-15 was drawn as a bar chart with one bar at 9).
+If the question gives every number and the picture only sets the scene, use illustration with no numbers shown (M-16 was drawn as a bar chart of prices).
+For a kite, use the kite itself as the vertical object (M-11 had no kite in the picture).
+Use a dashed line for a line of sight (M-10's was drawn solid).
+
+# Robustness
+Any error in one question now flags that question with the reason and moves on: failed Claude or fal.ai calls, failed image checks, specs in unexpected shapes, and unexpected bugs. Questions without an ID get one, unsafe IDs are made safe for file names, and an unreadable input file gives a clear message. Tested with a file of deliberately broken questions; every one was processed.
+A later run crashed when an output image was open in another program: the error path tried to draw a placeholder into the same locked file. The placeholder in the error path is now protected too.
+
+# Leak by elimination
+In one run, SS-02's map labelled West Bengal, Karnataka and Kerala, the three wrong options, so a student could find the answer without any knowledge. No check looked for this. Added a map check that fails if any labelled state is one of the options, plus a prompt rule. In the final run, SS-02 came out correct.
+
+# Final runs and review
+Ran the sample set four times, changing the prompt or code after reviewing each run's images. In the final run, 22 of 27 questions were accepted and 5 flagged. On review, 19 accepted images were usable unchanged, 2 partly usable and 1 wrong (M-12, wrong in every run); 3 flags were correct, and 2 rejected usable images because of over-specific checklist items (M-16 and SS-04). Wrong acceptances fell from 3 in the first run to 1 in the final run. The final run cost $0.078, an average of $0.0029 per image.

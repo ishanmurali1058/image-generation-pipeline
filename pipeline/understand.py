@@ -142,7 +142,7 @@ Rules:
 - If the question already gives every number the student needs and the picture only sets the scene, choose illustration, set answer_from_image to false, and do not show any numbers in the picture.
 """
 
-def understand(question, feedback = None):
+def understand(question, feedback = None): #used to make the planning call to Claude and return the plan with its cost
     user_prompt = json.dumps(question, ensure_ascii=False, indent=2)
     if feedback:
         user_prompt += "\n\n" + feedback
@@ -167,7 +167,7 @@ def understand(question, feedback = None):
     plan["cost"] = result["cost"]
     return plan
 
-def parse_plan(text):
+def parse_plan(text): #reads through Claude's reply and turns it into a plan dictionary, raising an error if the reply is not valid
     start = text.find("{")
     end = text.rfind("}")
     if start == -1 or end == -1:

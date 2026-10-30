@@ -13,22 +13,22 @@ SHADE_COLOUR = "#E8A33D"
 OTHER_COLOUR = "#F2F2F2"
 _states = None
 
-def load_states():
+def load_states(): #used to keep the india_states.geojson file in memory after reading it once
     global _states
     if _states is None:
         _states = gpd.read_file(DATA_PATH)
     return _states
 
-def simplify_name(name):
+def simplify_name(name): #used to normalize state names for comparison
     return name.lower().replace("&", "and").replace(" ", "")
 
-def find_state(name, states):
+def find_state(name, states): #finds the state name from the geojson file that matches the given name
     for real_name in states["name"]:
         if simplify_name(real_name) == simplify_name(name):
             return real_name
     return None
 
-def check_spec(plan, question):
+def check_spec(plan, question): #does all the checks on the map spec before drawing the map
     spec = plan["spec"]
     missing = [key for key in REQUIRED_FIELDS if key not in spec]
     if missing:
@@ -62,7 +62,7 @@ def check_spec(plan, question):
     checks.append(check_options_not_labelled(spec, question))
     return checks
 
-def check_answer(spec, question):
+def check_answer(spec, question): #checks whether the unknown state is shaded and matches the answer or options
     unknown = spec["unknown"]
     if not unknown:
         return make_check("answer_consistency", "skipped", "the map has no unknown state")
@@ -82,7 +82,7 @@ def check_answer(spec, question):
                      f"no answer given; the shaded state {unknown} is not one of the options")
     return make_check("answer_consistency", "skipped", "no answer or options given")
 
-def check_unknown_hidden(spec):
+def check_unknown_hidden(spec): #checks that the unknown state isn't labelled or in the title of the map
     unknown = spec["unknown"]
     if not unknown:
         return make_check("unknown_hidden", "skipped", "the map has no unknown state")
@@ -92,7 +92,7 @@ def check_unknown_hidden(spec):
                  f"{unknown} is shaded but not named",
                  f"{unknown} is named on the map, which shows the answer")
 
-def check_options_not_labelled(spec, question):
+def check_options_not_labelled(spec, question): #checks that none of the options are labelled on the map
     options = [simplify_name(option) for option in question.get("options", [])]
     if not options:
         return make_check("options_not_labelled", "skipped", "the question has no options")
@@ -101,7 +101,7 @@ def check_options_not_labelled(spec, question):
                  "no labelled state is one of the options",
                  f"the map labels {shown}, which are options, so the answer could be found by elimination")
 
-def check_render(plan, files, question = None):
+def check_render(plan, files, question = None): #checks that the correct states are shaded
     spec = plan["spec"]
     states = load_states()
     expected = sorted(find_state(name, states) for name in spec["shaded"])
@@ -110,7 +110,7 @@ def check_render(plan, files, question = None):
                   f"exactly the states {expected} are shaded",
                   f"the map shades {drawn} but the spec needs {expected}")]
 
-def render(spec, png_path, svg_path):
+def render(spec, png_path, svg_path): #it draws all states, shades and labels the specified ones and saves it as PNG and SVG
     states = load_states()
     shaded = [find_state(name, states) for name in spec["shaded"]]
     labelled = [find_state(name, states) for name in spec["labelled"]]

@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from pipeline.understand import understand
 from routes import ROUTE_MODULES
 
-def draw_placeholder(question, png_path):
+def draw_placeholder(question, png_path): #draws a placeholder image for a question when the route is not built yet or an error occurs
     fig, ax = plt.subplots(figsize=(6, 4))
     ax.text(0.5, 0.5, f"Placeholder image\n{question['id']}", ha="center", va="center", fontsize=16)
     ax.axis("off")
@@ -13,7 +13,7 @@ def draw_placeholder(question, png_path):
     plt.close(fig)
 
 
-def generate(plan, question, out_dir):
+def generate(plan, question, out_dir): #used to find the route module and call its render function, returning the paths to the generated images and any errors
     png_path = out_dir / f"{question['id']}.png"
     svg_path = out_dir / f"{question['id']}.svg"
     svg_path.unlink(missing_ok=True)
@@ -45,7 +45,7 @@ def generate(plan, question, out_dir):
     return {"png": str(png_path), "svg": svg, "cost": cost, "spec_checks": spec_checks, **details}
 
 
-def verify(plan, question, files):
+def verify(plan, question, files): #used to check the plan and the generated files, returning a summary of the checks and their costs
     if "error" in plan:
         return {"passed": False, "checks": [{"name": "plan", "result": "fail", "detail": plan["error"]}], "cost": 0.0}
 
